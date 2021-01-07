@@ -1,0 +1,59 @@
+-q  // Enter quiet mode
+dv "Reading $$#...\n"
+
+eo Trgt_Resets_JTAG  = no 
+eo Ice_JTAG_Use_RTCLK  = off 
+
+eo Ice_JTAG_Clock_Freq = 0.003 
+
+ew MEP_JTAG_DIMENSION = 3,4,4,5 // ARMCS-DP (IR len=4), SDMA (IR len=4), SJC (IR len=5)
+
+///For scan chain configuration
+///ew MEP_JTAG_INIT0 = 0x83000060, 0xFFFFFFFF, 0x00000000, 0xFFFFFFFF, 0x03000060, 0xFFFFFFFF, 0x00000000, 0xFFFFFFFF, 0x83000060, 0xFFFFFFFF, 0x00000000, 0xFFFFFFFF, 0x03000060, 0xFFFFFFFF, 0x00000000, 0xFFFFFFFF
+
+///For reading SSR
+///ew MEP_JTAG_INIT0 = 0x8100000D, 0x04FF, 0x01000028, 0x00000000, 0x94, 0x06000022, 0x8100000D, 0x04FF, 0x01000028, 0x00000000, 0x94, 0x06000022
+
+meplog_eice
+
+eo Ice_Power_Sense = VREF
+
+eo Ice_JTAG_TAP_Select =  1 
+
+meplog_off
+
+goto EXIT
+mc *:P, inv     // start with all *physical* memory (*:P) marked as invalid
+
+mc 00000000:P 00408FFF:P, PWD, JAM, RO  // ROM
+mc 1FFE0000:P 1FFFFFFF:P, PWE, JAM, RW  // SRAM
+mc A0000000:P AFFFFFFF:P, PWE, JAM, RW  // DDR2 SDRAM
+
+do tcs
+ew $trgt_cpu_state = @.1MEP_DO_CPU_STATE
+if (@$trgt_cpu_state != 1) { dv "Target Initialization commands skipped due to CPU state\n"; doq TCS; goto EXIT }
+dv "Initializing target...\n"
+
+//  Memory Controller Setup
+//
+// TO DO #4 -- If your board has a different memory configuration than
+//             the reference board, then you may need to adapt the
+//             memory controller initialization script accordingly.
+//             These settings should match the settings used by your
+//             boot code during its hardware initialization phase.
+
+//ew 0xFFFFFC20:P = 0x00000001	// Write PMC Clock Generator Main Oscillator Register
+//ew 0xFFFFFC30:P = 0x00000001	// Enable main oscillator
+
+//ew 0xFFFFFC00:P = 0x00000001	// Enable processor clock
+//w 100
+
+eo ice_jtag_clock_freq = 20    // Speed up JTAG now that PLL is enabled
+//
+dv "Target initialization completed.\n"
+//___________________________________________________________________
+
+:EXIT
+dv "Finished reading $$#.\n"
+
+// <eof>

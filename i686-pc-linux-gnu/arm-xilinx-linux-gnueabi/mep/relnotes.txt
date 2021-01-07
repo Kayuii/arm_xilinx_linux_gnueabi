@@ -1,0 +1,86 @@
+     Mentor Embedded Soucery Probe (MESP) Release Notes
+     Release Fall 2011 Update Nov 15, 2011  
+========================================================================
+(c) Copyright 2011 Mentor Graphics Corp.  All rights reserved.
+
+
+CONTENTS
+=======================================
+
+  Introduction
+  Product Version Numbers
+
+
+INTRODUCTION
+=======================================
+
+This release notes file documents last minute product changes,
+product version numbers, and usage of the sample program files.
+
+Below is the sturcture of these installation tree.
+
+<install>\<host>\bin            Executables, dll's, command files, etc
+<install>\<host>\mdi\           mdi interface details
+<install>\<host>\inf            Windows "inf" files for Sourcery Personal support
+<install>\<host>\mep_firmware   Firmware for Mentor Embeddded Sourcery Personal
+                                and Pro Probes
+<install>\<host>\tsp            Target initializtion files and templates
+
+<host> is either linux or win32 depending upon your host environment.
+
+Note that the inf directory is for Windows hosts only.
+
+
+PRODUCT VERSION NUMBERS
+=======================================
+
+    Debugger Libraries and Executables Versions:
+
+      MON                          V7.0.15
+      MESP MDILib (MDI 1.5 API)    V2.0.17
+      MESP UpdateLib               V1.11
+
+    Sourcery Probe Firmware:       V2.2.3 Build 3
+    (all models)
+
+CHANGES
+=======================================
+
+-CPU control layer variable/const type modification
+
+-Better handling of cortex Data abort sticky error report
+
+-Fixed Arm PC display problem through printf
+
+-Added support for arm ti beagle board xm (TI AM3730 - Cortex-A8)
+
+-Added support for arm ti omap L138 EVM (OMAP-L138 - ARM926EJS)
+
+-Fixed ARM11 initialization problem (introduced in 09/2011 - target mgr reset)
+
+-Fixed i.MX31 mv-byte and mv-hword failure (work around silicon issue)
+
+-Fixed problem preventing mesp pro static ip setup
+
+-Improved error reporting of target connection problems
+
+-Updated Beagle board init script (set semihosting vector to vct tbl base address)
+
+-Renamed beagleboard dir and maj file (for consistency removed ti_ and _)
+
+-Moved misleading bkpt, vector active status fix from twr-k60n512.maj to firmware.
+
+-cortex-a8: correctly report halt reason on data breakpoint
+
+-versatile_ctx-a9mp, Xilinx zynq700: removed core specific tsp files 
+
+-am3517evm_revb: Fixed indentation problems at the end of the DO_TI script 
+
+-beagleboard_xm: added init script and edit to conform to board template
+
+
+
+
+
+
+
