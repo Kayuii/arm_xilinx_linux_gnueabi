@@ -1,0 +1,232 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <noscript>
+       <link rel="StyleSheet" href="../MGC/styles/body.css" type="text/css" />
+       <link rel="StyleSheet" href="../MGC/styles/catalog.css" type="text/css" />
+       <link rel="StyleSheet" href="../MGC/styles/document.css" type="text/css" />
+    </noscript>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+    <meta name="GENERATOR" content="Quadralay WebWorks AutoMap 2003 for FrameMaker 8.0.2.1385" />
+    <meta name="TEMPLATEBASE" content="mgc_ww_v3.2.203" />
+    <meta name="LASTUPDATED" content="Fri Jun 20 07:38:12 2014" />
+    <meta name="mgc_html_doctitle" content="Mentor Embedded Sourcery Probe User's Manual" />
+    <title>FR (File Read)</title>
+<!-- Search Engine keywords -->
+    <meta name="attributes" content=" product.version.2.5.0,doc.type.documentation.user,product.id.P11526 "/>
+<!-- JavaScript Files -->
+<script type="text/javascript" language="JavaScript1.2" src="../MGC/js/page.js"></script>
+<script type="text/javascript" language="JavaScript1.2">
+        if(DetectChromeForBasic()){
+           writeNoScriptStyles();
+        }
+
+     </script>
+   <script type="text/javascript" language="JavaScript1.2">
+     // Set reference to top level help frame
+      //
+      if(!DetectChromeForBasic()){
+        javascriptTopicRedirect();
+      }
+     </script>
+  </head>
+
+<body class="body" id="DocBody">
+<div id="BodyPopup" class="BodyPopup"></div>
+<div class="HideBody" id="HideBody">&nbsp;</div>
+<div id="bodycontent" class="BodyContent">
+
+
+
+
+
+  <script type="text/javascript" language="JavaScript1.2">
+  <!--
+      var BC = new Array("MON Command Language ","moncommand01","MON Command Details","moncommand04","FR (File Read)","moncommand25","48");
+  // -->
+  </script>
+
+   <noscript><iframe framespacing="0" marginheight="2px" frameborder="no" scrolling="no" src="../MGC/html/noscript_header.htm" width="100%" height="100px;"></iframe>
+   </noscript>
+
+<script type="text/javascript" language="JavaScript1.2">
+if(DetectChromeForBasic()){
+       if(!(top.inEclipse)){  
+          writeBasicHeader();
+      }
+}
+</script>
+<div id="BodyContent">
+
+<a name="wp39181"></a><h1 class="pzCmdFunc FontLevel1" id="MGC39181">
+
+<a name="CRefID60610"></a>
+FR (File Read)
+</h1>
+
+
+
+
+
+
+
+
+
+
+
+<a name="wp39182"></a><p class="pzMiscInfo">
+
+Availability: ALL
+</p>
+
+<a name="wp39183"></a><p class="pzShortDesc">
+
+This command opens a file for reading. The type of file is specified by the first operand. 
+</p>
+
+
+<table class="notes">
+  <tr class="NotesUpperRuleBlack">
+    <td class="NotesUpperRule" colspan='2'><span class="cNotesBlack">Note</span></td>
+  </tr>
+  <tr class="NotesNote">
+    <td class="NoteNote"></td>
+    <td valign="top">
+            
+<a name="wp39724"></a><p class="pnoteNote">
+
+        	Command files can contain FR C commands which execute other command files. Command file reads can be nested up to 20 levels deep.
+        </p>
+          </td>
+  </tr>
+  <tr class="NotesBottomRuleBlack">
+    <td class="NotesBottomRule" colspan='2'>&nbsp;</td>
+    </tr>
+ </table>
+<a name="wp39184"></a><p class="pzHeading">
+
+Usage
+</p>
+
+<a name="wp39265"></a><p class="pzUsage">
+
+FR C <span class="cOptRpl">file_name</span> [<span class="cOptRpl">p_value</span> ...]
+</p>
+
+<a name="wp39266"></a><p class="pzUsage">
+
+FR C  <span class=" cItalic">label</span>  [ <span class=" cItalic">p_value</span> ]....
+</p>
+
+<a name="wp39267"></a><p class="pzUsage">
+
+FR C  <span class=" cItalic">file_name</span>[.<span class=" cItalic">label</span>]  [ <span class=" cItalic">p_value</span> ]....
+</p>
+
+<a name="wp39268"></a><p class="pzUsage">
+
+FR M <span class="cOptRpl">file_name</span> [<span class="cOptRpl">addr</span>]
+</p>
+
+<a name="wp39269"></a><p class="pzUsage">
+
+FR {RD} <span class="cOptRpl">file_name</span>
+</p>
+
+<a name="wp39186"></a><p class="pzHeading">
+
+Arguments
+</p>
+
+<a name="wp39187"></a>
+<ul class="ulSmSpace"><li class="LLzptArg"><span class=" cBold">M</span></li></ul>
+
+<a name="wp39188"></a>
+<div class="LLzArgDesc">Reads a memory image file (binary or Motorola s-record file). The default filename extension is <span class=" cItalic">.mem</span>.</div>
+<a name="wp39189"></a>
+<ul class="ulSmSpace"><li class="LLzptArg"><span class=" cBold">RD</span></li></ul>
+
+<a name="wp39190"></a>
+<div class="LLzArgDesc">Reads user-defined register names from a Register Definition File. See<span class=" cBold"> </span><a name="EW34"></a><a href="majicconfig10.html#CRefID25144" onclick='oT("CRF","majicconfig10.html#CRefID25144");'><span class=" cLinkOverride">Register Definition File</span></a><span class=" cBold"> </span>for details. The default filename extension is <span class=" cItalic">.rd</span>.</div>
+<a name="wp39316"></a>
+<ul class="ulSmSpace"><li class="LLzptArg"><span class=" cItalic">file</span>_<span class=" cItalic">name</span></li></ul>
+
+<a name="wp39317"></a>
+<div class="LLzArgDesc">Is the name of the file to be read. If <span class=" cItalic">file_name</span> does not include an extension, the MON supplies the default file name extension. If no extension is desired,<span class=" cItalic"> file_name </span>should end with a &ldquo;<span class=" cBold">.</span>&rdquo;, which will be removed before opening the file. MON searches for <span class=" cItalic">file_name </span>using the algorithm as described in <a name="EW35"></a><a href="majicconfig03.html#CRefID38360" onclick='oT("CRF","majicconfig03.html#CRefID38360");'><span class=" cLinkOverride">File Search Order</span></a>.</div>
+<a name="wp39336"></a>
+<ul class="ulSmSpace"><li class="LLzptArg"><span class=" cItalic">addr</span></li></ul>
+
+<a name="wp39328"></a>
+<div class="LLzArgDesc">The starting address where the memory image will be loaded. It is not necessary that this address match the starting address used to write the file. <span class=" cItalic">addr</span> is optional on memory image files containing Motorola S-Records. If given, <span class=" cItalic">addr</span> specifies an offset relative to the addresses in the S-Record file.</div>
+<a name="wp39356"></a>
+<ul class="ulSmSpace"><li class="LLzptArg"><span class=" cBold">C</span></li></ul>
+
+<a name="wp39357"></a>
+<div class="LLzArgDesc">Reads commands from the specified file. The default filename extension is <span class=" cItalic">.maj</span>, but if no match is found then <span class=" cItalic">.cmd </span>is tried next (for backward compatibility). For details on how to create and use command files see <a href="moncommand67.html"  onclick='oT("CRF","moncommand67.html");return false;'>Command Script Files</a>. Also, see <a href="moncommand42.html"  onclick='oT("CRF","moncommand42.html");return false;'>SHIFT/UNSHIFT</a>.
+<br />
+<br />This subcommand causes the debug monitor to read commands from the specified file or position within a file identified by a label. If only a label is supplied then the current file is assumed. When all the commands in the file have been processed or a return command has     been encountered, the monitor resumes reading commands from its previous input source, ultimately returning control back to the console. This is an easy way to input a standard set of commands or to quickly recreate an earlier session. The file can be created manually or can be the result of the File Write (FW C) command. If the FR C command is part of a multi-command line, the remaining commands on the line will be executed after all commands in the new file have been executed.</div>
+<a name="wp39376"></a>
+<ul class="ulSmSpace"><li class="LLzptArg"><span class=" cItalic">label</span></li></ul>
+
+<a name="wp39377"></a>
+<div class="LLzArgDesc">A function label within the referenced file_name. Function labels differ from normal goto labels by the use of two ::&#39;s at the start of the label.</div>
+<table class="notes">
+  <tr class="NotesUpperRuleBlack">
+    <td class="NotesUpperRule" colspan='2'><span class="cNotesBlack">Note</span></td>
+  </tr>
+  <tr class="NotesNote">
+    <td class="NoteNote"></td>
+    <td valign="top">
+            
+<a name="wp39672"></a><p class="pnoteNote">
+
+        	Referencing labels allows for a function call like processing and a label has precedence over a file_name in this context. Also, a label function call can be done without using &quot;FR C&quot; as a direct command, but this method only allows references to labels that have been identified as function labels by the use of two :&#39;s in front of the label declaration. Command files can be nested up to 20 levels deep.
+        </p>
+          </td>
+  </tr>
+  <tr class="NotesBottomRuleBlack">
+    <td class="NotesBottomRule" colspan='2'>&nbsp;</td>
+    </tr>
+ </table>
+<a name="wp39396"></a>
+<ul class="ulSmSpace"><li class="LLzptArg"><span class=" cItalic">p_value</span></li></ul>
+
+<a name="wp39397"></a>
+<div class="LLzArgDesc">A string that will be substituted for a parameter in the command file. A parameter is of the form: <span class=" cItalic">$$n</span>, with 1 &lt;= n &lt;= 99.</div>
+
+
+
+
+
+</div>
+<!--BeginFooterContent-->
+<div class="BlankFooter" id="BlankFooter">&nbsp;</div>
+<div class="Footer" id="Footer">&nbsp;</div>
+<script type="text/javascript" language="JavaScript1.2">
+<!--
+   DocHandle = "mesp_user";
+   DocTitle = "Mentor Embedded Sourcery Probe User's Manual";
+   PageTitle = "FR (File Read)";
+   Copyright = "2011-2014";
+   PDFLinkTitle = "FR.File.Read"
+   ThisTopic = "UserDefinedAccessLists";
+   CurrentFile = "moncommand25.html";
+   CurrentFileID = "48";
+      topicFooter();
+
+ // -->
+ </script>
+ 
+ <noscript>
+    <p class="MGCFooter">Mentor Embedded Sourcery Probe User's Manual&nbsp;2.5.0
+    
+<br />2011-2014&#169;&nbsp;Mentor Graphics Corporation. All rights reserved.
+    
+<br /><a href='../mgc_html_help/nsmgchelp.htm' target="_blank">Browser Requirements</a></p>
+ </noscript>
+
+    </div>
+  </body>
+</html>
+
+ 

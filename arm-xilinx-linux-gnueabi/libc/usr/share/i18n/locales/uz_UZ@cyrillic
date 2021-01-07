@@ -88,10 +88,10 @@ include "translit_combining";""
 <U0447> "<U0063><U0068>" % c% -> ch
 <U0448> "<U0073><U0068>" % s% -> sh
 <U0449> "<U0073><U0068>" % shcha -> sh
-<U044A> "<U0027>"        % hard sign= -> ' 
+<U044A> "<U0027>"        % hard sign= -> '
 <U044B> "<U0069>"        % yeru -> 1
 <U044C> ""               % soft sign omitted. not in latin-uzbek alphabet. stupid, but it is a fact.
-<U044D> "<U0065>"        % je= -> e 
+<U044D> "<U0065>"        % je= -> e
 <U044E> "<U0079><U0075>" % ju -> yu
 <U044F> "<U0079><U0061>" % ja -> ya
 <U045E> "<U006F><U0027>" % v% -> o'
@@ -284,7 +284,8 @@ int_prefix     "<U0032><U0037>"
 END LC_TELEPHONE
 
 LC_MEASUREMENT
-measurement    1
+% metric
+measurement 1
 END LC_MEASUREMENT
 
 LC_NAME
@@ -317,7 +318,10 @@ country_num  860
 %country_isbn ""
 country_car "<U0055><U005A>"
 lang_name   "<U040E><U0437><U0431><U0435><U043A><U0447><U0430>"
-lang_ab     "<U0075><U007A>"
-lang_term   "<U0075><U007A><U0062>"
-lang_lib    "<U0075><U007A><U0062>"
+% uz
+lang_ab      "<U0075><U007A>"
+% uzb
+lang_term    "<U0075><U007A><U0062>"
+% uzb
+lang_lib     "<U0075><U007A><U0062>"
 END LC_ADDRESS

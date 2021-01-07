@@ -1,0 +1,277 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <noscript>
+       <link rel="StyleSheet" href="../MGC/styles/body.css" type="text/css" />
+       <link rel="StyleSheet" href="../MGC/styles/catalog.css" type="text/css" />
+       <link rel="StyleSheet" href="../MGC/styles/document.css" type="text/css" />
+    </noscript>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+    <meta name="GENERATOR" content="Quadralay WebWorks AutoMap 2003 for FrameMaker 8.0.2.1385" />
+    <meta name="TEMPLATEBASE" content="mgc_ww_v3.2.203" />
+    <meta name="LASTUPDATED" content="Fri Jun 20 07:38:12 2014" />
+    <meta name="mgc_html_doctitle" content="Mentor Embedded Sourcery Probe User's Manual" />
+    <title>L (Load)</title>
+<!-- Search Engine keywords -->
+    <meta name="attributes" content=" product.version.2.5.0,doc.type.documentation.user,product.id.P11526 "/>
+<!-- JavaScript Files -->
+<script type="text/javascript" language="JavaScript1.2" src="../MGC/js/page.js"></script>
+<script type="text/javascript" language="JavaScript1.2">
+        if(DetectChromeForBasic()){
+           writeNoScriptStyles();
+        }
+
+     </script>
+   <script type="text/javascript" language="JavaScript1.2">
+     // Set reference to top level help frame
+      //
+      if(!DetectChromeForBasic()){
+        javascriptTopicRedirect();
+      }
+     </script>
+  </head>
+
+<body class="body" id="DocBody">
+<div id="BodyPopup" class="BodyPopup"></div>
+<div class="HideBody" id="HideBody">&nbsp;</div>
+<div id="bodycontent" class="BodyContent">
+
+
+
+
+
+  <script type="text/javascript" language="JavaScript1.2">
+  <!--
+      var BC = new Array("MON Command Language ","moncommand01","MON Command Details","moncommand04","L (Load)","moncommand34","57");
+  // -->
+  </script>
+
+   <noscript><iframe framespacing="0" marginheight="2px" frameborder="no" scrolling="no" src="../MGC/html/noscript_header.htm" width="100%" height="100px;"></iframe>
+   </noscript>
+
+<script type="text/javascript" language="JavaScript1.2">
+if(DetectChromeForBasic()){
+       if(!(top.inEclipse)){  
+          writeBasicHeader();
+      }
+}
+</script>
+<div id="BodyContent">
+
+<a name="wp41836"></a><h1 class="pzCmdFunc FontLevel1" id="MGC41836">
+
+<a name="CRefID60295"></a>
+L (Load)
+</h1>
+
+
+
+
+
+
+
+
+
+
+
+<a name="wp41837"></a><p class="pzMiscInfo">
+
+Availability: ALL
+</p>
+
+<a name="wp41920"></a><p class="pBody">
+
+The L (Load) command downloads one or more executable files to target memory, loads symbol information from the files into the MON&#8217;s symbol table, and prepares the program for execution. The -[<span class=" cBold">N</span>]<span class=" cBold">O</span> <span class=" cItalic">scn_types</span> operands can be used to specify the section types to load or execute from loading for subsequent files.
+</p>
+
+<table class="notes">
+  <tr class="NotesUpperRuleBlack">
+    <td class="NotesUpperRule" colspan='2'><span class="cNotesBlack">Note</span></td>
+  </tr>
+  <tr class="NotesNote">
+    <td class="NoteNote"></td>
+    <td valign="top">
+            
+<a name="wp41931"></a><p class="pnoteNote">
+
+        	In most cases the program should be loaded via Sourcery CodeBench instead of using the MON load command.
+        </p>
+          </td>
+  </tr>
+  <tr class="NotesBottomRuleBlack">
+    <td class="NotesBottomRule" colspan='2'>&nbsp;</td>
+    </tr>
+ </table>
+<a name="wp41839"></a><p class="pzHeading">
+
+Usage
+</p>
+
+<a name="wp41840"></a><p class="pzUsage">
+
+L [ [-[N]O <span class=" cItalic">scn_types</span>] <span class=" cItalic">filename</span> ... ] ...
+</p>
+
+<a name="wp42005"></a><p class="pzHeading">
+
+Arguments
+</p>
+
+<a name="wp42006"></a>
+<ul class="ulSmSpace"><li class="LLzptArg"><span class=" cItalic">scn_types</span> </li></ul>
+
+<a name="wp42059"></a>
+<div class="LLzArgDesc">A set of letters specifying section types to load (-O) or not load (-NO):</div>
+<a name="wp42007"></a><p class="pL1Body">
+
+t 	text (program code)
+</p>
+
+<a name="wp42008"></a><p class="pL1Body">
+
+d 	data (initialized data)
+</p>
+
+<a name="wp42009"></a><p class="pL1Body">
+
+b 	bss (uninitialized data)
+</p>
+
+<a name="wp42010"></a><p class="pL1Body">
+
+l 	literals (read-only initialized data) 
+</p>
+
+<a name="wp42019"></a><p class="pL1Body">
+
+s	symbols
+</p>
+
+<a name="wp41844"></a>
+<ul class="ulSmSpace"><li class="LLzptArg"><span class=" cItalic">filename</span></li></ul>
+
+<a name="wp41845"></a>
+<div class="LLzArgDesc">Specifies an executable file to be loaded according to the current <span class=" cItalic">scn_types</span>.</div>
+<a name="wp41846"></a><p class="pzHeading">
+
+Description
+</p>
+
+<a name="wp41947"></a><p class="pBody">
+
+In addition to loading the program files and symbol tables, the Load command can produce a number of other &ldquo;side effects&rdquo; controlled by several configuration options (see <a name="EW38"></a><a href="majicconfig08.html#CRefID77132" onclick='oT("CRF","majicconfig08.html#CRefID77132");'><span class=" cLinkOverride">Configuration Options</span></a>). Specifically:
+</p>
+
+<a name="wp41951"></a>
+<ul class="ulSmSpace"><li class="LLzptArg">If the Reset_At_Load option is on (the default), Load first performs a Reset operation equivalent to the R command (see <a href="moncommand40.html"  onclick='oT("CRF","moncommand40.html");return false;'>R, RP, RT (Reset Processor)</a>).</li></ul>
+<a name="wp41955"></a>
+<ul class="ulSmSpace"><li class="LLzptArg">If the Load_Entry_Pc option is on (the default), after the load is completed, the PC is set to the entry point address contained in the first <span class=" cItalic">filename</span>.</li></ul>
+<a name="wp41956"></a><p class="pBody">
+
+Each of the file names and their respective <span class=" cItalic">scn_types</span> are remembered for future Load commands until explicitly changed in a subsequent Load command.
+</p>
+
+<a name="wp41847"></a><p class="pzBody">
+
+So if there is no <span class=" cItalic">filename</span> explicitly specified, the current program is reloaded. In this case the symbol table is not normally reloaded, but you can use the -O option to force a reload. If new files to be loaded are specified, the existing global symbol table is purged and symbols are loaded from the new files by default.
+</p>
+
+
+<a name="wp41848"></a><p class="pzHeading">
+
+Examples
+</p>
+
+<a name="wp42069"></a><pre class="pCode">
+L                // reload the current program (using the current options)
+</pre>
+
+<a name="wp42070"></a><pre class="pCode">
+L -o db                // reload only data and bss sections of current program
+</pre>
+
+<a name="wp42071"></a><pre class="pCode">
+L -o ts myprog // load text and symbols of myprog
+</pre>
+
+<a name="wp42072"></a><pre class="pCode">
+L myboot -no s myprog1 -o tdbls mymain
+</pre>
+
+<a name="wp42073"></a><pre class="pCode">
+               // load all sections and symbols of myboot, load all but
+</pre>
+
+<a name="wp41849"></a><pre class="pCode">
+               // symbols of myprog1, load all of mymain
+</pre>
+
+<a name="wp41855"></a><p class="pRelatedTopics">
+
+Related Topics
+</p>
+<div id="TableDivQz"></div>
+<div align="left">
+
+
+<table border="0" cellpadding="2" cellspacing="0" width="96%" id="wp41852table41850">
+  <tr align="left" valign="top">
+    <td id='Row1Column1'  style='width:3.25in'>
+
+
+<a name="wp41852"></a><p class="pTableCell">
+<a href="moncommand48.html"  onclick='oT("CRF","moncommand48.html");return false;'>VL (Verify Load)</a></p></td>
+    <td id='Row1Column2'  style='width:3.25in'>
+
+
+<a name="wp41854"></a><p class="pTableCell">
+  &#160;</p></td>
+
+</tr>
+
+</table>
+
+</div>
+<div id='EndTable'> </div>
+<p class="pRelatedTopics">
+
+<br clear='left' class='Blank4Table' />
+
+</p>
+
+
+
+
+
+</div>
+<!--BeginFooterContent-->
+<div class="BlankFooter" id="BlankFooter">&nbsp;</div>
+<div class="Footer" id="Footer">&nbsp;</div>
+<script type="text/javascript" language="JavaScript1.2">
+<!--
+   DocHandle = "mesp_user";
+   DocTitle = "Mentor Embedded Sourcery Probe User's Manual";
+   PageTitle = "L (Load)";
+   Copyright = "2011-2014";
+   PDFLinkTitle = "L.Load"
+   ThisTopic = "UserDefinedAccessLists";
+   CurrentFile = "moncommand34.html";
+   CurrentFileID = "57";
+      topicFooter();
+
+ // -->
+ </script>
+ 
+ <noscript>
+    <p class="MGCFooter">Mentor Embedded Sourcery Probe User's Manual&nbsp;2.5.0
+    
+<br />2011-2014&#169;&nbsp;Mentor Graphics Corporation. All rights reserved.
+    
+<br /><a href='../mgc_html_help/nsmgchelp.htm' target="_blank">Browser Requirements</a></p>
+ </noscript>
+
+    </div>
+  </body>
+</html>
+
+ 

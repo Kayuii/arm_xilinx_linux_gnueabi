@@ -1,4 +1,4 @@
-/* Copyright (C) 1992, 1995-2002, 2009, 2010 Free Software Foundation, Inc.
+/* Copyright (C) 1992-2015 Free Software Foundation, Inc.
    This file is part of the GNU C Library.
 
    The GNU C Library is free software; you can redistribute it and/or
@@ -12,9 +12,8 @@
    Lesser General Public License for more details.
 
    You should have received a copy of the GNU Lesser General Public
-   License along with the GNU C Library; if not, write to the Free
-   Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA
-   02111-1307 USA.  */
+   License along with the GNU C Library; if not, see
+   <http://www.gnu.org/licenses/>.  */
 
 #if !defined _SYS_STAT_H && !defined _FCNTL_H
 # error "Never include <bits/stat.h> directly; use <sys/stat.h> instead."
@@ -63,7 +62,7 @@ struct stat
 #else
     __blkcnt64_t st_blocks;		/* Number 512-byte blocks allocated. */
 #endif
-#if defined __USE_MISC || defined __USE_XOPEN2K8
+#ifdef __USE_XOPEN2K8
     /* Nanosecond resolution timestamps are stored in a format
        equivalent to 'struct timespec'.  This is the type used
        whenever possible but the Unix namespace rules do not allow the
@@ -85,8 +84,8 @@ struct stat
     unsigned long int st_ctimensec;	/* Nsecs of last status change.  */
 #endif
 #ifndef __USE_FILE_OFFSET64
-    unsigned long int __unused4;
-    unsigned long int __unused5;
+    unsigned long int __glibc_reserved4;
+    unsigned long int __glibc_reserved5;
 #else
     __ino64_t st_ino;			/* File serial number.	*/
 #endif
@@ -109,7 +108,7 @@ struct stat64
     __blksize_t st_blksize;		/* Optimal block size for I/O.  */
 
     __blkcnt64_t st_blocks;		/* Number 512-byte blocks allocated. */
-# if defined __USE_MISC || defined __USE_XOPEN2K8
+# ifdef __USE_XOPEN2K8
     /* Nanosecond resolution timestamps are stored in a format
        equivalent to 'struct timespec'.  This is the type used
        whenever possible but the Unix namespace rules do not allow the

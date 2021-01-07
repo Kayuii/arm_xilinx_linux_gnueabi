@@ -27,6 +27,14 @@ GNU C library functions and macros
 * __gconv_end_fct: (libc)glibc iconv Implementation.
 * __gconv_fct: (libc)glibc iconv Implementation.
 * __gconv_init_fct: (libc)glibc iconv Implementation.
+* __ppc_get_timebase_freq: (libc)PowerPC.
+* __ppc_get_timebase: (libc)PowerPC.
+* __ppc_mdoio: (libc)PowerPC.
+* __ppc_mdoom: (libc)PowerPC.
+* __ppc_set_ppr_low: (libc)PowerPC.
+* __ppc_set_ppr_med_low: (libc)PowerPC.
+* __ppc_set_ppr_med: (libc)PowerPC.
+* __ppc_yield: (libc)PowerPC.
 * __va_copy: (libc)Argument Macros.
 * _Complex_I: (libc)Complex Numbers.
 * _exit: (libc)Termination Internals.
@@ -83,6 +91,7 @@ GNU C library functions and macros
 * aio_write: (libc)Asynchronous Reads/Writes.
 * aio_write64: (libc)Asynchronous Reads/Writes.
 * alarm: (libc)Setting an Alarm.
+* aligned_alloc: (libc)Aligned Memory Blocks.
 * alloca: (libc)Variable Size Automatic.
 * alphasort: (libc)Scanning Directory Content.
 * alphasort64: (libc)Scanning Directory Content.
@@ -216,16 +225,16 @@ GNU C library functions and macros
 * clearenv: (libc)Environment Access.
 * clearerr_unlocked: (libc)Error Recovery.
 * clearerr: (libc)Error Recovery.
-* CLK_TCK: (libc)CPU Time.
+* CLK_TCK: (libc)Processor Time.
 * CLOCAL: (libc)Control Modes.
 * clock: (libc)CPU Time.
 * CLOCKS_PER_SEC: (libc)CPU Time.
-* clog10f: (libc)Exponents and Logarithms.
-* clog10: (libc)Exponents and Logarithms.
 * clogf: (libc)Exponents and Logarithms.
 * clogl: (libc)Exponents and Logarithms.
 * clog: (libc)Exponents and Logarithms.
+* clog10f: (libc)Exponents and Logarithms.
 * clog10l: (libc)Exponents and Logarithms.
+* clog10: (libc)Exponents and Logarithms.
 * closedir: (libc)Reading/Closing Directory.
 * closelog: (libc)closelog.
 * close: (libc)Opening and Closing Files.
@@ -360,6 +369,7 @@ GNU C library functions and macros
 * EGREGIOUS: (libc)Error Codes.
 * EHOSTDOWN: (libc)Error Codes.
 * EHOSTUNREACH: (libc)Error Codes.
+* EHWPOISON: (libc)Error Codes.
 * EIDRM: (libc)Error Codes.
 * EIEIO: (libc)Error Codes.
 * EILSEQ: (libc)Error Codes.
@@ -507,15 +517,15 @@ GNU C library functions and macros
 * exit: (libc)Normal Termination.
 * EXIT_FAILURE: (libc)Exit Status.
 * EXIT_SUCCESS: (libc)Exit Status.
-* exp10f: (libc)Exponents and Logarithms.
-* exp10l: (libc)Exponents and Logarithms.
-* exp10: (libc)Exponents and Logarithms.
 * expf: (libc)Exponents and Logarithms.
 * expl: (libc)Exponents and Logarithms.
 * expm1f: (libc)Exponents and Logarithms.
 * expm1l: (libc)Exponents and Logarithms.
 * expm1: (libc)Exponents and Logarithms.
 * exp: (libc)Exponents and Logarithms.
+* exp10f: (libc)Exponents and Logarithms.
+* exp10l: (libc)Exponents and Logarithms.
+* exp10: (libc)Exponents and Logarithms.
 * exp2f: (libc)Exponents and Logarithms.
 * exp2l: (libc)Exponents and Logarithms.
 * exp2: (libc)Exponents and Logarithms.
@@ -525,6 +535,9 @@ GNU C library functions and macros
 * F_GETFL: (libc)Getting File Status Flags.
 * F_GETLK: (libc)File Locks.
 * F_GETOWN: (libc)Interrupt Input.
+* F_OFD_GETLK: (libc)Open File Description Locks.
+* F_OFD_SETLKW: (libc)Open File Description Locks.
+* F_OFD_SETLK: (libc)Open File Description Locks.
 * F_OK: (libc)Testing File Access.
 * F_SETFD: (libc)Descriptor Flags.
 * F_SETFL: (libc)Getting File Status Flags.
@@ -537,7 +550,6 @@ GNU C library functions and macros
 * fchdir: (libc)Working Directory.
 * fchmod: (libc)Setting Permissions.
 * fchown: (libc)File Owner.
-* fclean: (libc)Cleaning Streams.
 * fcloseall: (libc)Closing Streams.
 * fclose: (libc)Closing Streams.
 * fcntl: (libc)Control Operations.
@@ -675,6 +687,7 @@ GNU C library functions and macros
 * get_nprocs_conf: (libc)Processor Resources.
 * get_nprocs: (libc)Processor Resources.
 * get_phys_pages: (libc)Query Memory Parameters.
+* getauxval: (libc)Auxiliary Vector.
 * getc_unlocked: (libc)Character Input.
 * getchar_unlocked: (libc)Character Input.
 * getchar: (libc)Character Input.
@@ -702,10 +715,10 @@ GNU C library functions and macros
 * getgroups: (libc)Reading Persona.
 * gethostbyaddr_r: (libc)Host Names.
 * gethostbyaddr: (libc)Host Names.
-* gethostbyname2_r: (libc)Host Names.
 * gethostbyname2: (libc)Host Names.
 * gethostbyname_r: (libc)Host Names.
 * gethostbyname: (libc)Host Names.
+* gethostbyname2_r: (libc)Host Names.
 * gethostent: (libc)Host Names.
 * gethostid: (libc)Host Identification.
 * gethostname: (libc)Host Identification.
@@ -727,7 +740,6 @@ GNU C library functions and macros
 * getpass: (libc)getpass.
 * getpeername: (libc)Who is Connected.
 * getpgid: (libc)Process Group Functions.
-* getpgrp: (libc)Process Group Functions.
 * getpgrp: (libc)Process Group Functions.
 * getpid: (libc)Process Identification.
 * getppid: (libc)Process Identification.
@@ -843,7 +855,6 @@ GNU C library functions and macros
 * INLCR: (libc)Input Modes.
 * innetgr: (libc)Netgroup Membership.
 * INPCK: (libc)Input Modes.
-* int: (libc)Random Access Directory.
 * ioctl: (libc)IOCTLs.
 * IPPORT_RESERVED: (libc)Ports.
 * IPPORT_USERRESERVED: (libc)Ports.
@@ -873,6 +884,7 @@ GNU C library functions and macros
 * isnormal: (libc)Floating Point Classes.
 * isprint: (libc)Classification of Characters.
 * ispunct: (libc)Classification of Characters.
+* issignaling: (libc)Floating Point Classes.
 * isspace: (libc)Classification of Characters.
 * ISTRIP: (libc)Input Modes.
 * isunordered: (libc)FP Comparison Functions.
@@ -949,6 +961,8 @@ GNU C library functions and macros
 * log1pf: (libc)Exponents and Logarithms.
 * log1pl: (libc)Exponents and Logarithms.
 * log1p: (libc)Exponents and Logarithms.
+* log2f: (libc)Exponents and Logarithms.
+* log2l: (libc)Exponents and Logarithms.
 * log2: (libc)Exponents and Logarithms.
 * logbf: (libc)Exponents and Logarithms.
 * logbl: (libc)Exponents and Logarithms.
@@ -960,8 +974,6 @@ GNU C library functions and macros
 * logout: (libc)Logging In and Out.
 * logwtmp: (libc)Logging In and Out.
 * log: (libc)Exponents and Logarithms.
-* log2f: (libc)Exponents and Logarithms.
-* log2l: (libc)Exponents and Logarithms.
 * longjmp: (libc)Non-Local Details.
 * lrand48_r: (libc)SVID Random.
 * lrand48: (libc)SVID Random.
@@ -1122,14 +1134,13 @@ GNU C library functions and macros
 * on_exit: (libc)Cleanups on Exit.
 * ONLCR: (libc)Output Modes.
 * ONOEOT: (libc)Output Modes.
+* open64: (libc)Opening and Closing Files.
 * OPEN_MAX: (libc)General Limits.
 * open_memstream: (libc)String Streams.
-* open_obstack_stream: (libc)Obstack Streams.
 * opendir: (libc)Opening a Directory.
 * openlog: (libc)openlog.
 * openpty: (libc)Pseudo-Terminal Pairs.
 * open: (libc)Opening and Closing Files.
-* open64: (libc)Opening and Closing Files.
 * OPOST: (libc)Output Modes.
 * OXTABS: (libc)Output Modes.
 * P_tmpdir: (libc)Temporary Files.
@@ -1165,6 +1176,12 @@ GNU C library functions and macros
 * printf_size: (libc)Predefined Printf Handlers.
 * printf: (libc)Formatted Output Functions.
 * psignal: (libc)Signal Messages.
+* pthread_getattr_default_np: (libc)Default Thread Attributes.
+* pthread_getspecific: (libc)Thread-specific Data.
+* pthread_key_create: (libc)Thread-specific Data.
+* pthread_key_delete: (libc)Thread-specific Data.
+* pthread_setattr_default_np: (libc)Default Thread Attributes.
+* pthread_setspecific: (libc)Thread-specific Data.
 * ptsname_r: (libc)Allocation.
 * ptsname: (libc)Allocation.
 * putc_unlocked: (libc)Simple Output.
@@ -1269,6 +1286,7 @@ GNU C library functions and macros
 * sched_setparam: (libc)Basic Scheduling Functions.
 * sched_setscheduler: (libc)Basic Scheduling Functions.
 * sched_yield: (libc)Basic Scheduling Functions.
+* secure_getenv: (libc)Environment Access.
 * seed48_r: (libc)SVID Random.
 * seed48: (libc)SVID Random.
 * SEEK_CUR: (libc)File Positioning.
@@ -1276,6 +1294,20 @@ GNU C library functions and macros
 * SEEK_SET: (libc)File Positioning.
 * seekdir: (libc)Random Access Directory.
 * select: (libc)Waiting for I/O.
+* sem_close: (libc)Semaphores.
+* sem_destroy: (libc)Semaphores.
+* sem_getvalue: (libc)Semaphores.
+* sem_init: (libc)Semaphores.
+* sem_open: (libc)Semaphores.
+* sem_post: (libc)Semaphores.
+* sem_timedwait: (libc)Semaphores.
+* sem_trywait: (libc)Semaphores.
+* sem_unlink: (libc)Semaphores.
+* sem_wait: (libc)Semaphores.
+* semctl: (libc)Semaphores.
+* semget: (libc)Semaphores.
+* semop: (libc)Semaphores.
+* semtimedop: (libc)Semaphores.
 * sendmsg: (libc)Receiving Datagrams.
 * sendto: (libc)Sending Datagrams.
 * send: (libc)Sending Data.
@@ -1322,6 +1354,8 @@ GNU C library functions and macros
 * setutent: (libc)Manipulating the Database.
 * setutxent: (libc)XPG Functions.
 * setvbuf: (libc)Controlling Buffering.
+* shm_open: (libc)Memory-mapped I/O.
+* shm_unlink: (libc)Memory-mapped I/O.
 * shutdown: (libc)Closing a Socket.
 * SIG_ERR: (libc)Basic Signal Handling.
 * SIGABRT: (libc)Program Error Signals.
@@ -1329,7 +1363,7 @@ GNU C library functions and macros
 * sigaddset: (libc)Signal Sets.
 * SIGALRM: (libc)Alarm Signals.
 * sigaltstack: (libc)Signal Stack.
-* sigblock: (libc)Blocking in BSD.
+* sigblock: (libc)BSD Signal Handling.
 * SIGBUS: (libc)Program Error Signals.
 * SIGCHLD: (libc)Job Control Signals.
 * SIGCLD: (libc)Job Control Signals.
@@ -1342,7 +1376,7 @@ GNU C library functions and macros
 * SIGHUP: (libc)Termination Signals.
 * SIGILL: (libc)Program Error Signals.
 * SIGINFO: (libc)Miscellaneous Signals.
-* siginterrupt: (libc)BSD Handler.
+* siginterrupt: (libc)BSD Signal Handling.
 * SIGINT: (libc)Termination Signals.
 * SIGIOT: (libc)Program Error Signals.
 * SIGIO: (libc)Asynchronous I/O Signals.
@@ -1350,13 +1384,13 @@ GNU C library functions and macros
 * SIGKILL: (libc)Termination Signals.
 * siglongjmp: (libc)Non-Local Exits and Signals.
 * SIGLOST: (libc)Operation Error Signals.
-* sigmask: (libc)Blocking in BSD.
+* sigmask: (libc)BSD Signal Handling.
 * signal: (libc)Basic Signal Handling.
 * signbit: (libc)FP Bit Twiddling.
 * significandf: (libc)Normalization Functions.
 * significandl: (libc)Normalization Functions.
 * significand: (libc)Normalization Functions.
-* sigpause: (libc)Blocking in BSD.
+* sigpause: (libc)BSD Signal Handling.
 * sigpending: (libc)Checking for Pending Signals.
 * SIGPIPE: (libc)Operation Error Signals.
 * SIGPOLL: (libc)Asynchronous I/O Signals.
@@ -1365,7 +1399,7 @@ GNU C library functions and macros
 * SIGQUIT: (libc)Termination Signals.
 * SIGSEGV: (libc)Program Error Signals.
 * sigsetjmp: (libc)Non-Local Exits and Signals.
-* sigsetmask: (libc)Blocking in BSD.
+* sigsetmask: (libc)BSD Signal Handling.
 * sigstack: (libc)Signal Stack.
 * SIGSTOP: (libc)Job Control Signals.
 * sigsuspend: (libc)Sigsuspend.
@@ -1378,7 +1412,6 @@ GNU C library functions and macros
 * SIGURG: (libc)Asynchronous I/O Signals.
 * SIGUSR1: (libc)Miscellaneous Signals.
 * SIGUSR2: (libc)Miscellaneous Signals.
-* sigvec: (libc)BSD Handler.
 * SIGVTALRM: (libc)Alarm Signals.
 * SIGWINCH: (libc)Miscellaneous Signals.
 * SIGXCPU: (libc)Operation Error Signals.
@@ -1406,11 +1439,11 @@ GNU C library functions and macros
 * sqrtf: (libc)Exponents and Logarithms.
 * sqrtl: (libc)Exponents and Logarithms.
 * sqrt: (libc)Exponents and Logarithms.
-* srand48_r: (libc)SVID Random.
-* srand48: (libc)SVID Random.
 * srandom_r: (libc)BSD Random.
 * srandom: (libc)BSD Random.
 * srand: (libc)ISO Random.
+* srand48_r: (libc)SVID Random.
+* srand48: (libc)SVID Random.
 * sscanf: (libc)Formatted Input Functions.
 * ssignal: (libc)Basic Signal Handling.
 * SSIZE_MAX: (libc)General Limits.
@@ -1468,9 +1501,6 @@ GNU C library functions and macros
 * strxfrm: (libc)Collation Functions.
 * stty: (libc)BSD Terminal Modes.
 * SUN_LEN: (libc)Local Namespace Details.
-* SV_INTERRUPT: (libc)BSD Handler.
-* SV_ONSTACK: (libc)BSD Handler.
-* SV_RESETHAND: (libc)BSD Handler.
 * swapcontext: (libc)System V contexts.
 * swprintf: (libc)Formatted Output Functions.
 * swscanf: (libc)Formatted Input Functions.
@@ -1499,6 +1529,7 @@ GNU C library functions and macros
 * tcsetpgrp: (libc)Terminal Access Functions.
 * tdelete: (libc)Tree Search Function.
 * tdestroy: (libc)Tree Search Function.
+* telldir: (libc)Random Access Directory.
 * tempnam: (libc)Temporary Files.
 * textdomain: (libc)Locating gettext catalog.
 * tfind: (libc)Tree Search Function.
@@ -1548,8 +1579,8 @@ GNU C library functions and macros
 * utmpname: (libc)Manipulating the Database.
 * utmpxname: (libc)XPG Functions.
 * va_arg: (libc)Argument Macros.
+* va_copy: (libc)Argument Macros.
 * va_end: (libc)Argument Macros.
-* va_start: (libc)Old Varargs.
 * va_start: (libc)Argument Macros.
 * valloc: (libc)Aligned Memory Blocks.
 * vasprintf: (libc)Variable Arguments Output.

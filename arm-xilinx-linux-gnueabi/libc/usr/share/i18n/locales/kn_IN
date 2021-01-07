@@ -30,7 +30,7 @@ category  "kn_IN:2000";LC_PAPER
 category  "kn_IN:2000";LC_NAME
 category  "kn_IN:2000";LC_ADDRESS
 category  "kn_IN:2000";LC_TELEPHONE
-
+category  "kn_IN:2000";LC_MEASUREMENT
 END LC_IDENTIFICATION
 
 LC_CTYPE
@@ -51,7 +51,7 @@ map to_inpunct; /
   (<U0036>,<U0CEC>); /
   (<U0037>,<U0CED>); /
   (<U0038>,<U0CEE>); /
-  (<U0039>,<U0CEF>); 
+  (<U0039>,<U0CEF>);
 
 translit_start
 include  "translit_combining";""
@@ -71,8 +71,7 @@ LC_MONETARY
 % for IBM Class for Unicode/Java
 %
 int_curr_symbol       "<U0049><U004E><U0052><U0020>"
-% *** Change this to reflect Kannada , in Dev it is RA with VS U attached
-currency_symbol       "<U0CB0><U0CC2>"
+currency_symbol       "<U20B9>"
 mon_decimal_point     "<U002E>"
 mon_thousands_sep     "<U002C>"
 mon_grouping          3
@@ -220,6 +219,16 @@ postal_fmt  "<U0025><U007A><U0025><U0063><U0025><U0054><U0025><U0073>/
 country_ab2 "<U0049><U004E>"
 country_ab3 "<U0049><U004E><U0044>"
 country_num 356
+% IND
+country_car    "<U0049><U004E><U0044>"
+% ಕನ್ನಡ
+lang_name    "<U0C95><U0CA8><U0CCD><U0CA8><U0CA1>"
+% kn
+lang_ab      "<U006B><U006E>"
+% kan
+lang_term    "<U006B><U0061><U006E>"
+% kan
+lang_lib    "<U006B><U0061><U006E>"
 END LC_ADDRESS
 
 
@@ -229,5 +238,6 @@ END LC_TELEPHONE
 
 
 LC_MEASUREMENT
-copy "hi_IN"
+% metric
+measurement 1
 END LC_MEASUREMENT

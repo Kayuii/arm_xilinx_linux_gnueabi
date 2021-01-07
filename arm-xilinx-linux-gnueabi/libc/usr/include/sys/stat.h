@@ -1,5 +1,4 @@
-/* Copyright (C) 1991, 1992, 1995-2004, 2005, 2006, 2007, 2009, 2010
-   Free Software Foundation, Inc.
+/* Copyright (C) 1991-2015 Free Software Foundation, Inc.
    This file is part of the GNU C Library.
 
    The GNU C Library is free software; you can redistribute it and/or
@@ -13,9 +12,8 @@
    Lesser General Public License for more details.
 
    You should have received a copy of the GNU Lesser General Public
-   License along with the GNU C Library; if not, write to the Free
-   Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA
-   02111-1307 USA.  */
+   License along with the GNU C Library; if not, see
+   <http://www.gnu.org/licenses/>.  */
 
 /*
  *	POSIX Standard: 5.6 File Characteristics	<sys/stat.h>
@@ -28,12 +26,11 @@
 
 #include <bits/types.h>		/* For __mode_t and __dev_t.  */
 
-#if defined __USE_XOPEN || defined __USE_XOPEN2K || defined __USE_MISC \
-	 || defined __USE_ATFILE
+#if defined __USE_XOPEN || defined __USE_XOPEN2K || defined __USE_ATFILE
 # if defined __USE_XOPEN || defined __USE_XOPEN2K
 #  define __need_time_t
 # endif
-# if defined __USE_MISC || defined __USE_ATFILE
+# ifdef __USE_ATFILE
 #  define __need_timespec
 # endif
 # include <time.h>		/* For time_t resp. timespec.  */
@@ -106,7 +103,7 @@ __BEGIN_DECLS
 
 #include <bits/stat.h>
 
-#if defined __USE_BSD || defined __USE_MISC || defined __USE_XOPEN
+#if defined __USE_MISC || defined __USE_XOPEN
 # define S_IFMT		__S_IFMT
 # define S_IFDIR	__S_IFDIR
 # define S_IFCHR	__S_IFCHR
@@ -118,7 +115,7 @@ __BEGIN_DECLS
 # ifdef __S_IFLNK
 #  define S_IFLNK	__S_IFLNK
 # endif
-# if (defined __USE_BSD || defined __USE_MISC || defined __USE_UNIX98) \
+# if (defined __USE_MISC || defined __USE_UNIX98) \
      && defined __S_IFSOCK
 #  define S_IFSOCK	__S_IFSOCK
 # endif
@@ -139,11 +136,11 @@ __BEGIN_DECLS
 # define S_ISLNK(mode)	 __S_ISTYPE((mode), __S_IFLNK)
 #endif
 
-#if defined __USE_BSD && !defined __S_IFLNK
+#if defined __USE_MISC && !defined __S_IFLNK
 # define S_ISLNK(mode)  0
 #endif
 
-#if (defined __USE_BSD || defined __USE_UNIX98 || defined __USE_XOPEN2K) \
+#if (defined __USE_UNIX98 || defined __USE_XOPEN2K) \
     && defined __S_IFSOCK
 # define S_ISSOCK(mode) __S_ISTYPE((mode), __S_IFSOCK)
 #elif defined __USE_XOPEN2K
@@ -166,7 +163,7 @@ __BEGIN_DECLS
 #define	S_ISUID __S_ISUID	/* Set user ID on execution.  */
 #define	S_ISGID	__S_ISGID	/* Set group ID on execution.  */
 
-#if defined __USE_BSD || defined __USE_MISC || defined __USE_XOPEN
+#if defined __USE_MISC || defined __USE_XOPEN
 /* Save swapped text after use (sticky bit).  This is pretty well obsolete.  */
 # define S_ISVTX	__S_ISVTX
 #endif
@@ -177,7 +174,7 @@ __BEGIN_DECLS
 /* Read, write, and execute by owner.  */
 #define	S_IRWXU	(__S_IREAD|__S_IWRITE|__S_IEXEC)
 
-#if defined __USE_MISC && defined __USE_BSD
+#ifdef __USE_MISC
 # define S_IREAD	S_IRUSR
 # define S_IWRITE	S_IWUSR
 # define S_IEXEC	S_IXUSR
@@ -196,7 +193,7 @@ __BEGIN_DECLS
 #define	S_IRWXO	(S_IRWXG >> 3)
 
 
-#ifdef	__USE_BSD
+#ifdef	__USE_MISC
 /* Macros for common mode bit masks.  */
 # define ACCESSPERMS (S_IRWXU|S_IRWXG|S_IRWXO) /* 0777 */
 # define ALLPERMS (S_ISUID|S_ISGID|S_ISVTX|S_IRWXU|S_IRWXG|S_IRWXO)/* 07777 */
@@ -208,7 +205,7 @@ __BEGIN_DECLS
 
 #ifndef __USE_FILE_OFFSET64
 /* Get file attributes for FILE and put them in BUF.  */
-extern int stat (__const char *__restrict __file,
+extern int stat (const char *__restrict __file,
 		 struct stat *__restrict __buf) __THROW __nonnull ((1, 2));
 
 /* Get file attributes for the file, device, pipe, or socket
@@ -216,7 +213,7 @@ extern int stat (__const char *__restrict __file,
 extern int fstat (int __fd, struct stat *__buf) __THROW __nonnull ((2));
 #else
 # ifdef __REDIRECT_NTH
-extern int __REDIRECT_NTH (stat, (__const char *__restrict __file,
+extern int __REDIRECT_NTH (stat, (const char *__restrict __file,
 				  struct stat *__restrict __buf), stat64)
      __nonnull ((1, 2));
 extern int __REDIRECT_NTH (fstat, (int __fd, struct stat *__buf), fstat64)
@@ -227,7 +224,7 @@ extern int __REDIRECT_NTH (fstat, (int __fd, struct stat *__buf), fstat64)
 # endif
 #endif
 #ifdef __USE_LARGEFILE64
-extern int stat64 (__const char *__restrict __file,
+extern int stat64 (const char *__restrict __file,
 		   struct stat64 *__restrict __buf) __THROW __nonnull ((1, 2));
 extern int fstat64 (int __fd, struct stat64 *__buf) __THROW __nonnull ((2));
 #endif
@@ -237,12 +234,12 @@ extern int fstat64 (int __fd, struct stat64 *__buf) __THROW __nonnull ((2));
    Relative path names are interpreted relative to FD unless FD is
    AT_FDCWD.  */
 # ifndef __USE_FILE_OFFSET64
-extern int fstatat (int __fd, __const char *__restrict __file,
+extern int fstatat (int __fd, const char *__restrict __file,
 		    struct stat *__restrict __buf, int __flag)
      __THROW __nonnull ((2, 3));
 # else
 #  ifdef __REDIRECT_NTH
-extern int __REDIRECT_NTH (fstatat, (int __fd, __const char *__restrict __file,
+extern int __REDIRECT_NTH (fstatat, (int __fd, const char *__restrict __file,
 				     struct stat *__restrict __buf,
 				     int __flag),
 			   fstatat64) __nonnull ((2, 3));
@@ -252,22 +249,22 @@ extern int __REDIRECT_NTH (fstatat, (int __fd, __const char *__restrict __file,
 # endif
 
 # ifdef __USE_LARGEFILE64
-extern int fstatat64 (int __fd, __const char *__restrict __file,
+extern int fstatat64 (int __fd, const char *__restrict __file,
 		      struct stat64 *__restrict __buf, int __flag)
      __THROW __nonnull ((2, 3));
 # endif
 #endif
 
-#if defined __USE_BSD || defined __USE_XOPEN_EXTENDED || defined __USE_XOPEN2K
+#if defined __USE_XOPEN_EXTENDED || defined __USE_XOPEN2K
 # ifndef __USE_FILE_OFFSET64
 /* Get file attributes about FILE and put them in BUF.
    If FILE is a symbolic link, do not follow it.  */
-extern int lstat (__const char *__restrict __file,
+extern int lstat (const char *__restrict __file,
 		  struct stat *__restrict __buf) __THROW __nonnull ((1, 2));
 # else
 #  ifdef __REDIRECT_NTH
 extern int __REDIRECT_NTH (lstat,
-			   (__const char *__restrict __file,
+			   (const char *__restrict __file,
 			    struct stat *__restrict __buf), lstat64)
      __nonnull ((1, 2));
 #  else
@@ -275,7 +272,7 @@ extern int __REDIRECT_NTH (lstat,
 #  endif
 # endif
 # ifdef __USE_LARGEFILE64
-extern int lstat64 (__const char *__restrict __file,
+extern int lstat64 (const char *__restrict __file,
 		    struct stat64 *__restrict __buf)
      __THROW __nonnull ((1, 2));
 # endif
@@ -283,26 +280,26 @@ extern int lstat64 (__const char *__restrict __file,
 
 /* Set file access permissions for FILE to MODE.
    If FILE is a symbolic link, this affects its target instead.  */
-extern int chmod (__const char *__file, __mode_t __mode)
+extern int chmod (const char *__file, __mode_t __mode)
      __THROW __nonnull ((1));
 
-#ifdef __USE_BSD
+#ifdef __USE_MISC
 /* Set file access permissions for FILE to MODE.
    If FILE is a symbolic link, this affects the link itself
    rather than its target.  */
-extern int lchmod (__const char *__file, __mode_t __mode)
+extern int lchmod (const char *__file, __mode_t __mode)
      __THROW __nonnull ((1));
 #endif
 
 /* Set file access permissions of the file FD is open on to MODE.  */
-#if defined __USE_BSD || defined __USE_XOPEN_EXTENDED || defined __USE_XOPEN2K8
+#ifdef __USE_POSIX
 extern int fchmod (int __fd, __mode_t __mode) __THROW;
 #endif
 
 #ifdef __USE_ATFILE
 /* Set file access permissions of FILE relative to
    the directory FD is open on.  */
-extern int fchmodat (int __fd, __const char *__file, __mode_t __mode,
+extern int fchmodat (int __fd, const char *__file, __mode_t __mode,
 		     int __flag)
      __THROW __nonnull ((2)) __wur;
 #endif /* Use ATFILE.  */
@@ -320,58 +317,58 @@ extern __mode_t getumask (void) __THROW;
 #endif
 
 /* Create a new directory named PATH, with permission bits MODE.  */
-extern int mkdir (__const char *__path, __mode_t __mode)
+extern int mkdir (const char *__path, __mode_t __mode)
      __THROW __nonnull ((1));
 
 #ifdef __USE_ATFILE
 /* Like mkdir, create a new directory with permission bits MODE.  But
    interpret relative PATH names relative to the directory associated
    with FD.  */
-extern int mkdirat (int __fd, __const char *__path, __mode_t __mode)
+extern int mkdirat (int __fd, const char *__path, __mode_t __mode)
      __THROW __nonnull ((2));
 #endif
 
 /* Create a device file named PATH, with permission and special bits MODE
    and device number DEV (which can be constructed from major and minor
    device numbers with the `makedev' macro above).  */
-#if defined __USE_MISC || defined __USE_BSD || defined __USE_XOPEN_EXTENDED
-extern int mknod (__const char *__path, __mode_t __mode, __dev_t __dev)
+#if defined __USE_MISC || defined __USE_XOPEN_EXTENDED
+extern int mknod (const char *__path, __mode_t __mode, __dev_t __dev)
      __THROW __nonnull ((1));
 
 # ifdef __USE_ATFILE
 /* Like mknod, create a new device file with permission bits MODE and
    device number DEV.  But interpret relative PATH names relative to
    the directory associated with FD.  */
-extern int mknodat (int __fd, __const char *__path, __mode_t __mode,
+extern int mknodat (int __fd, const char *__path, __mode_t __mode,
 		    __dev_t __dev) __THROW __nonnull ((2));
 # endif
 #endif
 
 
 /* Create a new FIFO named PATH, with permission bits MODE.  */
-extern int mkfifo (__const char *__path, __mode_t __mode)
+extern int mkfifo (const char *__path, __mode_t __mode)
      __THROW __nonnull ((1));
 
 #ifdef __USE_ATFILE
 /* Like mkfifo, create a new FIFO with permission bits MODE.  But
    interpret relative PATH names relative to the directory associated
    with FD.  */
-extern int mkfifoat (int __fd, __const char *__path, __mode_t __mode)
+extern int mkfifoat (int __fd, const char *__path, __mode_t __mode)
      __THROW __nonnull ((2));
 #endif
 
 #ifdef __USE_ATFILE
 /* Set file access and modification times relative to directory file
    descriptor.  */
-extern int utimensat (int __fd, __const char *__path,
-		      __const struct timespec __times[2],
+extern int utimensat (int __fd, const char *__path,
+		      const struct timespec __times[2],
 		      int __flags)
      __THROW __nonnull ((2));
 #endif
 
 #ifdef __USE_XOPEN2K8
 /* Set file access and modification times of the file associated with FD.  */
-extern int futimens (int __fd, __const struct timespec __times[2]) __THROW;
+extern int futimens (int __fd, const struct timespec __times[2]) __THROW;
 #endif
 
 /* To allow the `struct stat' structure and the file type `mode_t'
@@ -400,11 +397,11 @@ extern int futimens (int __fd, __const struct timespec __times[2]) __THROW;
 #ifndef __USE_FILE_OFFSET64
 extern int __fxstat (int __ver, int __fildes, struct stat *__stat_buf)
      __THROW __nonnull ((3));
-extern int __xstat (int __ver, __const char *__filename,
+extern int __xstat (int __ver, const char *__filename,
 		    struct stat *__stat_buf) __THROW __nonnull ((2, 3));
-extern int __lxstat (int __ver, __const char *__filename,
+extern int __lxstat (int __ver, const char *__filename,
 		     struct stat *__stat_buf) __THROW __nonnull ((2, 3));
-extern int __fxstatat (int __ver, int __fildes, __const char *__filename,
+extern int __fxstatat (int __ver, int __fildes, const char *__filename,
 		       struct stat *__stat_buf, int __flag)
      __THROW __nonnull ((3, 4));
 #else
@@ -412,14 +409,14 @@ extern int __fxstatat (int __ver, int __fildes, __const char *__filename,
 extern int __REDIRECT_NTH (__fxstat, (int __ver, int __fildes,
 				      struct stat *__stat_buf), __fxstat64)
      __nonnull ((3));
-extern int __REDIRECT_NTH (__xstat, (int __ver, __const char *__filename,
+extern int __REDIRECT_NTH (__xstat, (int __ver, const char *__filename,
 				     struct stat *__stat_buf), __xstat64)
      __nonnull ((2, 3));
-extern int __REDIRECT_NTH (__lxstat, (int __ver, __const char *__filename,
+extern int __REDIRECT_NTH (__lxstat, (int __ver, const char *__filename,
 				      struct stat *__stat_buf), __lxstat64)
      __nonnull ((2, 3));
 extern int __REDIRECT_NTH (__fxstatat, (int __ver, int __fildes,
-					__const char *__filename,
+					const char *__filename,
 					struct stat *__stat_buf, int __flag),
 			   __fxstatat64) __nonnull ((3, 4));
 
@@ -433,33 +430,33 @@ extern int __REDIRECT_NTH (__fxstatat, (int __ver, int __fildes,
 #ifdef __USE_LARGEFILE64
 extern int __fxstat64 (int __ver, int __fildes, struct stat64 *__stat_buf)
      __THROW __nonnull ((3));
-extern int __xstat64 (int __ver, __const char *__filename,
+extern int __xstat64 (int __ver, const char *__filename,
 		      struct stat64 *__stat_buf) __THROW __nonnull ((2, 3));
-extern int __lxstat64 (int __ver, __const char *__filename,
+extern int __lxstat64 (int __ver, const char *__filename,
 		       struct stat64 *__stat_buf) __THROW __nonnull ((2, 3));
-extern int __fxstatat64 (int __ver, int __fildes, __const char *__filename,
+extern int __fxstatat64 (int __ver, int __fildes, const char *__filename,
 			 struct stat64 *__stat_buf, int __flag)
      __THROW __nonnull ((3, 4));
 #endif
-extern int __xmknod (int __ver, __const char *__path, __mode_t __mode,
+extern int __xmknod (int __ver, const char *__path, __mode_t __mode,
 		     __dev_t *__dev) __THROW __nonnull ((2, 4));
 
-extern int __xmknodat (int __ver, int __fd, __const char *__path,
+extern int __xmknodat (int __ver, int __fd, const char *__path,
 		       __mode_t __mode, __dev_t *__dev)
      __THROW __nonnull ((3, 5));
 
-#if defined __GNUC__ && __GNUC__ >= 2 && defined __USE_EXTERN_INLINES_IN_LIBC
+#ifdef __USE_EXTERN_INLINES
 /* Inlined versions of the real stat and mknod functions.  */
 
 __extern_inline int
-__NTH (stat (__const char *__path, struct stat *__statbuf))
+__NTH (stat (const char *__path, struct stat *__statbuf))
 {
   return __xstat (_STAT_VER, __path, __statbuf);
 }
 
-# if defined __USE_BSD || defined __USE_XOPEN_EXTENDED
+# if defined __USE_MISC || defined __USE_XOPEN_EXTENDED
 __extern_inline int
-__NTH (lstat (__const char *__path, struct stat *__statbuf))
+__NTH (lstat (const char *__path, struct stat *__statbuf))
 {
   return __lxstat (_STAT_VER, __path, __statbuf);
 }
@@ -473,16 +470,16 @@ __NTH (fstat (int __fd, struct stat *__statbuf))
 
 # ifdef __USE_ATFILE
 __extern_inline int
-__NTH (fstatat (int __fd, __const char *__filename, struct stat *__statbuf,
+__NTH (fstatat (int __fd, const char *__filename, struct stat *__statbuf,
 		int __flag))
 {
   return __fxstatat (_STAT_VER, __fd, __filename, __statbuf, __flag);
 }
 # endif
 
-# if defined __USE_MISC || defined __USE_BSD
+# ifdef __USE_MISC
 __extern_inline int
-__NTH (mknod (__const char *__path, __mode_t __mode, __dev_t __dev))
+__NTH (mknod (const char *__path, __mode_t __mode, __dev_t __dev))
 {
   return __xmknod (_MKNOD_VER, __path, __mode, &__dev);
 }
@@ -490,7 +487,7 @@ __NTH (mknod (__const char *__path, __mode_t __mode, __dev_t __dev))
 
 # ifdef __USE_ATFILE
 __extern_inline int
-__NTH (mknodat (int __fd, __const char *__path, __mode_t __mode,
+__NTH (mknodat (int __fd, const char *__path, __mode_t __mode,
 		__dev_t __dev))
 {
   return __xmknodat (_MKNOD_VER, __fd, __path, __mode, &__dev);
@@ -501,14 +498,14 @@ __NTH (mknodat (int __fd, __const char *__path, __mode_t __mode,
   && (! defined __USE_FILE_OFFSET64 \
       || (defined __REDIRECT_NTH && defined __OPTIMIZE__))
 __extern_inline int
-__NTH (stat64 (__const char *__path, struct stat64 *__statbuf))
+__NTH (stat64 (const char *__path, struct stat64 *__statbuf))
 {
   return __xstat64 (_STAT_VER, __path, __statbuf);
 }
 
-#  if defined __USE_BSD || defined __USE_XOPEN_EXTENDED
+#  if defined __USE_MISC || defined __USE_XOPEN_EXTENDED
 __extern_inline int
-__NTH (lstat64 (__const char *__path, struct stat64 *__statbuf))
+__NTH (lstat64 (const char *__path, struct stat64 *__statbuf))
 {
   return __lxstat64 (_STAT_VER, __path, __statbuf);
 }
@@ -522,7 +519,7 @@ __NTH (fstat64 (int __fd, struct stat64 *__statbuf))
 
 #  ifdef __USE_ATFILE
 __extern_inline int
-__NTH (fstatat64 (int __fd, __const char *__filename, struct stat64 *__statbuf,
+__NTH (fstatat64 (int __fd, const char *__filename, struct stat64 *__statbuf,
 		  int __flag))
 {
   return __fxstatat64 (_STAT_VER, __fd, __filename, __statbuf, __flag);

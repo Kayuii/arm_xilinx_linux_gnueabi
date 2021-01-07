@@ -1,4 +1,4 @@
-/* Copyright (C) 1991-2004, 2007, 2009, 2010 Free Software Foundation, Inc.
+/* Copyright (C) 1991-2015 Free Software Foundation, Inc.
    This file is part of the GNU C Library.
 
    The GNU C Library is free software; you can redistribute it and/or
@@ -12,9 +12,8 @@
    Lesser General Public License for more details.
 
    You should have received a copy of the GNU Lesser General Public
-   License along with the GNU C Library; if not, write to the Free
-   Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA
-   02111-1307 USA.  */
+   License along with the GNU C Library; if not, see
+   <http://www.gnu.org/licenses/>.  */
 
 /*
  *	ISO C99 Standard: 7.14 Signal handling <signal.h>
@@ -74,7 +73,9 @@ typedef __uid_t uid_t;
 /* We need `struct timespec' later on.  */
 # define __need_timespec
 # include <time.h>
+#endif
 
+#if defined __USE_POSIX199309 || defined __USE_XOPEN_EXTENDED
 /* Get the `siginfo_t' type plus the needed symbols.  */
 # include <bits/siginfo.h>
 #endif
@@ -97,7 +98,7 @@ extern __sighandler_t sysv_signal (int __sig, __sighandler_t __handler)
    handler, or SIG_ERR on error.
    By default `signal' has the BSD semantic.  */
 __BEGIN_NAMESPACE_STD
-#ifdef __USE_BSD
+#ifdef __USE_MISC
 extern __sighandler_t signal (int __sig, __sighandler_t __handler)
      __THROW;
 #else
@@ -126,64 +127,56 @@ extern __sighandler_t bsd_signal (int __sig, __sighandler_t __handler)
 extern int kill (__pid_t __pid, int __sig) __THROW;
 #endif /* Use POSIX.  */
 
-#if defined __USE_BSD || defined __USE_XOPEN_EXTENDED
+#if defined __USE_MISC || defined __USE_XOPEN_EXTENDED
 /* Send SIG to all processes in process group PGRP.
    If PGRP is zero, send SIG to all processes in
    the current process's process group.  */
 extern int killpg (__pid_t __pgrp, int __sig) __THROW;
-#endif /* Use BSD || X/Open Unix.  */
+#endif /* Use misc || X/Open Unix.  */
 
 __BEGIN_NAMESPACE_STD
 /* Raise signal SIG, i.e., send SIG to yourself.  */
 extern int raise (int __sig) __THROW;
 __END_NAMESPACE_STD
 
-#ifdef __USE_SVID
+#ifdef __USE_MISC
 /* SVID names for the same things.  */
 extern __sighandler_t ssignal (int __sig, __sighandler_t __handler)
      __THROW;
 extern int gsignal (int __sig) __THROW;
-#endif /* Use SVID.  */
+#endif /* Use misc.  */
 
-#if defined __USE_MISC || defined __USE_XOPEN2K
+#ifdef __USE_XOPEN2K
 /* Print a message describing the meaning of the given signal number.  */
-extern void psignal (int __sig, __const char *__s);
-#endif /* Use misc or POSIX 2008.  */
+extern void psignal (int __sig, const char *__s);
+#endif /* Use POSIX 2008.  */
 
 #ifdef __USE_XOPEN2K
 /* Print a message describing the meaning of the given signal information.  */
-extern void psiginfo (__const siginfo_t *__pinfo, __const char *__s);
+extern void psiginfo (const siginfo_t *__pinfo, const char *__s);
 #endif /* POSIX 2008.  */
 
 
 
-/* The `sigpause' function has two different interfaces.  The original
-   BSD definition defines the argument as a mask of the signal, while
-   the more modern interface in X/Open defines it as the signal
-   number.  We go with the BSD version unless the user explicitly
-   selects the X/Open version.
+/* The `sigpause' function in X/Open defines the argument as the
+   signal number.  This requires redirecting to another function
+   because the default version in glibc uses an old BSD interface.
 
    This function is a cancellation point and therefore not marked with
    __THROW.  */
-extern int __sigpause (int __sig_or_mask, int __is_sig);
 
-#ifdef __FAVOR_BSD
-/* Set the mask of blocked signals to MASK,
-   wait for a signal to arrive, and then restore the mask.  */
-extern int sigpause (int __mask) __THROW __attribute_deprecated__;
-#else
-# ifdef __USE_XOPEN
-#  ifdef __GNUC__
+#ifdef __USE_XOPEN
+# ifdef __GNUC__
 extern int sigpause (int __sig) __asm__ ("__xpg_sigpause");
-#  else
+# else
+extern int __sigpause (int __sig_or_mask, int __is_sig);
 /* Remove a signal from the signal mask and suspend the process.  */
-#   define sigpause(sig) __sigpause ((sig), 1)
-#  endif
+#  define sigpause(sig) __sigpause ((sig), 1)
 # endif
 #endif
 
 
-#ifdef __USE_BSD
+#ifdef __USE_MISC
 /* None of the following functions should be used anymore.  They are here
    only for compatibility.  A single word (`int') is not guaranteed to be
    enough to hold a complete signal mask and therefore these functions
@@ -200,7 +193,7 @@ extern int sigsetmask (int __mask) __THROW __attribute_deprecated__;
 
 /* Return currently selected signal mask.  */
 extern int siggetmask (void) __THROW __attribute_deprecated__;
-#endif /* Use BSD.  */
+#endif /* Use misc.  */
 
 
 #ifdef __USE_MISC
@@ -212,7 +205,7 @@ typedef __sighandler_t sighandler_t;
 #endif
 
 /* 4.4 BSD uses the name `sig_t' for this.  */
-#ifdef __USE_BSD
+#ifdef __USE_MISC
 typedef __sighandler_t sig_t;
 #endif
 
@@ -231,20 +224,20 @@ extern int sigaddset (sigset_t *__set, int __signo) __THROW __nonnull ((1));
 extern int sigdelset (sigset_t *__set, int __signo) __THROW __nonnull ((1));
 
 /* Return 1 if SIGNO is in SET, 0 if not.  */
-extern int sigismember (__const sigset_t *__set, int __signo)
+extern int sigismember (const sigset_t *__set, int __signo)
      __THROW __nonnull ((1));
 
 # ifdef __USE_GNU
 /* Return non-empty value is SET is not empty.  */
-extern int sigisemptyset (__const sigset_t *__set) __THROW __nonnull ((1));
+extern int sigisemptyset (const sigset_t *__set) __THROW __nonnull ((1));
 
 /* Build new signal set by combining the two inputs set using logical AND.  */
-extern int sigandset (sigset_t *__set, __const sigset_t *__left,
-		      __const sigset_t *__right) __THROW __nonnull ((1, 2, 3));
+extern int sigandset (sigset_t *__set, const sigset_t *__left,
+		      const sigset_t *__right) __THROW __nonnull ((1, 2, 3));
 
 /* Build new signal set by combining the two inputs set using logical OR.  */
-extern int sigorset (sigset_t *__set, __const sigset_t *__left,
-		     __const sigset_t *__right) __THROW __nonnull ((1, 2, 3));
+extern int sigorset (sigset_t *__set, const sigset_t *__left,
+		     const sigset_t *__right) __THROW __nonnull ((1, 2, 3));
 # endif /* GNU */
 
 /* Get the system-specific definitions of `struct sigaction'
@@ -252,7 +245,7 @@ extern int sigorset (sigset_t *__set, __const sigset_t *__left,
 # include <bits/sigaction.h>
 
 /* Get and/or change the set of blocked signals.  */
-extern int sigprocmask (int __how, __const sigset_t *__restrict __set,
+extern int sigprocmask (int __how, const sigset_t *__restrict __set,
 			sigset_t *__restrict __oset) __THROW;
 
 /* Change the set of blocked signals to SET,
@@ -260,10 +253,10 @@ extern int sigprocmask (int __how, __const sigset_t *__restrict __set,
 
    This function is a cancellation point and therefore not marked with
    __THROW.  */
-extern int sigsuspend (__const sigset_t *__set) __nonnull ((1));
+extern int sigsuspend (const sigset_t *__set) __nonnull ((1));
 
 /* Get and/or set the action for signal SIG.  */
-extern int sigaction (int __sig, __const struct sigaction *__restrict __act,
+extern int sigaction (int __sig, const struct sigaction *__restrict __act,
 		      struct sigaction *__restrict __oact) __THROW;
 
 /* Put in SET all signals that are blocked and waiting to be delivered.  */
@@ -274,7 +267,7 @@ extern int sigpending (sigset_t *__set) __THROW __nonnull ((1));
 
    This function is a cancellation point and therefore not marked with
    __THROW.  */
-extern int sigwait (__const sigset_t *__restrict __set, int *__restrict __sig)
+extern int sigwait (const sigset_t *__restrict __set, int *__restrict __sig)
      __nonnull ((1, 2));
 
 # ifdef __USE_POSIX199309
@@ -282,7 +275,7 @@ extern int sigwait (__const sigset_t *__restrict __set, int *__restrict __sig)
 
    This function is a cancellation point and therefore not marked with
    __THROW.  */
-extern int sigwaitinfo (__const sigset_t *__restrict __set,
+extern int sigwaitinfo (const sigset_t *__restrict __set,
 			siginfo_t *__restrict __info) __nonnull ((1));
 
 /* Select any of pending signals from SET and place information in INFO.
@@ -290,49 +283,25 @@ extern int sigwaitinfo (__const sigset_t *__restrict __set,
 
    This function is a cancellation point and therefore not marked with
    __THROW.  */
-extern int sigtimedwait (__const sigset_t *__restrict __set,
+extern int sigtimedwait (const sigset_t *__restrict __set,
 			 siginfo_t *__restrict __info,
-			 __const struct timespec *__restrict __timeout)
+			 const struct timespec *__restrict __timeout)
      __nonnull ((1));
 
 /* Send signal SIG to the process PID.  Associate data in VAL with the
    signal.  */
-extern int sigqueue (__pid_t __pid, int __sig, __const union sigval __val)
+extern int sigqueue (__pid_t __pid, int __sig, const union sigval __val)
      __THROW;
 # endif	/* Use POSIX 199306.  */
 
 #endif /* Use POSIX.  */
 
-#ifdef __USE_BSD
+#ifdef __USE_MISC
 
 /* Names of the signals.  This variable exists only for compatibility.
    Use `strsignal' instead (see <string.h>).  */
-extern __const char *__const _sys_siglist[_NSIG];
-extern __const char *__const sys_siglist[_NSIG];
-
-/* Structure passed to `sigvec'.  */
-struct sigvec
-  {
-    __sighandler_t sv_handler;	/* Signal handler.  */
-    int sv_mask;		/* Mask of signals to be blocked.  */
-
-    int sv_flags;		/* Flags (see below).  */
-# define sv_onstack	sv_flags /* 4.2 BSD compatibility.  */
-  };
-
-/* Bits in `sv_flags'.  */
-# define SV_ONSTACK	(1 << 0)/* Take the signal on the signal stack.  */
-# define SV_INTERRUPT	(1 << 1)/* Do not restart system calls.  */
-# define SV_RESETHAND	(1 << 2)/* Reset handler to SIG_DFL on receipt.  */
-
-
-/* If VEC is non-NULL, set the handler for SIG to the `sv_handler' member
-   of VEC.  The signals in `sv_mask' will be blocked while the handler runs.
-   If the SV_RESETHAND bit is set in `sv_flags', the handler for SIG will be
-   reset to SIG_DFL before `sv_handler' is entered.  If OVEC is non-NULL,
-   it is filled in with the old information for SIG.  */
-extern int sigvec (int __sig, __const struct sigvec *__vec,
-		   struct sigvec *__ovec) __THROW;
+extern const char *const _sys_siglist[_NSIG];
+extern const char *const sys_siglist[_NSIG];
 
 
 /* Get machine-dependent `struct sigcontext' and signal subcodes.  */
@@ -341,10 +310,10 @@ extern int sigvec (int __sig, __const struct sigvec *__vec,
 /* Restore the state saved in SCP.  */
 extern int sigreturn (struct sigcontext *__scp) __THROW;
 
-#endif /*  use BSD.  */
+#endif /* Use misc.  */
 
 
-#if defined __USE_BSD || defined __USE_XOPEN_EXTENDED || defined __USE_XOPEN2K8
+#if defined __USE_XOPEN_EXTENDED || defined __USE_XOPEN2K8
 # define __need_size_t
 # include <stddef.h>
 
@@ -367,10 +336,10 @@ extern int sigstack (struct sigstack *__ss, struct sigstack *__oss)
 
 /* Alternate signal handler stack interface.
    This interface should always be preferred over `sigstack'.  */
-extern int sigaltstack (__const struct sigaltstack *__restrict __ss,
+extern int sigaltstack (const struct sigaltstack *__restrict __ss,
 			struct sigaltstack *__restrict __oss) __THROW;
 
-#endif /* use BSD or X/Open Unix.  */
+#endif /* Use POSIX.1-2008 or X/Open Unix.  */
 
 #ifdef __USE_XOPEN_EXTENDED
 /* Simplified interface for signal management.  */

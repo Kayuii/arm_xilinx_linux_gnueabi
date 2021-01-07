@@ -1,4 +1,4 @@
-/* Copyright (C) 1996, 1997, 1999 Free Software Foundation, Inc.
+/* Copyright (C) 1996-2015 Free Software Foundation, Inc.
    This file is part of the GNU C Library.
 
    The GNU C Library is free software; you can redistribute it and/or
@@ -12,9 +12,8 @@
    Lesser General Public License for more details.
 
    You should have received a copy of the GNU Lesser General Public
-   License along with the GNU C Library; if not, write to the Free
-   Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA
-   02111-1307 USA.  */
+   License along with the GNU C Library; if not, see
+   <http://www.gnu.org/licenses/>.  */
 
 #ifndef __NETINET_IF_ETHER_H
 
@@ -25,7 +24,7 @@
 /* Get definitions from kernel header file.  */
 #include <linux/if_ether.h>
 
-#ifdef __USE_BSD
+#ifdef __USE_MISC
 /*
  * Copyright (c) 1982, 1986, 1993
  *	The Regents of the University of California.  All rights reserved.
@@ -100,6 +99,6 @@ struct	ether_arp {
 }
 
 __END_DECLS
-#endif /* __USE_BSD */
+#endif /* __USE_MISC */
 
 #endif /* netinet/if_ether.h */

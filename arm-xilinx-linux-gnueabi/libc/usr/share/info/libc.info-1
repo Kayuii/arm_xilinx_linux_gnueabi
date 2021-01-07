@@ -1,4 +1,6 @@
-This is libc.info, produced by makeinfo version 4.13 from libc.texinfo.
+This is
+/scratch/abidh/xilinx/release_gnu/obj/glibc-2015.05-17-arm-xilinx-linux-gnueabi-i686-pc-linux-gnu/default/manual/libc.info,
+produced by makeinfo version 4.13 from libc.texinfo.
 
 INFO-DIR-SECTION Software libraries
 START-INFO-DIR-ENTRY
@@ -19,7 +21,7 @@ START-INFO-DIR-ENTRY
 * CCTS_OFLOW: (libc)Control Modes.
 * CHILD_MAX: (libc)General Limits.
 * CIGNORE: (libc)Control Modes.
-* CLK_TCK: (libc)CPU Time.
+* CLK_TCK: (libc)Processor Time.
 * CLOCAL: (libc)Control Modes.
 * CLOCKS_PER_SEC: (libc)CPU Time.
 * COLL_WEIGHTS_MAX: (libc)Utility Limits.
@@ -88,6 +90,7 @@ START-INFO-DIR-ENTRY
 * EGREGIOUS: (libc)Error Codes.
 * EHOSTDOWN: (libc)Error Codes.
 * EHOSTUNREACH: (libc)Error Codes.
+* EHWPOISON: (libc)Error Codes.
 * EIDRM: (libc)Error Codes.
 * EIEIO: (libc)Error Codes.
 * EILSEQ: (libc)Error Codes.
@@ -214,6 +217,9 @@ START-INFO-DIR-ENTRY
 * F_GETFL: (libc)Getting File Status Flags.
 * F_GETLK: (libc)File Locks.
 * F_GETOWN: (libc)Interrupt Input.
+* F_OFD_GETLK: (libc)Open File Description Locks.
+* F_OFD_SETLK: (libc)Open File Description Locks.
+* F_OFD_SETLKW: (libc)Open File Description Locks.
 * F_OK: (libc)Testing File Access.
 * F_SETFD: (libc)Descriptor Flags.
 * F_SETFL: (libc)Getting File Status Flags.
@@ -368,9 +374,6 @@ START-INFO-DIR-ENTRY
 * SSIZE_MAX: (libc)General Limits.
 * STREAM_MAX: (libc)General Limits.
 * SUN_LEN: (libc)Local Namespace Details.
-* SV_INTERRUPT: (libc)BSD Handler.
-* SV_ONSTACK: (libc)BSD Handler.
-* SV_RESETHAND: (libc)BSD Handler.
 * S_IFMT: (libc)Testing File Type.
 * S_ISBLK: (libc)Testing File Type.
 * S_ISCHR: (libc)Testing File Type.
@@ -448,6 +451,14 @@ START-INFO-DIR-ENTRY
 * __gconv_end_fct: (libc)glibc iconv Implementation.
 * __gconv_fct: (libc)glibc iconv Implementation.
 * __gconv_init_fct: (libc)glibc iconv Implementation.
+* __ppc_get_timebase: (libc)PowerPC.
+* __ppc_get_timebase_freq: (libc)PowerPC.
+* __ppc_mdoio: (libc)PowerPC.
+* __ppc_mdoom: (libc)PowerPC.
+* __ppc_set_ppr_low: (libc)PowerPC.
+* __ppc_set_ppr_med: (libc)PowerPC.
+* __ppc_set_ppr_med_low: (libc)PowerPC.
+* __ppc_yield: (libc)PowerPC.
 * __va_copy: (libc)Argument Macros.
 * _exit: (libc)Termination Internals.
 * _flushlbf: (libc)Flushing Buffers.
@@ -484,6 +495,7 @@ START-INFO-DIR-ENTRY
 * aio_write64: (libc)Asynchronous Reads/Writes.
 * aio_write: (libc)Asynchronous Reads/Writes.
 * alarm: (libc)Setting an Alarm.
+* aligned_alloc: (libc)Aligned Memory Blocks.
 * alloca: (libc)Variable Size Automatic.
 * alphasort64: (libc)Scanning Directory Content.
 * alphasort: (libc)Scanning Directory Content.
@@ -736,7 +748,6 @@ START-INFO-DIR-ENTRY
 * fchdir: (libc)Working Directory.
 * fchmod: (libc)Setting Permissions.
 * fchown: (libc)File Owner.
-* fclean: (libc)Cleaning Streams.
 * fclose: (libc)Closing Streams.
 * fcloseall: (libc)Closing Streams.
 * fcntl: (libc)Control Operations.
@@ -863,6 +874,7 @@ START-INFO-DIR-ENTRY
 * get_nprocs: (libc)Processor Resources.
 * get_nprocs_conf: (libc)Processor Resources.
 * get_phys_pages: (libc)Query Memory Parameters.
+* getauxval: (libc)Auxiliary Vector.
 * getc: (libc)Character Input.
 * getc_unlocked: (libc)Character Input.
 * getchar: (libc)Character Input.
@@ -915,7 +927,6 @@ START-INFO-DIR-ENTRY
 * getpass: (libc)getpass.
 * getpeername: (libc)Who is Connected.
 * getpgid: (libc)Process Group Functions.
-* getpgrp: (libc)Process Group Functions.
 * getpgrp: (libc)Process Group Functions.
 * getpid: (libc)Process Identification.
 * getppid: (libc)Process Identification.
@@ -1011,7 +1022,6 @@ START-INFO-DIR-ENTRY
 * initstate: (libc)BSD Random.
 * initstate_r: (libc)BSD Random.
 * innetgr: (libc)Netgroup Membership.
-* int: (libc)Random Access Directory.
 * ioctl: (libc)IOCTLs.
 * isalnum: (libc)Classification of Characters.
 * isalpha: (libc)Classification of Characters.
@@ -1038,6 +1048,7 @@ START-INFO-DIR-ENTRY
 * isnormal: (libc)Floating Point Classes.
 * isprint: (libc)Classification of Characters.
 * ispunct: (libc)Classification of Characters.
+* issignaling: (libc)Floating Point Classes.
 * isspace: (libc)Classification of Characters.
 * isunordered: (libc)FP Comparison Functions.
 * isupper: (libc)Classification of Characters.
@@ -1236,7 +1247,6 @@ START-INFO-DIR-ENTRY
 * open64: (libc)Opening and Closing Files.
 * open: (libc)Opening and Closing Files.
 * open_memstream: (libc)String Streams.
-* open_obstack_stream: (libc)Obstack Streams.
 * opendir: (libc)Opening a Directory.
 * openlog: (libc)openlog.
 * openpty: (libc)Pseudo-Terminal Pairs.
@@ -1260,6 +1270,12 @@ START-INFO-DIR-ENTRY
 * printf_size: (libc)Predefined Printf Handlers.
 * printf_size_info: (libc)Predefined Printf Handlers.
 * psignal: (libc)Signal Messages.
+* pthread_getattr_default_np: (libc)Default Thread Attributes.
+* pthread_getspecific: (libc)Thread-specific Data.
+* pthread_key_create: (libc)Thread-specific Data.
+* pthread_key_delete: (libc)Thread-specific Data.
+* pthread_setattr_default_np: (libc)Default Thread Attributes.
+* pthread_setspecific: (libc)Thread-specific Data.
 * ptsname: (libc)Allocation.
 * ptsname_r: (libc)Allocation.
 * putc: (libc)Simple Output.
@@ -1346,10 +1362,25 @@ START-INFO-DIR-ENTRY
 * sched_setparam: (libc)Basic Scheduling Functions.
 * sched_setscheduler: (libc)Basic Scheduling Functions.
 * sched_yield: (libc)Basic Scheduling Functions.
+* secure_getenv: (libc)Environment Access.
 * seed48: (libc)SVID Random.
 * seed48_r: (libc)SVID Random.
 * seekdir: (libc)Random Access Directory.
 * select: (libc)Waiting for I/O.
+* sem_close: (libc)Semaphores.
+* sem_destroy: (libc)Semaphores.
+* sem_getvalue: (libc)Semaphores.
+* sem_init: (libc)Semaphores.
+* sem_open: (libc)Semaphores.
+* sem_post: (libc)Semaphores.
+* sem_timedwait: (libc)Semaphores.
+* sem_trywait: (libc)Semaphores.
+* sem_unlink: (libc)Semaphores.
+* sem_wait: (libc)Semaphores.
+* semctl: (libc)Semaphores.
+* semget: (libc)Semaphores.
+* semop: (libc)Semaphores.
+* semtimedop: (libc)Semaphores.
 * send: (libc)Sending Data.
 * sendmsg: (libc)Receiving Datagrams.
 * sendto: (libc)Sending Datagrams.
@@ -1396,31 +1427,32 @@ START-INFO-DIR-ENTRY
 * setutent: (libc)Manipulating the Database.
 * setutxent: (libc)XPG Functions.
 * setvbuf: (libc)Controlling Buffering.
+* shm_open: (libc)Memory-mapped I/O.
+* shm_unlink: (libc)Memory-mapped I/O.
 * shutdown: (libc)Closing a Socket.
 * sigaction: (libc)Advanced Signal Handling.
 * sigaddset: (libc)Signal Sets.
 * sigaltstack: (libc)Signal Stack.
-* sigblock: (libc)Blocking in BSD.
+* sigblock: (libc)BSD Signal Handling.
 * sigdelset: (libc)Signal Sets.
 * sigemptyset: (libc)Signal Sets.
 * sigfillset: (libc)Signal Sets.
-* siginterrupt: (libc)BSD Handler.
+* siginterrupt: (libc)BSD Signal Handling.
 * sigismember: (libc)Signal Sets.
 * siglongjmp: (libc)Non-Local Exits and Signals.
-* sigmask: (libc)Blocking in BSD.
+* sigmask: (libc)BSD Signal Handling.
 * signal: (libc)Basic Signal Handling.
 * signbit: (libc)FP Bit Twiddling.
 * significand: (libc)Normalization Functions.
 * significandf: (libc)Normalization Functions.
 * significandl: (libc)Normalization Functions.
-* sigpause: (libc)Blocking in BSD.
+* sigpause: (libc)BSD Signal Handling.
 * sigpending: (libc)Checking for Pending Signals.
 * sigprocmask: (libc)Process Signal Mask.
 * sigsetjmp: (libc)Non-Local Exits and Signals.
-* sigsetmask: (libc)Blocking in BSD.
+* sigsetmask: (libc)BSD Signal Handling.
 * sigstack: (libc)Signal Stack.
 * sigsuspend: (libc)Sigsuspend.
-* sigvec: (libc)BSD Handler.
 * sin: (libc)Trig Functions.
 * sincos: (libc)Trig Functions.
 * sincosf: (libc)Trig Functions.
@@ -1525,6 +1557,7 @@ START-INFO-DIR-ENTRY
 * tcsetpgrp: (libc)Terminal Access Functions.
 * tdelete: (libc)Tree Search Function.
 * tdestroy: (libc)Tree Search Function.
+* telldir: (libc)Random Access Directory.
 * tempnam: (libc)Temporary Files.
 * textdomain: (libc)Locating gettext catalog.
 * tfind: (libc)Tree Search Function.
@@ -1571,9 +1604,9 @@ START-INFO-DIR-ENTRY
 * utmpname: (libc)Manipulating the Database.
 * utmpxname: (libc)XPG Functions.
 * va_arg: (libc)Argument Macros.
+* va_copy: (libc)Argument Macros.
 * va_end: (libc)Argument Macros.
 * va_start: (libc)Argument Macros.
-* va_start: (libc)Old Varargs.
 * valloc: (libc)Aligned Memory Blocks.
 * vasprintf: (libc)Variable Arguments Output.
 * verr: (libc)Error Messages.
@@ -1672,24 +1705,21 @@ START-INFO-DIR-ENTRY
 * ynl: (libc)Special Functions.
 END-INFO-DIR-ENTRY
 
-   @set REPORT_BUGS_TO <https://support.codesourcery.com/GNUToolchain/>
+   This file documents the GNU C Library.
 
-   This file documents the GNU C library.
+   This is `The GNU C Library Reference Manual', for version 2.21
+(Sourcery CodeBench Lite 2015.05-17).
 
-   This is Edition 0.12, last updated 2007-10-27, of `The GNU C Library
-Reference Manual', for version 2.8 (Sourcery CodeBench Lite 2011.09-50).
-
-   Copyright (C) 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2001, 2002,
-2003, 2007, 2008, 2010 Free Software Foundation, Inc.
+   Copyright (C) 1993-2015 Free Software Foundation, Inc.
 
    Permission is granted to copy, distribute and/or modify this document
-under the terms of the GNU Free Documentation License, Version 1.3 or
-any later version published by the Free Software Foundation; with the
-Invariant Sections being "Free Software Needs Free Documentation" and
-"GNU Lesser General Public License", the Front-Cover texts being "A GNU
-Manual", and with the Back-Cover Texts as in (a) below.  A copy of the
-license is included in the section entitled "GNU Free Documentation
-License".
+under the terms of the GNU Free Documentation License, Version
+1.3 or any later version published by the Free Software Foundation;
+with the Invariant Sections being "Free Software Needs Free
+Documentation" and "GNU Lesser General Public License", the Front-Cover
+texts being "A GNU Manual", and with the Back-Cover Texts as in (a)
+below.  A copy of the license is included in the section entitled "GNU
+Free Documentation License".
 
    (a) The FSF's Back-Cover Text is: "You have the freedom to copy and
 modify this GNU manual.  Buying copies from the FSF supports it in
@@ -1701,9 +1731,8 @@ File: libc.info,  Node: Top,  Next: Introduction,  Prev: (dir),  Up: (dir)
 Main Menu
 *********
 
-This is Edition 0.12, last updated 2007-10-27, of `The GNU C Library
-Reference Manual', for Version 2.8 (Sourcery CodeBench Lite 2011.09-50)
-of the GNU C Library.
+This is `The GNU C Library Reference Manual', for Version 2.21
+(Sourcery CodeBench Lite 2015.05-17) of the GNU C Library.
 
 * Menu:
 
@@ -1746,6 +1775,7 @@ of the GNU C Library.
                                    program.
 * Processes::                    How to create processes and run other
                                    programs.
+* Inter-Process Communication::  All about inter-process communication.
 * Job Control::                  All about process groups and sessions.
 * Name Service Switch::          Accessing system databases.
 * Users and Groups::             How users are identified and classified.
@@ -1755,15 +1785,19 @@ of the GNU C Library.
                                    limits.
 * Cryptographic Functions::      DES encryption and password handling.
 * Debugging Support::            Functions to help debugging applications.
+* POSIX Threads::                POSIX Threads.
+* Internal Probes::              Probes to monitor libc internal behavior.
 
 Appendices
 
 * Language Features::            C language features provided by the library.
 * Library Summary::              A summary showing the syntax, header file,
                                    and derivation of each library feature.
-* Installation::                 How to install the GNU C library.
+* Installation::                 How to install the GNU C Library.
 * Maintenance::                  How to enhance and port the GNU C Library.
-* Contributors::                 Who wrote what parts of the GNU C library.
+* Platform::                     Describe all platform-specific facilities
+                                   provided.
+* Contributors::                 Who wrote what parts of the GNU C Library.
 * Free Manuals::		 Free Software Needs Free Documentation.
 * Copying::                      The GNU Lesser General Public License says
                                   how you can copy and share the GNU C Library.
@@ -1778,7 +1812,7 @@ Indices
 * Variable Index::               Index of variables and variable-like macros.
 * File Index::                   Index of programs and files.
 
- --- The Detailed Node Listing ---
+  --- The Detailed Node Listing ---
 
 Introduction
 
@@ -1798,6 +1832,14 @@ Standards and Portability
 * Berkeley Unix::               BSD and SunOS.
 * SVID::                        The System V Interface Description.
 * XPG::                         The X/Open Portability Guide.
+
+POSIX
+
+* POSIX Safety Concepts::       Safety concepts from POSIX.
+* Unsafe Features::             Features that make functions unsafe.
+* Conditionally Safe Features:: Features that make functions unsafe
+                                 in the absence of workarounds.
+* Other Safety Remarks::        Additional safety features and remarks.
 
 Using the Library
 
@@ -1820,8 +1862,8 @@ Memory
 
 * Memory Concepts::             An introduction to concepts and terminology.
 * Memory Allocation::           Allocating storage for your program data
-* Locking Pages::               Preventing page faults
 * Resizing the Data Segment::   `brk', `sbrk'
+* Locking Pages::               Preventing page faults
 
 Memory Allocation
 
@@ -1979,6 +2021,7 @@ Locales
 * Setting the Locale::          How a program specifies the locale
                                  with library functions.
 * Standard Locales::            Locale names available on all systems.
+* Locale Names::                Format of system-specific locale names.
 * Locale Information::          How to access the information for the locale.
 * Formatting Numbers::          A dedicated function to format numbers.
 * Yes-or-No Questions::         Check a Response against the locale.
@@ -2081,7 +2124,7 @@ I/O Overview
 
 I/O Concepts
 
-* Streams and File Descriptors::    The GNU Library provides two ways
+* Streams and File Descriptors::    The GNU C Library provides two ways
 			             to access the contents of files.
 * File Position::                   The number of bytes from the
                                      beginning of the file.
@@ -2097,7 +2140,7 @@ I/O on Streams
 
 * Streams::                     About the data type representing a stream.
 * Standard Streams::            Streams to the standard input and output
-                                 devices are created for you.
+				 devices are created for you.
 * Opening Streams::             How to create a stream to talk to a file.
 * Closing Streams::             Close a stream when you are finished with it.
 * Streams and Threads::         Issues with streams in threaded programs.
@@ -2109,17 +2152,17 @@ I/O on Streams
 * Block Input/Output::          Input and output operations on blocks of data.
 * Formatted Output::            `printf' and related functions.
 * Customizing Printf::          You can define new conversion specifiers for
-                                 `printf' and friends.
+				 `printf' and friends.
 * Formatted Input::             `scanf' and related functions.
 * EOF and Errors::              How you can tell if an I/O error happens.
 * Error Recovery::		What you can do about errors.
 * Binary Streams::              Some systems distinguish between text files
-                                 and binary files.
+				 and binary files.
 * File Positioning::            About random-access streams.
 * Portable Positioning::        Random access on peculiar ISO C systems.
 * Stream Buffering::            How to control buffering of streams.
 * Other Kinds of Streams::      Streams that do not necessarily correspond
-                                 to an open file.
+				 to an open file.
 * Formatted Messages::          Print strictly formatted messages.
 
 Unreading
@@ -2131,33 +2174,33 @@ Formatted Output
 
 * Formatted Output Basics::     Some examples to get you started.
 * Output Conversion Syntax::    General syntax of conversion
-                                 specifications.
+				 specifications.
 * Table of Output Conversions:: Summary of output conversions and
-                                 what they do.
+				 what they do.
 * Integer Conversions::         Details about formatting of integers.
 * Floating-Point Conversions::  Details about formatting of
-                                 floating-point numbers.
+				 floating-point numbers.
 * Other Output Conversions::    Details about formatting of strings,
-                                 characters, pointers, and the like.
+				 characters, pointers, and the like.
 * Formatted Output Functions::  Descriptions of the actual functions.
 * Dynamic Output::		Functions that allocate memory for the output.
 * Variable Arguments Output::   `vprintf' and friends.
 * Parsing a Template String::   What kinds of args does a given template
-                                 call for?
+				 call for?
 * Example of Parsing::          Sample program using `parse_printf_format'.
 
 Customizing Printf
 
 * Registering New Conversions::         Using `register_printf_function'
-                                         to register a new output conversion.
+					 to register a new output conversion.
 * Conversion Specifier Options::        The handler must be able to get
-                                         the options specified in the
-                                         template when it is called.
+					 the options specified in the
+					 template when it is called.
 * Defining the Output Handler::         Defining the handler and arginfo
-                                         functions that are passed as arguments
-                                         to `register_printf_function'.
+					 functions that are passed as arguments
+					 to `register_printf_function'.
 * Printf Extension Example::            How to define a `printf'
-                                         handler function.
+					 handler function.
 * Predefined Printf Handlers::          Predefined `printf' handlers.
 
 Formatted Input
@@ -2181,17 +2224,16 @@ Stream Buffering
 Other Kinds of Streams
 
 * String Streams::              Streams that get data from or put data in
-                                 a string or memory buffer.
-* Obstack Streams::		Streams that store data in an obstack.
+				 a string or memory buffer.
 * Custom Streams::              Defining your own streams with an arbitrary
-                                 input data source and/or output data sink.
+				 input data source and/or output data sink.
 
 Custom Streams
 
 * Streams and Cookies::         The "cookie" records where to fetch or
-                                 store data that is read or written.
+				 store data that is read or written.
 * Hook Functions::              How you should define the four "hook
-                                 functions" that a custom stream needs.
+				 functions" that a custom stream needs.
 
 Formatted Messages
 
@@ -2227,6 +2269,10 @@ Low-Level I/O
                                          flags associated with open files.
 * File Locks::                          Fcntl commands for implementing
                                          file locking.
+* Open File Description Locks::         Fcntl commands for implementing
+                                         open file description locking.
+* Open File Description Locks Example:: An example of open file description lock
+                                         usage
 * Interrupt Input::                     Getting an asynchronous signal when
                                          input arrives.
 * IOCTLs::                              Generic I/O Control operations.
@@ -2344,12 +2390,12 @@ Internet Namespace
 * Internet Address Formats::    How socket addresses are specified in the
                                  Internet namespace.
 * Host Addresses::	        All about host addresses of Internet host.
-* Protocols Database::		Referring to protocols by name.
 * Ports::			Internet port numbers.
 * Services Database::           Ports may have symbolic names.
 * Byte Order::		        Different hosts may use different byte
                                  ordering conventions; you need to
                                  canonicalize host address and port number.
+* Protocols Database::		Referring to protocols by name.
 * Inet Example::	        Putting it all together.
 
 Host Addresses
@@ -2689,15 +2735,11 @@ Waiting for a Signal
 * Pause Problems::              Why the simple way is often not very good.
 * Sigsuspend::                  Reliably waiting for a specific signal.
 
-BSD Signal Handling
-
-* BSD Handler::                 BSD Function to Establish a Handler.
-* Blocking in BSD::             BSD Functions for Blocking Signals.
-
 Program Basics
 
-* Program Arguments::           Parsing your program's command-line arguments.
+* Program Arguments::           Parsing your program's command-line arguments
 * Environment Variables::       Less direct parameters affecting your program
+* Auxiliary Vector::            Least direct parameters affecting your program
 * System Calls::                Requesting service from the system
 * Program Termination::         Telling the system you're done; return status
 
@@ -2744,6 +2786,10 @@ Processes
                                  returned from a child process.
 * BSD Wait Functions::  	More functions, for backward compatibility.
 * Process Creation Example::    A complete example program.
+
+Inter-Process Communication
+
+* Semaphores::	Support for creating and managing semaphores
 
 Job Control
 
@@ -2920,6 +2966,24 @@ Debugging Support
 * Backtraces::                Obtaining and printing a back trace of the
                                current stack.
 
+POSIX Threads
+
+* Thread-specific Data::          Support for creating and
+				  managing thread-specific data
+* Non-POSIX Extensions::          Additional functions to extend
+				  POSIX Thread functionality
+
+Non-POSIX Extensions
+
+* Default Thread Attributes::             Setting default attributes for
+					  threads in a process.
+
+Internal Probes
+
+* Memory Allocation Probes::  Probes in the memory allocation subsystem
+* Mathematical Function Probes::  Probes in mathematical functions
+* Non-local Goto Probes::  Probes in setjmp and longjmp
+
 Language Features
 
 * Consistency Checking::        Using `assert' to abort if
@@ -2948,7 +3012,6 @@ How Variadic
 			  variable arguments functions.
 * Argument Macros::      Detailed specification of the macros
         		  for accessing variable arguments.
-* Old Varargs::		 The pre-ISO way of defining variadic functions.
 
 Data Type Measurements
 
@@ -2977,15 +3040,24 @@ Installation
 Maintenance
 
 * Source Layout::         How to add new functions or header files
-                             to the GNU C library.
-* Porting::               How to port the GNU C library to
+                             to the GNU C Library.
+* Porting::               How to port the GNU C Library to
                              a new machine or operating system.
+
+Source Layout
+
+* Platform: Adding Platform-specific.             Adding platform-specific
+                                         features.
 
 Porting
 
 * Hierarchy Conventions::       The layout of the `sysdeps' hierarchy.
 * Porting to Unix::             Porting the library to an average
                                    Unix-like system.
+
+Platform
+
+* PowerPC::           Facilities Specific to the PowerPC Architecture
 
 
 File: libc.info,  Node: Introduction,  Next: Error Reporting,  Prev: Top,  Up: Top
@@ -2998,13 +3070,13 @@ common operations as input/output, memory management, string
 manipulation, and the like.  Instead, these facilities are defined in a
 standard "library", which you compile and link with your programs.  
 
-   The GNU C library, described in this document, defines all of the
+   The GNU C Library, described in this document, defines all of the
 library functions that are specified by the ISO C standard, as well as
 additional features specific to POSIX and other derivatives of the Unix
-operating system, and extensions specific to the GNU system.
+operating system, and extensions specific to GNU systems.
 
    The purpose of this manual is to tell you how to use the facilities
-of the GNU library.  We have mentioned which features belong to which
+of the GNU C Library.  We have mentioned which features belong to which
 standards to help you identify things that are potentially non-portable
 to other systems.  But the emphasis in this manual is not on strict
 portability.
@@ -3029,7 +3101,7 @@ somewhat familiar with the C programming language and basic programming
 concepts.  Specifically, familiarity with ISO standard C (*note ISO
 C::), rather than "traditional" pre-ISO C dialects, is assumed.
 
-   The GNU C library includes several "header files", each of which
+   The GNU C Library includes several "header files", each of which
 provides definitions and declarations for a group of related facilities;
 this information is used by the C compiler when processing your program.
 For example, the header file `stdio.h' declares facilities for
@@ -3039,7 +3111,7 @@ follows the same division as the header files.
 
    If you are reading this manual for the first time, you should read
 all of the introductory material and skim the remaining chapters.
-There are a _lot_ of functions in the GNU C library and it's not
+There are a _lot_ of functions in the GNU C Library and it's not
 realistic to expect that you will be able to remember exactly _how_ to
 use each and every one of them.  It's more important to become
 generally familiar with the kinds of facilities that the library
@@ -3054,11 +3126,11 @@ File: libc.info,  Node: Standards and Portability,  Next: Using the Library,  Pr
 =============================
 
 This section discusses the various standards and other sources that the
-GNU C library is based upon.  These sources include the ISO C and POSIX
+GNU C Library is based upon.  These sources include the ISO C and POSIX
 standards, and the System V and Berkeley Unix implementations.
 
    The primary focus of this manual is to tell you how to make effective
-use of the GNU library facilities.  But if you are concerned about
+use of the GNU C Library facilities.  But if you are concerned about
 making your programs compatible with these standards, or portable to
 operating systems other than GNU, this can affect how you use the
 library.  This section gives you an overview of these standards, so that
@@ -3085,13 +3157,13 @@ File: libc.info,  Node: ISO C,  Next: POSIX,  Up: Standards and Portability
 1.2.1 ISO C
 -----------
 
-The GNU C library is compatible with the C standard adopted by the
+The GNU C Library is compatible with the C standard adopted by the
 American National Standards Institute (ANSI): `American National
 Standard X3.159-1989--"ANSI C"' and later by the International
 Standardization Organization (ISO): `ISO/IEC 9899:1990, "Programming
 languages--C"'.  We here refer to the standard as ISO C since this is
 the more general standard in respect of ratification.  The header files
-and library facilities that make up the GNU library are a superset of
+and library facilities that make up the GNU C Library are a superset of
 those specified by the ISO C standard.
 
    If you are concerned about strict adherence to the ISO C standard,
@@ -3118,7 +3190,7 @@ File: libc.info,  Node: POSIX,  Next: Berkeley Unix,  Prev: ISO C,  Up: Standard
 1.2.2 POSIX (The Portable Operating System Interface)
 -----------------------------------------------------
 
-The GNU library is also compatible with the ISO "POSIX" family of
+The GNU C Library is also compatible with the ISO "POSIX" family of
 standards, known more formally as the "Portable Operating System
 Interface for Computer Environments" (ISO/IEC 9945).  They were also
 published as ANSI/IEEE Std 1003.  POSIX is derived mostly from various
@@ -3133,7 +3205,7 @@ support for a particular kind of operating system environment, rather
 than general programming language support which can run in many diverse
 operating system environments.
 
-   The GNU C library implements all of the functions specified in
+   The GNU C Library implements all of the functions specified in
 `ISO/IEC 9945-1:1996, the POSIX System Application Program Interface',
 commonly referred to as POSIX.1.  The primary extensions to the ISO C
 facilities specified by this standard include file system interface
@@ -3142,9 +3214,626 @@ control functions (*note Low-Level Terminal Interface::), and process
 control functions (*note Processes::).
 
    Some facilities from `ISO/IEC 9945-2:1993, the POSIX Shell and
-Utilities standard' (POSIX.2) are also implemented in the GNU library.
+Utilities standard' (POSIX.2) are also implemented in the GNU C Library.
 These include utilities for dealing with regular expressions and other
 pattern matching facilities (*note Pattern Matching::).
+
+* Menu:
+
+* POSIX Safety Concepts::       Safety concepts from POSIX.
+* Unsafe Features::             Features that make functions unsafe.
+* Conditionally Safe Features:: Features that make functions unsafe
+                                 in the absence of workarounds.
+* Other Safety Remarks::        Additional safety features and remarks.
+
+
+File: libc.info,  Node: POSIX Safety Concepts,  Next: Unsafe Features,  Up: POSIX
+
+1.2.2.1 POSIX Safety Concepts
+.............................
+
+This manual documents various safety properties of GNU C Library
+functions, in lines that follow their prototypes and look like:
+
+Preliminary: | MT-Safe | AS-Safe | AC-Safe |
+
+   The properties are assessed according to the criteria set forth in
+the POSIX standard for such safety contexts as Thread-, Async-Signal-
+and Async-Cancel- -Safety.  Intuitive definitions of these properties,
+attempting to capture the meaning of the standard definitions, follow.
+
+   * `MT-Safe' or Thread-Safe functions are safe to call in the presence
+     of other threads.  MT, in MT-Safe, stands for Multi Thread.
+
+     Being MT-Safe does not imply a function is atomic, nor that it
+     uses any of the memory synchronization mechanisms POSIX exposes to
+     users.  It is even possible that calling MT-Safe functions in
+     sequence does not yield an MT-Safe combination.  For example,
+     having a thread call two MT-Safe functions one right after the
+     other does not guarantee behavior equivalent to atomic execution
+     of a combination of both functions, since concurrent calls in
+     other threads may interfere in a destructive way.
+
+     Whole-program optimizations that could inline functions across
+     library interfaces may expose unsafe reordering, and so performing
+     inlining across the GNU C Library interface is not recommended.
+     The documented MT-Safety status is not guaranteed under
+     whole-program optimization.  However, functions defined in
+     user-visible headers are designed to be safe for inlining.
+
+   * `AS-Safe' or Async-Signal-Safe functions are safe to call from
+     asynchronous signal handlers.  AS, in AS-Safe, stands for
+     Asynchronous Signal.
+
+     Many functions that are AS-Safe may set `errno', or modify the
+     floating-point environment, because their doing so does not make
+     them unsuitable for use in signal handlers.  However, programs
+     could misbehave should asynchronous signal handlers modify this
+     thread-local state, and the signal handling machinery cannot be
+     counted on to preserve it.  Therefore, signal handlers that call
+     functions that may set `errno' or modify the floating-point
+     environment _must_ save their original values, and restore them
+     before returning.
+
+   * `AC-Safe' or Async-Cancel-Safe functions are safe to call when
+     asynchronous cancellation is enabled.  AC in AC-Safe stands for
+     Asynchronous Cancellation.
+
+     The POSIX standard defines only three functions to be AC-Safe,
+     namely `pthread_cancel', `pthread_setcancelstate', and
+     `pthread_setcanceltype'.  At present the GNU C Library provides no
+     guarantees beyond these three functions, but does document which
+     functions are presently AC-Safe.  This documentation is provided
+     for use by the GNU C Library developers.
+
+     Just like signal handlers, cancellation cleanup routines must
+     configure the floating point environment they require.  The
+     routines cannot assume a floating point environment, particularly
+     when asynchronous cancellation is enabled.  If the configuration
+     of the floating point environment cannot be performed atomically
+     then it is also possible that the environment encountered is
+     internally inconsistent.
+
+   * `MT-Unsafe', `AS-Unsafe', `AC-Unsafe' functions are not safe to
+     call within the safety contexts described above.  Calling them
+     within such contexts invokes undefined behavior.
+
+     Functions not explicitly documented as safe in a safety context
+     should be regarded as Unsafe.
+
+   * `Preliminary' safety properties are documented, indicating these
+     properties may _not_ be counted on in future releases of the GNU C
+     Library.
+
+     Such preliminary properties are the result of an assessment of the
+     properties of our current implementation, rather than of what is
+     mandated and permitted by current and future standards.
+
+     Although we strive to abide by the standards, in some cases our
+     implementation is safe even when the standard does not demand
+     safety, and in other cases our implementation does not meet the
+     standard safety requirements.  The latter are most likely bugs;
+     the former, when marked as `Preliminary', should not be counted
+     on: future standards may require changes that are not compatible
+     with the additional safety properties afforded by the current
+     implementation.
+
+     Furthermore, the POSIX standard does not offer a detailed
+     definition of safety.  We assume that, by "safe to call", POSIX
+     means that, as long as the program does not invoke undefined
+     behavior, the "safe to call" function behaves as specified, and
+     does not cause other functions to deviate from their specified
+     behavior.  We have chosen to use its loose definitions of safety,
+     not because they are the best definitions to use, but because
+     choosing them harmonizes this manual with POSIX.
+
+     Please keep in mind that these are preliminary definitions and
+     annotations, and certain aspects of the definitions are still under
+     discussion and might be subject to clarification or change.
+
+     Over time, we envision evolving the preliminary safety notes into
+     stable commitments, as stable as those of our interfaces.  As we
+     do, we will remove the `Preliminary' keyword from safety notes.
+     As long as the keyword remains, however, they are not to be
+     regarded as a promise of future behavior.
+
+
+   Other keywords that appear in safety notes are defined in subsequent
+sections.
+
+
+File: libc.info,  Node: Unsafe Features,  Next: Conditionally Safe Features,  Prev: POSIX Safety Concepts,  Up: POSIX
+
+1.2.2.2 Unsafe Features
+.......................
+
+Functions that are unsafe to call in certain contexts are annotated with
+keywords that document their features that make them unsafe to call.
+AS-Unsafe features in this section indicate the functions are never safe
+to call when asynchronous signals are enabled.  AC-Unsafe features
+indicate they are never safe to call when asynchronous cancellation is
+enabled.  There are no MT-Unsafe marks in this section.
+
+   * `lock' 
+
+     Functions marked with `lock' as an AS-Unsafe feature may be
+     interrupted by a signal while holding a non-recursive lock.  If the
+     signal handler calls another such function that takes the same
+     lock, the result is a deadlock.
+
+     Functions annotated with `lock' as an AC-Unsafe feature may, if
+     cancelled asynchronously, fail to release a lock that would have
+     been released if their execution had not been interrupted by
+     asynchronous thread cancellation.  Once a lock is left taken,
+     attempts to take that lock will block indefinitely.
+
+   * `corrupt' 
+
+     Functions marked with `corrupt' as an AS-Unsafe feature may corrupt
+     data structures and misbehave when they interrupt, or are
+     interrupted by, another such function.  Unlike functions marked
+     with `lock', these take recursive locks to avoid MT-Safety
+     problems, but this is not enough to stop a signal handler from
+     observing a partially-updated data structure.  Further corruption
+     may arise from the interrupted function's failure to notice
+     updates made by signal handlers.
+
+     Functions marked with `corrupt' as an AC-Unsafe feature may leave
+     data structures in a corrupt, partially updated state.  Subsequent
+     uses of the data structure may misbehave.
+
+   * `heap' 
+
+     Functions marked with `heap' may call heap memory management
+     functions from the `malloc'/`free' family of functions and are
+     only as safe as those functions.  This note is thus equivalent to:
+
+     | AS-Unsafe lock | AC-Unsafe lock fd mem |
+
+   * `dlopen' 
+
+     Functions marked with `dlopen' use the dynamic loader to load
+     shared libraries into the current execution image.  This involves
+     opening files, mapping them into memory, allocating additional
+     memory, resolving symbols, applying relocations and more, all of
+     this while holding internal dynamic loader locks.
+
+     The locks are enough for these functions to be AS- and AC-Unsafe,
+     but other issues may arise.  At present this is a placeholder for
+     all potential safety issues raised by `dlopen'.
+
+   * `plugin' 
+
+     Functions annotated with `plugin' may run code from plugins that
+     may be external to the GNU C Library.  Such plugin functions are
+     assumed to be MT-Safe, AS-Unsafe and AC-Unsafe.  Examples of such
+     plugins are stack unwinding libraries, name service switch (NSS)
+     and character set conversion (iconv) back-ends.
+
+     Although the plugins mentioned as examples are all brought in by
+     means of dlopen, the `plugin' keyword does not imply any direct
+     involvement of the dynamic loader or the `libdl' interfaces, those
+     are covered by `dlopen'.  For example, if one function loads a
+     module and finds the addresses of some of its functions, while
+     another just calls those already-resolved functions, the former
+     will be marked with `dlopen', whereas the latter will get the
+     `plugin'.  When a single function takes all of these actions, then
+     it gets both marks.
+
+   * `i18n' 
+
+     Functions marked with `i18n' may call internationalization
+     functions of the `gettext' family and will be only as safe as those
+     functions.  This note is thus equivalent to:
+
+     | MT-Safe env | AS-Unsafe corrupt heap dlopen | AC-Unsafe corrupt |
+
+   * `timer' 
+
+     Functions marked with `timer' use the `alarm' function or similar
+     to set a time-out for a system call or a long-running operation.
+     In a multi-threaded program, there is a risk that the time-out
+     signal will be delivered to a different thread, thus failing to
+     interrupt the intended thread.  Besides being MT-Unsafe, such
+     functions are always AS-Unsafe, because calling them in signal
+     handlers may interfere with timers set in the interrupted code,
+     and AC-Unsafe, because there is no safe way to guarantee an
+     earlier timer will be reset in case of asynchronous cancellation.
+
+
+
+File: libc.info,  Node: Conditionally Safe Features,  Next: Other Safety Remarks,  Prev: Unsafe Features,  Up: POSIX
+
+1.2.2.3 Conditionally Safe Features
+...................................
+
+For some features that make functions unsafe to call in certain
+contexts, there are known ways to avoid the safety problem other than
+refraining from calling the function altogether.  The keywords that
+follow refer to such features, and each of their definitions indicate
+how the whole program needs to be constrained in order to remove the
+safety problem indicated by the keyword.  Only when all the reasons that
+make a function unsafe are observed and addressed, by applying the
+documented constraints, does the function become safe to call in a
+context.
+
+   * `init' 
+
+     Functions marked with `init' as an MT-Unsafe feature perform
+     MT-Unsafe initialization when they are first called.
+
+     Calling such a function at least once in single-threaded mode
+     removes this specific cause for the function to be regarded as
+     MT-Unsafe.  If no other cause for that remains, the function can
+     then be safely called after other threads are started.
+
+     Functions marked with `init' as an AS- or AC-Unsafe feature use the
+     internal `libc_once' machinery or similar to initialize internal
+     data structures.
+
+     If a signal handler interrupts such an initializer, and calls any
+     function that also performs `libc_once' initialization, it will
+     deadlock if the thread library has been loaded.
+
+     Furthermore, if an initializer is partially complete before it is
+     canceled or interrupted by a signal whose handler requires the same
+     initialization, some or all of the initialization may be performed
+     more than once, leaking resources or even resulting in corrupt
+     internal data.
+
+     Applications that need to call functions marked with `init' as an
+     AS- or AC-Unsafe feature should ensure the initialization is
+     performed before configuring signal handlers or enabling
+     cancellation, so that the AS- and AC-Safety issues related with
+     `libc_once' do not arise.
+
+   * `race' 
+
+     Functions annotated with `race' as an MT-Safety issue operate on
+     objects in ways that may cause data races or similar forms of
+     destructive interference out of concurrent execution.  In some
+     cases, the objects are passed to the functions by users; in
+     others, they are used by the functions to return values to users;
+     in others, they are not even exposed to users.
+
+     We consider access to objects passed as (indirect) arguments to
+     functions to be data race free.  The assurance of data race free
+     objects is the caller's responsibility.  We will not mark a
+     function as MT-Unsafe or AS-Unsafe if it misbehaves when users
+     fail to take the measures required by POSIX to avoid data races
+     when dealing with such objects.  As a general rule, if a function
+     is documented as reading from an object passed (by reference) to
+     it, or modifying it, users ought to use memory synchronization
+     primitives to avoid data races just as they would should they
+     perform the accesses themselves rather than by calling the library
+     function.  `FILE' streams are the exception to the general rule,
+     in that POSIX mandates the library to guard against data races in
+     many functions that manipulate objects of this specific opaque
+     type.  We regard this as a convenience provided to users, rather
+     than as a general requirement whose expectations should extend to
+     other types.
+
+     In order to remind users that guarding certain arguments is their
+     responsibility, we will annotate functions that take objects of
+     certain types as arguments.  We draw the line for objects passed
+     by users as follows: objects whose types are exposed to users, and
+     that users are expected to access directly, such as memory
+     buffers, strings, and various user-visible `struct' types, do
+     _not_ give reason for functions to be annotated with `race'.  It
+     would be noisy and redundant with the general requirement, and not
+     many would be surprised by the library's lack of internal guards
+     when accessing objects that can be accessed directly by users.
+
+     As for objects that are opaque or opaque-like, in that they are to
+     be manipulated only by passing them to library functions (e.g.,
+     `FILE', `DIR', `obstack', `iconv_t'), there might be additional
+     expectations as to internal coordination of access by the library.
+     We will annotate, with `race' followed by a colon and the argument
+     name, functions that take such objects but that do not take care
+     of synchronizing access to them by default.  For example, `FILE'
+     stream `unlocked' functions will be annotated, but those that
+     perform implicit locking on `FILE' streams by default will not,
+     even though the implicit locking may be disabled on a per-stream
+     basis.
+
+     In either case, we will not regard as MT-Unsafe functions that may
+     access user-supplied objects in unsafe ways should users fail to
+     ensure the accesses are well defined.  The notion prevails that
+     users are expected to safeguard against data races any
+     user-supplied objects that the library accesses on their behalf.
+
+     This user responsibility does not apply, however, to objects
+     controlled by the library itself, such as internal objects and
+     static buffers used to return values from certain calls.  When the
+     library doesn't guard them against concurrent uses, these cases
+     are regarded as MT-Unsafe and AS-Unsafe (although the `race' mark
+     under AS-Unsafe will be omitted as redundant with the one under
+     MT-Unsafe).  As in the case of user-exposed objects, the mark may
+     be followed by a colon and an identifier.  The identifier groups
+     all functions that operate on a certain unguarded object; users
+     may avoid the MT-Safety issues related with unguarded concurrent
+     access to such internal objects by creating a non-recursive mutex
+     related with the identifier, and always holding the mutex when
+     calling any function marked as racy on that identifier, as they
+     would have to should the identifier be an object under user
+     control.  The non-recursive mutex avoids the MT-Safety issue, but
+     it trades one AS-Safety issue for another, so use in asynchronous
+     signals remains undefined.
+
+     When the identifier relates to a static buffer used to hold return
+     values, the mutex must be held for as long as the buffer remains
+     in use by the caller.  Many functions that return pointers to
+     static buffers offer reentrant variants that store return values
+     in caller-supplied buffers instead.  In some cases, such as
+     `tmpname', the variant is chosen not by calling an alternate entry
+     point, but by passing a non-`NULL' pointer to the buffer in which
+     the returned values are to be stored.  These variants are
+     generally preferable in multi-threaded programs, although some of
+     them are not MT-Safe because of other internal buffers, also
+     documented with `race' notes.
+
+   * `const' 
+
+     Functions marked with `const' as an MT-Safety issue non-atomically
+     modify internal objects that are better regarded as constant,
+     because a substantial portion of the GNU C Library accesses them
+     without synchronization.  Unlike `race', that causes both readers
+     and writers of internal objects to be regarded as MT-Unsafe and
+     AS-Unsafe, this mark is applied to writers only.  Writers remain
+     equally MT- and AS-Unsafe to call, but the then-mandatory
+     constness of objects they modify enables readers to be regarded as
+     MT-Safe and AS-Safe (as long as no other reasons for them to be
+     unsafe remain), since the lack of synchronization is not a problem
+     when the objects are effectively constant.
+
+     The identifier that follows the `const' mark will appear by itself
+     as a safety note in readers.  Programs that wish to work around
+     this safety issue, so as to call writers, may use a non-recursve
+     `rwlock' associated with the identifier, and guard _all_ calls to
+     functions marked with `const' followed by the identifier with a
+     write lock, and _all_ calls to functions marked with the identifier
+     by itself with a read lock.  The non-recursive locking removes the
+     MT-Safety problem, but it trades one AS-Safety problem for
+     another, so use in asynchronous signals remains undefined.
+
+   * `sig' 
+
+     Functions marked with `sig' as a MT-Safety issue (that implies an
+     identical AS-Safety issue, omitted for brevity) may temporarily
+     install a signal handler for internal purposes, which may
+     interfere with other uses of the signal, identified after a colon.
+
+     This safety problem can be worked around by ensuring that no other
+     uses of the signal will take place for the duration of the call.
+     Holding a non-recursive mutex while calling all functions that use
+     the same temporary signal; blocking that signal before the call
+     and resetting its handler afterwards is recommended.
+
+     There is no safe way to guarantee the original signal handler is
+     restored in case of asynchronous cancellation, therefore so-marked
+     functions are also AC-Unsafe.
+
+     Besides the measures recommended to work around the MT- and
+     AS-Safety problem, in order to avert the cancellation problem,
+     disabling asynchronous cancellation _and_ installing a cleanup
+     handler to restore the signal to the desired state and to release
+     the mutex are recommended.
+
+   * `term' 
+
+     Functions marked with `term' as an MT-Safety issue may change the
+     terminal settings in the recommended way, namely: call `tcgetattr',
+     modify some flags, and then call `tcsetattr'; this creates a window
+     in which changes made by other threads are lost.  Thus, functions
+     marked with `term' are MT-Unsafe.  The same window enables changes
+     made by asynchronous signals to be lost.  These functions are also
+     AS-Unsafe, but the corresponding mark is omitted as redundant.
+
+     It is thus advisable for applications using the terminal to avoid
+     concurrent and reentrant interactions with it, by not using it in
+     signal handlers or blocking signals that might use it, and holding
+     a lock while calling these functions and interacting with the
+     terminal.  This lock should also be used for mutual exclusion with
+     functions marked with `race:tcattr(fd)', where FD is a file
+     descriptor for the controlling terminal.  The caller may use a
+     single mutex for simplicity, or use one mutex per terminal, even
+     if referenced by different file descriptors.
+
+     Functions marked with `term' as an AC-Safety issue are supposed to
+     restore terminal settings to their original state, after
+     temporarily changing them, but they may fail to do so if cancelled.
+
+     Besides the measures recommended to work around the MT- and
+     AS-Safety problem, in order to avert the cancellation problem,
+     disabling asynchronous cancellation _and_ installing a cleanup
+     handler to restore the terminal settings to the original state and
+     to release the mutex are recommended.
+
+
+
+File: libc.info,  Node: Other Safety Remarks,  Prev: Conditionally Safe Features,  Up: POSIX
+
+1.2.2.4 Other Safety Remarks
+............................
+
+Additional keywords may be attached to functions, indicating features
+that do not make a function unsafe to call, but that may need to be
+taken into account in certain classes of programs:
+
+   * `locale' 
+
+     Functions annotated with `locale' as an MT-Safety issue read from
+     the locale object without any form of synchronization.  Functions
+     annotated with `locale' called concurrently with locale changes may
+     behave in ways that do not correspond to any of the locales active
+     during their execution, but an unpredictable mix thereof.
+
+     We do not mark these functions as MT- or AS-Unsafe, however,
+     because functions that modify the locale object are marked with
+     `const:locale' and regarded as unsafe.  Being unsafe, the latter
+     are not to be called when multiple threads are running or
+     asynchronous signals are enabled, and so the locale can be
+     considered effectively constant in these contexts, which makes the
+     former safe.
+
+   * `env' 
+
+     Functions marked with `env' as an MT-Safety issue access the
+     environment with `getenv' or similar, without any guards to ensure
+     safety in the presence of concurrent modifications.
+
+     We do not mark these functions as MT- or AS-Unsafe, however,
+     because functions that modify the environment are all marked with
+     `const:env' and regarded as unsafe.  Being unsafe, the latter are
+     not to be called when multiple threads are running or asynchronous
+     signals are enabled, and so the environment can be considered
+     effectively constant in these contexts, which makes the former
+     safe.
+
+   * `hostid' 
+
+     The function marked with `hostid' as an MT-Safety issue reads from
+     the system-wide data structures that hold the "host ID" of the
+     machine.  These data structures cannot generally be modified
+     atomically.  Since it is expected that the "host ID" will not
+     normally change, the function that reads from it (`gethostid') is
+     regarded as safe, whereas the function that modifies it
+     (`sethostid') is marked with `const:hostid', indicating it may
+     require special care if it is to be called.  In this specific
+     case, the special care amounts to system-wide (not merely
+     intra-process) coordination.
+
+   * `sigintr' 
+
+     Functions marked with `sigintr' as an MT-Safety issue access the
+     `_sigintr' internal data structure without any guards to ensure
+     safety in the presence of concurrent modifications.
+
+     We do not mark these functions as MT- or AS-Unsafe, however,
+     because functions that modify the this data structure are all
+     marked with `const:sigintr' and regarded as unsafe.  Being unsafe,
+     the latter are not to be called when multiple threads are running
+     or asynchronous signals are enabled, and so the data structure can
+     be considered effectively constant in these contexts, which makes
+     the former safe.
+
+   * `fd' 
+
+     Functions annotated with `fd' as an AC-Safety issue may leak file
+     descriptors if asynchronous thread cancellation interrupts their
+     execution.
+
+     Functions that allocate or deallocate file descriptors will
+     generally be marked as such.  Even if they attempted to protect
+     the file descriptor allocation and deallocation with cleanup
+     regions, allocating a new descriptor and storing its number where
+     the cleanup region could release it cannot be performed as a
+     single atomic operation.  Similarly, releasing the descriptor and
+     taking it out of the data structure normally responsible for
+     releasing it cannot be performed atomically.  There will always be
+     a window in which the descriptor cannot be released because it was
+     not stored in the cleanup handler argument yet, or it was already
+     taken out before releasing it.  It cannot be taken out after
+     release: an open descriptor could mean either that the descriptor
+     still has to be closed, or that it already did so but the
+     descriptor was reallocated by another thread or signal handler.
+
+     Such leaks could be internally avoided, with some performance
+     penalty, by temporarily disabling asynchronous thread
+     cancellation.  However, since callers of allocation or
+     deallocation functions would have to do this themselves, to avoid
+     the same sort of leak in their own layer, it makes more sense for
+     the library to assume they are taking care of it than to impose a
+     performance penalty that is redundant when the problem is solved
+     in upper layers, and insufficient when it is not.
+
+     This remark by itself does not cause a function to be regarded as
+     AC-Unsafe.  However, cumulative effects of such leaks may pose a
+     problem for some programs.  If this is the case, suspending
+     asynchronous cancellation for the duration of calls to such
+     functions is recommended.
+
+   * `mem' 
+
+     Functions annotated with `mem' as an AC-Safety issue may leak
+     memory if asynchronous thread cancellation interrupts their
+     execution.
+
+     The problem is similar to that of file descriptors: there is no
+     atomic interface to allocate memory and store its address in the
+     argument to a cleanup handler, or to release it and remove its
+     address from that argument, without at least temporarily disabling
+     asynchronous cancellation, which these functions do not do.
+
+     This remark does not by itself cause a function to be regarded as
+     generally AC-Unsafe.  However, cumulative effects of such leaks
+     may be severe enough for some programs that disabling asynchronous
+     cancellation for the duration of calls to such functions may be
+     required.
+
+   * `cwd' 
+
+     Functions marked with `cwd' as an MT-Safety issue may temporarily
+     change the current working directory during their execution, which
+     may cause relative pathnames to be resolved in unexpected ways in
+     other threads or within asynchronous signal or cancellation
+     handlers.
+
+     This is not enough of a reason to mark so-marked functions as MT-
+     or AS-Unsafe, but when this behavior is optional (e.g., `nftw' with
+     `FTW_CHDIR'), avoiding the option may be a good alternative to
+     using full pathnames or file descriptor-relative (e.g. `openat')
+     system calls.
+
+   * `!posix' 
+
+     This remark, as an MT-, AS- or AC-Safety note to a function,
+     indicates the safety status of the function is known to differ
+     from the specified status in the POSIX standard.  For example,
+     POSIX does not require a function to be Safe, but our
+     implementation is, or vice-versa.
+
+     For the time being, the absence of this remark does not imply the
+     safety properties we documented are identical to those mandated by
+     POSIX for the corresponding functions.
+
+   * `:identifier' 
+
+     Annotations may sometimes be followed by identifiers, intended to
+     group several functions that e.g. access the data structures in an
+     unsafe way, as in `race' and `const', or to provide more specific
+     information, such as naming a signal in a function marked with
+     `sig'.  It is envisioned that it may be applied to `lock' and
+     `corrupt' as well in the future.
+
+     In most cases, the identifier will name a set of functions, but it
+     may name global objects or function arguments, or identifiable
+     properties or logical components associated with them, with a
+     notation such as e.g. `:buf(arg)' to denote a buffer associated
+     with the argument ARG, or `:tcattr(fd)' to denote the terminal
+     attributes of a file descriptor FD.
+
+     The most common use for identifiers is to provide logical groups of
+     functions and arguments that need to be protected by the same
+     synchronization primitive in order to ensure safe operation in a
+     given context.
+
+   * `/condition' 
+
+     Some safety annotations may be conditional, in that they only
+     apply if a boolean expression involving arguments, global
+     variables or even the underlying kernel evaluates evaluates to
+     true.  Such conditions as `/hurd' or `/!linux!bsd' indicate the
+     preceding marker only applies when the underlying kernel is the
+     HURD, or when it is neither Linux nor a BSD kernel, respectively.
+     `/!ps' and `/one_per_line' indicate the preceding marker only
+     applies when argument PS is NULL, or global variable ONE_PER_LINE
+     is nonzero.
+
+     When all marks that render a function unsafe are adorned with such
+     conditions, and none of the named conditions hold, then the
+     function can be regarded as safe.
+
 
 
 File: libc.info,  Node: Berkeley Unix,  Next: SVID,  Prev: POSIX,  Up: Standards and Portability
@@ -3152,7 +3841,7 @@ File: libc.info,  Node: Berkeley Unix,  Next: SVID,  Prev: POSIX,  Up: Standards
 1.2.3 Berkeley Unix
 -------------------
 
-The GNU C library defines facilities from some versions of Unix which
+The GNU C Library defines facilities from some versions of Unix which
 are not formally standardized, specifically from the 4.2 BSD, 4.3 BSD,
 and 4.4 BSD Unix systems (also known as "Berkeley Unix") and from
 "SunOS" (a popular 4.2 BSD derivative that includes some Unix System V
@@ -3174,7 +3863,7 @@ The "System V Interface Description" (SVID) is a document describing
 the AT&T Unix System V operating system.  It is to some extent a
 superset of the POSIX standard (*note POSIX::).
 
-   The GNU C library defines most of the facilities required by the SVID
+   The GNU C Library defines most of the facilities required by the SVID
 that are not also required by the ISO C or POSIX standards, for
 compatibility with  System V Unix and other Unix systems (such as
 SunOS) which include these facilities.  However, many of the more
@@ -3198,7 +3887,7 @@ a more general standard than POSIX.  X/Open owns the Unix copyright and
 the XPG specifies the requirements for systems which are intended to be
 a Unix system.
 
-   The GNU C library complies to the X/Open Portability Guide, Issue
+   The GNU C Library complies to the X/Open Portability Guide, Issue
 4.2, with all extensions common to XSI (X/Open System Interface)
 compliant systems and also all X/Open UNIX extensions.
 
@@ -3216,7 +3905,7 @@ File: libc.info,  Node: Using the Library,  Next: Roadmap to the Manual,  Prev: 
 =====================
 
 This section describes some of the practical issues involved in using
-the GNU C library.
+the GNU C Library.
 
 * Menu:
 
@@ -3247,7 +3936,7 @@ to correctly process references to the declared variables and functions.
 A "definition", on the other hand, actually allocates storage for a
 variable or says what a function does.)  
 
-   In order to use the facilities in the GNU C library, you should be
+   In order to use the facilities in the GNU C Library, you should be
 sure that your program source files include the appropriate header
 files.  This is so that the compiler has declarations of these
 facilities available and can correctly process references to them.
@@ -3281,7 +3970,7 @@ feature test macro definition (*note Feature Test Macros::).
    For more information about the use of header files and `#include'
 directives, *note Header Files: (cpp.info)Header Files.
 
-   The GNU C library provides several header files, each of which
+   The GNU C Library provides several header files, each of which
 contains the type and macro definitions and variable and function
 declarations for a group of related facilities.  This means that your
 programs may need to include several header files, depending on exactly
@@ -3291,7 +3980,7 @@ which facilities you are using.
 automatically.  However, as a matter of programming style, you should
 not rely on this; it is better to explicitly include all the header
 files required for the library facilities you are using.  The GNU C
-library header files have been written in such a way that it doesn't
+Library header files have been written in such a way that it doesn't
 matter if a header file is accidentally included more than once;
 including a header file a second time has no effect.  Likewise, if your
 program needs to include multiple header files, the order in which they
@@ -3541,31 +4230,6 @@ relying on semantics undefined within the standard.
      greater than or equal to `199506L', then the functionality from
      the 1996 edition is made available.
 
- -- Macro: _BSD_SOURCE
-     If you define this macro, functionality derived from 4.3 BSD Unix
-     is included as well as the ISO C, POSIX.1, and POSIX.2 material.
-
-     Some of the features derived from 4.3 BSD Unix conflict with the
-     corresponding features specified by the POSIX.1 standard.  If this
-     macro is defined, the 4.3 BSD definitions take precedence over the
-     POSIX definitions.
-
-     Due to the nature of some of the conflicts between 4.3 BSD and
-     POSIX.1, you need to use a special "BSD compatibility library"
-     when linking programs compiled for BSD compatibility.  This is
-     because some functions must be defined in two different ways, one
-     of them in the normal C library, and one of them in the
-     compatibility library.  If your program defines `_BSD_SOURCE', you
-     must give the option `-lbsd-compat' to the compiler or linker when
-     linking the program, to tell it to find functions in this special
-     compatibility library before looking for them in the normal C
-     library.  
-
- -- Macro: _SVID_SOURCE
-     If you define this macro, functionality derived from SVID is
-     included as well as the ISO C, POSIX.1, POSIX.2, and X/Open
-     material.
-
  -- Macro: _XOPEN_SOURCE
  -- Macro: _XOPEN_SOURCE_EXTENDED
      If you define this macro, functionality described in the X/Open
@@ -3640,9 +4304,9 @@ relying on semantics undefined within the standard.
 
  -- Macro: _ISOC99_SOURCE
      Until the revised ISO C standard is widely adopted the new features
-     are not automatically enabled.  The GNU libc nevertheless has a
-     complete implementation of the new standard and to enable the new
-     features the macro `_ISOC99_SOURCE' should be defined.
+     are not automatically enabled.  The GNU C Library nevertheless has
+     a complete implementation of the new standard and to enable the
+     new features the macro `_ISOC99_SOURCE' should be defined.
 
  -- Macro: _GNU_SOURCE
      If you define this macro, everything is included: ISO C89,
@@ -3650,26 +4314,25 @@ relying on semantics undefined within the standard.
      extensions.  In the cases where POSIX.1 conflicts with BSD, the
      POSIX definitions take precedence.
 
-     If you want to get the full effect of `_GNU_SOURCE' but make the
-     BSD definitions take precedence over the POSIX definitions, use
-     this sequence of definitions:
-
-          #define _GNU_SOURCE
-          #define _BSD_SOURCE
-          #define _SVID_SOURCE
-
-     Note that if you do this, you must link your program with the BSD
-     compatibility library by passing the `-lbsd-compat' option to the
-     compiler or linker.  *NB:* If you forget to do this, you may get
-     very strange errors at run time.
+ -- Macro: _DEFAULT_SOURCE
+     If you define this macro, most features are included apart from
+     X/Open, LFS and GNU extensions: the effect is to enable features
+     from the 2008 edition of POSIX, as well as certain BSD and SVID
+     features without a separate feature test macro to control them.
+     Defining this macro, on its own and without using compiler options
+     such as `-ansi' or `-std=c99', has the same effect as not defining
+     any feature test macros; defining it together with other feature
+     test macros, or when options such as `-ansi' are used, enables
+     those features even when the other options would otherwise cause
+     them to be disabled.
 
  -- Macro: _REENTRANT
  -- Macro: _THREAD_SAFE
      If you define one of these macros, reentrant versions of several
      functions get declared.  Some of the functions are specified in
      POSIX.1c but many others are only available on a few other systems
-     or are unique to GNU libc.  The problem is the delay in the
-     standardization of the thread safe C library interface.
+     or are unique to the GNU C Library.  The problem is the delay in
+     the standardization of the thread safe C library interface.
 
      Unlike on some other systems, no special version of the C library
      must be used for linking.  There is only one version but while
@@ -3677,25 +4340,16 @@ relying on semantics undefined within the standard.
      safe.
 
    We recommend you use `_GNU_SOURCE' in new programs.  If you don't
-specify the `-ansi' option to GCC and don't define any of these macros
-explicitly, the effect is the same as defining `_POSIX_C_SOURCE' to 2
-and `_POSIX_SOURCE', `_SVID_SOURCE', and `_BSD_SOURCE' to 1.
+specify the `-ansi' option to GCC, or other conformance options such as
+`-std=c99', and don't define any of these macros explicitly, the effect
+is the same as defining `_DEFAULT_SOURCE' to 1.
 
    When you define a feature test macro to request a larger class of
 features, it is harmless to define in addition a feature test macro for
 a subset of those features.  For example, if you define
 `_POSIX_C_SOURCE', then defining `_POSIX_SOURCE' as well has no effect.
 Likewise, if you define `_GNU_SOURCE', then defining either
-`_POSIX_SOURCE' or `_POSIX_C_SOURCE' or `_SVID_SOURCE' as well has no
-effect.
-
-   Note, however, that the features of `_BSD_SOURCE' are not a subset of
-any of the other feature test macros supported.  This is because it
-defines BSD features that take precedence over the POSIX features that
-are requested by the other macros.  For this reason, defining
-`_BSD_SOURCE' in addition to the other feature test macros does have an
-effect: it causes the BSD features to take priority over the conflicting
-POSIX features.
+`_POSIX_SOURCE' or `_POSIX_C_SOURCE' as well has no effect.
 
 
 File: libc.info,  Node: Roadmap to the Manual,  Prev: Using the Library,  Up: Introduction
@@ -3709,16 +4363,7 @@ manual.
    * *note Error Reporting::, describes how errors detected by the
      library are reported.
 
-   * *note Language Features::, contains information about library
-     support for standard parts of the C language, including things
-     like the `sizeof' operator and the symbolic constant `NULL', how
-     to write functions accepting variable numbers of arguments, and
-     constants describing the ranges and other properties of the
-     numerical types.  There is also a simple debugging mechanism which
-     allows you to put assertions in your code, and have diagnostic
-     messages printed if the tests fail.
-
-   * *note Memory::, describes the GNU library's facilities for
+   * *note Memory::, describes the GNU C Library's facilities for
      managing and using virtual and real memory, including dynamic
      allocation of virtual memory.  If you do not know in advance how
      much memory your program needs, you can allocate it dynamically
@@ -3732,6 +4377,23 @@ manual.
      for manipulating strings (null-terminated character arrays) and
      general byte arrays, including operations such as copying and
      comparison.
+
+   * *note Character Set Handling::, contains information about
+     manipulating characters and strings using character sets larger
+     than will fit in the usual `char' data type.
+
+   * *note Locales::, describes how selecting a particular country or
+     language affects the behavior of the library.  For example, the
+     locale affects collation sequences for strings and how monetary
+     values are formatted.
+
+   * *note Searching and Sorting::, contains information about functions
+     for searching and sorting arrays.  You can use these functions on
+     any kind of array by providing an appropriate comparison function.
+
+   * *note Pattern Matching::, presents functions for matching regular
+     expressions and shell file name patterns, and for expanding words
+     as the shell does.
 
    * *note I/O Overview::, gives an overall look at the input and output
      facilities in the library, and contains information about basic
@@ -3776,26 +4438,9 @@ manual.
      functions for simple arithmetic, analysis of floating-point
      values, and reading numbers from strings.
 
-   * *note Searching and Sorting::, contains information about functions
-     for searching and sorting arrays.  You can use these functions on
-     any kind of array by providing an appropriate comparison function.
-
-   * *note Pattern Matching::, presents functions for matching regular
-     expressions and shell file name patterns, and for expanding words
-     as the shell does.
-
    * *note Date and Time::, describes functions for measuring both
      calendar time and CPU time, as well as functions for setting
      alarms and timers.
-
-   * *note Character Set Handling::, contains information about
-     manipulating characters and strings using character sets larger
-     than will fit in the usual `char' data type.
-
-   * *note Locales::, describes how selecting a particular country or
-     language affects the behavior of the library.  For example, the
-     locale affects collation sequences for strings and how monetary
-     values are formatted.
 
    * *note Non-Local Exits::, contains descriptions of the `setjmp' and
      `longjmp' functions.  These functions provide a facility for
@@ -3834,14 +4479,25 @@ manual.
      information about various operating system limits.  Most of these
      parameters are provided for compatibility with POSIX.
 
+   * *note Language Features::, contains information about library
+     support for standard parts of the C language, including things
+     like the `sizeof' operator and the symbolic constant `NULL', how
+     to write functions accepting variable numbers of arguments, and
+     constants describing the ranges and other properties of the
+     numerical types.  There is also a simple debugging mechanism which
+     allows you to put assertions in your code, and have diagnostic
+     messages printed if the tests fail.
+
    * *note Library Summary::, gives a summary of all the functions,
      variables, and macros in the library, with complete data types and
      function prototypes, and says what standard or system each is
      derived from.
 
-   * *note Maintenance::, explains how to build and install the GNU C
-     library on your system, how to report any bugs you might find, and
-     how to add new functions or port the library to a new system.
+   * *note Installation::, explains how to build and install the GNU C
+     Library on your system, and how to report any bugs you might find.
+
+   * *note Maintenance::, explains how to add new functions or port the
+     library to a new system.
 
    If you already know the name of the facility you are interested in,
 you can look it up in *note Library Summary::.  This gives you a
@@ -3857,7 +4513,7 @@ File: libc.info,  Node: Error Reporting,  Next: Memory,  Prev: Introduction,  Up
 2 Error Reporting
 *****************
 
-Many functions in the GNU C library detect and report error conditions,
+Many functions in the GNU C Library detect and report error conditions,
 and sometimes your programs need to check for these error conditions.
 For example, when you open an input file, you should verify that the
 file was actually opened correctly, and print an error message or take
@@ -3915,9 +4571,9 @@ the variable `errno'.  This variable is declared in the header file
      *Portability Note:* ISO C specifies `errno' as a "modifiable
      lvalue" rather than as a variable, permitting it to be implemented
      as a macro.  For example, its expansion might involve a function
-     call, like `*_errno ()'.  In fact, that is what it is on the GNU
-     system itself.  The GNU library, on non-GNU systems, does whatever
-     is right for the particular system.
+     call, like `*__errno_location ()'.  In fact, that is what it is on
+     GNU/Linux and GNU/Hurd systems.  The GNU C Library, on each
+     system, does whatever is right for the particular system.
 
      There are a few library functions, like `sqrt' and `atan', that
      return a perfectly legitimate value in case of an error, but also
@@ -3944,11 +4600,11 @@ codes of their own for other situations.  The only values that are
 guaranteed to be meaningful for a particular library function are the
 ones that this manual lists for that function.
 
-   On non-GNU systems, almost any system call can return `EFAULT' if it
-is given an invalid pointer as an argument.  Since this could only
-happen as a result of a bug in your program, and since it will not
-happen on the GNU system, we have saved space by not mentioning
-`EFAULT' in the descriptions of individual functions.
+   Except on GNU/Hurd systems, almost any system call can return
+`EFAULT' if it is given an invalid pointer as an argument.  Since this
+could only happen as a result of a bug in your program, and since it
+will not happen on GNU/Hurd systems, we have saved space by not
+mentioning `EFAULT' in the descriptions of individual functions.
 
    In some Unix systems, many system calls can also return `EFAULT' if
 given as an argument a pointer into the stack, and the kernel for some
@@ -3964,7 +4620,7 @@ File: libc.info,  Node: Error Codes,  Next: Error Messages,  Prev: Checking for 
 
 The error code macros are defined in the header file `errno.h'.  All of
 them expand into integer constant values.  Some of these error codes
-can't occur on the GNU system, but they can occur using the GNU library
+can't occur on GNU systems, but they can occur using the GNU C Library
 on other systems.
 
  -- Macro: int EPERM
@@ -4003,7 +4659,7 @@ on other systems.
      Argument list too long; used when the arguments passed to a new
      program being executed with one of the `exec' functions (*note
      Executing a File::) occupy too much memory space.  This condition
-     never arises in the GNU system.
+     never arises on GNU/Hurd systems.
 
  -- Macro: int ENOEXEC
      Invalid executable file format.  This condition is detected by the
@@ -4035,8 +4691,8 @@ on other systems.
      operation.
 
  -- Macro: int EFAULT
-     Bad address; an invalid pointer was detected.  In the GNU system,
-     this error never happens; you get a signal instead.
+     Bad address; an invalid pointer was detected.  On GNU/Hurd
+     systems, this error never happens; you get a signal instead.
 
  -- Macro: int ENOTBLK
      A file that isn't a block special file was given in a situation
@@ -4086,8 +4742,8 @@ on other systems.
  -- Macro: int ENFILE
      There are too many distinct file openings in the entire system.
      Note that any number of linked channels count as just one file
-     opening; see *note Linked Channels::.  This error never occurs in
-     the GNU system.
+     opening; see *note Linked Channels::.  This error never occurs on
+     GNU/Hurd systems.
 
  -- Macro: int ENOTTY
      Inappropriate I/O control operation, such as trying to set terminal
@@ -4098,7 +4754,7 @@ on other systems.
      write to a file that is currently being executed.  Often using a
      debugger to run a program is considered having it open for writing
      and will cause this error.  (The name stands for "text file
-     busy".)  This is not an error in the GNU system; the text is
+     busy".)  This is not an error on GNU/Hurd systems; the text is
      copied as necessary.
 
  -- Macro: int EFBIG
@@ -4139,7 +4795,7 @@ on other systems.
  -- Macro: int EAGAIN
      Resource temporarily unavailable; the call might work if you try
      again later.  The macro `EWOULDBLOCK' is another name for `EAGAIN';
-     they are always the same in the GNU C library.
+     they are always the same in the GNU C Library.
 
      This error can happen in a few different situations:
 
@@ -4166,7 +4822,7 @@ on other systems.
           error to the user and return to its command loop.
 
  -- Macro: int EWOULDBLOCK
-     In the GNU C library, this is another name for `EAGAIN' (above).
+     In the GNU C Library, this is another name for `EAGAIN' (above).
      The values are always the same, on every operating system.
 
      C libraries in many older Unix systems have `EWOULDBLOCK' as a
@@ -4213,9 +4869,9 @@ on other systems.
  -- Macro: int EOPNOTSUPP
      The operation you requested is not supported.  Some socket
      functions don't make sense for all types of sockets, and others
-     may not be implemented for all communications protocols.  In the
-     GNU system, this error can happen for many calls when the object
-     does not support the particular operation; it is a generic
+     may not be implemented for all communications protocols.  On
+     GNU/Hurd systems, this error can happen for many calls when the
+     object does not support the particular operation; it is a generic
      indication that the server knows nothing to do for that call.
 
  -- Macro: int EPFNOSUPPORT
@@ -4322,16 +4978,17 @@ on other systems.
      The user's disk quota was exceeded.
 
  -- Macro: int ESTALE
-     Stale NFS file handle.  This indicates an internal confusion in
-     the NFS system which is due to file system rearrangements on the
-     server host.  Repairing this condition usually requires unmounting
-     and remounting the NFS file system on the local host.
+     Stale file handle.  This indicates an internal confusion in the
+     file system which is due to file system rearrangements on the
+     server host for NFS file systems or corruption in other file
+     systems.  Repairing this condition usually requires unmounting,
+     possibly repairing and remounting the file system.
 
  -- Macro: int EREMOTE
      An attempt was made to NFS-mount a remote file system with a file
      name that already specifies an NFS-mounted file.  (This is an
      error on some operating systems, but we expect it to work properly
-     on the GNU system, making this error code impossible.)
+     on GNU/Hurd systems, making this error code impossible.)
 
  -- Macro: int EBADRPC
      ???
@@ -4350,8 +5007,8 @@ on other systems.
 
  -- Macro: int ENOLCK
      No locks available.  This is used by the file locking facilities;
-     see *note File Locks::.  This error is never generated by the GNU
-     system, but it can result from an operation to an NFS server
+     see *note File Locks::.  This error is never generated by GNU/Hurd
+     systems, but it can result from an operation to an NFS server
      running another operating system.
 
  -- Macro: int EFTYPE
@@ -4394,7 +5051,7 @@ on other systems.
      character is invalid.
 
  -- Macro: int EBACKGROUND
-     In the GNU system, servers supporting the `term' protocol return
+     On GNU/Hurd systems, servers supporting the `term' protocol return
      this error for certain operations when the caller is not in the
      foreground process group of the terminal.  Users do not usually
      see this error because functions such as `read' and `write'
@@ -4402,9 +5059,9 @@ on other systems.
      Control::, for information on process groups and these signals.
 
  -- Macro: int EDIED
-     In the GNU system, opening a file returns this error when the file
-     is translated by a program and the translator program dies while
-     starting up, before it has connected to the file.
+     On GNU/Hurd systems, opening a file returns this error when the
+     file is translated by a program and the translator program dies
+     while starting up, before it has connected to the file.
 
  -- Macro: int ED
      The experienced user will know what is wrong.
@@ -4541,6 +5198,8 @@ They are not yet documented._
 
  -- Macro: int ERFKILL
 
+ -- Macro: int EHWPOISON
+
 
 File: libc.info,  Node: Error Messages,  Prev: Error Codes,  Up: Error Reporting
 
@@ -4555,6 +5214,9 @@ code; the variable `program_invocation_short_name' gives you convenient
 access to the name of the program that encountered the error.
 
  -- Function: char * strerror (int ERRNUM)
+     Preliminary: | MT-Unsafe race:strerror | AS-Unsafe heap i18n |
+     AC-Unsafe mem | *Note POSIX Safety Concepts::.
+
      The `strerror' function maps the error code (*note Checking for
      Errors::) specified by the ERRNUM argument to a descriptive error
      message string.  The return value is a pointer to this string.
@@ -4569,12 +5231,15 @@ access to the name of the program that encountered the error.
      The function `strerror' is declared in `string.h'.
 
  -- Function: char * strerror_r (int ERRNUM, char *BUF, size_t N)
+     Preliminary: | MT-Safe | AS-Unsafe i18n | AC-Unsafe | *Note POSIX
+     Safety Concepts::.
+
      The `strerror_r' function works like `strerror' but instead of
      returning the error message in a statically allocated buffer
      shared by all threads in the process, it returns a private copy
-     for the thread. This might be either some permanent global data or
-     a message string in the user supplied buffer starting at BUF with
-     the length of N bytes.
+     for the thread.  This might be either some permanent global data
+     or a message string in the user supplied buffer starting at BUF
+     with the length of N bytes.
 
      At most N characters are written (including the NUL byte) so it is
      up to the user to select the buffer large enough.
@@ -4587,6 +5252,10 @@ access to the name of the program that encountered the error.
      `string.h'.
 
  -- Function: void perror (const char *MESSAGE)
+     Preliminary: | MT-Safe race:stderr | AS-Unsafe corrupt i18n heap
+     lock | AC-Unsafe corrupt lock mem fd | *Note POSIX Safety
+     Concepts::.
+
      This function prints an error message to the stream `stderr'; see
      *note Standard Streams::.  The orientation of `stderr' is not
      changed.
@@ -4603,10 +5272,10 @@ access to the name of the program that encountered the error.
      The function `perror' is declared in `stdio.h'.
 
    `strerror' and `perror' produce the exact same message for any given
-error code; the precise text varies from system to system.  On the GNU
-system, the messages are fairly short; there are no multi-line messages
-or embedded newlines.  Each error message begins with a capital letter
-and does not include any terminating punctuation.
+error code; the precise text varies from system to system.  With the
+GNU C Library, the messages are fairly short; there are no multi-line
+messages or embedded newlines.  Each error message begins with a capital
+letter and does not include any terminating punctuation.
 
    *Compatibility Note:* The `strerror' function was introduced in
 ISO C89.  Many older C systems do not support this function yet.
@@ -4686,6 +5355,9 @@ functions are declared in `error.h'.
 
  -- Function: void error (int STATUS, int ERRNUM, const char *FORMAT,
           ...)
+     Preliminary: | MT-Safe locale | AS-Unsafe corrupt heap i18n |
+     AC-Safe | *Note POSIX Safety Concepts::.
+
      The `error' function can be used to report general problems during
      program execution.  The FORMAT argument is a format string just
      like those given to the `printf' family of functions.  The
@@ -4720,6 +5392,10 @@ functions are declared in `error.h'.
 
  -- Function: void error_at_line (int STATUS, int ERRNUM, const char
           *FNAME, unsigned int LINENO, const char *FORMAT, ...)
+     Preliminary: | MT-Unsafe race:error_at_line/error_one_per_line
+     locale | AS-Unsafe corrupt heap i18n | AC-Unsafe
+     corrupt/error_one_per_line | *Note POSIX Safety Concepts::.
+
      The `error_at_line' function is very similar to the `error'
      function.  The only difference are the additional parameters FNAME
      and LINENO.  The handling of the other parameters is identical to
@@ -4747,7 +5423,7 @@ functions are declared in `error.h'.
    As mentioned above the `error' and `error_at_line' functions can be
 customized by defining a variable named `error_print_progname'.
 
- -- Variable: void (*) error_print_progname  (void)
+ -- Variable: void (*error_print_progname) (void)
      If the `error_print_progname' variable is defined to a non-zero
      value the function pointed to is called by `error' or
      `error_at_line'.  It is expected to print the program name or do
@@ -4803,56 +5479,80 @@ like this:
 
    `error' and `error_at_line' are clearly the functions of choice and
 enable the programmer to write applications which follow the GNU coding
-standard.  The GNU libc additionally contains functions which are used
-in BSD for the same purpose.  These functions are declared in `err.h'.
-It is generally advised to not use these functions.  They are included
-only for compatibility.
+standard.  The GNU C Library additionally contains functions which are
+used in BSD for the same purpose.  These functions are declared in
+`err.h'.  It is generally advised to not use these functions.  They are
+included only for compatibility.
 
  -- Function: void warn (const char *FORMAT, ...)
+     Preliminary: | MT-Safe locale | AS-Unsafe corrupt heap i18n |
+     AC-Unsafe corrupt lock mem | *Note POSIX Safety Concepts::.
+
      The `warn' function is roughly equivalent to a call like
             error (0, errno, format, the parameters)
      except that the global variables `error' respects and modifies are
      not used.
 
- -- Function: void vwarn (const char *FORMAT, va_list)
+ -- Function: void vwarn (const char *FORMAT, va_list AP)
+     Preliminary: | MT-Safe locale | AS-Unsafe corrupt heap i18n |
+     AC-Unsafe corrupt lock mem | *Note POSIX Safety Concepts::.
+
      The `vwarn' function is just like `warn' except that the
      parameters for the handling of the format string FORMAT are passed
-     in as an value of type `va_list'.
+     in as a value of type `va_list'.
 
  -- Function: void warnx (const char *FORMAT, ...)
+     Preliminary: | MT-Safe locale | AS-Unsafe corrupt heap | AC-Unsafe
+     corrupt lock mem | *Note POSIX Safety Concepts::.
+
      The `warnx' function is roughly equivalent to a call like
             error (0, 0, format, the parameters)
      except that the global variables `error' respects and modifies are
      not used.  The difference to `warn' is that no error number string
      is printed.
 
- -- Function: void vwarnx (const char *FORMAT, va_list)
+ -- Function: void vwarnx (const char *FORMAT, va_list AP)
+     Preliminary: | MT-Safe locale | AS-Unsafe corrupt heap | AC-Unsafe
+     corrupt lock mem | *Note POSIX Safety Concepts::.
+
      The `vwarnx' function is just like `warnx' except that the
      parameters for the handling of the format string FORMAT are passed
-     in as an value of type `va_list'.
+     in as a value of type `va_list'.
 
  -- Function: void err (int STATUS, const char *FORMAT, ...)
+     Preliminary: | MT-Safe locale | AS-Unsafe corrupt heap i18n |
+     AC-Unsafe corrupt lock mem | *Note POSIX Safety Concepts::.
+
      The `err' function is roughly equivalent to a call like
             error (status, errno, format, the parameters)
      except that the global variables `error' respects and modifies are
      not used and that the program is exited even if STATUS is zero.
 
- -- Function: void verr (int STATUS, const char *FORMAT, va_list)
+ -- Function: void verr (int STATUS, const char *FORMAT, va_list AP)
+     Preliminary: | MT-Safe locale | AS-Unsafe corrupt heap i18n |
+     AC-Unsafe corrupt lock mem | *Note POSIX Safety Concepts::.
+
      The `verr' function is just like `err' except that the parameters
-     for the handling of the format string FORMAT are passed in as an
+     for the handling of the format string FORMAT are passed in as a
      value of type `va_list'.
 
  -- Function: void errx (int STATUS, const char *FORMAT, ...)
+     Preliminary: | MT-Safe locale | AS-Unsafe corrupt heap | AC-Unsafe
+     corrupt lock mem | *Note POSIX Safety Concepts::.
+
      The `errx' function is roughly equivalent to a call like
             error (status, 0, format, the parameters)
      except that the global variables `error' respects and modifies are
      not used and that the program is exited even if STATUS is zero.
      The difference to `err' is that no error number string is printed.
 
- -- Function: void verrx (int STATUS, const char *FORMAT, va_list)
+ -- Function: void verrx (int STATUS, const char *FORMAT, va_list AP)
+     Preliminary: | MT-Safe locale | AS-Unsafe corrupt heap | AC-Unsafe
+     corrupt lock mem | *Note POSIX Safety Concepts::.
+
      The `verrx' function is just like `errx' except that the
      parameters for the handling of the format string FORMAT are passed
-     in as an value of type `va_list'.
+     in as a value of type `va_list'.
 
 
 File: libc.info,  Node: Memory,  Next: Character Handling,  Prev: Error Reporting,  Up: Top
@@ -4861,7 +5561,7 @@ File: libc.info,  Node: Memory,  Next: Character Handling,  Prev: Error Reportin
 **************************************
 
 This chapter describes how processes manage and use memory in a system
-that uses the GNU C library.
+that uses the GNU C Library.
 
    The GNU C Library has several functions for dynamically allocating
 virtual memory in various ways.  They vary in generality and in
@@ -4872,8 +5572,8 @@ and allocation of real memory.
 
 * Memory Concepts::             An introduction to concepts and terminology.
 * Memory Allocation::           Allocating storage for your program data
-* Locking Pages::               Preventing page faults
 * Resizing the Data Segment::   `brk', `sbrk'
+* Locking Pages::               Preventing page faults
 
    Memory mapped I/O is not discussed in this chapter.  *Note
 Memory-mapped I/O::.
@@ -4900,7 +5600,7 @@ flag saying it is all zeroes.
 
    The same frame of real memory or backing store can back multiple
 virtual pages belonging to multiple processes.  This is normally the
-case, for example, with virtual memory occupied by GNU C library code.
+case, for example, with virtual memory occupied by GNU C Library code.
 The same real memory frame containing the `printf' function backs a
 virtual memory page in each of the existing processes that has a
 `printf' call in its program.
@@ -4948,7 +5648,7 @@ variables: C variables with the static storage class (*note Memory
 Allocation and C::).  
 
    Once that program begins to execute, it uses programmatic allocation
-to gain additional memory.  In a C program with the GNU C library, there
+to gain additional memory.  In a C program with the GNU C Library, there
 are two kinds of programmatic allocation: automatic and dynamic.  *Note
 Memory Allocation and C::.
 
@@ -4988,14 +5688,14 @@ segments are:
 
 
 
-File: libc.info,  Node: Memory Allocation,  Next: Locking Pages,  Prev: Memory Concepts,  Up: Memory
+File: libc.info,  Node: Memory Allocation,  Next: Resizing the Data Segment,  Prev: Memory Concepts,  Up: Memory
 
 3.2 Allocating Storage For Program Data
 =======================================
 
 This section covers how ordinary programs manage storage for their data,
 including the famous `malloc' function and some fancier facilities
-special the GNU C library and GNU Compiler.
+special the GNU C Library and GNU Compiler.
 
 * Menu:
 
@@ -5034,7 +5734,7 @@ variables in C programs:
      that varies.  In other C implementations, it must be a constant.
 
    A third important kind of memory allocation, "dynamic allocation",
-is not supported by C variables but is available via GNU C library
+is not supported by C variables but is available via GNU C Library
 functions.  
 
 3.2.1.1 Dynamic Memory Allocation
@@ -5066,7 +5766,7 @@ as you want.
 storage class "dynamic", and there can never be a C variable whose
 value is stored in dynamically allocated space.  The only way to get
 dynamically allocated memory is via a system call (which is generally
-via a GNU C library function call), and the only way to refer to
+via a GNU C Library function call), and the only way to refer to
 dynamically allocated space is through a pointer.  Because it is less
 convenient, and because the actual process of dynamic allocation
 requires more computation time, programmers generally use dynamic
@@ -5130,6 +5830,9 @@ To allocate a block of memory, call `malloc'.  The prototype for this
 function is in `stdlib.h'.  
 
  -- Function: void * malloc (size_t SIZE)
+     Preliminary: | MT-Safe | AS-Unsafe lock | AC-Unsafe lock fd mem |
+     *Note POSIX Safety Concepts::.
+
      This function returns a pointer to a newly allocated block SIZE
      bytes long, or a null pointer if the block could not be allocated.
 
@@ -5178,7 +5881,7 @@ function is conventionally called `xmalloc'.  Here it is:
      void *
      xmalloc (size_t size)
      {
-       register void *value = malloc (size);
+       void *value = malloc (size);
        if (value == 0)
          fatal ("virtual memory exhausted");
        return value;
@@ -5191,17 +5894,17 @@ allocated null-terminated string:
      char *
      savestring (const char *ptr, size_t len)
      {
-       register char *value = (char *) xmalloc (len + 1);
+       char *value = (char *) xmalloc (len + 1);
        value[len] = '\0';
        return (char *) memcpy (value, ptr, len);
      }
 
    The block that `malloc' gives you is guaranteed to be aligned so
-that it can hold any type of data.  In the GNU system, the address is
-always a multiple of eight on most systems, and a multiple of 16 on
+that it can hold any type of data.  On GNU systems, the address is
+always a multiple of eight on 32-bit systems, and a multiple of 16 on
 64-bit systems.  Only rarely is any higher boundary (such as a page
-boundary) necessary; for those cases, use `memalign', `posix_memalign'
-or `valloc' (*note Aligned Memory Blocks::).
+boundary) necessary; for those cases, use `aligned_alloc' or
+`posix_memalign' (*note Aligned Memory Blocks::).
 
    Note that the memory located after the end of the block is likely to
 be in use for something else; perhaps a block already allocated by
@@ -5223,10 +5926,16 @@ function `free' to make the block available to be allocated again.  The
 prototype for this function is in `stdlib.h'.  
 
  -- Function: void free (void *PTR)
+     Preliminary: | MT-Safe | AS-Unsafe lock | AC-Unsafe lock fd mem |
+     *Note POSIX Safety Concepts::.
+
      The `free' function deallocates the block of memory pointed at by
      PTR.
 
  -- Function: void cfree (void *PTR)
+     Preliminary: | MT-Safe | AS-Unsafe lock | AC-Unsafe lock fd mem |
+     *Note POSIX Safety Concepts::.
+
      This function does the same thing as `free'.  It's provided for
      backward compatibility with SunOS; you should use `free' instead.
 
@@ -5280,6 +5989,9 @@ encounter a line that is longer.
 is declared in `stdlib.h'.  
 
  -- Function: void * realloc (void *PTR, size_t NEWSIZE)
+     Preliminary: | MT-Safe | AS-Unsafe lock | AC-Unsafe lock fd mem |
+     *Note POSIX Safety Concepts::.
+
      The `realloc' function changes the size of the block whose address
      is PTR to be NEWSIZE.
 
@@ -5308,7 +6020,7 @@ error message as `xmalloc' does for `malloc':
      void *
      xrealloc (void *ptr, size_t size)
      {
-       register void *value = realloc (ptr, size);
+       void *value = realloc (ptr, size);
        if (value == 0)
          fatal ("Virtual memory exhausted");
        return value;
@@ -5334,6 +6046,9 @@ The function `calloc' allocates memory and clears it to zero.  It is
 declared in `stdlib.h'.  
 
  -- Function: void * calloc (size_t COUNT, size_t ELTSIZE)
+     Preliminary: | MT-Safe | AS-Unsafe lock | AC-Unsafe lock fd mem |
+     *Note POSIX Safety Concepts::.
+
      This function allocates a block long enough to contain a vector of
      COUNT elements, each of size ELTSIZE.  Its contents are cleared to
      zero before `calloc' returns.
@@ -5383,26 +6098,64 @@ File: libc.info,  Node: Aligned Memory Blocks,  Next: Malloc Tunable Parameters,
 3.2.2.7 Allocating Aligned Memory Blocks
 ........................................
 
-The address of a block returned by `malloc' or `realloc' in the GNU
-system is always a multiple of eight (or sixteen on 64-bit systems).
-If you need a block whose address is a multiple of a higher power of
-two than that, use `memalign', `posix_memalign', or `valloc'.
-`memalign' is declared in `malloc.h' and `posix_memalign' is declared
-in `stdlib.h'.
+The address of a block returned by `malloc' or `realloc' in GNU systems
+is always a multiple of eight (or sixteen on 64-bit systems).  If you
+need a block whose address is a multiple of a higher power of two than
+that, use `aligned_alloc' or `posix_memalign'.  `aligned_alloc' and
+`posix_memalign' are declared in `stdlib.h'.
 
-   With the GNU library, you can use `free' to free the blocks that
-`memalign', `posix_memalign', and `valloc' return.  That does not work
-in BSD, however--BSD does not provide any way to free such blocks.
+ -- Function: void * aligned_alloc (size_t ALIGNMENT, size_t SIZE)
+     Preliminary: | MT-Safe | AS-Unsafe lock | AC-Unsafe lock fd mem |
+     *Note POSIX Safety Concepts::.
+
+     The `aligned_alloc' function allocates a block of SIZE bytes whose
+     address is a multiple of ALIGNMENT.  The ALIGNMENT must be a power
+     of two and SIZE must be a multiple of ALIGNMENT.
+
+     The `aligned_alloc' function returns a null pointer on error and
+     sets `errno' to one of the following values:
+
+    `ENOMEM'
+          There was insufficient memory available to satisfy the
+          request.
+
+    `EINVAL'
+          ALIGNMENT is not a power of two.
+
+          This function was introduced in ISO C11 and hence may have
+          better portability to modern non-POSIX systems than
+          `posix_memalign'.
+
 
  -- Function: void * memalign (size_t BOUNDARY, size_t SIZE)
+     Preliminary: | MT-Safe | AS-Unsafe lock | AC-Unsafe lock fd mem |
+     *Note POSIX Safety Concepts::.
+
      The `memalign' function allocates a block of SIZE bytes whose
      address is a multiple of BOUNDARY.  The BOUNDARY must be a power
      of two!  The function `memalign' works by allocating a somewhat
      larger block, and then returning an address within the block that
      is on the specified boundary.
 
+     The `memalign' function returns a null pointer on error and sets
+     `errno' to one of the following values:
+
+    `ENOMEM'
+          There was insufficient memory available to satisfy the
+          request.
+
+    `EINVAL'
+          ALIGNMENT is not a power of two.
+
+
+     The `memalign' function is obsolete and `aligned_alloc' or
+     `posix_memalign' should be used instead.
+
  -- Function: int posix_memalign (void **MEMPTR, size_t ALIGNMENT,
           size_t SIZE)
+     Preliminary: | MT-Safe | AS-Unsafe lock | AC-Unsafe lock fd mem |
+     *Note POSIX Safety Concepts::.
+
      The `posix_memalign' function is similar to the `memalign'
      function in that it returns a buffer of SIZE bytes aligned to a
      multiple of ALIGNMENT.  But it adds one requirement to the
@@ -5412,11 +6165,24 @@ in BSD, however--BSD does not provide any way to free such blocks.
      If the function succeeds in allocation memory a pointer to the
      allocated memory is returned in `*MEMPTR' and the return value is
      zero.  Otherwise the function returns an error value indicating
-     the problem.
+     the problem.  The possible error values returned are:
 
-     This function was introduced in POSIX 1003.1d.
+    `ENOMEM'
+          There was insufficient memory available to satisfy the
+          request.
+
+    `EINVAL'
+          ALIGNMENT is not a power of two multiple of `sizeof (void *)'.
+
+
+     This function was introduced in POSIX 1003.1d.  Although this
+     function is superseded by `aligned_alloc', it is more portable to
+     older POSIX systems that do not support ISO C11.
 
  -- Function: void * valloc (size_t SIZE)
+     Preliminary: | MT-Unsafe init | AS-Unsafe init lock | AC-Unsafe
+     init lock fd mem | *Note POSIX Safety Concepts::.
+
      Using `valloc' is like using `memalign' and passing the page size
      as the value of the second argument.  It is implemented like this:
 
@@ -5429,6 +6195,9 @@ in BSD, however--BSD does not provide any way to free such blocks.
      *note Query Memory Parameters:: for more information about the
      memory subsystem.
 
+     The `valloc' function is obsolete and `aligned_alloc' or
+     `posix_memalign' should be used instead.
+
 
 File: libc.info,  Node: Malloc Tunable Parameters,  Next: Heap Consistency Checking,  Prev: Aligned Memory Blocks,  Up: Unconstrained Allocation
 
@@ -5440,14 +6209,33 @@ You can adjust some parameters for dynamic memory allocation with the
 defined in `malloc.h'.  
 
  -- Function: int mallopt (int PARAM, int VALUE)
+     Preliminary: | MT-Unsafe init const:mallopt | AS-Unsafe init lock
+     | AC-Unsafe init lock | *Note POSIX Safety Concepts::.
+
      When calling `mallopt', the PARAM argument specifies the parameter
      to be set, and VALUE the new value to be set.  Possible choices
      for PARAM, as defined in `malloc.h', are:
 
-    `M_TRIM_THRESHOLD'
-          This is the minimum size (in bytes) of the top-most,
-          releasable chunk that will cause `sbrk' to be called with a
-          negative argument in order to return memory to the system.
+    `M_MMAP_MAX'
+          The maximum number of chunks to allocate with `mmap'.
+          Setting this to zero disables all use of `mmap'.
+
+    `M_MMAP_THRESHOLD'
+          All chunks larger than this value are allocated outside the
+          normal heap, using the `mmap' system call.  This way it is
+          guaranteed that the memory for these chunks can be returned
+          to the system on `free'.  Note that requests smaller than
+          this threshold might still be allocated via `mmap'.
+
+    `M_PERTURB'
+          If non-zero, memory blocks are filled with values depending
+          on some low order bits of this parameter when they are
+          allocated (except when allocated by `calloc') and freed.
+          This can be used to debug the use of uninitialized or freed
+          heap memory.  Note that this option does not guarantee that
+          the freed block will have any specific values.  It only
+          guarantees that the content the block had before it was freed
+          will be overwritten.
 
     `M_TOP_PAD'
           This parameter determines the amount of extra memory to
@@ -5457,23 +6245,10 @@ defined in `malloc.h'.
           provides the necessary hysteresis in heap size such that
           excessive amounts of system calls can be avoided.
 
-    `M_MMAP_THRESHOLD'
-          All chunks larger than this value are allocated outside the
-          normal heap, using the `mmap' system call.  This way it is
-          guaranteed that the memory for these chunks can be returned
-          to the system on `free'.  Note that requests smaller than
-          this threshold might still be allocated via `mmap'.
-
-    `M_MMAP_MAX'
-          The maximum number of chunks to allocate with `mmap'.
-          Setting this to zero disables all use of `mmap'.
-
-    `M_PERTURB'
-          If non-zero, memory blocks are filled with values depending
-          on some low order bits of this parameter when they are
-          allocated (except when allocated by `calloc') and freed.
-          This can be used to debug the use of uninitialized or freed
-          heap memory.
+    `M_TRIM_THRESHOLD'
+          This is the minimum size (in bytes) of the top-most,
+          releasable chunk that will cause `sbrk' to be called with a
+          negative argument in order to return memory to the system.
 
 
 
@@ -5487,6 +6262,10 @@ using the `mcheck' function.  This function is a GNU extension,
 declared in `mcheck.h'.  
 
  -- Function: int mcheck (void (*ABORTFN) (enum mcheck_status STATUS))
+     Preliminary: | MT-Unsafe race:mcheck const:malloc_hooks |
+     AS-Unsafe corrupt | AC-Unsafe corrupt | *Note POSIX Safety
+     Concepts::.
+
      Calling `mcheck' tells `malloc' to perform occasional consistency
      checks.  These will catch things such as writing past the end of a
      block that was allocated with `malloc'.
@@ -5526,6 +6305,10 @@ declared in `mcheck.h'.
 
 
  -- Function: enum mcheck_status mprobe (void *POINTER)
+     Preliminary: | MT-Unsafe race:mcheck const:malloc_hooks |
+     AS-Unsafe corrupt | AC-Unsafe corrupt | *Note POSIX Safety
+     Concepts::.
+
      The `mprobe' function lets you explicitly check for inconsistencies
      in a particular allocated block.  You must have already called
      `mcheck' at the beginning of the program, to do its occasional
@@ -5594,7 +6377,7 @@ File: libc.info,  Node: Hooks for Malloc,  Next: Statistics of Malloc,  Prev: He
 3.2.2.10 Memory Allocation Hooks
 ................................
 
-The GNU C library lets you modify the behavior of `malloc', `realloc',
+The GNU C Library lets you modify the behavior of `malloc', `realloc',
 and `free' by specifying appropriate hook functions.  You can use these
 hooks to help you debug programs that use dynamic memory allocation,
 for example.
@@ -5635,15 +6418,17 @@ for example.
      memory consumption of the program.
 
  -- Variable: __memalign_hook
-     The value of this variable is a pointer to function that `memalign'
-     uses whenever it is called.  You should define this function to
-     look like `memalign'; that is, like:
+     The value of this variable is a pointer to function that
+     `aligned_alloc', `memalign', `posix_memalign' and `valloc' use
+     whenever they are called.  You should define this function to look
+     like `aligned_alloc'; that is, like:
 
           void *FUNCTION (size_t ALIGNMENT, size_t SIZE, const void *CALLER)
 
      The value of CALLER is the return address found on the stack when
-     the `memalign' function was called.  This value allows you to
-     trace the memory consumption of the program.
+     the `aligned_alloc', `memalign', `posix_memalign' or `valloc'
+     functions are called.  This value allows you to trace the memory
+     consumption of the program.
 
    You must make sure that the function you install as a hook for one of
 these functions does not call that function recursively without
@@ -5803,6 +6588,9 @@ version.
 
 
  -- Function: struct mallinfo mallinfo (void)
+     Preliminary: | MT-Unsafe init const:mallopt | AS-Unsafe init lock
+     | AC-Unsafe init lock | *Note POSIX Safety Concepts::.
+
      This function returns information about the current dynamic memory
      usage in a structure of type `struct mallinfo'.
 
@@ -5834,6 +6622,14 @@ Here is a summary of the functions that work with `malloc':
      Allocate a block of SIZE bytes, starting on a page boundary.
      *Note Aligned Memory Blocks::.
 
+`void *aligned_alloc (size_t SIZE, size_t ALIGNMENT)'
+     Allocate a block of SIZE bytes, starting on an address that is a
+     multiple of ALIGNMENT.  *Note Aligned Memory Blocks::.
+
+`int posix_memalign (void **MEMPTR, size_t ALIGNMENT, size_t SIZE)'
+     Allocate a block of SIZE bytes, starting on an address that is a
+     multiple of ALIGNMENT.  *Note Aligned Memory Blocks::.
+
 `void *memalign (size_t SIZE, size_t BOUNDARY)'
      Allocate a block of SIZE bytes, starting on an address that is a
      multiple of BOUNDARY.  *Note Aligned Memory Blocks::.
@@ -5856,7 +6652,8 @@ Here is a summary of the functions that work with `malloc':
      A pointer to a function that `free' uses whenever it is called.
 
 `void (*__memalign_hook) (size_t SIZE, size_t ALIGNMENT, const void *CALLER)'
-     A pointer to a function that `memalign' uses whenever it is called.
+     A pointer to a function that `aligned_alloc', `memalign',
+     `posix_memalign' and `valloc' use whenever they are called.
 
 `struct mallinfo mallinfo (void)'
      Return information about the current dynamic memory usage.  *Note
@@ -5874,7 +6671,7 @@ Long running programs must assure that dynamically allocated objects are
 freed at the end of their lifetime.  If this does not happen the system
 runs out of memory, sooner or later.
 
-   The `malloc' implementation in the GNU C library provides some
+   The `malloc' implementation in the GNU C Library provides some
 simple means to detect such leaks and obtain some information to find
 the location.  To do this the application must be started in a special
 mode which is enabled by an environment variable.  There are no speed
@@ -5894,6 +6691,10 @@ File: libc.info,  Node: Tracing malloc,  Next: Using the Memory Debugger,  Up: A
 ................................................
 
  -- Function: void mtrace (void)
+     Preliminary: | MT-Unsafe env race:mtrace const:malloc_hooks init |
+     AS-Unsafe init heap corrupt lock | AC-Unsafe init corrupt lock fd
+     mem | *Note POSIX Safety Concepts::.
+
      When the `mtrace' function is called it looks for an environment
      variable named `MALLOC_TRACE'.  This variable is supposed to
      contain a valid file name.  The user must have write access.  If
@@ -5914,6 +6715,10 @@ File: libc.info,  Node: Tracing malloc,  Next: Using the Memory Debugger,  Up: A
      other systems.  The prototype can be found in `mcheck.h'.
 
  -- Function: void muntrace (void)
+     Preliminary: | MT-Unsafe race:mtrace const:malloc_hooks locale |
+     AS-Unsafe corrupt heap | AC-Unsafe corrupt mem lock fd | *Note
+     POSIX Safety Concepts::.
+
      The `muntrace' function can be called after `mtrace' was used to
      enable tracing the `malloc' calls.  If no (successful) call of
      `mtrace' was made `muntrace' does nothing.
@@ -6037,7 +6842,7 @@ If you take a look at the output it will look similar to this:
    What this all means is not really important since the trace file is
 not meant to be read by a human.  Therefore no attention is given to
 readability.  Instead there is a program which comes with the GNU C
-library which interprets the traces and outputs a summary in an
+Library which interprets the traces and outputs a summary in an
 user-friendly way.  The program is called `mtrace' (it is in fact a
 Perl script) and it takes one or two arguments.  In any case the name of
 the file with the trace output must be specified.  If an optional
@@ -6213,6 +7018,9 @@ larger blocks of memory.  *Note Obstack Chunks::, for full details.
 an obstack, it must initialize the obstack by calling `obstack_init'.
 
  -- Function: int obstack_init (struct obstack *OBSTACK-PTR)
+     Preliminary: | MT-Safe race:obstack-ptr | AS-Safe | AC-Safe mem |
+     *Note POSIX Safety Concepts::.
+
      Initialize obstack OBSTACK-PTR for allocation of objects.  This
      function calls the obstack's `obstack_chunk_alloc' function.  If
      allocation of memory fails, the function pointed to by
@@ -6258,6 +7066,9 @@ The most direct way to allocate an object in an obstack is with
 
  -- Function: void * obstack_alloc (struct obstack *OBSTACK-PTR, int
           SIZE)
+     Preliminary: | MT-Safe race:obstack-ptr | AS-Safe | AC-Unsafe
+     corrupt mem | *Note POSIX Safety Concepts::.
+
      This allocates an uninitialized block of SIZE bytes in an obstack
      and returns its address.  Here OBSTACK-PTR specifies which obstack
      to allocate the block in; it is the address of the `struct obstack'
@@ -6288,12 +7099,18 @@ in a specific obstack, which is in the variable `string_obstack':
 
  -- Function: void * obstack_copy (struct obstack *OBSTACK-PTR, void
           *ADDRESS, int SIZE)
+     Preliminary: | MT-Safe race:obstack-ptr | AS-Safe | AC-Unsafe
+     corrupt mem | *Note POSIX Safety Concepts::.
+
      This allocates a block and initializes it by copying SIZE bytes of
      data starting at ADDRESS.  It calls `obstack_alloc_failed_handler'
      if allocation of memory by `obstack_chunk_alloc' failed.
 
  -- Function: void * obstack_copy0 (struct obstack *OBSTACK-PTR, void
           *ADDRESS, int SIZE)
+     Preliminary: | MT-Safe race:obstack-ptr | AS-Safe | AC-Unsafe
+     corrupt mem | *Note POSIX Safety Concepts::.
+
      Like `obstack_copy', but appends an extra byte containing a null
      character.  This extra byte is not counted in the argument SIZE.
 
@@ -6323,6 +7140,9 @@ the same obstack.
 
  -- Function: void obstack_free (struct obstack *OBSTACK-PTR, void
           *OBJECT)
+     Preliminary: | MT-Safe race:obstack-ptr | AS-Safe | AC-Unsafe
+     corrupt | *Note POSIX Safety Concepts::.
+
      If OBJECT is a null pointer, everything allocated in the obstack
      is freed.  Otherwise, OBJECT must be the address of an object
      allocated in the obstack.  Then OBJECT is freed, along with
@@ -6422,38 +7242,59 @@ space already added to the growing object will become part of the other
 object.
 
  -- Function: void obstack_blank (struct obstack *OBSTACK-PTR, int SIZE)
+     Preliminary: | MT-Safe race:obstack-ptr | AS-Safe | AC-Unsafe
+     corrupt mem | *Note POSIX Safety Concepts::.
+
      The most basic function for adding to a growing object is
      `obstack_blank', which adds space without initializing it.
 
  -- Function: void obstack_grow (struct obstack *OBSTACK-PTR, void
           *DATA, int SIZE)
+     Preliminary: | MT-Safe race:obstack-ptr | AS-Safe | AC-Unsafe
+     corrupt mem | *Note POSIX Safety Concepts::.
+
      To add a block of initialized space, use `obstack_grow', which is
      the growing-object analogue of `obstack_copy'.  It adds SIZE bytes
      of data to the growing object, copying the contents from DATA.
 
  -- Function: void obstack_grow0 (struct obstack *OBSTACK-PTR, void
           *DATA, int SIZE)
+     Preliminary: | MT-Safe race:obstack-ptr | AS-Safe | AC-Unsafe
+     corrupt mem | *Note POSIX Safety Concepts::.
+
      This is the growing-object analogue of `obstack_copy0'.  It adds
      SIZE bytes copied from DATA, followed by an additional null
      character.
 
  -- Function: void obstack_1grow (struct obstack *OBSTACK-PTR, char C)
+     Preliminary: | MT-Safe race:obstack-ptr | AS-Safe | AC-Unsafe
+     corrupt mem | *Note POSIX Safety Concepts::.
+
      To add one character at a time, use the function `obstack_1grow'.
      It adds a single byte containing C to the growing object.
 
  -- Function: void obstack_ptr_grow (struct obstack *OBSTACK-PTR, void
           *DATA)
+     Preliminary: | MT-Safe race:obstack-ptr | AS-Safe | AC-Unsafe
+     corrupt mem | *Note POSIX Safety Concepts::.
+
      Adding the value of a pointer one can use the function
      `obstack_ptr_grow'.  It adds `sizeof (void *)' bytes containing
      the value of DATA.
 
  -- Function: void obstack_int_grow (struct obstack *OBSTACK-PTR, int
           DATA)
+     Preliminary: | MT-Safe race:obstack-ptr | AS-Safe | AC-Unsafe
+     corrupt mem | *Note POSIX Safety Concepts::.
+
      A single value of type `int' can be added by using the
      `obstack_int_grow' function.  It adds `sizeof (int)' bytes to the
      growing object and initializes them with the value of DATA.
 
  -- Function: void * obstack_finish (struct obstack *OBSTACK-PTR)
+     Preliminary: | MT-Safe race:obstack-ptr | AS-Safe | AC-Unsafe
+     corrupt | *Note POSIX Safety Concepts::.
+
      When you are finished growing the object, use the function
      `obstack_finish' to close it off and return its final address.
 
@@ -6470,6 +7311,9 @@ obstack just before finishing the object with the function
 `obstack_object_size', declared as follows:
 
  -- Function: int obstack_object_size (struct obstack *OBSTACK-PTR)
+     Preliminary: | MT-Safe race:obstack-ptr | AS-Safe | AC-Safe |
+     *Note POSIX Safety Concepts::.
+
      This function returns the current size of the growing object, in
      bytes.  Remember to call this function _before_ finishing the
      object.  After it is finished, `obstack_object_size' will return
@@ -6509,6 +7353,9 @@ more efficiently, then you make the program faster.
 the current chunk.  It is declared as follows:
 
  -- Function: int obstack_room (struct obstack *OBSTACK-PTR)
+     Preliminary: | MT-Safe race:obstack-ptr | AS-Safe | AC-Safe |
+     *Note POSIX Safety Concepts::.
+
      This returns the number of bytes that can be added safely to the
      current growing object (or to an object about to be started) in
      obstack OBSTACK using the fast growth functions.
@@ -6518,23 +7365,35 @@ for adding data to a growing object:
 
  -- Function: void obstack_1grow_fast (struct obstack *OBSTACK-PTR,
           char C)
+     Preliminary: | MT-Safe race:obstack-ptr | AS-Safe | AC-Unsafe
+     corrupt mem | *Note POSIX Safety Concepts::.
+
      The function `obstack_1grow_fast' adds one byte containing the
      character C to the growing object in obstack OBSTACK-PTR.
 
  -- Function: void obstack_ptr_grow_fast (struct obstack *OBSTACK-PTR,
           void *DATA)
+     Preliminary: | MT-Safe race:obstack-ptr | AS-Safe | AC-Safe |
+     *Note POSIX Safety Concepts::.
+
      The function `obstack_ptr_grow_fast' adds `sizeof (void *)' bytes
      containing the value of DATA to the growing object in obstack
      OBSTACK-PTR.
 
  -- Function: void obstack_int_grow_fast (struct obstack *OBSTACK-PTR,
           int DATA)
+     Preliminary: | MT-Safe race:obstack-ptr | AS-Safe | AC-Safe |
+     *Note POSIX Safety Concepts::.
+
      The function `obstack_int_grow_fast' adds `sizeof (int)' bytes
      containing the value of DATA to the growing object in obstack
      OBSTACK-PTR.
 
  -- Function: void obstack_blank_fast (struct obstack *OBSTACK-PTR, int
           SIZE)
+     Preliminary: | MT-Safe race:obstack-ptr | AS-Safe | AC-Safe |
+     *Note POSIX Safety Concepts::.
+
      The function `obstack_blank_fast' adds SIZE bytes to the growing
      object in obstack OBSTACK-PTR without initializing them.
 
@@ -6559,7 +7418,7 @@ start using the fast growth functions again.
            int room = obstack_room (obstack);
            if (room == 0)
              {
-               /* Not enough room. Add one character slowly,
+               /* Not enough room.  Add one character slowly,
                   which may copy to a new chunk and make room.  */
                obstack_1grow (obstack, *ptr++);
                len--;
@@ -6587,6 +7446,9 @@ allocation in an obstack.  You can use them to learn about an object
 while still growing it.
 
  -- Function: void * obstack_base (struct obstack *OBSTACK-PTR)
+     Preliminary: | MT-Safe | AS-Unsafe corrupt | AC-Safe | *Note POSIX
+     Safety Concepts::.
+
      This function returns the tentative address of the beginning of the
      currently growing object in OBSTACK-PTR.  If you finish the object
      immediately, it will have that address.  If you make it larger
@@ -6598,12 +7460,18 @@ while still growing it.
      chunk).
 
  -- Function: void * obstack_next_free (struct obstack *OBSTACK-PTR)
+     Preliminary: | MT-Safe | AS-Unsafe corrupt | AC-Safe | *Note POSIX
+     Safety Concepts::.
+
      This function returns the address of the first free byte in the
      current chunk of obstack OBSTACK-PTR.  This is the end of the
      currently growing object.  If no object is growing,
      `obstack_next_free' returns the same value as `obstack_base'.
 
  -- Function: int obstack_object_size (struct obstack *OBSTACK-PTR)
+     Preliminary: | MT-Safe race:obstack-ptr | AS-Safe | AC-Safe |
+     *Note POSIX Safety Concepts::.
+
      This function returns the size in bytes of the currently growing
      object.  This is equivalent to
 
@@ -6624,6 +7492,9 @@ object can hold any type of data.
 `obstack_alignment_mask', whose function prototype looks like this:
 
  -- Macro: int obstack_alignment_mask (struct obstack *OBSTACK-PTR)
+     Preliminary: | MT-Safe | AS-Safe | AC-Safe | *Note POSIX Safety
+     Concepts::.
+
      The value is a bit mask; a bit that is 1 indicates that the
      corresponding bit in the address of an object should be 0.  The
      mask value should be one less than a power of 2; the effect is
@@ -6688,6 +7559,9 @@ not to waste too much memory in the portion of the last chunk not yet
 used.
 
  -- Macro: int obstack_chunk_size (struct obstack *OBSTACK-PTR)
+     Preliminary: | MT-Safe | AS-Safe | AC-Safe | *Note POSIX Safety
+     Concepts::.
+
      This returns the chunk size of the given obstack.
 
    Since this macro expands to an lvalue, you can specify a new chunk
@@ -6802,7 +7676,10 @@ that function.  There is no way to free the space explicitly.
    The prototype for `alloca' is in `stdlib.h'.  This function is a BSD
 extension.  
 
- -- Function: void * alloca (size_t SIZE);
+ -- Function: void * alloca (size_t SIZE)
+     Preliminary: | MT-Safe | AS-Safe | AC-Safe | *Note POSIX Safety
+     Concepts::.
+
      The return value of `alloca' is the address of a block of SIZE
      bytes of memory, allocated in the stack frame of the calling
      function.
@@ -6951,7 +7828,7 @@ declared frees all blocks allocated with `alloca' during the execution
 of that scope.
 
 
-File: libc.info,  Node: Resizing the Data Segment,  Prev: Locking Pages,  Up: Memory
+File: libc.info,  Node: Resizing the Data Segment,  Next: Locking Pages,  Prev: Memory Allocation,  Up: Memory
 
 3.3 Resizing the Data Segment
 =============================
@@ -6965,6 +7842,9 @@ functions below itself.  The functions below are simple interfaces to
 system calls.
 
  -- Function: int brk (void *ADDR)
+     Preliminary: | MT-Safe | AS-Safe | AC-Safe | *Note POSIX Safety
+     Concepts::.
+
      `brk' sets the high end of the calling process' data segment to
      ADDR.
 
@@ -6994,6 +7874,9 @@ system calls.
 
 
  -- Function: void *sbrk (ptrdiff_t DELTA)
+     Preliminary: | MT-Safe | AS-Safe | AC-Safe | *Note POSIX Safety
+     Concepts::.
+
      This function is the same as `brk' except that you specify the new
      end of the data segment as an offset DELTA from the current end
      and on success the return value is the address of the resulting
@@ -7004,7 +7887,7 @@ system calls.
 
 
 
-File: libc.info,  Node: Locking Pages,  Next: Resizing the Data Segment,  Prev: Memory Allocation,  Up: Memory
+File: libc.info,  Node: Locking Pages,  Prev: Resizing the Data Segment,  Up: Memory
 
 3.4 Locking Pages
 =================
@@ -7127,10 +8010,13 @@ but always fail.  They _are_ available with a Linux kernel.
 `_POSIX_MEMLOCK_RANGE' and the file `limits.h' define the macro
 `PAGESIZE' to be the size of a memory page in bytes.  It requires that
 when the `mlockall' and `munlockall' functions are available, the
-`unistd.h' file define the macro `_POSIX_MEMLOCK'.  The GNU C library
+`unistd.h' file define the macro `_POSIX_MEMLOCK'.  The GNU C Library
 conforms to this requirement.
 
  -- Function: int mlock (const void *ADDR, size_t LEN)
+     Preliminary: | MT-Safe | AS-Safe | AC-Safe | *Note POSIX Safety
+     Concepts::.
+
      `mlock' locks a range of the calling process' virtual pages.
 
      The range of memory starts at address ADDR and is LEN bytes long.
@@ -7176,6 +8062,9 @@ conforms to this requirement.
 
 
  -- Function: int munlock (const void *ADDR, size_t LEN)
+     Preliminary: | MT-Safe | AS-Safe | AC-Safe | *Note POSIX Safety
+     Concepts::.
+
      `munlock' unlocks a range of the calling process' virtual pages.
 
      `munlock' is the inverse of `mlock' and functions completely
@@ -7183,6 +8072,9 @@ conforms to this requirement.
 
 
  -- Function: int mlockall (int FLAGS)
+     Preliminary: | MT-Safe | AS-Safe | AC-Safe | *Note POSIX Safety
+     Concepts::.
+
      `mlockall' locks all the pages in a process' virtual memory address
      space, and/or any that are added to it in the future.  This
      includes the pages of the code, data and stack segment, as well as
@@ -7249,6 +8141,9 @@ conforms to this requirement.
 
 
  -- Function: int munlockall (void)
+     Preliminary: | MT-Safe | AS-Safe | AC-Safe | *Note POSIX Safety
+     Concepts::.
+
      `munlockall' unlocks every page in the calling process' virtual
      address space and turn off `MCL_FUTURE' future locking mode.
 
@@ -7319,14 +8214,23 @@ instead of a real character.
    These functions are declared in the header file `ctype.h'.  
 
  -- Function: int islower (int C)
+     Preliminary: | MT-Safe | AS-Safe | AC-Safe | *Note POSIX Safety
+     Concepts::.
+
      Returns true if C is a lower-case letter.  The letter need not be
      from the Latin alphabet, any alphabet representable is valid.
 
  -- Function: int isupper (int C)
+     Preliminary: | MT-Safe | AS-Safe | AC-Safe | *Note POSIX Safety
+     Concepts::.
+
      Returns true if C is an upper-case letter.  The letter need not be
      from the Latin alphabet, any alphabet representable is valid.
 
  -- Function: int isalpha (int C)
+     Preliminary: | MT-Safe | AS-Safe | AC-Safe | *Note POSIX Safety
+     Concepts::.
+
      Returns true if C is an alphabetic character (a letter).  If
      `islower' or `isupper' is true of a character, then `isalpha' is
      also true.
@@ -7337,23 +8241,38 @@ instead of a real character.
      additional characters.
 
  -- Function: int isdigit (int C)
+     Preliminary: | MT-Safe | AS-Safe | AC-Safe | *Note POSIX Safety
+     Concepts::.
+
      Returns true if C is a decimal digit (`0' through `9').
 
  -- Function: int isalnum (int C)
+     Preliminary: | MT-Safe | AS-Safe | AC-Safe | *Note POSIX Safety
+     Concepts::.
+
      Returns true if C is an alphanumeric character (a letter or
      number); in other words, if either `isalpha' or `isdigit' is true
      of a character, then `isalnum' is also true.
 
  -- Function: int isxdigit (int C)
+     Preliminary: | MT-Safe | AS-Safe | AC-Safe | *Note POSIX Safety
+     Concepts::.
+
      Returns true if C is a hexadecimal digit.  Hexadecimal digits
      include the normal decimal digits `0' through `9' and the letters
      `A' through `F' and `a' through `f'.
 
  -- Function: int ispunct (int C)
+     Preliminary: | MT-Safe | AS-Safe | AC-Safe | *Note POSIX Safety
+     Concepts::.
+
      Returns true if C is a punctuation character.  This means any
      printing character that is not alphanumeric or a space character.
 
  -- Function: int isspace (int C)
+     Preliminary: | MT-Safe | AS-Safe | AC-Safe | *Note POSIX Safety
+     Concepts::.
+
      Returns true if C is a "whitespace" character.  In the standard
      `"C"' locale, `isspace' returns true for only the standard
      whitespace characters:
@@ -7377,24 +8296,39 @@ instead of a real character.
           vertical tab
 
  -- Function: int isblank (int C)
+     Preliminary: | MT-Safe | AS-Safe | AC-Safe | *Note POSIX Safety
+     Concepts::.
+
      Returns true if C is a blank character; that is, a space or a tab.
      This function was originally a GNU extension, but was added in
      ISO C99.
 
  -- Function: int isgraph (int C)
+     Preliminary: | MT-Safe | AS-Safe | AC-Safe | *Note POSIX Safety
+     Concepts::.
+
      Returns true if C is a graphic character; that is, a character
      that has a glyph associated with it.  The whitespace characters
      are not considered graphic.
 
  -- Function: int isprint (int C)
+     Preliminary: | MT-Safe | AS-Safe | AC-Safe | *Note POSIX Safety
+     Concepts::.
+
      Returns true if C is a printing character.  Printing characters
      include all the graphic characters, plus the space (` ') character.
 
  -- Function: int iscntrl (int C)
+     Preliminary: | MT-Safe | AS-Safe | AC-Safe | *Note POSIX Safety
+     Concepts::.
+
      Returns true if C is a control character (that is, a character that
      is not a printing character).
 
  -- Function: int isascii (int C)
+     Preliminary: | MT-Safe | AS-Safe | AC-Safe | *Note POSIX Safety
+     Concepts::.
+
      Returns true if C is a 7-bit `unsigned char' value that fits into
      the US/UK ASCII character set.  This function is a BSD extension
      and is also an SVID extension.
@@ -7423,25 +8357,40 @@ write `islower(c) ? toupper(c) : c' rather than just `toupper(c)'.
    These functions are declared in the header file `ctype.h'.  
 
  -- Function: int tolower (int C)
+     Preliminary: | MT-Safe | AS-Safe | AC-Safe | *Note POSIX Safety
+     Concepts::.
+
      If C is an upper-case letter, `tolower' returns the corresponding
      lower-case letter.  If C is not an upper-case letter, C is
      returned unchanged.
 
  -- Function: int toupper (int C)
+     Preliminary: | MT-Safe | AS-Safe | AC-Safe | *Note POSIX Safety
+     Concepts::.
+
      If C is a lower-case letter, `toupper' returns the corresponding
      upper-case letter.  Otherwise C is returned unchanged.
 
  -- Function: int toascii (int C)
+     Preliminary: | MT-Safe | AS-Safe | AC-Safe | *Note POSIX Safety
+     Concepts::.
+
      This function converts C to a 7-bit `unsigned char' value that
      fits into the US/UK ASCII character set, by clearing the high-order
      bits.  This function is a BSD extension and is also an SVID
      extension.
 
  -- Function: int _tolower (int C)
+     Preliminary: | MT-Safe | AS-Safe | AC-Safe | *Note POSIX Safety
+     Concepts::.
+
      This is identical to `tolower', and is provided for compatibility
      with the SVID.  *Note SVID::.
 
  -- Function: int _toupper (int C)
+     Preliminary: | MT-Safe | AS-Safe | AC-Safe | *Note POSIX Safety
+     Concepts::.
+
      This is identical to `toupper', and is provided for compatibility
      with the SVID.
 
@@ -7459,7 +8408,7 @@ Although the original ISO C90 standard already defined the type
 characters is more general.  It allows extensions to the set of
 available classifications, beyond those which are always available.
 The POSIX standard specifies how extensions can be made, and this is
-already implemented in the GNU C library implementation of the
+already implemented in the GNU C Library implementation of the
 `localedef' program.
 
    The character class functions are normally implemented with bitsets,
@@ -7482,6 +8431,9 @@ objects can be defined.
      This type is defined in `wctype.h'.
 
  -- Function: wctype_t wctype (const char *PROPERTY)
+     Preliminary: | MT-Safe locale | AS-Safe | AC-Safe | *Note POSIX
+     Safety Concepts::.
+
      The `wctype' returns a value representing a class of wide
      characters which is identified by the string PROPERTY.  Beside
      some standard properties each locale can define its own ones.  In
@@ -7501,6 +8453,9 @@ objects can be defined.
 classes the ISO C standard defines a completely new function.
 
  -- Function: int iswctype (wint_t WC, wctype_t DESC)
+     Preliminary: | MT-Safe | AS-Safe | AC-Safe | *Note POSIX Safety
+     Concepts::.
+
      This function returns a nonzero value if WC is in the character
      class specified by DESC.  DESC must previously be returned by a
      successful call to `wctype'.
@@ -7514,6 +8469,9 @@ situations it is desirable to construct the property strings, and then
 it is important that `wctype' can also handle the standard classes.
 
  -- Function: int iswalnum (wint_t WC)
+     Preliminary: | MT-Safe locale | AS-Safe | AC-Safe | *Note POSIX
+     Safety Concepts::.
+
      This function returns a nonzero value if WC is an alphanumeric
      character (a letter or number); in other words, if either
      `iswalpha' or `iswdigit' is true of a character, then `iswalnum'
@@ -7526,6 +8484,9 @@ it is important that `wctype' can also handle the standard classes.
      It is declared in `wctype.h'.
 
  -- Function: int iswalpha (wint_t WC)
+     Preliminary: | MT-Safe locale | AS-Safe | AC-Safe | *Note POSIX
+     Safety Concepts::.
+
      Returns true if WC is an alphabetic character (a letter).  If
      `iswlower' or `iswupper' is true of a character, then `iswalpha'
      is also true.
@@ -7542,6 +8503,9 @@ it is important that `wctype' can also handle the standard classes.
      It is declared in `wctype.h'.
 
  -- Function: int iswcntrl (wint_t WC)
+     Preliminary: | MT-Safe locale | AS-Safe | AC-Safe | *Note POSIX
+     Safety Concepts::.
+
      Returns true if WC is a control character (that is, a character
      that is not a printing character).
 
@@ -7552,6 +8516,9 @@ it is important that `wctype' can also handle the standard classes.
      It is declared in `wctype.h'.
 
  -- Function: int iswdigit (wint_t WC)
+     Preliminary: | MT-Safe locale | AS-Safe | AC-Safe | *Note POSIX
+     Safety Concepts::.
+
      Returns true if WC is a digit (e.g., `0' through `9').  Please
      note that this function does not only return a nonzero value for
      _decimal_ digits, but for all kinds of digits.  A consequence is
@@ -7572,6 +8539,9 @@ it is important that `wctype' can also handle the standard classes.
      It is declared in `wctype.h'.
 
  -- Function: int iswgraph (wint_t WC)
+     Preliminary: | MT-Safe locale | AS-Safe | AC-Safe | *Note POSIX
+     Safety Concepts::.
+
      Returns true if WC is a graphic character; that is, a character
      that has a glyph associated with it.  The whitespace characters
      are not considered graphic.
@@ -7583,6 +8553,9 @@ it is important that `wctype' can also handle the standard classes.
      It is declared in `wctype.h'.
 
  -- Function: int iswlower (wint_t WC)
+     Preliminary: | MT-Safe locale | AS-Safe | AC-Safe | *Note POSIX
+     Safety Concepts::.
+
      Returns true if WC is a lower-case letter.  The letter need not be
      from the Latin alphabet, any alphabet representable is valid.
 
@@ -7593,6 +8566,9 @@ it is important that `wctype' can also handle the standard classes.
      It is declared in `wctype.h'.
 
  -- Function: int iswprint (wint_t WC)
+     Preliminary: | MT-Safe locale | AS-Safe | AC-Safe | *Note POSIX
+     Safety Concepts::.
+
      Returns true if WC is a printing character.  Printing characters
      include all the graphic characters, plus the space (` ') character.
 
@@ -7603,6 +8579,9 @@ it is important that `wctype' can also handle the standard classes.
      It is declared in `wctype.h'.
 
  -- Function: int iswpunct (wint_t WC)
+     Preliminary: | MT-Safe locale | AS-Safe | AC-Safe | *Note POSIX
+     Safety Concepts::.
+
      Returns true if WC is a punctuation character.  This means any
      printing character that is not alphanumeric or a space character.
 
@@ -7613,6 +8592,9 @@ it is important that `wctype' can also handle the standard classes.
      It is declared in `wctype.h'.
 
  -- Function: int iswspace (wint_t WC)
+     Preliminary: | MT-Safe locale | AS-Safe | AC-Safe | *Note POSIX
+     Safety Concepts::.
+
      Returns true if WC is a "whitespace" character.  In the standard
      `"C"' locale, `iswspace' returns true for only the standard
      whitespace characters:
@@ -7642,6 +8624,9 @@ it is important that `wctype' can also handle the standard classes.
      It is declared in `wctype.h'.
 
  -- Function: int iswupper (wint_t WC)
+     Preliminary: | MT-Safe locale | AS-Safe | AC-Safe | *Note POSIX
+     Safety Concepts::.
+
      Returns true if WC is an upper-case letter.  The letter need not be
      from the Latin alphabet, any alphabet representable is valid.
 
@@ -7652,6 +8637,9 @@ it is important that `wctype' can also handle the standard classes.
      It is declared in `wctype.h'.
 
  -- Function: int iswxdigit (wint_t WC)
+     Preliminary: | MT-Safe locale | AS-Safe | AC-Safe | *Note POSIX
+     Safety Concepts::.
+
      Returns true if WC is a hexadecimal digit.  Hexadecimal digits
      include the normal decimal digits `0' through `9' and the letters
      `A' through `F' and `a' through `f'.
@@ -7662,11 +8650,14 @@ it is important that `wctype' can also handle the standard classes.
 
      It is declared in `wctype.h'.
 
-   The GNU C library also provides a function which is not defined in
+   The GNU C Library also provides a function which is not defined in
 the ISO C standard but which is available as a version for single byte
 characters as well.
 
  -- Function: int iswblank (wint_t WC)
+     Preliminary: | MT-Safe locale | AS-Safe | AC-Safe | *Note POSIX
+     Safety Concepts::.
+
      Returns true if WC is a blank character; that is, a space or a tab.
      This function was originally a GNU extension, but was added in
      ISO C99.  It is declared in `wchar.h'.
@@ -7679,7 +8670,7 @@ File: libc.info,  Node: Using Wide Char Classes,  Next: Wide Character Case Conv
 
 The first note is probably not astonishing but still occasionally a
 cause of problems.  The `iswXXX' functions can be implemented using
-macros and in fact, the GNU C library does this.  They are still
+macros and in fact, the GNU C Library does this.  They are still
 available as real functions but when the `wctype.h' header is included
 the macros will be used.  This is the same as the `char' type versions
 of these functions.
@@ -7730,1005 +8721,4 @@ comparisons.  It gets really interesting if the `is_in_class' function
 is called more than once for the same class name.  In this case the
 variable DESC could be computed once and reused for all the calls.
 Therefore the above form of the function is probably not the final one.
-
-
-File: libc.info,  Node: Wide Character Case Conversion,  Prev: Using Wide Char Classes,  Up: Character Handling
-
-4.5 Mapping of wide characters.
-===============================
-
-The classification functions are also generalized by the ISO C
-standard.  Instead of just allowing the two standard mappings, a locale
-can contain others.  Again, the `localedef' program already supports
-generating such locale data files.
-
- -- Data Type: wctrans_t
-     This data type is defined as a scalar type which can hold a value
-     representing the locale-dependent character mapping.  There is no
-     way to construct such a value apart from using the return value of
-     the `wctrans' function.
-
-     This type is defined in `wctype.h'.
-
- -- Function: wctrans_t wctrans (const char *PROPERTY)
-     The `wctrans' function has to be used to find out whether a named
-     mapping is defined in the current locale selected for the
-     `LC_CTYPE' category.  If the returned value is non-zero, you can
-     use it afterwards in calls to `towctrans'.  If the return value is
-     zero no such mapping is known in the current locale.
-
-     Beside locale-specific mappings there are two mappings which are
-     guaranteed to be available in every locale:
-
-     `"tolower"'                        `"toupper"'
-
-     These functions are declared in `wctype.h'.
-
- -- Function: wint_t towctrans (wint_t WC, wctrans_t DESC)
-     `towctrans' maps the input character WC according to the rules of
-     the mapping for which DESC is a descriptor, and returns the value
-     it finds.  DESC must be obtained by a successful call to `wctrans'.
-
-     This function is declared in `wctype.h'.
-
-   For the generally available mappings, the ISO C standard defines
-convenient shortcuts so that it is not necessary to call `wctrans' for
-them.
-
- -- Function: wint_t towlower (wint_t WC)
-     If WC is an upper-case letter, `towlower' returns the corresponding
-     lower-case letter.  If WC is not an upper-case letter, WC is
-     returned unchanged.
-
-     `towlower' can be implemented using
-
-          towctrans (wc, wctrans ("tolower"))
-
-     This function is declared in `wctype.h'.
-
- -- Function: wint_t towupper (wint_t WC)
-     If WC is a lower-case letter, `towupper' returns the corresponding
-     upper-case letter.  Otherwise WC is returned unchanged.
-
-     `towupper' can be implemented using
-
-          towctrans (wc, wctrans ("toupper"))
-
-     This function is declared in `wctype.h'.
-
-   The same warnings given in the last section for the use of the wide
-character classification functions apply here.  It is not possible to
-simply cast a `char' type value to a `wint_t' and use it as an argument
-to `towctrans' calls.
-
-
-File: libc.info,  Node: String and Array Utilities,  Next: Character Set Handling,  Prev: Character Handling,  Up: Top
-
-5 String and Array Utilities
-****************************
-
-Operations on strings (or arrays of characters) are an important part of
-many programs.  The GNU C library provides an extensive set of string
-utility functions, including functions for copying, concatenating,
-comparing, and searching strings.  Many of these functions can also
-operate on arbitrary regions of storage; for example, the `memcpy'
-function can be used to copy the contents of any kind of array.
-
-   It's fairly common for beginning C programmers to "reinvent the
-wheel" by duplicating this functionality in their own code, but it pays
-to become familiar with the library functions and to make use of them,
-since this offers benefits in maintenance, efficiency, and portability.
-
-   For instance, you could easily compare one string to another in two
-lines of C code, but if you use the built-in `strcmp' function, you're
-less likely to make a mistake.  And, since these library functions are
-typically highly optimized, your program may run faster too.
-
-* Menu:
-
-* Representation of Strings::   Introduction to basic concepts.
-* String/Array Conventions::    Whether to use a string function or an
-				 arbitrary array function.
-* String Length::               Determining the length of a string.
-* Copying and Concatenation::   Functions to copy the contents of strings
-				 and arrays.
-* String/Array Comparison::     Functions for byte-wise and character-wise
-				 comparison.
-* Collation Functions::         Functions for collating strings.
-* Search Functions::            Searching for a specific element or substring.
-* Finding Tokens in a String::  Splitting a string into tokens by looking
-				 for delimiters.
-* strfry::                      Function for flash-cooking a string.
-* Trivial Encryption::          Obscuring data.
-* Encode Binary Data::          Encoding and Decoding of Binary Data.
-* Argz and Envz Vectors::       Null-separated string vectors.
-
-
-File: libc.info,  Node: Representation of Strings,  Next: String/Array Conventions,  Up: String and Array Utilities
-
-5.1 Representation of Strings
-=============================
-
-This section is a quick summary of string concepts for beginning C
-programmers.  It describes how character strings are represented in C
-and some common pitfalls.  If you are already familiar with this
-material, you can skip this section.
-
-   A "string" is an array of `char' objects.  But string-valued
-variables are usually declared to be pointers of type `char *'.  Such
-variables do not include space for the text of a string; that has to be
-stored somewhere else--in an array variable, a string constant, or
-dynamically allocated memory (*note Memory Allocation::).  It's up to
-you to store the address of the chosen memory space into the pointer
-variable.  Alternatively you can store a "null pointer" in the pointer
-variable.  The null pointer does not point anywhere, so attempting to
-reference the string it points to gets an error.
-
-   "string" normally refers to multibyte character strings as opposed to
-wide character strings.  Wide character strings are arrays of type
-`wchar_t' and as for multibyte character strings usually pointers of
-type `wchar_t *' are used.
-
-   By convention, a "null character", `'\0'', marks the end of a
-multibyte character string and the "null wide character", `L'\0'',
-marks the end of a wide character string.  For example, in testing to
-see whether the `char *' variable P points to a null character marking
-the end of a string, you can write `!*P' or `*P == '\0''.
-
-   A null character is quite different conceptually from a null pointer,
-although both are represented by the integer `0'.
-
-   "String literals" appear in C program source as strings of
-characters between double-quote characters (`"') where the initial
-double-quote character is immediately preceded by a capital `L' (ell)
-character (as in `L"foo"').  In ISO C, string literals can also be
-formed by "string concatenation": `"a" "b"' is the same as `"ab"'.  For
-wide character strings one can either use `L"a" L"b"' or `L"a" "b"'.
-Modification of string literals is not allowed by the GNU C compiler,
-because literals are placed in read-only storage.
-
-   Character arrays that are declared `const' cannot be modified
-either.  It's generally good style to declare non-modifiable string
-pointers to be of type `const char *', since this often allows the C
-compiler to detect accidental modifications as well as providing some
-amount of documentation about what your program intends to do with the
-string.
-
-   The amount of memory allocated for the character array may extend
-past the null character that normally marks the end of the string.  In
-this document, the term "allocated size" is always used to refer to the
-total amount of memory allocated for the string, while the term
-"length" refers to the number of characters up to (but not including)
-the terminating null character.  
-
-   A notorious source of program bugs is trying to put more characters
-in a string than fit in its allocated size.  When writing code that
-extends strings or moves characters into a pre-allocated array, you
-should be very careful to keep track of the length of the text and make
-explicit checks for overflowing the array.  Many of the library
-functions _do not_ do this for you!  Remember also that you need to
-allocate an extra byte to hold the null character that marks the end of
-the string.
-
-   Originally strings were sequences of bytes where each byte
-represents a single character.  This is still true today if the strings
-are encoded using a single-byte character encoding.  Things are
-different if the strings are encoded using a multibyte encoding (for
-more information on encodings see *note Extended Char Intro::).  There
-is no difference in the programming interface for these two kind of
-strings; the programmer has to be aware of this and interpret the byte
-sequences accordingly.
-
-   But since there is no separate interface taking care of these
-differences the byte-based string functions are sometimes hard to use.
-Since the count parameters of these functions specify bytes a call to
-`strncpy' could cut a multibyte character in the middle and put an
-incomplete (and therefore unusable) byte sequence in the target buffer.
-
-   To avoid these problems later versions of the ISO C standard
-introduce a second set of functions which are operating on "wide
-characters" (*note Extended Char Intro::).  These functions don't have
-the problems the single-byte versions have since every wide character is
-a legal, interpretable value.  This does not mean that cutting wide
-character strings at arbitrary points is without problems.  It normally
-is for alphabet-based languages (except for non-normalized text) but
-languages based on syllables still have the problem that more than one
-wide character is necessary to complete a logical unit.  This is a
-higher level problem which the C library functions are not designed to
-solve.  But it is at least good that no invalid byte sequences can be
-created.  Also, the higher level functions can also much easier operate
-on wide character than on multibyte characters so that a general advise
-is to use wide characters internally whenever text is more than simply
-copied.
-
-   The remaining of this chapter will discuss the functions for handling
-wide character strings in parallel with the discussion of the multibyte
-character strings since there is almost always an exact equivalent
-available.
-
-
-File: libc.info,  Node: String/Array Conventions,  Next: String Length,  Prev: Representation of Strings,  Up: String and Array Utilities
-
-5.2 String and Array Conventions
-================================
-
-This chapter describes both functions that work on arbitrary arrays or
-blocks of memory, and functions that are specific to null-terminated
-arrays of characters and wide characters.
-
-   Functions that operate on arbitrary blocks of memory have names
-beginning with `mem' and `wmem' (such as `memcpy' and `wmemcpy') and
-invariably take an argument which specifies the size (in bytes and wide
-characters respectively) of the block of memory to operate on.  The
-array arguments and return values for these functions have type `void
-*' or `wchar_t'.  As a matter of style, the elements of the arrays used
-with the `mem' functions are referred to as "bytes".  You can pass any
-kind of pointer to these functions, and the `sizeof' operator is useful
-in computing the value for the size argument.  Parameters to the `wmem'
-functions must be of type `wchar_t *'.  These functions are not really
-usable with anything but arrays of this type.
-
-   In contrast, functions that operate specifically on strings and wide
-character strings have names beginning with `str' and `wcs'
-respectively (such as `strcpy' and `wcscpy') and look for a null
-character to terminate the string instead of requiring an explicit size
-argument to be passed.  (Some of these functions accept a specified
-maximum length, but they also check for premature termination with a
-null character.)  The array arguments and return values for these
-functions have type `char *' and `wchar_t *' respectively, and the
-array elements are referred to as "characters" and "wide characters".
-
-   In many cases, there are both `mem' and `str'/`wcs' versions of a
-function.  The one that is more appropriate to use depends on the exact
-situation.  When your program is manipulating arbitrary arrays or
-blocks of storage, then you should always use the `mem' functions.  On
-the other hand, when you are manipulating null-terminated strings it is
-usually more convenient to use the `str'/`wcs' functions, unless you
-already know the length of the string in advance.  The `wmem' functions
-should be used for wide character arrays with known size.
-
-   Some of the memory and string functions take single characters as
-arguments.  Since a value of type `char' is automatically promoted into
-an value of type `int' when used as a parameter, the functions are
-declared with `int' as the type of the parameter in question.  In case
-of the wide character function the situation is similarly: the
-parameter type for a single wide character is `wint_t' and not
-`wchar_t'.  This would for many implementations not be necessary since
-the `wchar_t' is large enough to not be automatically promoted, but
-since the ISO C standard does not require such a choice of types the
-`wint_t' type is used.
-
-
-File: libc.info,  Node: String Length,  Next: Copying and Concatenation,  Prev: String/Array Conventions,  Up: String and Array Utilities
-
-5.3 String Length
-=================
-
-You can get the length of a string using the `strlen' function.  This
-function is declared in the header file `string.h'.  
-
- -- Function: size_t strlen (const char *S)
-     The `strlen' function returns the length of the null-terminated
-     string S in bytes.  (In other words, it returns the offset of the
-     terminating null character within the array.)
-
-     For example,
-          strlen ("hello, world")
-              => 12
-
-     When applied to a character array, the `strlen' function returns
-     the length of the string stored there, not its allocated size.
-     You can get the allocated size of the character array that holds a
-     string using the `sizeof' operator:
-
-          char string[32] = "hello, world";
-          sizeof (string)
-              => 32
-          strlen (string)
-              => 12
-
-     But beware, this will not work unless STRING is the character
-     array itself, not a pointer to it.  For example:
-
-          char string[32] = "hello, world";
-          char *ptr = string;
-          sizeof (string)
-              => 32
-          sizeof (ptr)
-              => 4  /* (on a machine with 4 byte pointers) */
-
-     This is an easy mistake to make when you are working with
-     functions that take string arguments; those arguments are always
-     pointers, not arrays.
-
-     It must also be noted that for multibyte encoded strings the return
-     value does not have to correspond to the number of characters in
-     the string.  To get this value the string can be converted to wide
-     characters and `wcslen' can be used or something like the following
-     code can be used:
-
-          /* The input is in `string'.
-             The length is expected in `n'.  */
-          {
-            mbstate_t t;
-            char *scopy = string;
-            /* In initial state.  */
-            memset (&t, '\0', sizeof (t));
-            /* Determine number of characters.  */
-            n = mbsrtowcs (NULL, &scopy, strlen (scopy), &t);
-          }
-
-     This is cumbersome to do so if the number of characters (as
-     opposed to bytes) is needed often it is better to work with wide
-     characters.
-
-   The wide character equivalent is declared in `wchar.h'.
-
- -- Function: size_t wcslen (const wchar_t *WS)
-     The `wcslen' function is the wide character equivalent to
-     `strlen'.  The return value is the number of wide characters in the
-     wide character string pointed to by WS (this is also the offset of
-     the terminating null wide character of WS).
-
-     Since there are no multi wide character sequences making up one
-     character the return value is not only the offset in the array, it
-     is also the number of wide characters.
-
-     This function was introduced in Amendment 1 to ISO C90.
-
- -- Function: size_t strnlen (const char *S, size_t MAXLEN)
-     The `strnlen' function returns the length of the string S in bytes
-     if this length is smaller than MAXLEN bytes.  Otherwise it returns
-     MAXLEN.  Therefore this function is equivalent to `(strlen (S) < n
-     ? strlen (S) : MAXLEN)' but it is more efficient and works even if
-     the string S is not null-terminated.
-
-          char string[32] = "hello, world";
-          strnlen (string, 32)
-              => 12
-          strnlen (string, 5)
-              => 5
-
-     This function is a GNU extension and is declared in `string.h'.
-
- -- Function: size_t wcsnlen (const wchar_t *WS, size_t MAXLEN)
-     `wcsnlen' is the wide character equivalent to `strnlen'.  The
-     MAXLEN parameter specifies the maximum number of wide characters.
-
-     This function is a GNU extension and is declared in `wchar.h'.
-
-
-File: libc.info,  Node: Copying and Concatenation,  Next: String/Array Comparison,  Prev: String Length,  Up: String and Array Utilities
-
-5.4 Copying and Concatenation
-=============================
-
-You can use the functions described in this section to copy the contents
-of strings and arrays, or to append the contents of one string to
-another.  The `str' and `mem' functions are declared in the header file
-`string.h' while the `wstr' and `wmem' functions are declared in the
-file `wchar.h'.  
-
-   A helpful way to remember the ordering of the arguments to the
-functions in this section is that it corresponds to an assignment
-expression, with the destination array specified to the left of the
-source array.  All of these functions return the address of the
-destination array.
-
-   Most of these functions do not work properly if the source and
-destination arrays overlap.  For example, if the beginning of the
-destination array overlaps the end of the source array, the original
-contents of that part of the source array may get overwritten before it
-is copied.  Even worse, in the case of the string functions, the null
-character marking the end of the string may be lost, and the copy
-function might get stuck in a loop trashing all the memory allocated to
-your program.
-
-   All functions that have problems copying between overlapping arrays
-are explicitly identified in this manual.  In addition to functions in
-this section, there are a few others like `sprintf' (*note Formatted
-Output Functions::) and `scanf' (*note Formatted Input Functions::).
-
- -- Function: void * memcpy (void *restrict TO, const void *restrict
-          FROM, size_t SIZE)
-     The `memcpy' function copies SIZE bytes from the object beginning
-     at FROM into the object beginning at TO.  The behavior of this
-     function is undefined if the two arrays TO and FROM overlap; use
-     `memmove' instead if overlapping is possible.
-
-     The value returned by `memcpy' is the value of TO.
-
-     Here is an example of how you might use `memcpy' to copy the
-     contents of an array:
-
-          struct foo *oldarray, *newarray;
-          int arraysize;
-          ...
-          memcpy (new, old, arraysize * sizeof (struct foo));
-
- -- Function: wchar_t * wmemcpy (wchar_t *restrict WTO, const wchar_t
-          *restrict WFROM, size_t SIZE)
-     The `wmemcpy' function copies SIZE wide characters from the object
-     beginning at WFROM into the object beginning at WTO.  The behavior
-     of this function is undefined if the two arrays WTO and WFROM
-     overlap; use `wmemmove' instead if overlapping is possible.
-
-     The following is a possible implementation of `wmemcpy' but there
-     are more optimizations possible.
-
-          wchar_t *
-          wmemcpy (wchar_t *restrict wto, const wchar_t *restrict wfrom,
-                   size_t size)
-          {
-            return (wchar_t *) memcpy (wto, wfrom, size * sizeof (wchar_t));
-          }
-
-     The value returned by `wmemcpy' is the value of WTO.
-
-     This function was introduced in Amendment 1 to ISO C90.
-
- -- Function: void * mempcpy (void *restrict TO, const void *restrict
-          FROM, size_t SIZE)
-     The `mempcpy' function is nearly identical to the `memcpy'
-     function.  It copies SIZE bytes from the object beginning at
-     `from' into the object pointed to by TO.  But instead of returning
-     the value of TO it returns a pointer to the byte following the
-     last written byte in the object beginning at TO.  I.e., the value
-     is `((void *) ((char *) TO + SIZE))'.
-
-     This function is useful in situations where a number of objects
-     shall be copied to consecutive memory positions.
-
-          void *
-          combine (void *o1, size_t s1, void *o2, size_t s2)
-          {
-            void *result = malloc (s1 + s2);
-            if (result != NULL)
-              mempcpy (mempcpy (result, o1, s1), o2, s2);
-            return result;
-          }
-
-     This function is a GNU extension.
-
- -- Function: wchar_t * wmempcpy (wchar_t *restrict WTO, const wchar_t
-          *restrict WFROM, size_t SIZE)
-     The `wmempcpy' function is nearly identical to the `wmemcpy'
-     function.  It copies SIZE wide characters from the object
-     beginning at `wfrom' into the object pointed to by WTO.  But
-     instead of returning the value of WTO it returns a pointer to the
-     wide character following the last written wide character in the
-     object beginning at WTO.  I.e., the value is `WTO + SIZE'.
-
-     This function is useful in situations where a number of objects
-     shall be copied to consecutive memory positions.
-
-     The following is a possible implementation of `wmemcpy' but there
-     are more optimizations possible.
-
-          wchar_t *
-          wmempcpy (wchar_t *restrict wto, const wchar_t *restrict wfrom,
-                    size_t size)
-          {
-            return (wchar_t *) mempcpy (wto, wfrom, size * sizeof (wchar_t));
-          }
-
-     This function is a GNU extension.
-
- -- Function: void * memmove (void *TO, const void *FROM, size_t SIZE)
-     `memmove' copies the SIZE bytes at FROM into the SIZE bytes at TO,
-     even if those two blocks of space overlap.  In the case of
-     overlap, `memmove' is careful to copy the original values of the
-     bytes in the block at FROM, including those bytes which also
-     belong to the block at TO.
-
-     The value returned by `memmove' is the value of TO.
-
- -- Function: wchar_t * wmemmove (wchar *WTO, const wchar_t *WFROM,
-          size_t SIZE)
-     `wmemmove' copies the SIZE wide characters at WFROM into the SIZE
-     wide characters at WTO, even if those two blocks of space overlap.
-     In the case of overlap, `memmove' is careful to copy the original
-     values of the wide characters in the block at WFROM, including
-     those wide characters which also belong to the block at WTO.
-
-     The following is a possible implementation of `wmemcpy' but there
-     are more optimizations possible.
-
-          wchar_t *
-          wmempcpy (wchar_t *restrict wto, const wchar_t *restrict wfrom,
-                    size_t size)
-          {
-            return (wchar_t *) mempcpy (wto, wfrom, size * sizeof (wchar_t));
-          }
-
-     The value returned by `wmemmove' is the value of WTO.
-
-     This function is a GNU extension.
-
- -- Function: void * memccpy (void *restrict TO, const void *restrict
-          FROM, int C, size_t SIZE)
-     This function copies no more than SIZE bytes from FROM to TO,
-     stopping if a byte matching C is found.  The return value is a
-     pointer into TO one byte past where C was copied, or a null
-     pointer if no byte matching C appeared in the first SIZE bytes of
-     FROM.
-
- -- Function: void * memset (void *BLOCK, int C, size_t SIZE)
-     This function copies the value of C (converted to an `unsigned
-     char') into each of the first SIZE bytes of the object beginning
-     at BLOCK.  It returns the value of BLOCK.
-
- -- Function: wchar_t * wmemset (wchar_t *BLOCK, wchar_t WC, size_t
-          SIZE)
-     This function copies the value of WC into each of the first SIZE
-     wide characters of the object beginning at BLOCK.  It returns the
-     value of BLOCK.
-
- -- Function: char * strcpy (char *restrict TO, const char *restrict
-          FROM)
-     This copies characters from the string FROM (up to and including
-     the terminating null character) into the string TO.  Like
-     `memcpy', this function has undefined results if the strings
-     overlap.  The return value is the value of TO.
-
- -- Function: wchar_t * wcscpy (wchar_t *restrict WTO, const wchar_t
-          *restrict WFROM)
-     This copies wide characters from the string WFROM (up to and
-     including the terminating null wide character) into the string
-     WTO.  Like `wmemcpy', this function has undefined results if the
-     strings overlap.  The return value is the value of WTO.
-
- -- Function: char * strncpy (char *restrict TO, const char *restrict
-          FROM, size_t SIZE)
-     This function is similar to `strcpy' but always copies exactly
-     SIZE characters into TO.
-
-     If the length of FROM is more than SIZE, then `strncpy' copies
-     just the first SIZE characters.  Note that in this case there is
-     no null terminator written into TO.
-
-     If the length of FROM is less than SIZE, then `strncpy' copies all
-     of FROM, followed by enough null characters to add up to SIZE
-     characters in all.  This behavior is rarely useful, but it is
-     specified by the ISO C standard.
-
-     The behavior of `strncpy' is undefined if the strings overlap.
-
-     Using `strncpy' as opposed to `strcpy' is a way to avoid bugs
-     relating to writing past the end of the allocated space for TO.
-     However, it can also make your program much slower in one common
-     case: copying a string which is probably small into a potentially
-     large buffer.  In this case, SIZE may be large, and when it is,
-     `strncpy' will waste a considerable amount of time copying null
-     characters.
-
- -- Function: wchar_t * wcsncpy (wchar_t *restrict WTO, const wchar_t
-          *restrict WFROM, size_t SIZE)
-     This function is similar to `wcscpy' but always copies exactly
-     SIZE wide characters into WTO.
-
-     If the length of WFROM is more than SIZE, then `wcsncpy' copies
-     just the first SIZE wide characters.  Note that in this case there
-     is no null terminator written into WTO.
-
-     If the length of WFROM is less than SIZE, then `wcsncpy' copies
-     all of WFROM, followed by enough null wide characters to add up to
-     SIZE wide characters in all.  This behavior is rarely useful, but
-     it is specified by the ISO C standard.
-
-     The behavior of `wcsncpy' is undefined if the strings overlap.
-
-     Using `wcsncpy' as opposed to `wcscpy' is a way to avoid bugs
-     relating to writing past the end of the allocated space for WTO.
-     However, it can also make your program much slower in one common
-     case: copying a string which is probably small into a potentially
-     large buffer.  In this case, SIZE may be large, and when it is,
-     `wcsncpy' will waste a considerable amount of time copying null
-     wide characters.
-
- -- Function: char * strdup (const char *S)
-     This function copies the null-terminated string S into a newly
-     allocated string.  The string is allocated using `malloc'; see
-     *note Unconstrained Allocation::.  If `malloc' cannot allocate
-     space for the new string, `strdup' returns a null pointer.
-     Otherwise it returns a pointer to the new string.
-
- -- Function: wchar_t * wcsdup (const wchar_t *WS)
-     This function copies the null-terminated wide character string WS
-     into a newly allocated string.  The string is allocated using
-     `malloc'; see *note Unconstrained Allocation::.  If `malloc'
-     cannot allocate space for the new string, `wcsdup' returns a null
-     pointer.  Otherwise it returns a pointer to the new wide character
-     string.
-
-     This function is a GNU extension.
-
- -- Function: char * strndup (const char *S, size_t SIZE)
-     This function is similar to `strdup' but always copies at most
-     SIZE characters into the newly allocated string.
-
-     If the length of S is more than SIZE, then `strndup' copies just
-     the first SIZE characters and adds a closing null terminator.
-     Otherwise all characters are copied and the string is terminated.
-
-     This function is different to `strncpy' in that it always
-     terminates the destination string.
-
-     `strndup' is a GNU extension.
-
- -- Function: char * stpcpy (char *restrict TO, const char *restrict
-          FROM)
-     This function is like `strcpy', except that it returns a pointer to
-     the end of the string TO (that is, the address of the terminating
-     null character `to + strlen (from)') rather than the beginning.
-
-     For example, this program uses `stpcpy' to concatenate `foo' and
-     `bar' to produce `foobar', which it then prints.
-
-          #include <string.h>
-          #include <stdio.h>
-
-          int
-          main (void)
-          {
-            char buffer[10];
-            char *to = buffer;
-            to = stpcpy (to, "foo");
-            to = stpcpy (to, "bar");
-            puts (buffer);
-            return 0;
-          }
-
-     This function is not part of the ISO or POSIX standards, and is not
-     customary on Unix systems, but we did not invent it either.
-     Perhaps it comes from MS-DOG.
-
-     Its behavior is undefined if the strings overlap.  The function is
-     declared in `string.h'.
-
- -- Function: wchar_t * wcpcpy (wchar_t *restrict WTO, const wchar_t
-          *restrict WFROM)
-     This function is like `wcscpy', except that it returns a pointer to
-     the end of the string WTO (that is, the address of the terminating
-     null character `wto + strlen (wfrom)') rather than the beginning.
-
-     This function is not part of ISO or POSIX but was found useful
-     while developing the GNU C Library itself.
-
-     The behavior of `wcpcpy' is undefined if the strings overlap.
-
-     `wcpcpy' is a GNU extension and is declared in `wchar.h'.
-
- -- Function: char * stpncpy (char *restrict TO, const char *restrict
-          FROM, size_t SIZE)
-     This function is similar to `stpcpy' but copies always exactly
-     SIZE characters into TO.
-
-     If the length of FROM is more then SIZE, then `stpncpy' copies
-     just the first SIZE characters and returns a pointer to the
-     character directly following the one which was copied last.  Note
-     that in this case there is no null terminator written into TO.
-
-     If the length of FROM is less than SIZE, then `stpncpy' copies all
-     of FROM, followed by enough null characters to add up to SIZE
-     characters in all.  This behavior is rarely useful, but it is
-     implemented to be useful in contexts where this behavior of the
-     `strncpy' is used.  `stpncpy' returns a pointer to the _first_
-     written null character.
-
-     This function is not part of ISO or POSIX but was found useful
-     while developing the GNU C Library itself.
-
-     Its behavior is undefined if the strings overlap.  The function is
-     declared in `string.h'.
-
- -- Function: wchar_t * wcpncpy (wchar_t *restrict WTO, const wchar_t
-          *restrict WFROM, size_t SIZE)
-     This function is similar to `wcpcpy' but copies always exactly
-     WSIZE characters into WTO.
-
-     If the length of WFROM is more then SIZE, then `wcpncpy' copies
-     just the first SIZE wide characters and returns a pointer to the
-     wide character directly following the last non-null wide character
-     which was copied last.  Note that in this case there is no null
-     terminator written into WTO.
-
-     If the length of WFROM is less than SIZE, then `wcpncpy' copies
-     all of WFROM, followed by enough null characters to add up to SIZE
-     characters in all.  This behavior is rarely useful, but it is
-     implemented to be useful in contexts where this behavior of the
-     `wcsncpy' is used.  `wcpncpy' returns a pointer to the _first_
-     written null character.
-
-     This function is not part of ISO or POSIX but was found useful
-     while developing the GNU C Library itself.
-
-     Its behavior is undefined if the strings overlap.
-
-     `wcpncpy' is a GNU extension and is declared in `wchar.h'.
-
- -- Macro: char * strdupa (const char *S)
-     This macro is similar to `strdup' but allocates the new string
-     using `alloca' instead of `malloc' (*note Variable Size
-     Automatic::).  This means of course the returned string has the
-     same limitations as any block of memory allocated using `alloca'.
-
-     For obvious reasons `strdupa' is implemented only as a macro; you
-     cannot get the address of this function.  Despite this limitation
-     it is a useful function.  The following code shows a situation
-     where using `malloc' would be a lot more expensive.
-
-          #include <paths.h>
-          #include <string.h>
-          #include <stdio.h>
-
-          const char path[] = _PATH_STDPATH;
-
-          int
-          main (void)
-          {
-            char *wr_path = strdupa (path);
-            char *cp = strtok (wr_path, ":");
-
-            while (cp != NULL)
-              {
-                puts (cp);
-                cp = strtok (NULL, ":");
-              }
-            return 0;
-          }
-
-     Please note that calling `strtok' using PATH directly is invalid.
-     It is also not allowed to call `strdupa' in the argument list of
-     `strtok' since `strdupa' uses `alloca' (*note Variable Size
-     Automatic::) can interfere with the parameter passing.
-
-     This function is only available if GNU CC is used.
-
- -- Macro: char * strndupa (const char *S, size_t SIZE)
-     This function is similar to `strndup' but like `strdupa' it
-     allocates the new string using `alloca' *note Variable Size
-     Automatic::.  The same advantages and limitations of `strdupa' are
-     valid for `strndupa', too.
-
-     This function is implemented only as a macro, just like `strdupa'.
-     Just as `strdupa' this macro also must not be used inside the
-     parameter list in a function call.
-
-     `strndupa' is only available if GNU CC is used.
-
- -- Function: char * strcat (char *restrict TO, const char *restrict
-          FROM)
-     The `strcat' function is similar to `strcpy', except that the
-     characters from FROM are concatenated or appended to the end of
-     TO, instead of overwriting it.  That is, the first character from
-     FROM overwrites the null character marking the end of TO.
-
-     An equivalent definition for `strcat' would be:
-
-          char *
-          strcat (char *restrict to, const char *restrict from)
-          {
-            strcpy (to + strlen (to), from);
-            return to;
-          }
-
-     This function has undefined results if the strings overlap.
-
- -- Function: wchar_t * wcscat (wchar_t *restrict WTO, const wchar_t
-          *restrict WFROM)
-     The `wcscat' function is similar to `wcscpy', except that the
-     characters from WFROM are concatenated or appended to the end of
-     WTO, instead of overwriting it.  That is, the first character from
-     WFROM overwrites the null character marking the end of WTO.
-
-     An equivalent definition for `wcscat' would be:
-
-          wchar_t *
-          wcscat (wchar_t *wto, const wchar_t *wfrom)
-          {
-            wcscpy (wto + wcslen (wto), wfrom);
-            return wto;
-          }
-
-     This function has undefined results if the strings overlap.
-
-   Programmers using the `strcat' or `wcscat' function (or the
-following `strncat' or `wcsncar' functions for that matter) can easily
-be recognized as lazy and reckless.  In almost all situations the
-lengths of the participating strings are known (it better should be
-since how can one otherwise ensure the allocated size of the buffer is
-sufficient?)  Or at least, one could know them if one keeps track of the
-results of the various function calls.  But then it is very inefficient
-to use `strcat'/`wcscat'.  A lot of time is wasted finding the end of
-the destination string so that the actual copying can start.  This is a
-common example:
-
-     /* This function concatenates arbitrarily many strings.  The last
-        parameter must be `NULL'.  */
-     char *
-     concat (const char *str, ...)
-     {
-       va_list ap, ap2;
-       size_t total = 1;
-       const char *s;
-       char *result;
-
-       va_start (ap, str);
-       /* Actually `va_copy', but this is the name more gcc versions
-          understand.  */
-       __va_copy (ap2, ap);
-
-       /* Determine how much space we need.  */
-       for (s = str; s != NULL; s = va_arg (ap, const char *))
-         total += strlen (s);
-
-       va_end (ap);
-
-       result = (char *) malloc (total);
-       if (result != NULL)
-         {
-           result[0] = '\0';
-
-           /* Copy the strings.  */
-           for (s = str; s != NULL; s = va_arg (ap2, const char *))
-             strcat (result, s);
-         }
-
-       va_end (ap2);
-
-       return result;
-     }
-
-   This looks quite simple, especially the second loop where the strings
-are actually copied.  But these innocent lines hide a major performance
-penalty.  Just imagine that ten strings of 100 bytes each have to be
-concatenated.  For the second string we search the already stored 100
-bytes for the end of the string so that we can append the next string.
-For all strings in total the comparisons necessary to find the end of
-the intermediate results sums up to 5500!  If we combine the copying
-with the search for the allocation we can write this function more
-efficient:
-
-     char *
-     concat (const char *str, ...)
-     {
-       va_list ap;
-       size_t allocated = 100;
-       char *result = (char *) malloc (allocated);
-
-       if (result != NULL)
-         {
-           char *newp;
-           char *wp;
-
-           va_start (ap, str);
-
-           wp = result;
-           for (s = str; s != NULL; s = va_arg (ap, const char *))
-             {
-               size_t len = strlen (s);
-
-               /* Resize the allocated memory if necessary.  */
-               if (wp + len + 1 > result + allocated)
-                 {
-                   allocated = (allocated + len) * 2;
-                   newp = (char *) realloc (result, allocated);
-                   if (newp == NULL)
-                     {
-                       free (result);
-                       return NULL;
-                     }
-                   wp = newp + (wp - result);
-                   result = newp;
-                 }
-
-               wp = mempcpy (wp, s, len);
-             }
-
-           /* Terminate the result string.  */
-           *wp++ = '\0';
-
-           /* Resize memory to the optimal size.  */
-           newp = realloc (result, wp - result);
-           if (newp != NULL)
-             result = newp;
-
-           va_end (ap);
-         }
-
-       return result;
-     }
-
-   With a bit more knowledge about the input strings one could fine-tune
-the memory allocation.  The difference we are pointing to here is that
-we don't use `strcat' anymore.  We always keep track of the length of
-the current intermediate result so we can safe us the search for the
-end of the string and use `mempcpy'.  Please note that we also don't
-use `stpcpy' which might seem more natural since we handle with
-strings.  But this is not necessary since we already know the length of
-the string and therefore can use the faster memory copying function.
-The example would work for wide characters the same way.
-
-   Whenever a programmer feels the need to use `strcat' she or he
-should think twice and look through the program whether the code cannot
-be rewritten to take advantage of already calculated results.  Again: it
-is almost always unnecessary to use `strcat'.
-
- -- Function: char * strncat (char *restrict TO, const char *restrict
-          FROM, size_t SIZE)
-     This function is like `strcat' except that not more than SIZE
-     characters from FROM are appended to the end of TO.  A single null
-     character is also always appended to TO, so the total allocated
-     size of TO must be at least `SIZE + 1' bytes longer than its
-     initial length.
-
-     The `strncat' function could be implemented like this:
-
-          char *
-          strncat (char *to, const char *from, size_t size)
-          {
-            to[strlen (to) + size] = '\0';
-            strncpy (to + strlen (to), from, size);
-            return to;
-          }
-
-     The behavior of `strncat' is undefined if the strings overlap.
-
- -- Function: wchar_t * wcsncat (wchar_t *restrict WTO, const wchar_t
-          *restrict WFROM, size_t SIZE)
-     This function is like `wcscat' except that not more than SIZE
-     characters from FROM are appended to the end of TO.  A single null
-     character is also always appended to TO, so the total allocated
-     size of TO must be at least `SIZE + 1' bytes longer than its
-     initial length.
-
-     The `wcsncat' function could be implemented like this:
-
-          wchar_t *
-          wcsncat (wchar_t *restrict wto, const wchar_t *restrict wfrom,
-                   size_t size)
-          {
-            wto[wcslen (to) + size] = L'\0';
-            wcsncpy (wto + wcslen (wto), wfrom, size);
-            return wto;
-          }
-
-     The behavior of `wcsncat' is undefined if the strings overlap.
-
-   Here is an example showing the use of `strncpy' and `strncat' (the
-wide character version is equivalent).  Notice how, in the call to
-`strncat', the SIZE parameter is computed to avoid overflowing the
-character array `buffer'.
-
-     #include <string.h>
-     #include <stdio.h>
-
-     #define SIZE 10
-
-     static char buffer[SIZE];
-
-     main ()
-     {
-       strncpy (buffer, "hello", SIZE);
-       puts (buffer);
-       strncat (buffer, ", world", SIZE - strlen (buffer) - 1);
-       puts (buffer);
-     }
-
-The output produced by this program looks like:
-
-     hello
-     hello, wo
-
- -- Function: void bcopy (const void *FROM, void *TO, size_t SIZE)
-     This is a partially obsolete alternative for `memmove', derived
-     from BSD.  Note that it is not quite equivalent to `memmove',
-     because the arguments are not in the same order and there is no
-     return value.
-
- -- Function: void bzero (void *BLOCK, size_t SIZE)
-     This is a partially obsolete alternative for `memset', derived from
-     BSD.  Note that it is not as general as `memset', because the only
-     value it can store is zero.
 

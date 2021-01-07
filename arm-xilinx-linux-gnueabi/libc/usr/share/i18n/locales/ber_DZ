@@ -2,7 +2,7 @@ comment_char %
 escape_char  /
 %
 % Amazigh Language Locale for Algeria (latin)
-% Source: 
+% Source:
 % Contact: Pablo Saratxaga
 % Email: <pablo@mandrakesoft.com>
 % Language: ber
@@ -47,8 +47,8 @@ END LC_IDENTIFICATION
 % TODO: fix LC_TIME, LC_MONETARY, LC_MESSAGES, LC_NAME, LC_ADDRESS
 
 LC_COLLATE
-% The latin amazigh alphabet is:       
-% <a>, <eps>, <b>, <b*>, <c>, <c<>, <d>, <d-.>, <e>, <f>, <g>, <g*>, <g(>, 
+% The latin amazigh alphabet is:
+% <a>, <eps>, <b>, <b*>, <c>, <c<>, <d>, <d-.>, <e>, <f>, <g>, <g*>, <g(>,
 % <h>, <h-.>, <i>, <j>, <k>, <k*>, <l>, <m>, <n>, <q>, <q*>, <gam>, <gam*>,
 % <r>, <r-.>, <s>, <s-.>, <t>, <t-.>, <u>, <w>, <x>, <x*>, <y>, <z>, <z-.>
 %
@@ -259,6 +259,7 @@ width       210
 END LC_PAPER
 
 LC_MEASUREMENT
+% metric
 measurement 1
 END LC_MEASUREMENT
 
@@ -289,9 +290,11 @@ country_ab2 "<U0044><U005A>"
 country_ab3 "<U0044><U005A><U0041>"
 country_num 12
 %country_isbn ""
-%country_car ""
-lang_name "<U0074><U0061><U006D><U0061><U007A><U0069><U0067><U0068><U0074>"
-%lang_ab 
+% DZ
+country_car  "<U0044><U005A>"
+% ⵜⴰⵎⴰⵣⵉⵖⵜ
+lang_name "<U2D5C><U2D30><U2D4E><U2D30><U2D49><U2D56><U2D5C>"
+%lang_ab
 lang_term "<U0062><U0065><U0072>"
 lang_lib "<U0062><U0065><U0072>"
 

@@ -1,4 +1,5 @@
-/* Copyright (C) 1995-1997,2000,2001,2003,2008 Free Software Foundation, Inc.
+/* Compatibility header for old-style Unix parameters and limits.
+   Copyright (C) 1995-2015 Free Software Foundation, Inc.
    This file is part of the GNU C Library.
 
    The GNU C Library is free software; you can redistribute it and/or
@@ -12,71 +13,91 @@
    Lesser General Public License for more details.
 
    You should have received a copy of the GNU Lesser General Public
-   License along with the GNU C Library; if not, write to the Free
-   Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA
-   02111-1307 USA.  */
+   License along with the GNU C Library; if not, see
+   <http://www.gnu.org/licenses/>.  */
 
 #ifndef _SYS_PARAM_H
-#define _SYS_PARAM_H	1
+#define _SYS_PARAM_H    1
 
-#ifndef ARG_MAX
-# define __undef_ARG_MAX
-#endif
+#define __need_NULL
+#include <stddef.h>
 
+#include <sys/types.h>
 #include <limits.h>
-#include <linux/limits.h>
-#include <linux/param.h>
+#include <endian.h>                     /* Define BYTE_ORDER et al.  */
+#include <signal.h>                     /* Define NSIG.  */
 
-/* The kernel headers defines ARG_MAX.  The value is wrong, though.  */
-#ifndef __undef_ARG_MAX
-# undef ARG_MAX
-# undef __undef_ARG_MAX
-#endif
+/* This file defines some things in system-specific ways.  */
+#include <bits/param.h>
+
 
 /* BSD names for some <limits.h> values.  */
 
-#define	NBBY		CHAR_BIT
-#ifndef	NGROUPS
+#define NBBY		CHAR_BIT
+
+#if !defined NGROUPS && defined NGROUPS_MAX
 # define NGROUPS	NGROUPS_MAX
 #endif
-#define	MAXSYMLINKS	20
-#define	CANBSIZ		MAX_CANON
-#define MAXPATHLEN	PATH_MAX
-/* The following are not really correct but it is a value we used for a
-   long time and which seems to be usable.  People should not use NOFILE
-   and NCARGS anyway.  */
-#define NOFILE		256
-#define	NCARGS		131072
-
-
-#include <sys/types.h>
-
-/* Bit map related macros.  */
-#define	setbit(a,i)	((a)[(i)/NBBY] |= 1<<((i)%NBBY))
-#define	clrbit(a,i)	((a)[(i)/NBBY] &= ~(1<<((i)%NBBY)))
-#define	isset(a,i)	((a)[(i)/NBBY] & (1<<((i)%NBBY)))
-#define	isclr(a,i)	(((a)[(i)/NBBY] & (1<<((i)%NBBY))) == 0)
-
-/* Macros for counting and rounding.  */
-#ifndef howmany
-# define howmany(x, y)	(((x) + ((y) - 1)) / (y))
+#if !defined MAXSYMLINKS && defined SYMLOOP_MAX
+# define MAXSYMLINKS	SYMLOOP_MAX
 #endif
-#ifdef __GNUC__
-# define roundup(x, y)	(__builtin_constant_p (y) && powerof2 (y)	      \
-			 ? (((x) + (y) - 1) & ~((y) - 1))		      \
-			 : ((((x) + ((y) - 1)) / (y)) * (y)))
-#else
-# define roundup(x, y)	((((x) + ((y) - 1)) / (y)) * (y))
+#if !defined CANBSIZ && defined MAX_CANON
+# define CANBSIZ	MAX_CANON
 #endif
-#define powerof2(x)	((((x) - 1) & (x)) == 0)
+#if !defined MAXPATHLEN && defined PATH_MAX
+# define MAXPATHLEN	PATH_MAX
+#endif
+#if !defined NOFILE && defined OPEN_MAX
+# define NOFILE		OPEN_MAX
+#endif
+#ifndef NCARGS
+# ifdef ARG_MAX
+#  define NCARGS	ARG_MAX
+# else
+/* ARG_MAX is unlimited, but we define NCARGS for BSD programs that want to
+   compare against some fixed limit.  */
+# define NCARGS		INT_MAX
+# endif
+#endif
 
-/* Macros for min/max.  */
-#define	MIN(a,b) (((a)<(b))?(a):(b))
-#define	MAX(a,b) (((a)>(b))?(a):(b))
+
+/* Magical constants.  */
+#ifndef NOGROUP
+# define NOGROUP	65535     /* Marker for empty group set member.  */
+#endif
+#ifndef NODEV
+# define NODEV		((dev_t) -1)    /* Non-existent device.  */
+#endif
 
 
 /* Unit of `st_blocks'.  */
-#define DEV_BSIZE       512
+#ifndef DEV_BSIZE
+# define DEV_BSIZE	512
+#endif
 
 
-#endif	/* sys/param.h */
+/* Bit map related macros.  */
+#define setbit(a,i)     ((a)[(i)/NBBY] |= 1<<((i)%NBBY))
+#define clrbit(a,i)     ((a)[(i)/NBBY] &= ~(1<<((i)%NBBY)))
+#define isset(a,i)      ((a)[(i)/NBBY] & (1<<((i)%NBBY)))
+#define isclr(a,i)      (((a)[(i)/NBBY] & (1<<((i)%NBBY))) == 0)
+
+/* Macros for counting and rounding.  */
+#ifndef howmany
+# define howmany(x, y)  (((x) + ((y) - 1)) / (y))
+#endif
+#ifdef __GNUC__
+# define roundup(x, y)  (__builtin_constant_p (y) && powerof2 (y)             \
+                         ? (((x) + (y) - 1) & ~((y) - 1))                     \
+                         : ((((x) + ((y) - 1)) / (y)) * (y)))
+#else
+# define roundup(x, y)  ((((x) + ((y) - 1)) / (y)) * (y))
+#endif
+#define powerof2(x)     ((((x) - 1) & (x)) == 0)
+
+/* Macros for min/max.  */
+#define MIN(a,b) (((a)<(b))?(a):(b))
+#define MAX(a,b) (((a)>(b))?(a):(b))
+
+
+#endif  /* sys/param.h */

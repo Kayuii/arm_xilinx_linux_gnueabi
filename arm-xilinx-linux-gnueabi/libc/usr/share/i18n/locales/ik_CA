@@ -2,7 +2,7 @@ escape_char /
 comment_char %
 %
 % Inupiaq language locale for Canada
-% Source: 
+% Source:
 % Contact: Pablo Saratxaga
 % Email: pablo@mandriva.com
 % Language: ik
@@ -38,12 +38,12 @@ category  "ik_CA:2000";LC_PAPER
 category  "ik_CA:2000";LC_NAME
 category  "ik_CA:2000";LC_ADDRESS
 category  "ik_CA:2000";LC_TELEPHONE
-
+category  "ik_CA:2000";LC_MEASUREMENT
 END LC_IDENTIFICATION
 
 LC_COLLATE
 
-% Inupiaq uses the following extra letters: 
+% Inupiaq uses the following extra letters:
 % gdotabove, ldotbelow, lbarred, lbarreddotbelow (not in unicode,
 % has to be composed as lbarred+composingdotbelow), eng, ntilde
 %
@@ -82,10 +82,10 @@ collating-symbol  <eng>
 
 collating-symbol <CAP-MIN>
 collating-symbol <MIN-CAP>
- 
+
 reorder-after <MIN>
 <MIN-CAP>
- 
+
 reorder-after <CAP>
 <CAP-MIN>
 
@@ -142,7 +142,7 @@ reorder-after <U0053>
 <S-R>   <s-r-ik>;<PCT>;<CAP>;IGNORE
 <S-r>   <s-r-ik>;<PCT>;<CAP-MIN>;IGNORE
 
- 
+
 reorder-end
 
 END LC_COLLATE
@@ -162,7 +162,7 @@ END LC_NUMERIC
 LC_TELEPHONE
 copy "en_CA"
 END LC_TELEPHONE
- 
+
 LC_TIME
 abday       "<U004D><U0069><U006E>";"<U0053><U0061><U0076>";/
             "<U0049><U006C><U0061>";"<U0051><U0069><U0074>";/
@@ -211,8 +211,8 @@ LC_PAPER
 copy "en_CA"
 END LC_PAPER
 
-% Metric System (ISO 1000)
 LC_MEASUREMENT
+% metric
 measurement 1
 END LC_MEASUREMENT
 
@@ -231,5 +231,15 @@ postal_fmt    "<U0025><U0066><U0025><U004E><U0025><U0061><U0025><U004E>/
 country_ab2 "<U0043><U0041>"
 country_ab3 "<U0043><U0041><U004E>"
 country_num 124
+% CDN
+country_car    "<U0043><U0044><U004E>"
+% Iñupiatun
+lang_name    "<U0049><U00F1><U0075><U0070><U0069><U0061><U0074><U0075><U006E>"
+% ik
+lang_ab      "<U0069><U006B>"
+% ipk
+lang_term    "<U0069><U0070><U006B>"
+% ipk
+lang_lib    "<U0069><U0070><U006B>"
 END LC_ADDRESS
 

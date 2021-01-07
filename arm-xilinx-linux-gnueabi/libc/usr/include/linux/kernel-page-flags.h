@@ -31,6 +31,7 @@
 
 #define KPF_KSM			21
 #define KPF_THP			22
+#define KPF_BALLOON		23
 
 
 #endif /* LINUX_KERNEL_PAGE_FLAGS_H */

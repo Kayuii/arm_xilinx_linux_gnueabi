@@ -1,0 +1,271 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <noscript>
+       <link rel="StyleSheet" href="../MGC/styles/body.css" type="text/css" />
+       <link rel="StyleSheet" href="../MGC/styles/catalog.css" type="text/css" />
+       <link rel="StyleSheet" href="../MGC/styles/document.css" type="text/css" />
+    </noscript>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+    <meta name="GENERATOR" content="Quadralay WebWorks AutoMap 2003 for FrameMaker 8.0.2.1385" />
+    <meta name="TEMPLATEBASE" content="mgc_ww_v3.2.203" />
+    <meta name="LASTUPDATED" content="Thu Mar 13 05:34:15 2014" />
+    <meta name="mgc_html_doctitle" content="Mentor Embedded Sourcery Probe User's Manual" />
+    <title>Debugging with CodeBench</title>
+<!-- Search Engine keywords -->
+    <meta name="attributes" content=" product.version.2.5.0,doc.type.documentation.user,product.id.P11526 "/>
+<!-- JavaScript Files -->
+<script type="text/javascript" language="JavaScript1.2" src="../MGC/js/page.js"></script>
+<script type="text/javascript" language="JavaScript1.2">
+        if(DetectChromeForBasic()){
+           writeNoScriptStyles();
+        }
+
+     </script>
+   <script type="text/javascript" language="JavaScript1.2">
+     // Set reference to top level help frame
+      //
+      if(!DetectChromeForBasic()){
+        javascriptTopicRedirect();
+      }
+     </script>
+  </head>
+
+<body class="body" id="DocBody">
+<div id="BodyPopup" class="BodyPopup"></div>
+<div class="HideBody" id="HideBody">&nbsp;</div>
+<div id="bodycontent" class="BodyContent">
+
+
+
+
+
+  <script type="text/javascript" language="JavaScript1.2">
+  <!--
+      var BC = new Array("Using the Virtual Sourcery Probe","virtualprobe01","Veloce Debugging","virtualprobe03","Debugging with CodeBench","virtualprobe05","136");
+  // -->
+  </script>
+
+   <noscript><iframe framespacing="0" marginheight="2px" frameborder="no" scrolling="no" src="../MGC/html/noscript_header.htm" width="100%" height="100px;"></iframe>
+   </noscript>
+
+<script type="text/javascript" language="JavaScript1.2">
+if(DetectChromeForBasic()){
+       if(!(top.inEclipse)){  
+          writeBasicHeader();
+      }
+}
+</script>
+<div id="BodyContent">
+
+<a name="wp41040"></a><h1 class="pHeading3 FontLevel1" id="MGC41040">
+
+<a name="CRefID42366"></a>
+Debugging with CodeBench
+</h1>
+<a name="wp41041"></a><p class="pzShortDesc">
+
+If you will be using the CodeBench source level debugger, then it will automatically start the virtual probe, and the debug sprite that controls it. You can also manually launch the virtual probe and sprite server as described in this section.
+</p>
+
+<a name="wp41712"></a><p class="pHTaskSubhead">
+
+Prerequisites
+</p>
+
+<a name="wp41701"></a>
+<ul><li class="LL1BulSolid">Start the Veloce emulation run. See <a href="virtualprobe04.html"  onclick='oT("CRF","virtualprobe04.html");return false;'>Starting a Veloce Emulation Run</a> for details.</li></ul>
+
+<a name="wp41044"></a><p class="pHTaskSubhead">
+
+Procedure
+</p>
+
+<a name="wp41274"></a><p class="pBody">
+
+If you are using the CodeBench IDE, configure your debug launch (See <a href="virtualprobe05.html#wp41279"  onclick='oT("CRF","virtualprobe05.html#wp41279");return false;'>Figure&#160;7-3</a>) and then launch the debugger. 
+</p>
+
+<a name="wp41279"></a><p class="pFigureTitle" id="MGC41279">
+
+Figure 7-3. <a name="CRefID57512"></a>
+Debug Launch Configuration<a name='Graphic41277'></a><img src="images/launch_config_virtual.png"  style='width:6.38571in;'  class="Aligncenter" id='wp41277' border='0' hspace='0' vspace='0'/>
+
+</p>
+
+
+<a name="wp41283"></a><p class="pBody" id="MGC41279">
+
+See <a name="EW76"></a><a href="debug_with_cb2.html#CRefID55447" onclick='oT("CRF","debug_with_cb2.html#CRefID55447");'><span class=" cLinkOverride">Table&#160;2-1</span></a> for a description of the fields in the launch debug configuration screen. For the Virtual Sourcery Probe debug interface, there are three additional fields to set. These fields are described in <a href="virtualprobe05.html#wp41290"  onclick='oT("CRF","virtualprobe05.html#wp41290");return false;'>Table&#160;7-1</a>.
+</p>
+
+<a name="wp41312"></a><p class="pBodyRelative">
+
+
+</p>
+<div id="TableDivQz"></div>
+<div align="center">
+
+
+<a name="wp41290"></a><p class="pTableTitle" id="MGC41290">
+
+Table 7-1. <a name="CRefID88182"></a>
+Virtual Sourcery Probe Device Options
+</p>
+
+
+<table border="1" cellpadding="5" cellspacing="0" id="wp41290table41287">
+  <tr bgcolor="#CCCCCC"  align="center" valign="middle">
+    <th>
+
+<a name="wp41294"></a><p class="pTableHeading" id="MGC41290">
+Option
+</p>
+</th>
+
+    <th>
+
+<a name="wp41296"></a><p class="pTableHeading">
+
+Description
+</p>
+</th>
+
+
+</tr>
+
+  <tr align="left" valign="top">
+    <td id='Row2Column1'  style='width:2.2in'>
+
+
+<a name="wp41298"></a><p class="pTableCell">
+Emulation Host</p></td>
+
+    <td id='Row2Column2'  style='width:4.0in'>
+
+
+<a name="wp41300"></a><p class="pTableCell">
+The IP address or hostname of the PC running the TBX software. This PC is commonly referred to as the Veloce Comodel Host.</p>
+<a name="wp41301"></a><p class="pTableCell">
+  &#160;</p>
+<a name="wp41302"></a><p class="pTableCell">
+<span class=" cBold">NOTE:</span> It is recommended that you run CodeBench on a PC that is on the same LAN as the Veloce comodel host. The reason for this is because a WAN connection between the virtual probe and the Veloce is typically too slow.</p></td>
+
+
+</tr>
+
+  <tr align="left" valign="top">
+    <td id='Row3Column1' >
+
+
+<a name="wp41304"></a><p class="pTableCell">
+Transactor Library</p></td>
+
+    <td id='Row3Column2' >
+
+
+<a name="wp41306"></a><p class="pTableCell">
+Uses DPI calls to send JTAG transactions to the JTAG hardware transactor. The JTAG Transactor Library sends any data received from the hardware transactor back to the</p>
+<a name="wp41307"></a><p class="pTableCell">
+Sourcery Probe Virtual software through the transactor proxy.</p></td>
+
+
+</tr>
+
+  <tr align="left" valign="top">
+    <td id='Row4Column1' >
+
+
+<a name="wp41309"></a><p class="pTableCell">
+Stop emulation on debug termination (Virtual Sourcery Probe)</p></td>
+
+    <td id='Row4Column2' >
+
+
+<a name="wp41311"></a><p class="pTableCell">
+If this option is checked, the Veloce emulation terminates when MESP/Virtual shuts down. If this option is unchecked, MESP/Virtual disconnects from the Veloce and leaves the emulation running when it shuts down.</p></td>
+
+
+</tr>
+
+
+</table>
+
+</div>
+<div id='EndTable'> </div>
+<p class="pBodyRelative">
+
+<br clear='left' class='Blank4Table' />
+
+
+</p>
+
+<a name="wp41054"></a><p class="pRelatedTopics">
+
+Related Topics
+</p>
+<div id="TableDivQz"></div>
+<div align="left">
+
+
+<table border="0" cellpadding="2" cellspacing="0" width="96%" id="wp41051table41049">
+  <tr align="left" valign="top">
+    <td id='Row1Column1'  style='width:3.25in'>
+
+
+<a name="wp41051"></a><p class="pTableCell">
+<a href="virtualprobe04.html"  onclick='oT("CRF","virtualprobe04.html");return false;'>Starting a Veloce Emulation Run</a></p></td>
+    <td id='Row1Column2'  style='width:3.25in'>
+
+
+<a name="wp41053"></a><p class="pTableCell">
+<a href="virtualprobe06.html"  onclick='oT("CRF","virtualprobe06.html");return false;'>Debugging with Other Debuggers</a></p></td>
+
+</tr>
+
+</table>
+
+</div>
+<div id='EndTable'> </div>
+<p class="pRelatedTopics">
+
+<br clear='left' class='Blank4Table' />
+
+</p>
+
+
+
+
+
+</div>
+<!--BeginFooterContent-->
+<div class="BlankFooter" id="BlankFooter">&nbsp;</div>
+<div class="Footer" id="Footer">&nbsp;</div>
+<script type="text/javascript" language="JavaScript1.2">
+<!--
+   DocHandle = "mesp_user";
+   DocTitle = "Mentor Embedded Sourcery Probe User's Manual";
+   PageTitle = "Debugging with CodeBench";
+   Copyright = "2011-2014";
+   PDFLinkTitle = "Debugging.with.CodeBench"
+   ThisTopic = "DebuggingwithCodeBench";
+   CurrentFile = "virtualprobe05.html";
+   CurrentFileID = "136";
+      topicFooter();
+
+ // -->
+ </script>
+ 
+ <noscript>
+    <p class="MGCFooter">Mentor Embedded Sourcery Probe User's Manual&nbsp;2.5.0
+    
+<br />2011-2014&#169;&nbsp;Mentor Graphics Corporation. All rights reserved.
+    
+<br /><a href='../mgc_html_help/nsmgchelp.htm' target="_blank">Browser Requirements</a></p>
+ </noscript>
+
+    </div>
+  </body>
+</html>
+
+ 

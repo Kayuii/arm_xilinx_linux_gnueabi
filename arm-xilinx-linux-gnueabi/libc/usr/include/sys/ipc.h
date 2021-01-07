@@ -1,4 +1,4 @@
-/* Copyright (C) 1995,1996,1997,1999,2002 Free Software Foundation, Inc.
+/* Copyright (C) 1995-2015 Free Software Foundation, Inc.
    This file is part of the GNU C Library.
 
    The GNU C Library is free software; you can redistribute it and/or
@@ -12,17 +12,16 @@
    Lesser General Public License for more details.
 
    You should have received a copy of the GNU Lesser General Public
-   License along with the GNU C Library; if not, write to the Free
-   Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA
-   02111-1307 USA.  */
+   License along with the GNU C Library; if not, see
+   <http://www.gnu.org/licenses/>.  */
 
 #ifndef _SYS_IPC_H
 #define _SYS_IPC_H	1
 
 #include <features.h>
 
-#if !defined __USE_SVID && !defined __USE_XOPEN && __GNUC__ >= 2
-# warning "Files using this header must be compiled with _SVID_SOURCE or _XOPEN_SOURCE"
+#if !defined __USE_MISC && !defined __USE_XOPEN && __GNUC__ >= 2
+# warning "Files using this header must be compiled with _GNU_SOURCE or _XOPEN_SOURCE"
 #endif
 
 /* Get system dependent definition of `struct ipc_perm' and more.  */
@@ -52,7 +51,7 @@ typedef __key_t key_t;
 __BEGIN_DECLS
 
 /* Generates key for System V style IPC.  */
-extern key_t ftok (__const char *__pathname, int __proj_id) __THROW;
+extern key_t ftok (const char *__pathname, int __proj_id) __THROW;
 
 __END_DECLS
 

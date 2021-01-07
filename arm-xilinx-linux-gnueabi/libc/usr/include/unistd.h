@@ -1,4 +1,4 @@
-/* Copyright (C) 1991-2009, 2010 Free Software Foundation, Inc.
+/* Copyright (C) 1991-2015 Free Software Foundation, Inc.
    This file is part of the GNU C Library.
 
    The GNU C Library is free software; you can redistribute it and/or
@@ -12,9 +12,8 @@
    Lesser General Public License for more details.
 
    You should have received a copy of the GNU Lesser General Public
-   License along with the GNU C Library; if not, write to the Free
-   Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA
-   02111-1307 USA.  */
+   License along with the GNU C Library; if not, see
+   <http://www.gnu.org/licenses/>.  */
 
 /*
  *	POSIX Standard: 2.10 Symbolic Constants		<unistd.h>
@@ -263,14 +262,14 @@ typedef __pid_t pid_t;
 # endif
 #endif	/* X/Open */
 
-#if defined __USE_MISC || defined __USE_XOPEN_EXTENDED || defined __USE_XOPEN2K
+#if defined __USE_XOPEN_EXTENDED || defined __USE_XOPEN2K
 # ifndef __intptr_t_defined
 typedef __intptr_t intptr_t;
 #  define __intptr_t_defined
 # endif
 #endif
 
-#if defined __USE_BSD || defined __USE_XOPEN
+#if defined __USE_MISC || defined __USE_XOPEN
 # ifndef __socklen_t_defined
 typedef __socklen_t socklen_t;
 #  define __socklen_t_defined
@@ -285,16 +284,16 @@ typedef __socklen_t socklen_t;
 #define	F_OK	0		/* Test for existence.  */
 
 /* Test for access to NAME using the real UID and real GID.  */
-extern int access (__const char *__name, int __type) __THROW __nonnull ((1));
+extern int access (const char *__name, int __type) __THROW __nonnull ((1));
 
 #ifdef __USE_GNU
 /* Test for access to NAME using the effective UID and GID
    (as normal file operations use).  */
-extern int euidaccess (__const char *__name, int __type)
+extern int euidaccess (const char *__name, int __type)
      __THROW __nonnull ((1));
 
 /* An alias for `euidaccess', used by some other systems.  */
-extern int eaccess (__const char *__name, int __type)
+extern int eaccess (const char *__name, int __type)
      __THROW __nonnull ((1));
 #endif
 
@@ -302,7 +301,7 @@ extern int eaccess (__const char *__name, int __type)
 /* Test for access to FILE relative to the directory FD is open on.
    If AT_EACCESS is set in FLAG, then use effective IDs like `eaccess',
    otherwise use real IDs like `access'.  */
-extern int faccessat (int __fd, __const char *__file, int __type, int __flag)
+extern int faccessat (int __fd, const char *__file, int __type, int __flag)
      __THROW __nonnull ((2)) __wur;
 #endif /* Use GNU.  */
 
@@ -312,9 +311,13 @@ extern int faccessat (int __fd, __const char *__file, int __type, int __flag)
 # define SEEK_SET	0	/* Seek from beginning of file.  */
 # define SEEK_CUR	1	/* Seek from current position.  */
 # define SEEK_END	2	/* Seek from end of file.  */
+# ifdef __USE_GNU
+#  define SEEK_DATA	3	/* Seek to next data.  */
+#  define SEEK_HOLE	4	/* Seek to next hole.  */
+# endif
 #endif
 
-#if defined __USE_BSD && !defined L_SET
+#if defined __USE_MISC && !defined L_SET
 /* Old BSD names for the same constants; just for compatibility.  */
 # define L_SET		SEEK_SET
 # define L_INCR		SEEK_CUR
@@ -360,7 +363,7 @@ extern ssize_t read (int __fd, void *__buf, size_t __nbytes) __wur;
 
    This function is a cancellation point and therefore not marked with
    __THROW.  */
-extern ssize_t write (int __fd, __const void *__buf, size_t __n) __wur;
+extern ssize_t write (int __fd, const void *__buf, size_t __n) __wur;
 
 #if defined __USE_UNIX98 || defined __USE_XOPEN2K8
 # ifndef __USE_FILE_OFFSET64
@@ -378,14 +381,14 @@ extern ssize_t pread (int __fd, void *__buf, size_t __nbytes,
 
    This function is a cancellation point and therefore not marked with
    __THROW.  */
-extern ssize_t pwrite (int __fd, __const void *__buf, size_t __n,
+extern ssize_t pwrite (int __fd, const void *__buf, size_t __n,
 		       __off_t __offset) __wur;
 # else
 #  ifdef __REDIRECT
 extern ssize_t __REDIRECT (pread, (int __fd, void *__buf, size_t __nbytes,
 				   __off64_t __offset),
 			   pread64) __wur;
-extern ssize_t __REDIRECT (pwrite, (int __fd, __const void *__buf,
+extern ssize_t __REDIRECT (pwrite, (int __fd, const void *__buf,
 				    size_t __nbytes, __off64_t __offset),
 			   pwrite64) __wur;
 #  else
@@ -402,7 +405,7 @@ extern ssize_t pread64 (int __fd, void *__buf, size_t __nbytes,
 			__off64_t __offset) __wur;
 /* Write N bytes of BUF to FD at the given position OFFSET without
    changing the file pointer.  Return the number written, or -1.  */
-extern ssize_t pwrite64 (int __fd, __const void *__buf, size_t __n,
+extern ssize_t pwrite64 (int __fd, const void *__buf, size_t __n,
 			 __off64_t __offset) __wur;
 # endif
 #endif
@@ -441,7 +444,7 @@ extern unsigned int alarm (unsigned int __seconds) __THROW;
 extern unsigned int sleep (unsigned int __seconds);
 
 #if (defined __USE_XOPEN_EXTENDED && !defined __USE_XOPEN2K8) \
-    || defined __USE_BSD
+    || defined __USE_MISC
 /* Set an alarm to go off (generating a SIGALRM signal) in VALUE
    microseconds.  If INTERVAL is nonzero, when the alarm goes off, the
    timer is reset to go off every INTERVAL microseconds thereafter.
@@ -467,33 +470,33 @@ extern int pause (void);
 
 
 /* Change the owner and group of FILE.  */
-extern int chown (__const char *__file, __uid_t __owner, __gid_t __group)
+extern int chown (const char *__file, __uid_t __owner, __gid_t __group)
      __THROW __nonnull ((1)) __wur;
 
-#if defined __USE_BSD || defined __USE_XOPEN_EXTENDED || defined __USE_XOPEN2K8
+#if defined __USE_XOPEN_EXTENDED || defined __USE_XOPEN2K8
 /* Change the owner and group of the file that FD is open on.  */
 extern int fchown (int __fd, __uid_t __owner, __gid_t __group) __THROW __wur;
 
 
 /* Change owner and group of FILE, if it is a symbolic
    link the ownership of the symbolic link is changed.  */
-extern int lchown (__const char *__file, __uid_t __owner, __gid_t __group)
+extern int lchown (const char *__file, __uid_t __owner, __gid_t __group)
      __THROW __nonnull ((1)) __wur;
 
-#endif /* Use BSD || X/Open Unix.  */
+#endif /* Use X/Open Unix.  */
 
 #ifdef __USE_ATFILE
 /* Change the owner and group of FILE relative to the directory FD is open
    on.  */
-extern int fchownat (int __fd, __const char *__file, __uid_t __owner,
+extern int fchownat (int __fd, const char *__file, __uid_t __owner,
 		     __gid_t __group, int __flag)
      __THROW __nonnull ((2)) __wur;
 #endif /* Use GNU.  */
 
 /* Change the process's working directory to PATH.  */
-extern int chdir (__const char *__path) __THROW __nonnull ((1)) __wur;
+extern int chdir (const char *__path) __THROW __nonnull ((1)) __wur;
 
-#if defined __USE_BSD || defined __USE_XOPEN_EXTENDED || defined __USE_XOPEN2K8
+#if defined __USE_XOPEN_EXTENDED || defined __USE_XOPEN2K8
 /* Change the process's working directory to the one FD is open on.  */
 extern int fchdir (int __fd) __THROW __wur;
 #endif
@@ -515,7 +518,7 @@ extern char *get_current_dir_name (void) __THROW;
 #endif
 
 #if (defined __USE_XOPEN_EXTENDED && !defined __USE_XOPEN2K8) \
-    || defined __USE_BSD
+    || defined __USE_MISC
 /* Put the absolute pathname of the current working directory in BUF.
    If successful, return BUF.  If not, put an error message in
    BUF and return NULL.  BUF should be at least PATH_MAX bytes long.  */
@@ -545,47 +548,47 @@ extern char **environ;
 
 /* Replace the current process, executing PATH with arguments ARGV and
    environment ENVP.  ARGV and ENVP are terminated by NULL pointers.  */
-extern int execve (__const char *__path, char *__const __argv[],
-		   char *__const __envp[]) __THROW __nonnull ((1, 2));
+extern int execve (const char *__path, char *const __argv[],
+		   char *const __envp[]) __THROW __nonnull ((1, 2));
 
 #ifdef __USE_XOPEN2K8
 /* Execute the file FD refers to, overlaying the running program image.
    ARGV and ENVP are passed to the new program, as for `execve'.  */
-extern int fexecve (int __fd, char *__const __argv[], char *__const __envp[])
+extern int fexecve (int __fd, char *const __argv[], char *const __envp[])
      __THROW __nonnull ((2));
 #endif
 
 
 /* Execute PATH with arguments ARGV and environment from `environ'.  */
-extern int execv (__const char *__path, char *__const __argv[])
+extern int execv (const char *__path, char *const __argv[])
      __THROW __nonnull ((1, 2));
 
 /* Execute PATH with all arguments after PATH until a NULL pointer,
    and the argument after that for environment.  */
-extern int execle (__const char *__path, __const char *__arg, ...)
+extern int execle (const char *__path, const char *__arg, ...)
      __THROW __nonnull ((1, 2));
 
 /* Execute PATH with all arguments after PATH until
    a NULL pointer and environment from `environ'.  */
-extern int execl (__const char *__path, __const char *__arg, ...)
+extern int execl (const char *__path, const char *__arg, ...)
      __THROW __nonnull ((1, 2));
 
 /* Execute FILE, searching in the `PATH' environment variable if it contains
    no slashes, with arguments ARGV and environment from `environ'.  */
-extern int execvp (__const char *__file, char *__const __argv[])
+extern int execvp (const char *__file, char *const __argv[])
      __THROW __nonnull ((1, 2));
 
 /* Execute FILE, searching in the `PATH' environment variable if
    it contains no slashes, with all arguments after FILE until a
    NULL pointer and environment from `environ'.  */
-extern int execlp (__const char *__file, __const char *__arg, ...)
+extern int execlp (const char *__file, const char *__arg, ...)
      __THROW __nonnull ((1, 2));
 
 #ifdef __USE_GNU
 /* Execute FILE, searching in the `PATH' environment variable if it contains
    no slashes, with arguments ARGV and environment from `environ'.  */
-extern int execvpe (__const char *__file, char *__const __argv[],
-		    char *__const __envp[])
+extern int execvpe (const char *__file, char *const __argv[],
+		    char *const __envp[])
      __THROW __nonnull ((1, 2));
 #endif
 
@@ -606,7 +609,7 @@ extern void _exit (int __status) __attribute__ ((__noreturn__));
 #include <bits/confname.h>
 
 /* Get file-specific configuration information about PATH.  */
-extern long int pathconf (__const char *__path, int __name)
+extern long int pathconf (const char *__path, int __name)
      __THROW __nonnull ((1));
 
 /* Get file-specific configuration about descriptor FD.  */
@@ -627,17 +630,8 @@ extern __pid_t getpid (void) __THROW;
 /* Get the process ID of the calling process's parent.  */
 extern __pid_t getppid (void) __THROW;
 
-/* Get the process group ID of the calling process.
-   This function is different on old BSD. */
-#ifndef __FAVOR_BSD
+/* Get the process group ID of the calling process.  */
 extern __pid_t getpgrp (void) __THROW;
-#else
-# ifdef __REDIRECT_NTH
-extern __pid_t __REDIRECT_NTH (getpgrp, (__pid_t __pid), __getpgid);
-# else
-#  define getpgrp __getpgid
-# endif
-#endif
 
 /* Get the process group ID of process PID.  */
 extern __pid_t __getpgid (__pid_t __pid) __THROW;
@@ -651,7 +645,7 @@ extern __pid_t getpgid (__pid_t __pid) __THROW;
    If PGID is zero, the process ID of the process is used.  */
 extern int setpgid (__pid_t __pid, __pid_t __pgid) __THROW;
 
-#if defined __USE_SVID || defined __USE_BSD || defined __USE_XOPEN_EXTENDED
+#if defined __USE_MISC || defined __USE_XOPEN_EXTENDED
 /* Both System V and BSD have `setpgrp' functions, but with different
    calling conventions.  The BSD function is the same as POSIX.1 `setpgid'
    (above).  The System V function takes no arguments and puts the calling
@@ -659,26 +653,13 @@ extern int setpgid (__pid_t __pid, __pid_t __pgid) __THROW;
 
    New programs should always use `setpgid' instead.
 
-   The default in GNU is to provide the System V function.  The BSD
-   function is available under -D_BSD_SOURCE.  */
-
-# ifndef __FAVOR_BSD
+   GNU provides the POSIX.1 function.  */
 
 /* Set the process group ID of the calling process to its own PID.
    This is exactly the same as `setpgid (0, 0)'.  */
 extern int setpgrp (void) __THROW;
 
-# else
-
-/* Another name for `setpgid' (above).  */
-#  ifdef __REDIRECT_NTH
-extern int __REDIRECT_NTH (setpgrp, (__pid_t __pid, __pid_t __pgrp), setpgid);
-#  else
-#   define setpgrp setpgid
-#  endif
-
-# endif	/* Favor BSD.  */
-#endif	/* Use SVID or BSD.  */
+#endif	/* Use misc or X/Open.  */
 
 /* Create a new session with the calling process as its leader.
    The process group IDs of the session and the calling process
@@ -716,35 +697,35 @@ extern int group_member (__gid_t __gid) __THROW;
    If the calling process is the super-user, set the real
    and effective user IDs, and the saved set-user-ID to UID;
    if not, the effective user ID is set to UID.  */
-extern int setuid (__uid_t __uid) __THROW;
+extern int setuid (__uid_t __uid) __THROW __wur;
 
-#if defined __USE_BSD || defined __USE_XOPEN_EXTENDED
+#if defined __USE_MISC || defined __USE_XOPEN_EXTENDED
 /* Set the real user ID of the calling process to RUID,
    and the effective user ID of the calling process to EUID.  */
-extern int setreuid (__uid_t __ruid, __uid_t __euid) __THROW;
+extern int setreuid (__uid_t __ruid, __uid_t __euid) __THROW __wur;
 #endif
 
-#if defined __USE_BSD || defined __USE_XOPEN2K
+#ifdef __USE_XOPEN2K
 /* Set the effective user ID of the calling process to UID.  */
-extern int seteuid (__uid_t __uid) __THROW;
-#endif /* Use BSD.  */
+extern int seteuid (__uid_t __uid) __THROW __wur;
+#endif /* Use POSIX.1-2001.  */
 
 /* Set the group ID of the calling process to GID.
    If the calling process is the super-user, set the real
    and effective group IDs, and the saved set-group-ID to GID;
    if not, the effective group ID is set to GID.  */
-extern int setgid (__gid_t __gid) __THROW;
+extern int setgid (__gid_t __gid) __THROW __wur;
 
-#if defined __USE_BSD || defined __USE_XOPEN_EXTENDED
+#if defined __USE_MISC || defined __USE_XOPEN_EXTENDED
 /* Set the real group ID of the calling process to RGID,
    and the effective group ID of the calling process to EGID.  */
-extern int setregid (__gid_t __rgid, __gid_t __egid) __THROW;
+extern int setregid (__gid_t __rgid, __gid_t __egid) __THROW __wur;
 #endif
 
-#if defined __USE_BSD || defined __USE_XOPEN2K
+#ifdef __USE_XOPEN2K
 /* Set the effective group ID of the calling process to GID.  */
-extern int setegid (__gid_t __gid) __THROW;
-#endif /* Use BSD.  */
+extern int setegid (__gid_t __gid) __THROW __wur;
+#endif /* Use POSIX.1-2001.  */
 
 #ifdef __USE_GNU
 /* Fetch the real user ID, effective user ID, and saved-set user ID,
@@ -760,28 +741,28 @@ extern int getresgid (__gid_t *__rgid, __gid_t *__egid, __gid_t *__sgid)
 /* Set the real user ID, effective user ID, and saved-set user ID,
    of the calling process to RUID, EUID, and SUID, respectively.  */
 extern int setresuid (__uid_t __ruid, __uid_t __euid, __uid_t __suid)
-     __THROW;
+     __THROW __wur;
 
 /* Set the real group ID, effective group ID, and saved-set group ID,
    of the calling process to RGID, EGID, and SGID, respectively.  */
 extern int setresgid (__gid_t __rgid, __gid_t __egid, __gid_t __sgid)
-     __THROW;
+     __THROW __wur;
 #endif
 
 
 /* Clone the calling process, creating an exact copy.
    Return -1 for errors, 0 to the new process,
    and the process ID of the new process to the old process.  */
-extern __pid_t fork (void) __THROW;
+extern __pid_t fork (void) __THROWNL;
 
 #if (defined __USE_XOPEN_EXTENDED && !defined __USE_XOPEN2K8) \
-    || defined __USE_BSD
+    || defined __USE_MISC
 /* Clone the calling process, but without copying the whole address space.
    The calling process is suspended until the new process exits or is
    replaced by a call to `execve'.  Return -1 for errors, 0 to the new process,
    and the process ID of the new process to the old process.  */
 extern __pid_t vfork (void) __THROW;
-#endif /* Use BSD or XPG < 7. */
+#endif /* Use misc or XPG < 7. */
 
 
 /* Return the pathname of the terminal FD is open on, or NULL on errors.
@@ -797,7 +778,7 @@ extern int ttyname_r (int __fd, char *__buf, size_t __buflen)
    with a terminal, zero if not.  */
 extern int isatty (int __fd) __THROW;
 
-#if defined __USE_BSD \
+#if defined __USE_MISC \
     || (defined __USE_XOPEN_EXTENDED && !defined __USE_UNIX98)
 /* Return the index into the active-logins file (utmp) for
    the controlling terminal.  */
@@ -806,52 +787,52 @@ extern int ttyslot (void) __THROW;
 
 
 /* Make a link to FROM named TO.  */
-extern int link (__const char *__from, __const char *__to)
+extern int link (const char *__from, const char *__to)
      __THROW __nonnull ((1, 2)) __wur;
 
 #ifdef __USE_ATFILE
 /* Like link but relative paths in TO and FROM are interpreted relative
    to FROMFD and TOFD respectively.  */
-extern int linkat (int __fromfd, __const char *__from, int __tofd,
-		   __const char *__to, int __flags)
+extern int linkat (int __fromfd, const char *__from, int __tofd,
+		   const char *__to, int __flags)
      __THROW __nonnull ((2, 4)) __wur;
 #endif
 
-#if defined __USE_BSD || defined __USE_XOPEN_EXTENDED || defined __USE_XOPEN2K
+#if defined __USE_XOPEN_EXTENDED || defined __USE_XOPEN2K
 /* Make a symbolic link to FROM named TO.  */
-extern int symlink (__const char *__from, __const char *__to)
+extern int symlink (const char *__from, const char *__to)
      __THROW __nonnull ((1, 2)) __wur;
 
 /* Read the contents of the symbolic link PATH into no more than
    LEN bytes of BUF.  The contents are not null-terminated.
    Returns the number of characters read, or -1 for errors.  */
-extern ssize_t readlink (__const char *__restrict __path,
+extern ssize_t readlink (const char *__restrict __path,
 			 char *__restrict __buf, size_t __len)
      __THROW __nonnull ((1, 2)) __wur;
-#endif /* Use BSD.  */
+#endif /* Use POSIX.1-2001.  */
 
 #ifdef __USE_ATFILE
 /* Like symlink but a relative path in TO is interpreted relative to TOFD.  */
-extern int symlinkat (__const char *__from, int __tofd,
-		      __const char *__to) __THROW __nonnull ((1, 3)) __wur;
+extern int symlinkat (const char *__from, int __tofd,
+		      const char *__to) __THROW __nonnull ((1, 3)) __wur;
 
 /* Like readlink but a relative PATH is interpreted relative to FD.  */
-extern ssize_t readlinkat (int __fd, __const char *__restrict __path,
+extern ssize_t readlinkat (int __fd, const char *__restrict __path,
 			   char *__restrict __buf, size_t __len)
      __THROW __nonnull ((2, 3)) __wur;
 #endif
 
 /* Remove the link NAME.  */
-extern int unlink (__const char *__name) __THROW __nonnull ((1));
+extern int unlink (const char *__name) __THROW __nonnull ((1));
 
 #ifdef __USE_ATFILE
 /* Remove the link NAME relative to FD.  */
-extern int unlinkat (int __fd, __const char *__name, int __flag)
+extern int unlinkat (int __fd, const char *__name, int __flag)
      __THROW __nonnull ((2));
 #endif
 
 /* Remove the directory PATH.  */
-extern int rmdir (__const char *__path) __THROW __nonnull ((1));
+extern int rmdir (const char *__path) __THROW __nonnull ((1));
 
 
 /* Return the foreground process group ID of FD.  */
@@ -863,7 +844,7 @@ extern int tcsetpgrp (int __fd, __pid_t __pgrp_id) __THROW;
 
 /* Return the login name of the user.
 
-   This function is a possible cancellation points and therefore not
+   This function is a possible cancellation point and therefore not
    marked with __THROW.  */
 extern char *getlogin (void);
 #if defined __USE_REENTRANT || defined __USE_POSIX199506
@@ -871,14 +852,14 @@ extern char *getlogin (void);
    If it cannot be determined or some other error occurred, return the error
    code.  Otherwise return 0.
 
-   This function is a possible cancellation points and therefore not
+   This function is a possible cancellation point and therefore not
    marked with __THROW.  */
 extern int getlogin_r (char *__name, size_t __name_len) __nonnull ((1));
 #endif
 
-#ifdef	__USE_BSD
+#ifdef	__USE_MISC
 /* Set the login name returned by `getlogin'.  */
-extern int setlogin (__const char *__name) __THROW __nonnull ((1));
+extern int setlogin (const char *__name) __THROW __nonnull ((1));
 #endif
 
 
@@ -891,7 +872,7 @@ extern int setlogin (__const char *__name) __THROW __nonnull ((1));
 #endif
 
 
-#if defined __USE_BSD || defined __USE_UNIX98 || defined __USE_XOPEN2K
+#if defined __USE_UNIX98 || defined __USE_XOPEN2K
 /* Put the name of the current host in no more than LEN bytes of NAME.
    The result is null-terminated if LEN is large enough for the full
    name and the terminator.  */
@@ -899,10 +880,10 @@ extern int gethostname (char *__name, size_t __len) __THROW __nonnull ((1));
 #endif
 
 
-#if defined __USE_BSD || (defined __USE_XOPEN && !defined __USE_UNIX98)
+#if defined __USE_MISC
 /* Set the name of the current host to NAME, which is LEN bytes long.
    This call is restricted to the super-user.  */
-extern int sethostname (__const char *__name, size_t __len)
+extern int sethostname (const char *__name, size_t __len)
      __THROW __nonnull ((1)) __wur;
 
 /* Set the current machine's Internet number to ID.
@@ -915,7 +896,7 @@ extern int sethostid (long int __id) __THROW __wur;
    The NIS domain name is usually the empty string when not using NIS.  */
 extern int getdomainname (char *__name, size_t __len)
      __THROW __nonnull ((1)) __wur;
-extern int setdomainname (__const char *__name, size_t __len)
+extern int setdomainname (const char *__name, size_t __len)
      __THROW __nonnull ((1)) __wur;
 
 
@@ -925,7 +906,7 @@ extern int setdomainname (__const char *__name, size_t __len)
 extern int vhangup (void) __THROW;
 
 /* Revoke the access of all descriptors currently open on FILE.  */
-extern int revoke (__const char *__file) __THROW __nonnull ((1)) __wur;
+extern int revoke (const char *__file) __THROW __nonnull ((1)) __wur;
 
 
 /* Enable statistical profiling, writing samples of the PC into at most
@@ -941,7 +922,7 @@ extern int profil (unsigned short int *__sample_buffer, size_t __size,
 /* Turn accounting on if NAME is an existing file.  The system will then write
    a record for each process as it terminates, to this file.  If NAME is NULL,
    turn accounting off.  This call is restricted to the super-user.  */
-extern int acct (__const char *__name) __THROW;
+extern int acct (const char *__name) __THROW;
 
 
 /* Successive calls return the shells listed in `/etc/shells'.  */
@@ -954,30 +935,35 @@ extern void setusershell (void) __THROW; /* Rewind and re-read the file.  */
    terminal.  If NOCHDIR is zero, do `chdir ("/")'.  If NOCLOSE is zero,
    redirects stdin, stdout, and stderr to /dev/null.  */
 extern int daemon (int __nochdir, int __noclose) __THROW __wur;
-#endif /* Use BSD || X/Open.  */
+#endif /* Use misc.  */
 
 
-#if defined __USE_BSD || (defined __USE_XOPEN && !defined __USE_XOPEN2K)
+#if defined __USE_MISC || (defined __USE_XOPEN && !defined __USE_XOPEN2K)
 /* Make PATH be the root directory (the starting point for absolute paths).
    This call is restricted to the super-user.  */
-extern int chroot (__const char *__path) __THROW __nonnull ((1)) __wur;
+extern int chroot (const char *__path) __THROW __nonnull ((1)) __wur;
 
 /* Prompt with PROMPT and read a string from the terminal without echoing.
    Uses /dev/tty if possible; otherwise stderr and stdin.  */
-extern char *getpass (__const char *__prompt) __nonnull ((1));
-#endif /* Use BSD || X/Open.  */
+extern char *getpass (const char *__prompt) __nonnull ((1));
+#endif /* Use misc || X/Open.  */
 
 
-#if defined __USE_BSD || defined __USE_XOPEN || defined __USE_XOPEN2K
 /* Make all changes done to FD actually appear on disk.
 
    This function is a cancellation point and therefore not marked with
    __THROW.  */
 extern int fsync (int __fd);
-#endif /* Use BSD || X/Open || Unix98.  */
 
 
-#if defined __USE_BSD || defined __USE_XOPEN_EXTENDED
+#ifdef __USE_GNU
+/* Make all changes done to all files on the file system associated
+   with FD actually appear on disk.  */
+extern int syncfs (int __fd) __THROW;
+#endif
+
+
+#if defined __USE_MISC || defined __USE_XOPEN_EXTENDED
 
 /* Return identifier for the current host.  */
 extern long int gethostid (void);
@@ -986,7 +972,7 @@ extern long int gethostid (void);
 extern void sync (void) __THROW;
 
 
-# if defined __USE_BSD || !defined __USE_XOPEN2K
+# if defined __USE_MISC || !defined __USE_XOPEN2K
 /* Return the number of bytes in a page.  This is the system's page size,
    which is not necessarily the same as the hardware page size.  */
 extern int getpagesize (void)  __THROW __attribute__ ((__const__));
@@ -997,32 +983,33 @@ extern int getpagesize (void)  __THROW __attribute__ ((__const__));
 extern int getdtablesize (void) __THROW;
 # endif
 
-#endif /* Use BSD || X/Open Unix.  */
+#endif /* Use misc || X/Open Unix.  */
 
 
-#if defined __USE_BSD || defined __USE_XOPEN_EXTENDED || defined __USE_XOPEN2K8
+#if defined __USE_XOPEN_EXTENDED || defined __USE_XOPEN2K8
 
 /* Truncate FILE to LENGTH bytes.  */
 # ifndef __USE_FILE_OFFSET64
-extern int truncate (__const char *__file, __off_t __length)
+extern int truncate (const char *__file, __off_t __length)
      __THROW __nonnull ((1)) __wur;
 # else
 #  ifdef __REDIRECT_NTH
 extern int __REDIRECT_NTH (truncate,
-			   (__const char *__file, __off64_t __length),
+			   (const char *__file, __off64_t __length),
 			   truncate64) __nonnull ((1)) __wur;
 #  else
 #   define truncate truncate64
 #  endif
 # endif
 # ifdef __USE_LARGEFILE64
-extern int truncate64 (__const char *__file, __off64_t __length)
+extern int truncate64 (const char *__file, __off64_t __length)
      __THROW __nonnull ((1)) __wur;
 # endif
 
-#endif /* Use BSD || X/Open Unix || POSIX 2008.  */
+#endif /* Use X/Open Unix || POSIX 2008.  */
 
-#if defined __USE_BSD || defined __USE_XOPEN_EXTENDED || defined __USE_XOPEN2K
+#if defined __USE_POSIX199309 \
+    || defined __USE_XOPEN_EXTENDED || defined __USE_XOPEN2K
 
 /* Truncate the file FD is open on to LENGTH bytes.  */
 # ifndef __USE_FILE_OFFSET64
@@ -1039,7 +1026,7 @@ extern int __REDIRECT_NTH (ftruncate, (int __fd, __off64_t __length),
 extern int ftruncate64 (int __fd, __off64_t __length) __THROW __wur;
 # endif
 
-#endif /* Use BSD || X/Open Unix || POSIX 2003.  */
+#endif /* Use POSIX.1b || X/Open Unix || XPG6.  */
 
 
 #if (defined __USE_XOPEN_EXTENDED && !defined __USE_XOPEN2K) \
@@ -1130,33 +1117,34 @@ extern int fdatasync (int __fildes);
    be defined here.  */
 #ifdef	__USE_XOPEN
 /* Encrypt at most 8 characters from KEY using salt to perturb DES.  */
-extern char *crypt (__const char *__key, __const char *__salt)
+extern char *crypt (const char *__key, const char *__salt)
      __THROW __nonnull ((1, 2));
 
 /* Encrypt data in BLOCK in place if EDFLAG is zero; otherwise decrypt
    block in place.  */
-extern void encrypt (char *__libc_block, int __edflag) __THROW __nonnull ((1));
+extern void encrypt (char *__glibc_block, int __edflag)
+     __THROW __nonnull ((1));
 
 
 /* Swab pairs bytes in the first N bytes of the area pointed to by
    FROM and copy the result to TO.  The value of TO must not be in the
    range [FROM - N + 1, FROM - 1].  If N is odd the first byte in FROM
    is without partner.  */
-extern void swab (__const void *__restrict __from, void *__restrict __to,
+extern void swab (const void *__restrict __from, void *__restrict __to,
 		  ssize_t __n) __THROW __nonnull ((1, 2));
 #endif
 
 
 /* The Single Unix specification demands this prototype to be here.
    It is also found in <stdio.h>.  */
-#if defined __USE_XOPEN || defined __USE_XOPEN2K8
+#if defined __USE_XOPEN && !defined __USE_XOPEN2K
 /* Return the name of the controlling terminal.  */
 extern char *ctermid (char *__s) __THROW;
 #endif
 
 
 /* Define some macros helping to catch buffer overflows.  */
-#if __USE_FORTIFY_LEVEL > 0 && defined __extern_always_inline
+#if __USE_FORTIFY_LEVEL > 0 && defined __fortify_function
 # include <bits/unistd.h>
 #endif
 

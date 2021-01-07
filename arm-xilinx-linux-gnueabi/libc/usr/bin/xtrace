@@ -1,5 +1,5 @@
 #! /bin/bash
-# Copyright (C) 1999, 2001-2008, 2009, 2010, 2011 Free Software Foundation, Inc.
+# Copyright (C) 1999-2015 Free Software Foundation, Inc.
 # This file is part of the GNU C Library.
 # Contributed by Ulrich Drepper <drepper@gnu.org>, 1999.
 
@@ -14,9 +14,8 @@
 # Lesser General Public License for more details.
 
 # You should have received a copy of the GNU Lesser General Public
-# License along with the GNU C Library; if not, write to the Free
-# Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA
-# 02111-1307 USA.
+# License along with the GNU C Library; if not, see
+# <http://www.gnu.org/licenses/>.
 
 pcprofileso='/\$LIB/libpcprofile.so'
 pcprofiledump='/usr/bin/pcprofiledump'
@@ -30,13 +29,13 @@ do_usage() {
 
 # Refer to --help option.
 help_info() {
-  printf >&2 $"Try \`xtrace --help' for more information.\n"
+  printf >&2 $"Try \`%s --help' or \`%s --usage' for more information.\n" xtrace xtrace
   exit 1
 }
 
 # Message for missing argument.
 do_missing_arg() {
-  printf >&2 $"xtrace: option \`$1' requires an argument.\n"
+  printf >&2 $"%s: option '%s' requires an argument.\n" xtrace "$1"
   help_info
 }
 
@@ -55,18 +54,17 @@ Mandatory arguments to long options are also mandatory for any corresponding
 short options.
 
 "
-  printf $"For bug reporting instructions, please see:
-%s.
-" "<https://support.codesourcery.com/GNUToolchain/>"
+  printf $"For bug reporting instructions, please see:\\n%s.\\n" \
+    "<https://sourcery.mentor.com/GNUToolchain/>"
   exit 0
 }
 
 do_version() {
-  echo 'xtrace (Sourcery CodeBench Lite 2011.09-50) 2.13'
+  echo 'xtrace (Sourcery CodeBench Lite 2015.05-17) 2.21'
   printf $"Copyright (C) %s Free Software Foundation, Inc.
 This is free software; see the source for copying conditions.  There is NO
 warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-" "2011"
+" "2015"
   printf $"Written by %s.
 " "Ulrich Drepper"
   exit 0

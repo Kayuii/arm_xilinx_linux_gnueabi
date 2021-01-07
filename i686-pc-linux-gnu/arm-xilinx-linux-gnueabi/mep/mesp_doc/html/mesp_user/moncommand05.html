@@ -1,0 +1,174 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <noscript>
+       <link rel="StyleSheet" href="../MGC/styles/body.css" type="text/css" />
+       <link rel="StyleSheet" href="../MGC/styles/catalog.css" type="text/css" />
+       <link rel="StyleSheet" href="../MGC/styles/document.css" type="text/css" />
+    </noscript>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+    <meta name="GENERATOR" content="Quadralay WebWorks AutoMap 2003 for FrameMaker 8.0.2.1385" />
+    <meta name="TEMPLATEBASE" content="mgc_ww_v3.2.203" />
+    <meta name="LASTUPDATED" content="Fri Jun 20 07:38:12 2014" />
+    <meta name="mgc_html_doctitle" content="Mentor Embedded Sourcery Probe User's Manual" />
+    <title>+B (Enable Breakpoints), -B (Disable Breakpoints)</title>
+<!-- Search Engine keywords -->
+    <meta name="attributes" content=" product.version.2.5.0,doc.type.documentation.user,product.id.P11526 "/>
+<!-- JavaScript Files -->
+<script type="text/javascript" language="JavaScript1.2" src="../MGC/js/page.js"></script>
+<script type="text/javascript" language="JavaScript1.2">
+        if(DetectChromeForBasic()){
+           writeNoScriptStyles();
+        }
+
+     </script>
+   <script type="text/javascript" language="JavaScript1.2">
+     // Set reference to top level help frame
+      //
+      if(!DetectChromeForBasic()){
+        javascriptTopicRedirect();
+      }
+     </script>
+  </head>
+
+<body class="body" id="DocBody">
+<div id="BodyPopup" class="BodyPopup"></div>
+<div class="HideBody" id="HideBody">&nbsp;</div>
+<div id="bodycontent" class="BodyContent">
+
+
+
+
+
+  <script type="text/javascript" language="JavaScript1.2">
+  <!--
+      var BC = new Array("MON Command Language ","moncommand01","MON Command Details","moncommand04","+B (Enable Breakpoints), -B (Disable Breakpoints)","moncommand05","28");
+  // -->
+  </script>
+
+   <noscript><iframe framespacing="0" marginheight="2px" frameborder="no" scrolling="no" src="../MGC/html/noscript_header.htm" width="100%" height="100px;"></iframe>
+   </noscript>
+
+<script type="text/javascript" language="JavaScript1.2">
+if(DetectChromeForBasic()){
+       if(!(top.inEclipse)){  
+          writeBasicHeader();
+      }
+}
+</script>
+<div id="BodyContent">
+
+<a name="EW28"></a>
+<a name="wp33872"></a><h1 class="pzCmdFunc WarninG FontLevel1" id="MGC33872">
+
+<a name="CRefID28927"></a>
++B (Enable Breakpoints), -B (Disable Breakpoints)
+</h1>
+
+
+
+
+
+
+
+
+
+
+
+<a name="wp33873"></a><p class="pzMiscInfo">
+
+Availability: ALL
+</p>
+
+<a name="wp33874"></a><p class="pzShortDesc">
+
+The Enable Breakpoint (+B) or Disable Breakpoint (-B) command enables or disables one or more software breakpoints previously set with the <a href="moncommand08.html"  onclick='oT("CRF","moncommand08.html");return false;'>BS (Breakpoint Set)</a> command. If no parameter is given, and there is a software breakpoint set at the current execute location, that breakpoint is enabled or disabled.
+</p>
+
+
+<a name="wp33875"></a><p class="pzHeading">
+
+Usage
+</p>
+
+<a name="wp33958"></a><p class="pzMiscInfo">
+
+{+|-}B [*]
+</p>
+
+<a name="wp33876"></a><p class="pzUsage">
+
+{+|-}B {<span class=" cItalic">#number</span> |<span class=" cItalic">addr</span>}...
+</p>
+
+<a name="wp33877"></a><p class="pzHeading">
+
+Arguments
+</p>
+
+<a name="wp33878"></a>
+<ul class="ulSmSpace"><li class="LLzptArg">*</li></ul>
+
+<a name="wp33879"></a>
+<div class="LLzArgDesc">All software breakpoints are enabled or disabled.</div>
+<a name="wp33880"></a>
+<ul class="ulSmSpace"><li class="LLzptArg"># number</li></ul>
+
+<a name="wp33881"></a>
+<div class="LLzArgDesc">Specifies the number, as shown by the <a href="moncommand07.html"  onclick='oT("CRF","moncommand07.html");return false;'>BL (Breakpoint List)</a> command, of a software or hardware breakpoint to be enabled or disabled.</div>
+<a name="wp34040"></a>
+<ul class="ulSmSpace"><li class="LLzptArg">addr</li></ul>
+
+<a name="wp34032"></a>
+<div class="LLzArgDesc">Specifies the address of a software breakpoint to be enabled or disabled. addr must be an address in a valid code address space.</div>
+<a name="wp33884"></a><p class="pzHeading">
+
+Examples
+</p>
+
+<a name="wp34104"></a><pre class="pCode">
+BS main First Second Third 
+</pre>
+
+<a name="wp34105"></a><pre class="pCode">
+-B * 
+</pre>
+
+<a name="wp33885"></a><pre class="pCode">
++B main Third
+</pre>
+
+
+
+
+
+</div>
+<!--BeginFooterContent-->
+<div class="BlankFooter" id="BlankFooter">&nbsp;</div>
+<div class="Footer" id="Footer">&nbsp;</div>
+<script type="text/javascript" language="JavaScript1.2">
+<!--
+   DocHandle = "mesp_user";
+   DocTitle = "Mentor Embedded Sourcery Probe User's Manual";
+   PageTitle = "+B (Enable Breakpoints), \-B (Disable Breakpoints)";
+   Copyright = "2011-2014";
+   PDFLinkTitle = "B.Enable.Breakpoints.B.Disable.Breakpoints"
+   ThisTopic = "UserDefinedAccessLists";
+   CurrentFile = "moncommand05.html";
+   CurrentFileID = "28";
+      topicFooter();
+
+ // -->
+ </script>
+ 
+ <noscript>
+    <p class="MGCFooter">Mentor Embedded Sourcery Probe User's Manual&nbsp;2.5.0
+    <br />2011-2014&#169;&nbsp;Mentor Graphics Corporation. All rights reserved.
+    <br /><a href='../mgc_html_help/nsmgchelp.htm' target="_blank">Browser Requirements</a></p>
+ </noscript>
+
+    </div>
+  </body>
+</html>
+
+ 

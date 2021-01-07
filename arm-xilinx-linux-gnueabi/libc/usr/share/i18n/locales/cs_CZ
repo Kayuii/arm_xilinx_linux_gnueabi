@@ -107,7 +107,7 @@ comment_char %
 LC_IDENTIFICATION
 title      "Czech locale for the Czech Republic"
 source     "Free Software Foundation, Inc."
-address    "59 Temple Place - Suite 330, Boston, MA 02111-1307, USA"
+address    "http:////www.gnu.org//software//libc//"
 contact    ""
 email      "bug-glibc-locales@gnu.org"
 tel        ""
@@ -128,7 +128,7 @@ category  "cs_CZ:2000";LC_PAPER
 category  "cs_CZ:2000";LC_NAME
 category  "cs_CZ:2000";LC_ADDRESS
 category  "cs_CZ:2000";LC_TELEPHONE
-
+category  "cs_CZ:2000";LC_MEASUREMENT
 END LC_IDENTIFICATION
 
 %% Poøadí znakù
@@ -2472,7 +2472,8 @@ int_prefix     "<U0034><U0032><U0030>"
 END LC_TELEPHONE
 
 LC_MEASUREMENT
-measurement    1
+% metric
+measurement 1
 END LC_MEASUREMENT
 
 LC_NAME

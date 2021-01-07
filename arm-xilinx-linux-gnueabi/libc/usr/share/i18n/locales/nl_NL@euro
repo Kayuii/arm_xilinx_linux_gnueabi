@@ -14,7 +14,7 @@ escape_char  /
 LC_IDENTIFICATION
 title      "Dutch locale for the Netherlands with Euro"
 source     "Free Software Foundation, Inc."
-address    "59 Temple Place - Suite 330, Boston, MA 02111-1307, USA"
+address    "http:////www.gnu.org//software//libc//"
 contact    ""
 email      "bug-glibc-locales@gnu.org"
 tel        ""
@@ -35,7 +35,7 @@ category  "nl_NL@euro:2000";LC_PAPER
 category  "nl_NL@euro:2000";LC_NAME
 category  "nl_NL@euro:2000";LC_ADDRESS
 category  "nl_NL@euro:2000";LC_TELEPHONE
-
+category  "nl_NL@euro:2000";LC_MEASUREMENT
 END LC_IDENTIFICATION
 
 LC_CTYPE
@@ -71,7 +71,8 @@ copy "nl_NL"
 END LC_TELEPHONE
 
 LC_MEASUREMENT
-copy "nl_NL"
+% metric
+measurement 1
 END LC_MEASUREMENT
 
 LC_NAME

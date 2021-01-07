@@ -28,6 +28,7 @@
 #include <linux/types.h>
 #include <linux/virtio_ids.h>
 #include <linux/virtio_config.h>
+#include <linux/virtio_types.h>
 
 /* Feature bits */
 #define VIRTIO_BLK_F_BARRIER	0	/* Does host support barriers? */
@@ -37,8 +38,13 @@
 #define VIRTIO_BLK_F_RO		5	/* Disk is read-only */
 #define VIRTIO_BLK_F_BLK_SIZE	6	/* Block size of disk is available*/
 #define VIRTIO_BLK_F_SCSI	7	/* Supports scsi command passthru */
-#define VIRTIO_BLK_F_FLUSH	9	/* Cache flush command support */
+#define VIRTIO_BLK_F_WCE	9	/* Writeback mode enabled after reset */
 #define VIRTIO_BLK_F_TOPOLOGY	10	/* Topology information is available */
+#define VIRTIO_BLK_F_CONFIG_WCE	11	/* Writeback mode available in config */
+#define VIRTIO_BLK_F_MQ		12	/* support more than one vq */
+
+/* Old (deprecated) name for VIRTIO_BLK_F_WCE. */
+#define VIRTIO_BLK_F_FLUSH VIRTIO_BLK_F_WCE
 
 #define VIRTIO_BLK_ID_BYTES	20	/* ID string length */
 
@@ -69,6 +75,12 @@ struct virtio_blk_config {
 	/* optimal sustained I/O size in logical blocks. */
 	__u32 opt_io_size;
 
+	/* writeback mode (if VIRTIO_BLK_F_CONFIG_WCE) */
+	__u8 wce;
+	__u8 unused;
+
+	/* number of vqs, only available when VIRTIO_BLK_F_MQ is set */
+	__u16 num_queues;
 } __attribute__((packed));
 
 /*
@@ -101,18 +113,18 @@ struct virtio_blk_config {
 /* This is the first element of the read scatter-gather list. */
 struct virtio_blk_outhdr {
 	/* VIRTIO_BLK_T* */
-	__u32 type;
+	__virtio32 type;
 	/* io priority. */
-	__u32 ioprio;
+	__virtio32 ioprio;
 	/* Sector (ie. 512 byte offset) */
-	__u64 sector;
+	__virtio64 sector;
 };
 
 struct virtio_scsi_inhdr {
-	__u32 errors;
-	__u32 data_len;
-	__u32 sense_len;
-	__u32 residual;
+	__virtio32 errors;
+	__virtio32 data_len;
+	__virtio32 sense_len;
+	__virtio32 residual;
 };
 
 /* And this is the final byte of the write scatter-gather list. */

@@ -30,7 +30,7 @@ category  "i18n:2003";LC_PAPER
 category  "i18n:2003";LC_NAME
 category  "i18n:2003";LC_ADDRESS
 category  "i18n:2003";LC_TELEPHONE
-
+category  "i18n:2003";LC_MEASUREMENT
 END LC_IDENTIFICATION
 
 LC_CTYPE
@@ -51,7 +51,7 @@ map to_inpunct; /
   (<U0036>,<U0C6C>); /
   (<U0037>,<U0C6D>); /
   (<U0038>,<U0C6E>); /
-  (<U0039>,<U0C6F>); 
+  (<U0039>,<U0C6F>);
 
 translit_start
 include  "translit_combining";""
@@ -73,7 +73,7 @@ LC_MONETARY
 % for IBM Class for Unicode.
 %
 int_curr_symbol       "<U0049><U004E><U0052><U0020>"
-currency_symbol       "<U0C30><U0C42><U002E>"
+currency_symbol       "<U20B9>"
 mon_decimal_point     "<U002E>"
 mon_thousands_sep     "<U002C>"
 mon_grouping          3;2
@@ -221,9 +221,15 @@ country_name    "<U0C2D><U0C3E><U0C30><U0C24><U0020><U0C26><U0C47><U0C36><U0C02>
 country_ab2     "<U0049><U004E>"
 country_ab3     "<U0049><U004E><U0044>"
 country_num     356
+% IND
+country_car     "<U0049><U004E><U0044>"
 lang_name       "<U0C24><U0C46><U0C32><U0C41><U0C17><U0C41>"
-lang_ab         "te"
-lang_term       "tel"
+% te
+lang_ab      "<U0074><U0065>"
+% tel
+lang_term    "<U0074><U0065><U006C>"
+% tel
+lang_lib    "<U0074><U0065><U006C>"
 END LC_ADDRESS
 
 
@@ -233,5 +239,6 @@ END LC_TELEPHONE
 
 
 LC_MEASUREMENT
-copy "hi_IN"
+% metric
+measurement 1
 END LC_MEASUREMENT

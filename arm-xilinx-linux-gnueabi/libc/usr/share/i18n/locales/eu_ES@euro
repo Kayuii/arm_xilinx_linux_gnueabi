@@ -15,7 +15,7 @@ escape_char  /
 LC_IDENTIFICATION
 title      "Basque language locale for Spain with Euro"
 source     "Free Software Foundation, Inc."
-address    "59 Temple Place - Suite 330, Boston, MA 02111-1307, USA"
+address    "http:////www.gnu.org//software//libc//"
 contact    ""
 email      "bug-glibc-locales@gnu.org"
 tel        ""
@@ -36,7 +36,7 @@ category  "eu_ES@euro:2000";LC_PAPER
 category  "eu_ES@euro:2000";LC_NAME
 category  "eu_ES@euro:2000";LC_ADDRESS
 category  "eu_ES@euro:2000";LC_TELEPHONE
-
+category  "eu_ES@euro:2000";LC_MEASUREMENT
 END LC_IDENTIFICATION
 
 LC_COLLATE
@@ -86,7 +86,8 @@ copy "eu_ES"
 END LC_TELEPHONE
 
 LC_MEASUREMENT
-copy "eu_ES"
+% metric
+measurement 1
 END LC_MEASUREMENT
 
 LC_NAME

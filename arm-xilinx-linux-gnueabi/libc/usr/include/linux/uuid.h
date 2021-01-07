@@ -55,4 +55,4 @@ typedef struct {
 		0x00, 0x00, 0x00, 0x00)
 
 
-#endif
+#endif /* _LINUX_UUID_H_ */

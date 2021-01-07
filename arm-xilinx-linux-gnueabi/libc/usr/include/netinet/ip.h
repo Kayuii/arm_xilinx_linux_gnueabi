@@ -1,4 +1,4 @@
-/* Copyright (C) 1991-1993,1995-2000,2009,2010 Free Software Foundation, Inc.
+/* Copyright (C) 1991-2015 Free Software Foundation, Inc.
    This file is part of the GNU C Library.
 
    The GNU C Library is free software; you can redistribute it and/or
@@ -12,9 +12,8 @@
    Lesser General Public License for more details.
 
    You should have received a copy of the GNU Lesser General Public
-   License along with the GNU C Library; if not, write to the Free
-   Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA
-   02111-1307 USA.  */
+   License along with the GNU C Library; if not, see
+   <http://www.gnu.org/licenses/>.  */
 
 #ifndef __NETINET_IP_H
 #define __NETINET_IP_H 1
@@ -65,7 +64,7 @@ struct iphdr
     /*The options start here. */
   };
 
-#ifdef __USE_BSD
+#ifdef __USE_MISC
 /*
  * Copyright (c) 1982, 1986, 1993
  *	The Regents of the University of California.  All rights reserved.
@@ -147,7 +146,7 @@ struct ip_timestamp
 #endif
     u_int32_t data[9];
   };
-#endif /* __USE_BSD */
+#endif /* __USE_MISC */
 
 #define	IPVERSION	4               /* IP version number */
 #define	IP_MAXPACKET	65535		/* maximum packet size */

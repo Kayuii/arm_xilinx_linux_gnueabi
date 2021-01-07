@@ -1,5 +1,4 @@
-/* Copyright (C) 1991-1994,1996-2003,2005,2006,2009
-	Free Software Foundation, Inc.
+/* Copyright (C) 1991-2015 Free Software Foundation, Inc.
    This file is part of the GNU C Library.
 
    The GNU C Library is free software; you can redistribute it and/or
@@ -13,9 +12,8 @@
    Lesser General Public License for more details.
 
    You should have received a copy of the GNU Lesser General Public
-   License along with the GNU C Library; if not, write to the Free
-   Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA
-   02111-1307 USA.  */
+   License along with the GNU C Library; if not, see
+   <http://www.gnu.org/licenses/>.  */
 
 #ifndef _SYS_TIME_H
 #define _SYS_TIME_H	1
@@ -41,17 +39,17 @@ __BEGIN_DECLS
 #ifdef __USE_GNU
 /* Macros for converting between `struct timeval' and `struct timespec'.  */
 # define TIMEVAL_TO_TIMESPEC(tv, ts) {                                   \
-        (ts)->tv_sec = (tv)->tv_sec;                                    \
-        (ts)->tv_nsec = (tv)->tv_usec * 1000;                           \
+	(ts)->tv_sec = (tv)->tv_sec;                                    \
+	(ts)->tv_nsec = (tv)->tv_usec * 1000;                           \
 }
 # define TIMESPEC_TO_TIMEVAL(tv, ts) {                                   \
-        (tv)->tv_sec = (ts)->tv_sec;                                    \
-        (tv)->tv_usec = (ts)->tv_nsec / 1000;                           \
+	(tv)->tv_sec = (ts)->tv_sec;                                    \
+	(tv)->tv_usec = (ts)->tv_nsec / 1000;                           \
 }
 #endif
 
 
-#ifdef __USE_BSD
+#ifdef __USE_MISC
 /* Structure crudely representing a timezone.
    This is obsolete and should never be used.  */
 struct timezone
@@ -73,18 +71,18 @@ typedef void *__restrict __timezone_ptr_t;
 extern int gettimeofday (struct timeval *__restrict __tv,
 			 __timezone_ptr_t __tz) __THROW __nonnull ((1));
 
-#ifdef __USE_BSD
+#ifdef __USE_MISC
 /* Set the current time of day and timezone information.
    This call is restricted to the super-user.  */
-extern int settimeofday (__const struct timeval *__tv,
-			 __const struct timezone *__tz)
-     __THROW __nonnull ((1));
+extern int settimeofday (const struct timeval *__tv,
+			 const struct timezone *__tz)
+     __THROW;
 
 /* Adjust the current time of day by the amount in DELTA.
    If OLDDELTA is not NULL, it is filled in with the amount
    of time adjustment remaining to be done from the last `adjtime' call.
    This call is restricted to the super-user.  */
-extern int adjtime (__const struct timeval *__delta,
+extern int adjtime (const struct timeval *__delta,
 		    struct timeval *__olddelta) __THROW;
 #endif
 
@@ -131,34 +129,34 @@ extern int getitimer (__itimer_which_t __which,
    set *OLD to the old value of timer WHICH.
    Returns 0 on success, -1 on errors.  */
 extern int setitimer (__itimer_which_t __which,
-		      __const struct itimerval *__restrict __new,
+		      const struct itimerval *__restrict __new,
 		      struct itimerval *__restrict __old) __THROW;
 
 /* Change the access time of FILE to TVP[0] and the modification time of
    FILE to TVP[1].  If TVP is a null pointer, use the current time instead.
    Returns 0 on success, -1 on errors.  */
-extern int utimes (__const char *__file, __const struct timeval __tvp[2])
+extern int utimes (const char *__file, const struct timeval __tvp[2])
      __THROW __nonnull ((1));
 
-#ifdef __USE_BSD
+#ifdef __USE_MISC
 /* Same as `utimes', but does not follow symbolic links.  */
-extern int lutimes (__const char *__file, __const struct timeval __tvp[2])
+extern int lutimes (const char *__file, const struct timeval __tvp[2])
      __THROW __nonnull ((1));
 
 /* Same as `utimes', but takes an open file descriptor instead of a name.  */
-extern int futimes (int __fd, __const struct timeval __tvp[2]) __THROW;
+extern int futimes (int __fd, const struct timeval __tvp[2]) __THROW;
 #endif
 
 #ifdef __USE_GNU
 /* Change the access time of FILE relative to FD to TVP[0] and the
    modification time of FILE to TVP[1].  If TVP is a null pointer, use
    the current time instead.  Returns 0 on success, -1 on errors.  */
-extern int futimesat (int __fd, __const char *__file,
-		      __const struct timeval __tvp[2]) __THROW;
+extern int futimesat (int __fd, const char *__file,
+		      const struct timeval __tvp[2]) __THROW;
 #endif
 
 
-#ifdef __USE_BSD
+#ifdef __USE_MISC
 /* Convenience macros for operations on timevals.
    NOTE: `timercmp' does not work for >= or <=.  */
 # define timerisset(tvp)	((tvp)->tv_sec || (tvp)->tv_usec)
@@ -186,7 +184,7 @@ extern int futimesat (int __fd, __const char *__file,
       (result)->tv_usec += 1000000;					      \
     }									      \
   } while (0)
-#endif	/* BSD */
+#endif	/* Misc.  */
 
 __END_DECLS
 

@@ -1,0 +1,267 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <noscript>
+       <link rel="StyleSheet" href="../MGC/styles/body.css" type="text/css" />
+       <link rel="StyleSheet" href="../MGC/styles/catalog.css" type="text/css" />
+       <link rel="StyleSheet" href="../MGC/styles/document.css" type="text/css" />
+    </noscript>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+    <meta name="GENERATOR" content="Quadralay WebWorks AutoMap 2003 for FrameMaker 8.0.2.1385" />
+    <meta name="TEMPLATEBASE" content="mgc_ww_v3.2.203" />
+    <meta name="LASTUPDATED" content="Fri Jun 20 07:38:12 2014" />
+    <meta name="mgc_html_doctitle" content="Mentor Embedded Sourcery Probe User's Manual" />
+    <title>DC (Display Cache) - MIPS Only</title>
+<!-- Search Engine keywords -->
+    <meta name="attributes" content=" product.version.2.5.0,doc.type.documentation.user,product.id.P11526 "/>
+<!-- JavaScript Files -->
+<script type="text/javascript" language="JavaScript1.2" src="../MGC/js/page.js"></script>
+<script type="text/javascript" language="JavaScript1.2">
+        if(DetectChromeForBasic()){
+           writeNoScriptStyles();
+        }
+
+     </script>
+   <script type="text/javascript" language="JavaScript1.2">
+     // Set reference to top level help frame
+      //
+      if(!DetectChromeForBasic()){
+        javascriptTopicRedirect();
+      }
+     </script>
+  </head>
+
+<body class="body" id="DocBody">
+<div id="BodyPopup" class="BodyPopup"></div>
+<div class="HideBody" id="HideBody">&nbsp;</div>
+<div id="bodycontent" class="BodyContent">
+
+
+
+
+
+  <script type="text/javascript" language="JavaScript1.2">
+  <!--
+      var BC = new Array("MON Command Language ","moncommand01","MON Command Details","moncommand04","DC (Display Cache) - MIPS Only","moncommand13","36");
+  // -->
+  </script>
+
+   <noscript><iframe framespacing="0" marginheight="2px" frameborder="no" scrolling="no" src="../MGC/html/noscript_header.htm" width="100%" height="100px;"></iframe>
+   </noscript>
+
+<script type="text/javascript" language="JavaScript1.2">
+if(DetectChromeForBasic()){
+       if(!(top.inEclipse)){  
+          writeBasicHeader();
+      }
+}
+</script>
+<div id="BodyContent">
+
+<a name="wp36320"></a><h1 class="pzCmdFunc FontLevel1" id="MGC36320">
+
+<a name="CRefID59614"></a>
+DC (Display Cache) - MIPS Only
+</h1>
+
+
+
+
+
+
+
+
+
+
+
+<a name="wp36321"></a><p class="pzMiscInfo">
+
+Availability: ALL
+</p>
+
+<a name="wp36391"></a><p class="pzBody">
+
+The DC (Display Cache) script displays the cache tags and, optionally, the cache memory associated with the given address. Run this command file with no parameters to see a usage prompt.
+</p>
+
+
+<table class="notes">
+  <tr class="NotesUpperRuleBlack">
+    <td class="NotesUpperRule" colspan='2'><span class="cNotesBlack">Note</span></td>
+  </tr>
+  <tr class="NotesNote">
+    <td class="NoteNote"></td>
+    <td valign="top">
+            
+<a name="wp36401"></a><p class="pnoteNote">
+
+        	This is implemented as a script file. It is not a built-in MON command. See <a href="moncommand67.html"  onclick='oT("CRF","moncommand67.html");return false;'>Command Script Files</a>.
+        </p>
+          </td>
+  </tr>
+  <tr class="NotesBottomRuleBlack">
+    <td class="NotesBottomRule" colspan='2'>&nbsp;</td>
+    </tr>
+ </table>
+<a name="wp36323"></a><p class="pzHeading">
+
+Usage
+</p>
+
+<a name="wp36418"></a><pre class="pCode">
+dc &lt;mode&gt; &lt;address&gt;
+</pre>
+
+<a name="wp36419"></a><pre class="pCode">
+
+</pre>
+
+<a name="wp36420"></a><pre class="pCode">
+        &lt;mode&gt;    : IT = Instruction Tags
+</pre>
+
+<a name="wp36421"></a><pre class="pCode">
+                  : IC = Instruction Cache and Tags
+</pre>
+
+<a name="wp36422"></a><pre class="pCode">
+                  : DT = Data Tags
+</pre>
+
+<a name="wp36423"></a><pre class="pCode">
+                  : DC = Data Cache and Tags
+</pre>
+
+<a name="wp36424"></a><pre class="pCode">
+        &lt;address&gt; : Address of interest
+</pre>
+
+<a name="wp36425"></a><pre class="pCode">
+
+</pre>
+
+<a name="wp36426"></a><pre class="pCode">
+NAME                = VALUE         DESCRIPTION
+</pre>
+
+<a name="wp36427"></a><pre class="pCode">
+
+</pre>
+
+<a name="wp36428"></a><pre class="pCode">
+  trgt_icache_linesize= 16          //Instruction/unified cache line size
+</pre>
+
+<a name="wp36429"></a><pre class="pCode">
+  trgt_icache_memsize = 0x4000      //Primary instruction/unified cache 
+size
+</pre>
+
+<a name="wp36430"></a><pre class="pCode">
+  trgt_icache_sets    = 4           //# of sets in instruction/unified 
+cache
+</pre>
+
+<a name="wp36431"></a><pre class="pCode">
+
+</pre>
+
+<a name="wp36432"></a><pre class="pCode">
+  NAME                = VALUE         DESCRIPTION
+</pre>
+
+<a name="wp36433"></a><pre class="pCode">
+
+</pre>
+
+<a name="wp36434"></a><pre class="pCode">
+  trgt_dcache_linesize= 16          //Primary data cache line size
+</pre>
+
+<a name="wp36435"></a><pre class="pCode">
+  trgt_dcache_memsize = 0x4000      //Primary data cache size
+</pre>
+
+<a name="wp36436"></a><pre class="pCode">
+  trgt_dcache_sets    = 4           //Number of sets in data cache
+</pre>
+
+<a name="wp36332"></a><p class="pzHeading">
+
+Examples
+</p>
+
+<a name="wp36456"></a><pre class="pCode">
+MON&gt; dc IT 0
+</pre>
+
+<a name="wp36457"></a><pre class="pCode">
+Address: 0x00000000
+</pre>
+
+<a name="wp36458"></a><pre class="pCode">
+Tag:     0x00000000
+</pre>
+
+<a name="wp36459"></a><pre class="pCode">
+Index:   0x00000000
+</pre>
+
+<a name="wp36460"></a><pre class="pCode">
+
+</pre>
+
+<a name="wp36461"></a><pre class="pCode">
+Way 0 :  .ict0      00000000 (pa=0 v=0 l lrf)
+</pre>
+
+<a name="wp36462"></a><pre class="pCode">
+Way 1 :  .ict256    00001000 (pa=4 v=0 l lrf)
+</pre>
+
+<a name="wp36463"></a><pre class="pCode">
+Way 2 :  .ict512    00002000 (pa=8 v=0 l lrf)
+</pre>
+
+<a name="wp36464"></a><pre class="pCode">
+Way 3 :  .ict768    00003000 (pa=c v=0 l lrf)
+</pre>
+
+<a name="wp36333"></a><pre class="pCode">
+
+</pre>
+
+
+
+
+
+</div>
+<!--BeginFooterContent-->
+<div class="BlankFooter" id="BlankFooter">&nbsp;</div>
+<div class="Footer" id="Footer">&nbsp;</div>
+<script type="text/javascript" language="JavaScript1.2">
+<!--
+   DocHandle = "mesp_user";
+   DocTitle = "Mentor Embedded Sourcery Probe User's Manual";
+   PageTitle = "DC (Display Cache) \- MIPS Only";
+   Copyright = "2011-2014";
+   PDFLinkTitle = "DC.Display.Cache..MIPS.Only"
+   ThisTopic = "UserDefinedAccessLists";
+   CurrentFile = "moncommand13.html";
+   CurrentFileID = "36";
+      topicFooter();
+
+ // -->
+ </script>
+ 
+ <noscript>
+    <p class="MGCFooter">Mentor Embedded Sourcery Probe User's Manual&nbsp;2.5.0
+    <br />2011-2014&#169;&nbsp;Mentor Graphics Corporation. All rights reserved.
+    <br /><a href='../mgc_html_help/nsmgchelp.htm' target="_blank">Browser Requirements</a></p>
+ </noscript>
+
+    </div>
+  </body>
+</html>
+
+ 

@@ -6,7 +6,7 @@ comment_char %
 LC_IDENTIFICATION
 title      "German locale for Germany with Euro"
 source     "Free Software Foundation, Inc."
-address    "59 Temple Place - Suite 330, Boston, MA 02111-1307, USA"
+address    "http:////www.gnu.org//software//libc//"
 contact    ""
 email      "bug-glibc-locales@gnu.org"
 tel        ""
@@ -27,7 +27,7 @@ category  "de_DE@euro:2000";LC_PAPER
 category  "de_DE@euro:2000";LC_NAME
 category  "de_DE@euro:2000";LC_ADDRESS
 category  "de_DE@euro:2000";LC_TELEPHONE
-
+category  "de_DE@euro:2000";LC_MEASUREMENT
 END LC_IDENTIFICATION
 
 LC_CTYPE
@@ -75,5 +75,6 @@ copy "de_DE"
 END LC_TELEPHONE
 
 LC_MEASUREMENT
-copy "de_DE"
+% metric
+measurement 1
 END LC_MEASUREMENT

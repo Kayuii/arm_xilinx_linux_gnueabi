@@ -1,5 +1,4 @@
-/* Copyright (C) 1992-2001, 2002, 2004, 2005, 2006, 2007, 2009
-   Free Software Foundation, Inc.
+/* Copyright (C) 1992-2015 Free Software Foundation, Inc.
    This file is part of the GNU C Library.
 
    The GNU C Library is free software; you can redistribute it and/or
@@ -13,9 +12,8 @@
    Lesser General Public License for more details.
 
    You should have received a copy of the GNU Lesser General Public
-   License along with the GNU C Library; if not, write to the Free
-   Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA
-   02111-1307 USA.  */
+   License along with the GNU C Library; if not, see
+   <http://www.gnu.org/licenses/>.  */
 
 #ifndef	_SYS_CDEFS_H
 #define	_SYS_CDEFS_H	1
@@ -38,20 +36,33 @@
 
 #ifdef __GNUC__
 
+/* All functions, except those with callbacks or those that
+   synchronize memory, are leaf functions.  */
+# if __GNUC_PREREQ (4, 6) && !defined _LIBC
+#  define __LEAF , __leaf__
+#  define __LEAF_ATTR __attribute__ ((__leaf__))
+# else
+#  define __LEAF
+#  define __LEAF_ATTR
+# endif
+
 /* GCC can always grok prototypes.  For C++ programs we add throw()
    to help it optimize the function calls.  But this works only with
    gcc 2.8.x and egcs.  For gcc 3.2 and up we even mark C functions
    as non-throwing using a function attribute since programs can use
    the -fexceptions options for C code as well.  */
 # if !defined __cplusplus && __GNUC_PREREQ (3, 3)
-#  define __THROW	__attribute__ ((__nothrow__))
-#  define __NTH(fct)	__attribute__ ((__nothrow__)) fct
+#  define __THROW	__attribute__ ((__nothrow__ __LEAF))
+#  define __THROWNL	__attribute__ ((__nothrow__))
+#  define __NTH(fct)	__attribute__ ((__nothrow__ __LEAF)) fct
 # else
 #  if defined __cplusplus && __GNUC_PREREQ (2,8)
 #   define __THROW	throw ()
-#   define __NTH(fct)	fct throw ()
+#   define __THROWNL	throw ()
+#   define __NTH(fct)	__LEAF_ATTR fct throw ()
 #  else
 #   define __THROW
+#   define __THROWNL
 #   define __NTH(fct)	fct
 #  endif
 # endif
@@ -61,11 +72,8 @@
 # define __inline		/* No inline functions.  */
 
 # define __THROW
+# define __THROWNL
 # define __NTH(fct)	fct
-
-# define __const	const
-# define __signed	signed
-# define __volatile	volatile
 
 #endif	/* GCC.  */
 
@@ -120,14 +128,6 @@
 #endif
 
 
-/* Support for bounded pointers.  */
-#ifndef __BOUNDED_POINTERS__
-# define __bounded	/* nothing */
-# define __unbounded	/* nothing */
-# define __ptrvalue	/* nothing */
-#endif
-
-
 /* Fortify support.  */
 #define __bos(ptr) __builtin_object_size (ptr, __USE_FORTIFY_LEVEL > 1)
 #define __bos0(ptr) __builtin_object_size (ptr, 0)
@@ -178,9 +178,13 @@
 # ifdef __cplusplus
 #  define __REDIRECT_NTH(name, proto, alias) \
      name proto __THROW __asm__ (__ASMNAME (#alias))
+#  define __REDIRECT_NTHNL(name, proto, alias) \
+     name proto __THROWNL __asm__ (__ASMNAME (#alias))
 # else
 #  define __REDIRECT_NTH(name, proto, alias) \
      name proto __asm__ (__ASMNAME (#alias)) __THROW
+#  define __REDIRECT_NTHNL(name, proto, alias) \
+     name proto __asm__ (__ASMNAME (#alias)) __THROWNL
 # endif
 # define __ASMNAME(cname)  __ASMNAME2 (__USER_LABEL_PREFIX__, cname)
 # define __ASMNAME2(prefix, cname) __STRING (prefix) cname
@@ -209,6 +213,15 @@
 # define __attribute_malloc__ /* Ignore */
 #endif
 
+/* Tell the compiler which arguments to an allocation function
+   indicate the size of the allocation.  */
+#if __GNUC_PREREQ (4, 3)
+# define __attribute_alloc_size__(params) \
+  __attribute__ ((__alloc_size__ params))
+#else
+# define __attribute_alloc_size__(params) /* Ignore.  */
+#endif
+
 /* At some point during the gcc 2.96 development the `pure' attribute
    for functions was introduced.  We don't want to use it unconditionally
    (although this would be possible) since it generates warnings.  */
@@ -216,6 +229,13 @@
 # define __attribute_pure__ __attribute__ ((__pure__))
 #else
 # define __attribute_pure__ /* Ignore */
+#endif
+
+/* This declaration tells the compiler that the value is constant.  */
+#if __GNUC_PREREQ (2,5)
+# define __attribute_const__ __attribute__ ((__const__))
+#else
+# define __attribute_const__ /* Ignore */
 #endif
 
 /* At some point during the gcc 3.1 development the `used' attribute
@@ -289,27 +309,38 @@
 # define __always_inline __inline
 #endif
 
+/* Associate error messages with the source location of the call site rather
+   than with the source location inside the function.  */
+#if __GNUC_PREREQ (4,3)
+# define __attribute_artificial__ __attribute__ ((__artificial__))
+#else
+# define __attribute_artificial__ /* Ignore */
+#endif
+
 /* GCC 4.3 and above with -std=c99 or -std=gnu99 implements ISO C99
-   inline semantics, unless -fgnu89-inline is used.  */
-#if !defined __cplusplus || __GNUC_PREREQ (4,3)
+   inline semantics, unless -fgnu89-inline is used.  Using __GNUC_STDC_INLINE__
+   or __GNUC_GNU_INLINE is not a good enough check for gcc because gcc versions
+   older than 4.3 may define these macros and still not guarantee GNU inlining
+   semantics.
+
+   clang++ identifies itself as gcc-4.2, but has support for GNU inlining
+   semantics, that can be checked fot by using the __GNUC_STDC_INLINE_ and
+   __GNUC_GNU_INLINE__ macro definitions.  */
+#if (!defined __cplusplus || __GNUC_PREREQ (4,3) \
+     || (defined __clang__ && (defined __GNUC_STDC_INLINE__ \
+			       || defined __GNUC_GNU_INLINE__)))
 # if defined __GNUC_STDC_INLINE__ || defined __cplusplus
 #  define __extern_inline extern __inline __attribute__ ((__gnu_inline__))
-#  if __GNUC_PREREQ (4,3)
-#   define __extern_always_inline \
-  extern __always_inline __attribute__ ((__gnu_inline__, __artificial__))
-#  else
-#   define __extern_always_inline \
+#  define __extern_always_inline \
   extern __always_inline __attribute__ ((__gnu_inline__))
-#  endif
 # else
 #  define __extern_inline extern __inline
-#  if __GNUC_PREREQ (4,3)
-#   define __extern_always_inline \
-  extern __always_inline __attribute__ ((__artificial__))
-#  else
-#   define __extern_always_inline extern __always_inline
-#  endif
+#  define __extern_always_inline extern __always_inline
 # endif
+#endif
+
+#ifdef __extern_always_inline
+# define __fortify_function __extern_always_inline __attribute_artificial__
 #endif
 
 /* GCC 4.3 and above allow passing all anonymous arguments of an
@@ -347,6 +378,24 @@
 /* Some other non-C99 compiler.  */
 #   define __restrict_arr	/* Not supported.  */
 #  endif
+# endif
+#endif
+
+#if __GNUC__ >= 3
+# define __glibc_unlikely(cond)	__builtin_expect ((cond), 0)
+# define __glibc_likely(cond)	__builtin_expect ((cond), 1)
+#else
+# define __glibc_unlikely(cond)	(cond)
+# define __glibc_likely(cond)	(cond)
+#endif
+
+#if (!defined _Noreturn \
+     && (defined __STDC_VERSION__ ? __STDC_VERSION__ : 0) < 201112 \
+     &&  !__GNUC_PREREQ (4,7))
+# if __GNUC_PREREQ (2,8)
+#  define _Noreturn __attribute__ ((__noreturn__))
+# else
+#  define _Noreturn
 # endif
 #endif
 

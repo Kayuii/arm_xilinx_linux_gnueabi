@@ -1,0 +1,509 @@
++q  // Enter quiet mode
+//___________________________________________________________________
+//
+//               Copyright (c) 2012 Mentor Graphics Corporation
+//                           All rights reserved
+//
+//   THIS WORK CONTAINS TRADE SECRETS AND PROPRIETARY INFORMATION WHICH IS
+//    THE PROPERTY OF MENTOR GRAPHICS CORPORATION OR ITS LICENSORS AND IS
+//                        SUBJECT TO LICENSE TERMS.
+//
+//___________________________________________________________________
+//
+// Mentor Embedded Sourcery Probe target initialization file for the
+// NXP LPC4350 Cortex M4 & M0 based reference platform. It supports 
+// this platform as-is, and can be adapted to a new target based on 
+// this reference board, as detailed below.  For a brand new custom 
+// board not related to this reference board, it may be better to start
+// from the template rather than trying to adapt this file.
+//
+//
+//     Board:   NXP Hitex LPC4350 Eval
+//     Device:  LPC4350
+//     CPU ID:  Cortex-m4
+//     Endian:  Little
+//     Cores:     2
+//
+// Porting Guide:
+//
+// The user should make the following adaptations to port this file
+// to a new target board based on the associated reference platform:
+//
+//        0. Review the MEP Probe Initialization section at
+//           "TO DO #0" below to make sure the settings are
+//           right for your board.
+//        1. Update the memory configuration table for changes
+//           in the new board's  *Physical*  memory map.  See
+//           'TO DO #1' below.
+//        2. If your target board requires any special MEP
+//           settings, they should be added to the end of the
+//           ONE_TIME_SETUP section.  See 'TO DO #2' below.
+//        3. Decide whether the target should be automatically
+//           reset and/or initialized upon start-up by choosing
+//           the desired command at 'TO DO #3' below.  This
+//           really depends on your use case.
+//        4. If the board has no boot code (or bad boot code),
+//           and you want to download into RAM, then you may
+//           have to adapt the memory controller initialization
+//           script at 'TO DO #4' below to account for changes
+//           relative to the reference platform.
+//        5. If you care about programming your target's NOR
+//           Flash, then review the Flash Initialization section at
+//           "TO DO #5" below to add any special flash unlock code
+//           that may be needed.
+//
+// NOTE:  Additional information on MON commands and the configuration
+//        options used here is available in the online help system.
+//___________________________________________________________________
+dv "Reading $$# ...\n"
+
+
+// Initialization script preparation
+// =================================
+
+// The RTI, RTNI, and TI command aliases call script functions in this file.
+// These command aliases should never be changed.
+
+ea RTI   $$#.DO_RTI  // RTI  call DO_RTI script function  (Reset Target and Initialize)
+ea RTNI  $$#.DO_RTNI // RTNI call DO_RTNI script function (Reset Target with No Initialization)
+ea TI    $$#.DO_TI   // TI   call DO_TI script function   (Target Initialize without resetting)
+
+fr rd hitex-lpc4350.rd
+
+// MEP Probe Initialization
+// ==========================
+
+// TO DO #0 -- Review the following MEP configuration options to make
+//             sure they are right for your target board hardware and
+//             processor device design.
+
+// The  Trgt_Resets_JTAG  option informs the MEP probe whether the target
+// board will forward a system reset (nSRST) to the JTAG interface (nTRST),
+// or reset the system only without resetting the JTAG interface.  When in
+// doubt, a YES setting is safer.  When the two reset circuits are known
+// to be independent, which is strongly recommended, then a NO setting is
+// recommended.
+
+eo Trgt_Resets_JTAG  = yes
+
+// The  Ice_JTAG_Use_RTCLK  and  Ice_JTAG_Clock_Freq  options are related
+// and must be considered together.  An  Ice_JTAG_Use_RTCLK  setting of
+// ON  selects adaptive clocking mode, where the JTAG clock is dynamically
+// controlled by the target processor.  When  Ice_JTAG_Use_RTCLK  is set
+// OFF  then normal (unthrottled) clocking is selected.
+//
+// When adaptive clocking is disabled, the  Ice_JTAG_Clock_Freq  option
+// specifies the the JTAG clock (TCK) frequency in Megahertz, from
+// 0.002 to 100 (depending on probe hardware capability).  A lower setting
+// is safer, a higher setting yields higher performance.  Note that the
+// requested frequency will be adjusted down to the closest frequency
+// supported by the probe hardware (displaying this option will show the
+// actual TCK frequency).
+//
+//     IJUR  Clock mode
+//     ====  ========================
+//     OFF   Free running TCK at specified frequency (RTCK is ignored)
+//     ON    Adaptive clocking with frequency controlled by RTCK
+//           (Ice_JTAG_Clock_Freq is ignored)
+//
+// For Virtual MESP, the  Ice_Jtag_Clock_Freq  option should be removed.
+//
+// Note that enabling  Ice_JTAG_Use_RTCLK  on target boards that do not
+// drive the RTCK signal will lock up the JTAG interface.
+
+eo Ice_JTAG_Use_RTCLK  = off
+eo Ice_JTAG_Clock_Freq = 3
+if (@$Ice_JTAG_Use_RTCLK) {doq Ice_JTAG_Use_RTCLK} {doq Ice_JTAG_Clock_Freq}
+
+// The following command can be used to define the details of the JTAG
+// daisy chain.  It is only required for targets on which the MEP
+// auto-detection algorithm cannot correctly determine the JTAG connection
+// details.  On most boards this command can be omitted.
+//
+//    ew MEP_JTAG_DIMENSION = TAP_CNT, IR1_CNT [ , IR2_CNT ]  ...
+
+// The following commands can be used to define special JTAG initialization
+// operations required by certain processors.  The first one, if defined,
+// is scanned in right after the JTAG reset cycle completes, but before the
+// standard JTAG initialization performed by the MEP.  The second, if
+// defined, is scanned in right after the standard JTAG initialization
+// performed by the MEP.  On most boards these can both be omitted.
+//
+//    ew MEP_JTAG_INIT0 = <scan-op> [ , <scan-op> ]  ...
+//    ew MEP_JTAG_INIT1 = <scan-op> [ , <scan-op> ]  ...
+
+// The  Ice_Power_Sense  option enables the target power monitor.  When
+// target power is detected, the debug interface is enabled.
+
+eo Ice_Power_Sense = VREF
+
+// The  Ice_JTAG_TAP_Select  option controls which TAP on a multi-TAP
+// daisy chain is associated with this debug connection.  This option
+// can be omitted on targets which have one TAP.  Note that TAPs are
+// numbered from 1-N, with TAP 1 being the one whose TDO is connected
+// to the MEP probe.
+//
+eo Ice_JTAG_TAP_Select = 1
+
+// The  Ice_Multi_Session  option specifies whether the probe should accept
+// multiple simultaneous debugger connections. This options needs to be set
+// on target boards which have multiple cores that you wish to debug at the
+// same time.  If multi-core debugging is not required, this option can be
+// safely omitted.
+//
+// eo Ice_Multi_Session = on
+
+// Target connection command
+tc
+
+
+// Flash Initialization
+//
+// TO DO #5 --  If your target board requires any special initialization
+//              commands to prepare for running the targetflash programming
+//              utility, add those commands here.
+//
+//              example:  ea FLASH_INIT ew 0xa0020800 = 0x10101010; ew 0xa0020818 = 0x10101010
+
+ea FLASH_INIT  /* nothing special required */
+
+
+// Physical Memory Configuration
+// =============================
+
+mc *:P, inv     // start with all *physical* memory (*:P) marked as invalid
+
+// TO DO #1 -- Change the address range(s) below to match the  *physical*
+//             address ranges of your ROM/flash and RAM areas.  Add more
+//             MC commands as necessary for each memory mapped area.
+//
+// WARNING:  DO NOT confuse virtual (MVA) addresses with physical space.
+//           Make sure to use physical addresses in the MC table.
+//
+// EXAMPLE:
+//
+//     mc  ________:P  ________:P,  PWE, JAM, RW    // DRAM
+//     mc  ________:P  ________:P,  PWD, JAM, RO    // Flash or ROM
+//     mc  ________:P  ________:P,  PWD, JAM, RW    // Peripheral registers
+//
+// Note that if your boot code remaps physical memory, then the MC table
+// should reflect the mapping that is in effect for the code you are trying
+// to debug.  When debugging boot code in flash, MC should match the mapping
+// in effect when booting.  When debugging code in RAM, MC should match the
+// mapping in effect when running code from RAM.
+//
+// Address Range          PWE  Access
+// ---------------------- ---- -------
+
+mc 00000000:P  FFFFFFF:P, PWE, DMA, RW  // Shadow Area
+mc 10000000:P 13FFFFFF:P, PWE, DMA, RW	// Local SRAM
+mc 14000000:P 1FFFFFFF:P, PWE, DMA, RO // SPIFI Code
+mc 20000000:P 2FFFFFFF:P, PWE, DMA, RW  // AHB SRAM
+mc 22000000:P 23FFFFFF:P, PWE, DMA, RW  // AHB SRAm bit banding
+mc 28000000:P 3FFFFFFF:P, PWE, DMA, RW  // Dynamic External Memory
+mc 40000000:P 5FFFFFFF:P, PWE, DMA, RW  // AHB Peripherals
+mc 60000000:P 7FFFFFFF:P, PWE, DMA, RW  // Dynamic External Memory
+mc 80000000:P 87FFFFFF:P, PWE, DMA, RO  // SPIFI Data
+mc E0000000:P FFFFFFFF:P, PWE, DMA, RW   // System segment
+
+//        ____User Supplied Setup Commands Go Here____
+
+// TO DO #2 -- If your target board requires any special MEP settings
+//             (e.g. special JTAG initialization), add the commands to
+//             make those settings here.
+
+
+// End of initial one-time only setup script.  If this is a non-intrusive
+// attach connection, or if a normal debug connection fails to connect
+// properly, then exit at this point.  Otherwise continue on with optional
+// additional initialization.
+
+if (@.4$INIT_TYPE != 0) {dv "Non-intrusive attach connection\n"; goto EXIT}
+if (@$trgt_cpu_state != $tcs.halt) {dv "Debug connection failed, "; doq TCS; goto EXIT}
+
+// TO DO #3 -- Comment out all but one of the next three commands to
+//             control IF and HOW the target is initialized when the
+//             debugger is launched.  If no reset or target initialization
+//             is needed then all these can be left commented out.
+
+//TI
+RTI
+//RTNI
+
+:EXIT
+dv "Finished reading $$#.\n"
+return
+
+//___________________________________________________________________
+::DO_RTNI  // Reset Target with No Initialization.
+
+    // Normally an  rt  command is sufficient, but it may be necessary
+    // to slow down the JTAG clock first, depending on the affect of
+    // reset on the processor.
+
+    dv "Executing RTNI script function\n"
+    rt
+    return
+
+//___________________________________________________________________
+::DO_RTI   // Reset Target and Initialize.
+
+    // Note that it may be necessary to slow down the JTAG clock first,
+    // depending on the affect of reset on the processor.
+
+    dv "Executing RTI script function\n"
+    rt
+    TI	// call script DO_TI function
+    return
+
+//___________________________________________________________________
+::DO_TI  // Target Initialize.
+
+    if (@$trgt_cpu_state != $tcs.halt) { dv "Target Initialization commands skipped due to CPU state\n"; doq TCS; return }
+    dv "Initializing target...\n"
+
+    //  Memory Controller Setup
+    //
+    // TO DO #4 -- If your board has a different memory configuration than
+    //             the reference board, then you may need to adapt the
+    //             memory controller initialization script accordingly.
+    //             These settings should match the settings used by your
+    //             boot code during its hardware initialization phase.
+
+    
+
+    //        ____User Supplied Target Init Commands Go Here____
+    dv "Initializing DDR...\n"
+
+    ew EMC_COMTROL = 0
+
+    ew SCU_SFSP1_7   = 0xF3
+    ew SCU_SFSP1_8   = 0xF3
+    ew SCU_SFSP1_9   = 0xF3
+    ew SCU_SFSP1_10  = 0xF3
+    ew SCU_SFSP1_11  = 0xF3
+    ew SCU_SFSP1_12  = 0xF3
+    ew SCU_SFSP1_13  = 0xF3
+    ew SCU_SFSP1_14  = 0xF3
+    ew SCU_SFSP5_4   = 0xF2
+    ew SCU_SFSP5_5   = 0xF2
+    ew SCU_SFSP5_6   = 0xF2
+    ew SCU_SFSP5_7   = 0xF2
+    ew SCU_SFSP5_0   = 0xF2
+    ew SCU_SFSP5_1   = 0xF2
+    ew SCU_SFSP5_2   = 0xF2
+    ew SCU_SFSP5_3   = 0xF2
+    ew SCU_SFSPD_2   = 0xF2
+    ew SCU_SFSPD_3   = 0xF2
+    ew SCU_SFSPD_4   = 0xF2
+    ew SCU_SFSPD_5   = 0xF2
+    ew SCU_SFSPD_6   = 0xF2
+    ew SCU_SFSPD_7   = 0xF2
+    ew SCU_SFSPD_8   = 0xF2
+    ew SCU_SFSPD_9   = 0xF2
+    ew SCU_SFSPE_5   = 0xF3
+    ew SCU_SFSPE_6   = 0xF3
+    ew SCU_SFSPE_7   = 0xF3
+    ew SCU_SFSPE_8   = 0xF3
+    ew SCU_SFSPE_9   = 0xF3
+    ew SCU_SFSPE_10  = 0xF3
+    ew SCU_SFSPE_11  = 0xF3
+    ew SCU_SFSPE_12  = 0xF3
+    ew SCU_SFSP2_9   = 0xF3
+    ew SCU_SFSP2_10  = 0xF3
+    ew SCU_SFSP2_11  = 0xF3
+    ew SCU_SFSP2_12  = 0xF3
+    ew SCU_SFSP2_13  = 0xF3
+    ew SCU_SFSP1_0   = 0xF2
+    ew SCU_SFSP1_1   = 0xF2
+    ew SCU_SFSP1_2   = 0xF2
+    ew SCU_SFSP2_8   = 0xF3
+    ew SCU_SFSP2_7   = 0xF3
+    ew SCU_SFSP2_6   = 0xF2
+    ew SCU_SFSP2_2   = 0xF2
+    ew SCU_SFSP2_1   = 0xF2
+    ew SCU_SFSP2_0   = 0xF2
+    ew SCU_SFSP6_8   = 0xF1
+    ew SCU_SFSP6_7   = 0xF1
+    ew SCU_SFSPD_16  = 0xF2
+    ew SCU_SFSPD_15  = 0xF2
+    ew SCU_SFSPE_0   = 0xF3
+    ew SCU_SFSPE_1   = 0xF3
+    ew SCU_SFSPE_2   = 0xF3
+    ew SCU_SFSPE_3   = 0xF3
+    ew SCU_SFSPE_4   = 0xF3
+    ew SCU_SFSP1_3   = 0xF3
+    ew SCU_SFSP1_4   = 0xF3
+    ew SCU_SFSP1_5   = 0xF3
+    ew SCU_SFSP1_6   = 0xF3
+    ew SCU_SFSP6_6   = 0xF1
+    ew SCU_SFSPD_12  = 0xF2
+    ew SCU_SFSP6_9   = 0xF3
+    ew SCU_SFSP6_4   = 0xF3
+    ew SCU_SFSP6_5   = 0xF3
+    ew SCU_SFSP6_11  = 0xF3
+    ew SCU_SFSP6_12  = 0xF3
+    ew SCU_SFSP6_10  = 0xF3
+
+    ew SCU_SFSCLK0   = 0xF0
+    ew SCU_SFSCLK1   = 0xF0
+    ew SCU_SFSCLK2   = 0xF0
+    ew SCU_SFSCLK3   = 0xF0
+
+    ew EMCDELAYCLK   = 0x7777
+
+    ew RESET_CTRL0   = (1<<0n21)
+
+:label1
+    if ((@(RESET_ACTIVE_STATUS0)&(1<<0n21)) == 0n0) { goto label1 }
+
+    W 1
+    
+    ew EMC_COMTROL = 1
+
+    ew CONFIG              = 0
+    ew DYNAMIC_READ_CONFIG = 1
+    ew DYNAMIC_RP          = 1
+    ew DYNAMIC_RAS         = 3
+    ew DYNAMICSREX         = 5
+    ew DYNAMIC_APR         = 0
+    ew DYNAMIC_DAL         = 4
+    ew DYNAMIC_WR          = 1
+    ew DYNAMIC_RC          = 5
+    ew DYNAMIC_RFC         = 5
+    ew DYNAMIC_XSR         = 5
+    ew DYNAMIC_RRD         = 1
+    ew DYNAMIC_MRD         = 1
+
+    ew DYNAMIC_CONFIG0     = (1<<0n7)|(1<<0n9)|(9<<0n12)
+    ew DYNAMIC_CONFIG1     = (1<<0n7)|(1<<0n9)|(9<<0n12)
+    ew DYNAMIC_CONFIG2     = (1<<0n7)|(1<<0n9)|(9<<0n12)
+    ew DYNAMIC_CONFIG3     = (1<<0n7)|(1<<0n9)|(9<<0n12)
+    ew DYNAMIC_RASCAS0     = (3|(3<<0n8))
+    ew DYNAMIC_CONTROL     = (1)|(1<<0n1)|(3<<0n7)
+
+    W 1
+
+    ew DYNAMIC_CONTROL = (1)|(1<<0n1)|(2<<0n7)
+    ew DYNAMIC_REFRESH = 2
+
+    W 1
+
+    ew DYNAMIC_REFRESH = 50
+
+    W 1
+
+    ew DYNAMIC_CONTROL = (1)|(1<<0n1)|(1<<0n7)
+
+    ew $delay = @(0x28006600)
+    ew DYNAMIC_CONTROL = (3<<0n7)
+
+    W 1
+
+    ew DYNAMIC_CONTROL = 0
+    ew DYNAMIC_CONFIG0 = @(DYNAMIC_CONFIG0)|(1<<0n19)
+    ew DYNAMIC_CONFIG1 = @(DYNAMIC_CONFIG1)|(1<<0n19)
+    ew DYNAMIC_CONFIG2 = @(DYNAMIC_CONFIG2)|(1<<0n19)
+    ew DYNAMIC_CONFIG3 = @(DYNAMIC_CONFIG3)|(1<<0n19)
+
+    W 100
+    dv "SDRAM initialization complete.\n"
+
+    /* Switch core M4 clock to IRC */
+    ew BASE_M4_CLK = (@(BASE_M4_CLK) & (~(0xF << 0n24))) | ((0n1 << 0n24)|(0n1<<0n11))
+
+    /* Set XTAL OSC in low speed mode */
+    ew XTAL_OSC_CTRL = 0
+
+    W 1
+
+    /* Switch PLL1 to XTAL OSC */
+    ew PLL1_CTRL = (@(PLL1_CTRL) & (~((0xF<<0n24)|1))) | ((0n6<<0n24)|(0n1<<0n11))
+
+    ew $multiplier = 0n8
+
+    /* Ramp up PLL1 to 96MHz */
+    goto PLL_CFG
+
+    :label8
+
+    /* Wait until PLL1 locks */
+    if( (@(PLL1_STAT)&1)==0){goto label8}
+
+    /* Switch core M4 clock to PLL1 */
+    ew BASE_M4_CLK = (@(BASE_M4_CLK)&(~(0xF<<0n24)))|((0n9<<0n24)|(0n1<<0n11))
+
+    ew $multiplier = 0n9
+
+    /* Ramp up PLL1 to 108MHz */
+    goto PLL_CFG
+
+:label9
+
+    /* Wait until PLL1 locks */
+    if( (@(PLL1_STAT)&1)==0){goto label9}
+
+    /* Turn on clock / 2 */
+    ew CLK_M4_EMCDIV_CFG = @(CLK_M4_EMCDIV_CFG)|((0n1<<0)|(0n1<<0n5))
+
+    /* EMC divided by 2 */
+    ew CREG6 = @(CREG6)|(0n1<<0n16)
+
+    /* Turn on clock */
+    ew CLK_M4_EMC_CFG = @(CLK_M4_EMC_CFG)|(0n1<<0n16)
+
+    W 100
+
+    ew $multiplier = 0n17
+
+    /* Ramp up PLL1 to 204MHz */
+    goto PLL_CFG
+
+:label10
+
+    /* Wait until PLL1 locks */
+    if( (@(PLL1_STAT) & 0n1) == 0){ goto label10}
+
+    goto labelDone
+
+:PLL_CFG
+
+    if( @$multiplier == 0n8 ){ goto label11 }
+
+    if( @$multiplier == 0n9 ) { goto label12}
+
+    if( @$multiplier == 0n17 ){ goto label13 }
+
+:label11
+    ew PLL1_CTRL = (@(PLL1_CTRL) & (~((0n1<<0n6) | (0n1<<0n1) | (0n1<<0n7) | (0x03<<0n8) | (0xFF<<0n16) | (0x03<<0n12)))) | (((0n7 <<0n16) | (0n1<<0n6)))
+    goto label14
+
+:label12
+    ew PLL1_CTRL = (@(PLL1_CTRL) & (~((0n1<<0n6) | (0n1<<0n1) | (0n1<<0n7) | (0x03<<0n8) | (0xFF<<0n16) | (0x03<<0n12)))) | ((0n8 <<0n16) | (0n1<<0n6))
+    goto label14
+
+:label13
+    ew PLL1_CTRL = (@(PLL1_CTRL) & (~((0n1<<0n6) | (0n1<<0n1) | (0n1<<0n7) | (0x03<<0n8) | (0xFF<<0n16) | (0x03<<0n12)))) | ((0n16 <<0n16) | (0n1<<0n7) | (0n1<<0n6))
+
+:label14
+
+    W 1
+
+    if(@$multiplier == 0n8){ goto label8}
+
+    if(@$multiplier == 0n9){ goto label9}
+
+    if(@$multiplier == 0n17){ goto label10}
+
+:labelDone
+
+eo Ice_JTAG_Clock_Freq = 15
+
+// Disable systick
+ew 0xe000e010 = 0x00000004
+    dv "Initializing target done.\n"
+    return
+
+//___________________________________________________________________
+
+// <eof>

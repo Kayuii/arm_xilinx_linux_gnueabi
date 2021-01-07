@@ -1,4 +1,4 @@
-/* Copyright (C) 2004, 2005, 2006, 2009 Free Software Foundation, Inc.
+/* Copyright (C) 2004-2015 Free Software Foundation, Inc.
    This file is part of the GNU C Library.
 
    The GNU C Library is free software; you can redistribute it and/or
@@ -12,9 +12,8 @@
    Lesser General Public License for more details.
 
    You should have received a copy of the GNU Lesser General Public
-   License along with the GNU C Library; if not, write to the Free
-   Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA
-   02111-1307 USA.  */
+   License along with the GNU C Library.  If not, see
+   <http://www.gnu.org/licenses/>.  */
 
 /* Define the machine-dependent type `jmp_buf'.  ARM EABI version.  */
 
@@ -25,13 +24,12 @@
 # error "Never include <bits/setjmp.h> directly; use <setjmp.h> instead."
 #endif
 
-#ifndef _ASM
+#ifndef __ASSEMBLER__
 /* The exact set of registers saved may depend on the particular core
    in use, as some coprocessor registers may need to be saved.  The C
    Library ABI requires that the buffer be 8-byte aligned, and
-   recommends that the buffer contain 64 words.  The first 28 words
-   are occupied by v1-v6, sl, fp, sp, pc, d8-d15, and fpscr.  (Note
-   that d8-15 require 17 words, due to the use of fstmx.)  */
+   recommends that the buffer contain 64 words.  The first 26 words
+   are occupied by sp, lr, v1-v6, sl, fp, and d8-d15.  */
 typedef int __jmp_buf[64] __attribute__((__aligned__ (8)));
 #endif
 

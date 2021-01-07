@@ -1,4 +1,4 @@
-/* Copyright (C) 1991, 92, 93, 95, 96, 97, 99 Free Software Foundation, Inc.
+/* Copyright (C) 1991-2015 Free Software Foundation, Inc.
    This file is part of the GNU C Library.
 
    The GNU C Library is free software; you can redistribute it and/or
@@ -12,9 +12,8 @@
    Lesser General Public License for more details.
 
    You should have received a copy of the GNU Lesser General Public
-   License along with the GNU C Library; if not, write to the Free
-   Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA
-   02111-1307 USA.  */
+   License along with the GNU C Library; if not, see
+   <http://www.gnu.org/licenses/>.  */
 
 #ifndef __NETINET_IP_ICMP_H
 #define __NETINET_IP_ICMP_H    1
@@ -39,7 +38,7 @@ struct icmphdr
     u_int32_t	gateway;	/* gateway address */
     struct
     {
-      u_int16_t	__unused;
+      u_int16_t	__glibc_reserved;
       u_int16_t	mtu;
     } frag;			/* path mtu discovery */
   } un;
@@ -91,7 +90,7 @@ struct icmphdr
 #define ICMP_EXC_FRAGTIME	1	/* Fragment Reass time exceeded	*/
 
 
-#ifdef __USE_BSD
+#ifdef __USE_MISC
 /*
  * Copyright (c) 1982, 1986, 1993
  *	The Regents of the University of California.  All rights reserved.
@@ -276,7 +275,7 @@ struct icmp
 	(type) == ICMP_IREQ || (type) == ICMP_IREQREPLY || \
 	(type) == ICMP_MASKREQ || (type) == ICMP_MASKREPLY)
 
-#endif /* __USE_BSD */
+#endif /* __USE_MISC */
 
 __END_DECLS
 

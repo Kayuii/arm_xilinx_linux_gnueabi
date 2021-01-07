@@ -52,7 +52,7 @@ map to_inpunct; /
   (<U0036>,<U0BEC>); /
   (<U0037>,<U0BED>); /
   (<U0038>,<U0BEE>); /
-  (<U0039>,<U0BEF>); 
+  (<U0039>,<U0BEF>);
 
 translit_start
 include  "translit_combining";""
@@ -74,7 +74,7 @@ LC_MONETARY
 % for IBM Class for Unicode.
 %
 int_curr_symbol       "<U0049><U004E><U0052><U0020>"
-currency_symbol       "<U20A8>"
+currency_symbol       "<U20B9>"
 mon_decimal_point     "<U002E>"
 mon_thousands_sep     "<U002C>"
 mon_grouping          3;2
@@ -204,6 +204,14 @@ postal_fmt  "<U0025><U007A><U0025><U0063><U0025><U0054><U0025><U0073><U0025><U00
 country_ab2 "<U0049><U004E>"
 country_ab3 "<U0049><U004E><U0044>"
 country_num 356
+% IND
+country_car    "<U0049><U004E><U0044>"
+% ta
+lang_ab      "<U0074><U0061>"
+% tam
+lang_term    "<U0074><U0061><U006D>"
+% tam
+lang_lib    "<U0074><U0061><U006D>"
 END LC_ADDRESS
 
 
@@ -213,5 +221,6 @@ END LC_TELEPHONE
 
 
 LC_MEASUREMENT
-copy "hi_IN"
+% metric
+measurement 1
 END LC_MEASUREMENT

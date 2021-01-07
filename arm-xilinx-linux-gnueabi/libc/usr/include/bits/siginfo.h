@@ -1,5 +1,5 @@
 /* siginfo_t, sigevent and constants.  Linux version.
-   Copyright (C) 1997-2002, 2003 Free Software Foundation, Inc.
+   Copyright (C) 1997-2015 Free Software Foundation, Inc.
    This file is part of the GNU C Library.
 
    The GNU C Library is free software; you can redistribute it and/or
@@ -13,9 +13,8 @@
    Lesser General Public License for more details.
 
    You should have received a copy of the GNU Lesser General Public
-   License along with the GNU C Library; if not, write to the Free
-   Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA
-   02111-1307 USA.  */
+   License along with the GNU C Library; if not, see
+   <http://www.gnu.org/licenses/>.  */
 
 #if !defined _SIGNAL_H && !defined __need_siginfo_t \
     && !defined __need_sigevent_t
@@ -48,7 +47,7 @@ typedef union sigval
 #  define __SI_PAD_SIZE     ((__SI_MAX_SIZE / sizeof (int)) - 3)
 # endif
 
-typedef struct siginfo
+typedef struct
   {
     int si_signo;		/* Signal number.  */
     int si_errno;		/* If non-zero, an errno value associated with
@@ -96,6 +95,7 @@ typedef struct siginfo
 	struct
 	  {
 	    void *si_addr;	/* Faulting insn/memory ref.  */
+	    short int si_addr_lsb;	/* Valid LSB of the reported address.  */
 	  } _sigfault;
 
 	/* SIGPOLL.  */
@@ -104,6 +104,14 @@ typedef struct siginfo
 	    long int si_band;	/* Band event for SIGPOLL.  */
 	    int si_fd;
 	  } _sigpoll;
+
+	/* SIGSYS.  */
+	struct
+	  {
+	    void *_call_addr;	/* Calling user insn.  */
+	    int _syscall;	/* Triggering system call number.  */
+	    unsigned int _arch; /* AUDIT_ARCH_* of syscall.  */
+	  } _sigsys;
       } _sifields;
   } siginfo_t;
 
@@ -120,8 +128,12 @@ typedef struct siginfo
 # define si_int		_sifields._rt.si_sigval.sival_int
 # define si_ptr		_sifields._rt.si_sigval.sival_ptr
 # define si_addr	_sifields._sigfault.si_addr
+# define si_addr_lsb	_sifields._sigfault.si_addr_lsb
 # define si_band	_sifields._sigpoll.si_band
 # define si_fd		_sifields._sigpoll.si_fd
+# define si_call_addr 	_sifields._sigsys._call_addr
+# define si_syscall	_sifields._sigsys._syscall
+# define si_arch	_sifields._sigsys._arch
 
 
 /* Values for `si_code'.  Positive values are reserved for kernel-generated
@@ -142,117 +154,127 @@ enum
 # define SI_TIMER	SI_TIMER
   SI_QUEUE,			/* Sent by sigqueue.  */
 # define SI_QUEUE	SI_QUEUE
-  SI_USER,			/* Sent by kill, sigsend, raise.  */
+  SI_USER,			/* Sent by kill, sigsend.  */
 # define SI_USER	SI_USER
   SI_KERNEL = 0x80		/* Send by kernel.  */
 #define SI_KERNEL	SI_KERNEL
 };
 
 
+# if defined __USE_XOPEN_EXTENDED || defined __USE_XOPEN2K8
 /* `si_code' values for SIGILL signal.  */
 enum
 {
   ILL_ILLOPC = 1,		/* Illegal opcode.  */
-# define ILL_ILLOPC	ILL_ILLOPC
+#  define ILL_ILLOPC	ILL_ILLOPC
   ILL_ILLOPN,			/* Illegal operand.  */
-# define ILL_ILLOPN	ILL_ILLOPN
+#  define ILL_ILLOPN	ILL_ILLOPN
   ILL_ILLADR,			/* Illegal addressing mode.  */
-# define ILL_ILLADR	ILL_ILLADR
+#  define ILL_ILLADR	ILL_ILLADR
   ILL_ILLTRP,			/* Illegal trap. */
-# define ILL_ILLTRP	ILL_ILLTRP
+#  define ILL_ILLTRP	ILL_ILLTRP
   ILL_PRVOPC,			/* Privileged opcode.  */
-# define ILL_PRVOPC	ILL_PRVOPC
+#  define ILL_PRVOPC	ILL_PRVOPC
   ILL_PRVREG,			/* Privileged register.  */
-# define ILL_PRVREG	ILL_PRVREG
+#  define ILL_PRVREG	ILL_PRVREG
   ILL_COPROC,			/* Coprocessor error.  */
-# define ILL_COPROC	ILL_COPROC
+#  define ILL_COPROC	ILL_COPROC
   ILL_BADSTK			/* Internal stack error.  */
-# define ILL_BADSTK	ILL_BADSTK
+#  define ILL_BADSTK	ILL_BADSTK
 };
 
 /* `si_code' values for SIGFPE signal.  */
 enum
 {
   FPE_INTDIV = 1,		/* Integer divide by zero.  */
-# define FPE_INTDIV	FPE_INTDIV
+#  define FPE_INTDIV	FPE_INTDIV
   FPE_INTOVF,			/* Integer overflow.  */
-# define FPE_INTOVF	FPE_INTOVF
+#  define FPE_INTOVF	FPE_INTOVF
   FPE_FLTDIV,			/* Floating point divide by zero.  */
-# define FPE_FLTDIV	FPE_FLTDIV
+#  define FPE_FLTDIV	FPE_FLTDIV
   FPE_FLTOVF,			/* Floating point overflow.  */
-# define FPE_FLTOVF	FPE_FLTOVF
+#  define FPE_FLTOVF	FPE_FLTOVF
   FPE_FLTUND,			/* Floating point underflow.  */
-# define FPE_FLTUND	FPE_FLTUND
+#  define FPE_FLTUND	FPE_FLTUND
   FPE_FLTRES,			/* Floating point inexact result.  */
-# define FPE_FLTRES	FPE_FLTRES
+#  define FPE_FLTRES	FPE_FLTRES
   FPE_FLTINV,			/* Floating point invalid operation.  */
-# define FPE_FLTINV	FPE_FLTINV
+#  define FPE_FLTINV	FPE_FLTINV
   FPE_FLTSUB			/* Subscript out of range.  */
-# define FPE_FLTSUB	FPE_FLTSUB
+#  define FPE_FLTSUB	FPE_FLTSUB
 };
 
 /* `si_code' values for SIGSEGV signal.  */
 enum
 {
   SEGV_MAPERR = 1,		/* Address not mapped to object.  */
-# define SEGV_MAPERR	SEGV_MAPERR
+#  define SEGV_MAPERR	SEGV_MAPERR
   SEGV_ACCERR			/* Invalid permissions for mapped object.  */
-# define SEGV_ACCERR	SEGV_ACCERR
+#  define SEGV_ACCERR	SEGV_ACCERR
 };
 
 /* `si_code' values for SIGBUS signal.  */
 enum
 {
   BUS_ADRALN = 1,		/* Invalid address alignment.  */
-# define BUS_ADRALN	BUS_ADRALN
+#  define BUS_ADRALN	BUS_ADRALN
   BUS_ADRERR,			/* Non-existant physical address.  */
-# define BUS_ADRERR	BUS_ADRERR
-  BUS_OBJERR			/* Object specific hardware error.  */
-# define BUS_OBJERR	BUS_OBJERR
+#  define BUS_ADRERR	BUS_ADRERR
+  BUS_OBJERR,			/* Object specific hardware error.  */
+#  define BUS_OBJERR	BUS_OBJERR
+  BUS_MCEERR_AR,		/* Hardware memory error: action required.  */
+#  define BUS_MCEERR_AR	BUS_MCEERR_AR
+  BUS_MCEERR_AO			/* Hardware memory error: action optional.  */
+#  define BUS_MCEERR_AO	BUS_MCEERR_AO
 };
+# endif
 
+# ifdef __USE_XOPEN_EXTENDED
 /* `si_code' values for SIGTRAP signal.  */
 enum
 {
   TRAP_BRKPT = 1,		/* Process breakpoint.  */
-# define TRAP_BRKPT	TRAP_BRKPT
+#  define TRAP_BRKPT	TRAP_BRKPT
   TRAP_TRACE			/* Process trace trap.  */
-# define TRAP_TRACE	TRAP_TRACE
+#  define TRAP_TRACE	TRAP_TRACE
 };
+# endif
 
+# if defined __USE_XOPEN_EXTENDED || defined __USE_XOPEN2K8
 /* `si_code' values for SIGCHLD signal.  */
 enum
 {
   CLD_EXITED = 1,		/* Child has exited.  */
-# define CLD_EXITED	CLD_EXITED
+#  define CLD_EXITED	CLD_EXITED
   CLD_KILLED,			/* Child was killed.  */
-# define CLD_KILLED	CLD_KILLED
+#  define CLD_KILLED	CLD_KILLED
   CLD_DUMPED,			/* Child terminated abnormally.  */
-# define CLD_DUMPED	CLD_DUMPED
+#  define CLD_DUMPED	CLD_DUMPED
   CLD_TRAPPED,			/* Traced child has trapped.  */
-# define CLD_TRAPPED	CLD_TRAPPED
+#  define CLD_TRAPPED	CLD_TRAPPED
   CLD_STOPPED,			/* Child has stopped.  */
-# define CLD_STOPPED	CLD_STOPPED
+#  define CLD_STOPPED	CLD_STOPPED
   CLD_CONTINUED			/* Stopped child has continued.  */
-# define CLD_CONTINUED	CLD_CONTINUED
+#  define CLD_CONTINUED	CLD_CONTINUED
 };
 
 /* `si_code' values for SIGPOLL signal.  */
 enum
 {
   POLL_IN = 1,			/* Data input available.  */
-# define POLL_IN	POLL_IN
+#  define POLL_IN	POLL_IN
   POLL_OUT,			/* Output buffers available.  */
-# define POLL_OUT	POLL_OUT
+#  define POLL_OUT	POLL_OUT
   POLL_MSG,			/* Input message available.   */
-# define POLL_MSG	POLL_MSG
+#  define POLL_MSG	POLL_MSG
   POLL_ERR,			/* I/O error.  */
-# define POLL_ERR	POLL_ERR
+#  define POLL_ERR	POLL_ERR
   POLL_PRI,			/* High priority input available.  */
-# define POLL_PRI	POLL_PRI
+#  define POLL_PRI	POLL_PRI
   POLL_HUP			/* Device disconnected.  */
-# define POLL_HUP	POLL_HUP
+#  define POLL_HUP	POLL_HUP
 };
+# endif
 
 # undef __need_siginfo_t
 #endif	/* !have siginfo_t && (have _SIGNAL_H || need siginfo_t).  */
@@ -268,6 +290,12 @@ enum
 #  define __SIGEV_PAD_SIZE	((__SIGEV_MAX_SIZE / sizeof (int)) - 4)
 # else
 #  define __SIGEV_PAD_SIZE	((__SIGEV_MAX_SIZE / sizeof (int)) - 3)
+# endif
+
+/* Forward declaration.  */
+# ifndef __have_pthread_attr_t
+typedef union pthread_attr_t pthread_attr_t;
+#  define __have_pthread_attr_t	1
 # endif
 
 typedef struct sigevent
@@ -287,7 +315,7 @@ typedef struct sigevent
 	struct
 	  {
 	    void (*_function) (sigval_t);	/* Function to start.  */
-	    void *_attribute;			/* Really pthread_attr_t.  */
+	    pthread_attr_t *_attribute;		/* Thread attributes.  */
 	  } _sigev_thread;
       } _sigev_un;
   } sigevent_t;

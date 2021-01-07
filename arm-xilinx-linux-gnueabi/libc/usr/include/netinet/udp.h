@@ -1,4 +1,4 @@
-/* Copyright (C) 1991-1993,1995-1997,2004,2009 Free Software Foundation, Inc.
+/* Copyright (C) 1991-2015 Free Software Foundation, Inc.
    This file is part of the GNU C Library.
 
    The GNU C Library is free software; you can redistribute it and/or
@@ -12,9 +12,8 @@
    Lesser General Public License for more details.
 
    You should have received a copy of the GNU Lesser General Public
-   License along with the GNU C Library; if not, write to the Free
-   Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA
-   02111-1307 USA.  */
+   License along with the GNU C Library; if not, see
+   <http://www.gnu.org/licenses/>.  */
 
 /*
  * Copyright (C) 1982, 1986 Regents of the University of California.
@@ -53,31 +52,36 @@
 
 
 /* UDP header as specified by RFC 768, August 1980. */
-#ifdef __FAVOR_BSD
 
 struct udphdr
 {
-  u_int16_t uh_sport;		/* source port */
-  u_int16_t uh_dport;		/* destination port */
-  u_int16_t uh_ulen;		/* udp length */
-  u_int16_t uh_sum;		/* udp checksum */
+  __extension__ union
+  {
+    struct
+    {
+      u_int16_t uh_sport;		/* source port */
+      u_int16_t uh_dport;		/* destination port */
+      u_int16_t uh_ulen;		/* udp length */
+      u_int16_t uh_sum;		/* udp checksum */
+    };
+    struct
+    {
+      u_int16_t source;
+      u_int16_t dest;
+      u_int16_t len;
+      u_int16_t check;
+    };
+  };
 };
-
-#else
-
-struct udphdr
-{
-  u_int16_t source;
-  u_int16_t dest;
-  u_int16_t len;
-  u_int16_t check;
-};
-#endif
 
 /* UDP socket options */
 #define UDP_CORK	1	/* Never send partially complete segments.  */
 #define UDP_ENCAP	100	/* Set the socket to accept
 				   encapsulated packets.  */
+#define UDP_NO_CHECK6_TX 101	/* Disable sending checksum for UDP
+				   over IPv6.  */
+#define UDP_NO_CHECK6_RX 102	/* Disable accepting checksum for UDP
+				   over IPv6.  */
 
 /* UDP encapsulation types */
 #define UDP_ENCAP_ESPINUDP_NON_IKE 1	/* draft-ietf-ipsec-nat-t-ike-00/01 */

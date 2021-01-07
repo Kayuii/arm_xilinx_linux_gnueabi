@@ -1,4 +1,4 @@
-/* Copyright (C) 1991-2000,2003-2005,2009,2010 Free Software Foundation, Inc.
+/* Copyright (C) 1991-2015 Free Software Foundation, Inc.
    This file is part of the GNU C Library.
 
    The GNU C Library is free software; you can redistribute it and/or
@@ -12,9 +12,8 @@
    Lesser General Public License for more details.
 
    You should have received a copy of the GNU Lesser General Public
-   License along with the GNU C Library; if not, write to the Free
-   Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA
-   02111-1307 USA.  */
+   License along with the GNU C Library; if not, see
+   <http://www.gnu.org/licenses/>.  */
 
 /*
  *	POSIX Standard: 5.1.2 Directory Operations	<dirent.h>
@@ -61,7 +60,7 @@ typedef __ino64_t ino64_t;
 
 #include <bits/dirent.h>
 
-#if (defined __USE_BSD || defined __USE_MISC) && !defined d_fileno
+#if defined __USE_MISC && !defined d_fileno
 # define d_ino	d_fileno		 /* Backward compatibility.  */
 #endif
 
@@ -93,7 +92,7 @@ typedef __ino64_t ino64_t;
 #endif
 
 
-#ifdef __USE_BSD
+#ifdef __USE_MISC
 /* File types for `d_type'.  */
 enum
   {
@@ -132,7 +131,7 @@ typedef struct __dirstream DIR;
 
    This function is a possible cancellation point and therefore not
    marked with __THROW.  */
-extern DIR *opendir (__const char *__name) __nonnull ((1));
+extern DIR *opendir (const char *__name) __nonnull ((1));
 
 #ifdef __USE_XOPEN2K8
 /* Same as opendir, but open the stream on the file descriptor FD.
@@ -174,7 +173,7 @@ extern struct dirent *__REDIRECT (readdir, (DIR *__dirp), readdir64)
 extern struct dirent64 *readdir64 (DIR *__dirp) __nonnull ((1));
 #endif
 
-#if defined __USE_POSIX || defined __USE_MISC
+#ifdef __USE_POSIX
 /* Reentrant version of `readdir'.  Return in RESULT a pointer to the
    next entry.
 
@@ -208,7 +207,7 @@ extern int readdir64_r (DIR *__restrict __dirp,
 /* Rewind DIRP to the beginning of the directory.  */
 extern void rewinddir (DIR *__dirp) __THROW __nonnull ((1));
 
-#if defined __USE_BSD || defined __USE_MISC || defined __USE_XOPEN
+#if defined __USE_MISC || defined __USE_XOPEN
 # include <bits/types.h>
 
 /* Seek to position POS on DIRP.  */
@@ -218,7 +217,7 @@ extern void seekdir (DIR *__dirp, long int __pos) __THROW __nonnull ((1));
 extern long int telldir (DIR *__dirp) __THROW __nonnull ((1));
 #endif
 
-#if defined __USE_BSD || defined __USE_MISC || defined __USE_XOPEN2K8
+#ifdef __USE_XOPEN2K8
 
 /* Return the file descriptor used by DIRP.  */
 extern int dirfd (DIR *__dirp) __THROW __nonnull ((1));
@@ -227,7 +226,7 @@ extern int dirfd (DIR *__dirp) __THROW __nonnull ((1));
 #  define dirfd(dirp)	_DIR_dirfd (dirp)
 # endif
 
-# if defined __USE_BSD || defined __USE_MISC
+# ifdef __USE_MISC
 #  ifndef MAXNAMLEN
 /* Get the definitions of the POSIX.1 limits.  */
 #  include <bits/posix1_lim.h>
@@ -247,22 +246,25 @@ extern int dirfd (DIR *__dirp) __THROW __nonnull ((1));
 /* Scan the directory DIR, calling SELECTOR on each directory entry.
    Entries for which SELECT returns nonzero are individually malloc'd,
    sorted using qsort with CMP, and collected in a malloc'd array in
-   *NAMELIST.  Returns the number of entries selected, or -1 on error.  */
+   *NAMELIST.  Returns the number of entries selected, or -1 on error.
+
+   This function is a cancellation point and therefore not marked with
+   __THROW.  */
 # ifndef __USE_FILE_OFFSET64
-extern int scandir (__const char *__restrict __dir,
+extern int scandir (const char *__restrict __dir,
 		    struct dirent ***__restrict __namelist,
-		    int (*__selector) (__const struct dirent *),
-		    int (*__cmp) (__const struct dirent **,
-				  __const struct dirent **))
+		    int (*__selector) (const struct dirent *),
+		    int (*__cmp) (const struct dirent **,
+				  const struct dirent **))
      __nonnull ((1, 2));
 # else
 #  ifdef __REDIRECT
 extern int __REDIRECT (scandir,
-		       (__const char *__restrict __dir,
+		       (const char *__restrict __dir,
 			struct dirent ***__restrict __namelist,
-			int (*__selector) (__const struct dirent *),
-			int (*__cmp) (__const struct dirent **,
-				      __const struct dirent **)),
+			int (*__selector) (const struct dirent *),
+			int (*__cmp) (const struct dirent **,
+				      const struct dirent **)),
 		       scandir64) __nonnull ((1, 2));
 #  else
 #   define scandir scandir64
@@ -272,24 +274,61 @@ extern int __REDIRECT (scandir,
 # if defined __USE_GNU && defined __USE_LARGEFILE64
 /* This function is like `scandir' but it uses the 64bit dirent structure.
    Please note that the CMP function must now work with struct dirent64 **.  */
-extern int scandir64 (__const char *__restrict __dir,
+extern int scandir64 (const char *__restrict __dir,
 		      struct dirent64 ***__restrict __namelist,
-		      int (*__selector) (__const struct dirent64 *),
-		      int (*__cmp) (__const struct dirent64 **,
-				    __const struct dirent64 **))
+		      int (*__selector) (const struct dirent64 *),
+		      int (*__cmp) (const struct dirent64 **,
+				    const struct dirent64 **))
      __nonnull ((1, 2));
+# endif
+
+# ifdef __USE_GNU
+/* Similar to `scandir' but a relative DIR name is interpreted relative
+   to the directory for which DFD is a descriptor.
+
+   This function is a cancellation point and therefore not marked with
+   __THROW.  */
+#  ifndef __USE_FILE_OFFSET64
+extern int scandirat (int __dfd, const char *__restrict __dir,
+		      struct dirent ***__restrict __namelist,
+		      int (*__selector) (const struct dirent *),
+		      int (*__cmp) (const struct dirent **,
+				    const struct dirent **))
+     __nonnull ((2, 3));
+#  else
+#   ifdef __REDIRECT
+extern int __REDIRECT (scandirat,
+		       (int __dfd, const char *__restrict __dir,
+			struct dirent ***__restrict __namelist,
+			int (*__selector) (const struct dirent *),
+			int (*__cmp) (const struct dirent **,
+				      const struct dirent **)),
+		       scandirat64) __nonnull ((2, 3));
+#   else
+#    define scandirat scandirat64
+#   endif
+#  endif
+
+/* This function is like `scandir' but it uses the 64bit dirent structure.
+   Please note that the CMP function must now work with struct dirent64 **.  */
+extern int scandirat64 (int __dfd, const char *__restrict __dir,
+			struct dirent64 ***__restrict __namelist,
+			int (*__selector) (const struct dirent64 *),
+			int (*__cmp) (const struct dirent64 **,
+				      const struct dirent64 **))
+     __nonnull ((2, 3));
 # endif
 
 /* Function to compare two `struct dirent's alphabetically.  */
 # ifndef __USE_FILE_OFFSET64
-extern int alphasort (__const struct dirent **__e1,
-		      __const struct dirent **__e2)
+extern int alphasort (const struct dirent **__e1,
+		      const struct dirent **__e2)
      __THROW __attribute_pure__ __nonnull ((1, 2));
 # else
 #  ifdef __REDIRECT
 extern int __REDIRECT_NTH (alphasort,
-			   (__const struct dirent **__e1,
-			    __const struct dirent **__e2),
+			   (const struct dirent **__e1,
+			    const struct dirent **__e2),
 			   alphasort64) __attribute_pure__ __nonnull ((1, 2));
 #  else
 #   define alphasort alphasort64
@@ -297,14 +336,14 @@ extern int __REDIRECT_NTH (alphasort,
 # endif
 
 # if defined __USE_GNU && defined __USE_LARGEFILE64
-extern int alphasort64 (__const struct dirent64 **__e1,
-			__const struct dirent64 **__e2)
+extern int alphasort64 (const struct dirent64 **__e1,
+			const struct dirent64 **__e2)
      __THROW __attribute_pure__ __nonnull ((1, 2));
 # endif
-#endif /* Use BSD or misc or XPG7.  */
+#endif /* Use XPG7.  */
 
 
-#if defined __USE_BSD || defined __USE_MISC
+#ifdef __USE_MISC
 /* Read directory entries from FD into BUF, reading at most NBYTES.
    Reading starts at offset *BASEP, and *BASEP is updated with the new
    position after reading.  Returns the number of bytes read; zero when at
@@ -332,19 +371,19 @@ extern __ssize_t getdirentries64 (int __fd, char *__restrict __buf,
 				  __off64_t *__restrict __basep)
      __THROW __nonnull ((2, 4));
 # endif
-#endif /* Use BSD or misc.  */
+#endif /* Use misc.  */
 
 #ifdef __USE_GNU
 /* Function to compare two `struct dirent's by name & version.  */
 # ifndef __USE_FILE_OFFSET64
-extern int versionsort (__const struct dirent **__e1,
-			__const struct dirent **__e2)
+extern int versionsort (const struct dirent **__e1,
+			const struct dirent **__e2)
      __THROW __attribute_pure__ __nonnull ((1, 2));
 # else
 #  ifdef __REDIRECT
 extern int __REDIRECT_NTH (versionsort,
-			   (__const struct dirent **__e1,
-			    __const struct dirent **__e2),
+			   (const struct dirent **__e1,
+			    const struct dirent **__e2),
 			   versionsort64)
      __attribute_pure__ __nonnull ((1, 2));
 #  else
@@ -353,8 +392,8 @@ extern int __REDIRECT_NTH (versionsort,
 # endif
 
 # ifdef __USE_LARGEFILE64
-extern int versionsort64 (__const struct dirent64 **__e1,
-			  __const struct dirent64 **__e2)
+extern int versionsort64 (const struct dirent64 **__e1,
+			  const struct dirent64 **__e2)
      __THROW __attribute_pure__ __nonnull ((1, 2));
 # endif
 #endif /* Use GNU.  */

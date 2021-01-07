@@ -1,5 +1,5 @@
 /* Prototype declarations for math functions; helper file for <math.h>.
-   Copyright (C) 1996-2002, 2003, 2006 Free Software Foundation, Inc.
+   Copyright (C) 1996-2015 Free Software Foundation, Inc.
    This file is part of the GNU C Library.
 
    The GNU C Library is free software; you can redistribute it and/or
@@ -13,9 +13,8 @@
    Lesser General Public License for more details.
 
    You should have received a copy of the GNU Lesser General Public
-   License along with the GNU C Library; if not, write to the Free
-   Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA
-   02111-1307 USA.  */
+   License along with the GNU C Library; if not, see
+   <http://www.gnu.org/licenses/>.  */
 
 /* NOTE: Because of the special way this file is used by <math.h>, this
    file must NOT be protected from multiple inclusion as header files
@@ -83,7 +82,7 @@ __MATHDECL (void,sincos,,
 	    (_Mdouble_ __x, _Mdouble_ *__sinx, _Mdouble_ *__cosx));
 #endif
 
-#if defined __USE_MISC || defined __USE_XOPEN_EXTENDED || defined __USE_ISOC99
+#if defined __USE_XOPEN_EXTENDED || defined __USE_ISOC99
 __BEGIN_NAMESPACE_C99
 /* Hyperbolic arc cosine of X.  */
 __MATHCALL (acosh,, (_Mdouble_ __x));
@@ -113,7 +112,7 @@ __MATHCALL (log,, (_Mdouble_ __x));
 __MATHCALL (log10,, (_Mdouble_ __x));
 
 /* Break VALUE into integral and fractional parts.  */
-__MATHCALL (modf,, (_Mdouble_ __x, _Mdouble_ *__iptr));
+__MATHCALL (modf,, (_Mdouble_ __x, _Mdouble_ *__iptr)) __nonnull ((2));
 _Mdouble_END_NAMESPACE
 
 #ifdef __USE_GNU
@@ -123,7 +122,7 @@ __MATHCALL (exp10,, (_Mdouble_ __x));
 __MATHCALL (pow10,, (_Mdouble_ __x));
 #endif
 
-#if defined __USE_MISC || defined __USE_XOPEN_EXTENDED || defined __USE_ISOC99
+#if defined __USE_XOPEN_EXTENDED || defined __USE_ISOC99
 __BEGIN_NAMESPACE_C99
 /* Return exp(X) - 1.  */
 __MATHCALL (expm1,, (_Mdouble_ __x));
@@ -157,14 +156,14 @@ __MATHCALL (pow,, (_Mdouble_ __x, _Mdouble_ __y));
 __MATHCALL (sqrt,, (_Mdouble_ __x));
 _Mdouble_END_NAMESPACE
 
-#if defined __USE_MISC || defined __USE_XOPEN || defined __USE_ISOC99
+#if defined __USE_XOPEN || defined __USE_ISOC99
 __BEGIN_NAMESPACE_C99
 /* Return `sqrt(X*X + Y*Y)'.  */
 __MATHCALL (hypot,, (_Mdouble_ __x, _Mdouble_ __y));
 __END_NAMESPACE_C99
 #endif
 
-#if defined __USE_MISC || defined __USE_XOPEN_EXTENDED || defined __USE_ISOC99
+#if defined __USE_XOPEN_EXTENDED || defined __USE_ISOC99
 __BEGIN_NAMESPACE_C99
 /* Return the cube root of X.  */
 __MATHCALL (cbrt,, (_Mdouble_ __x));
@@ -212,7 +211,7 @@ __MATHCALL (drem,, (_Mdouble_ __x, _Mdouble_ __y));
 __MATHCALL (significand,, (_Mdouble_ __x));
 #endif /* Use misc.  */
 
-#if defined __USE_MISC || defined __USE_ISOC99
+#ifdef __USE_ISOC99
 __BEGIN_NAMESPACE_C99
 /* Return X with its signed changed to Y's.  */
 __MATHCALLX (copysign,, (_Mdouble_ __x, _Mdouble_ __y), (__const__));
@@ -221,8 +220,8 @@ __END_NAMESPACE_C99
 
 #ifdef __USE_ISOC99
 __BEGIN_NAMESPACE_C99
-/* Return representation of NaN for double type.  */
-__MATHCALLX (nan,, (__const char *__tagb), (__const__));
+/* Return representation of qNaN for double type.  */
+__MATHCALLX (nan,, (const char *__tagb), (__const__));
 __END_NAMESPACE_C99
 #endif
 
@@ -244,7 +243,7 @@ __MATHCALL (yn,, (int, _Mdouble_));
 #endif
 
 
-#if defined __USE_MISC || defined __USE_XOPEN || defined __USE_ISOC99
+#if defined __USE_XOPEN || defined __USE_ISOC99
 __BEGIN_NAMESPACE_C99
 /* Error and gamma functions.  */
 __MATHCALL (erf,, (_Mdouble_));
@@ -273,7 +272,7 @@ __MATHCALL (lgamma,_r, (_Mdouble_, int *__signgamp));
 #endif
 
 
-#if defined __USE_MISC || defined __USE_XOPEN_EXTENDED || defined __USE_ISOC99
+#if defined __USE_XOPEN_EXTENDED || defined __USE_ISOC99
 __BEGIN_NAMESPACE_C99
 /* Return the integer nearest X in the direction of the
    prevailing rounding mode.  */
@@ -288,7 +287,7 @@ __MATHCALLX (nexttoward,, (_Mdouble_ __x, long double __y), (__const__));
 /* Return the remainder of integer divison X / Y with infinite precision.  */
 __MATHCALL (remainder,, (_Mdouble_ __x, _Mdouble_ __y));
 
-# if defined __USE_MISC || defined __USE_ISOC99
+# ifdef __USE_ISOC99
 /* Return X times (2 to the Nth power).  */
 __MATHCALL (scalbn,, (_Mdouble_ __x, int __n));
 # endif
@@ -324,11 +323,13 @@ __MATHCALL (remquo,, (_Mdouble_ __x, _Mdouble_ __y, int *__quo));
 /* Round X to nearest integral value according to current rounding
    direction.  */
 __MATHDECL (long int,lrint,, (_Mdouble_ __x));
+__extension__
 __MATHDECL (long long int,llrint,, (_Mdouble_ __x));
 
 /* Round X to nearest integral value, rounding halfway cases away from
    zero.  */
 __MATHDECL (long int,lround,, (_Mdouble_ __x));
+__extension__
 __MATHDECL (long long int,llround,, (_Mdouble_ __x));
 
 
@@ -336,10 +337,10 @@ __MATHDECL (long long int,llround,, (_Mdouble_ __x));
 __MATHCALL (fdim,, (_Mdouble_ __x, _Mdouble_ __y));
 
 /* Return maximum numeric value from X and Y.  */
-__MATHCALL (fmax,, (_Mdouble_ __x, _Mdouble_ __y));
+__MATHCALLX (fmax,, (_Mdouble_ __x, _Mdouble_ __y), (__const__));
 
 /* Return minimum numeric value from X and Y.  */
-__MATHCALL (fmin,, (_Mdouble_ __x, _Mdouble_ __y));
+__MATHCALLX (fmin,, (_Mdouble_ __x, _Mdouble_ __y), (__const__));
 
 
 /* Classify given number.  */
@@ -355,8 +356,14 @@ __MATHDECL_1 (int, __signbit,, (_Mdouble_ __value))
 __MATHCALL (fma,, (_Mdouble_ __x, _Mdouble_ __y, _Mdouble_ __z));
 #endif /* Use ISO C99.  */
 
-#if defined __USE_MISC || defined __USE_XOPEN_EXTENDED || defined __USE_ISOC99
+#if defined __USE_XOPEN_EXTENDED || defined __USE_ISOC99
 __END_NAMESPACE_C99
+#endif
+
+#ifdef __USE_GNU
+/* Test for signaling NaN.  */
+__MATHDECL_1 (int, __issignaling,, (_Mdouble_ __value))
+     __attribute__ ((__const__));
 #endif
 
 #if defined __USE_MISC || defined __USE_XOPEN_EXTENDED

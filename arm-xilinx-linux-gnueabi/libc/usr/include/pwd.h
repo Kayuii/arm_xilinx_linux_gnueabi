@@ -1,4 +1,4 @@
-/* Copyright (C) 1991,1992,1995-2001,2003,2004 Free Software Foundation, Inc.
+/* Copyright (C) 1991-2015 Free Software Foundation, Inc.
    This file is part of the GNU C Library.
 
    The GNU C Library is free software; you can redistribute it and/or
@@ -12,9 +12,8 @@
    Lesser General Public License for more details.
 
    You should have received a copy of the GNU Lesser General Public
-   License along with the GNU C Library; if not, write to the Free
-   Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA
-   02111-1307 USA.  */
+   License along with the GNU C Library; if not, see
+   <http://www.gnu.org/licenses/>.  */
 
 /*
  *	POSIX Standard: 9.2.2 User Database Access	<pwd.h>
@@ -59,13 +58,13 @@ struct passwd
 };
 
 
-#if defined __USE_SVID || defined __USE_GNU
+#ifdef __USE_MISC
 # define __need_FILE
 # include <stdio.h>
 #endif
 
 
-#if defined __USE_SVID || defined __USE_MISC || defined __USE_XOPEN_EXTENDED
+#if defined __USE_MISC || defined __USE_XOPEN_EXTENDED
 /* Rewind the password-file stream.
 
    This function is a possible cancellation point and therefore not
@@ -85,7 +84,7 @@ extern void endpwent (void);
 extern struct passwd *getpwent (void);
 #endif
 
-#ifdef	__USE_SVID
+#ifdef	__USE_MISC
 /* Read an entry from STREAM.
 
    This function is not part of POSIX and therefore no official
@@ -100,7 +99,7 @@ extern struct passwd *fgetpwent (FILE *__stream);
    cancellation point.  But due to similarity with an POSIX interface
    or due to the implementation it is a cancellation point and
    therefore not marked with __THROW.  */
-extern int putpwent (__const struct passwd *__restrict __p,
+extern int putpwent (const struct passwd *__restrict __p,
 		     FILE *__restrict __f);
 #endif
 
@@ -114,9 +113,9 @@ extern struct passwd *getpwuid (__uid_t __uid);
 
    This function is a possible cancellation point and therefore not
    marked with __THROW.  */
-extern struct passwd *getpwnam (__const char *__name);
+extern struct passwd *getpwnam (const char *__name);
 
-#if defined __USE_POSIX || defined __USE_MISC
+#ifdef __USE_POSIX
 
 # ifdef __USE_MISC
 /* Reasonable value for the buffer sized used in the reentrant
@@ -132,7 +131,7 @@ extern struct passwd *getpwnam (__const char *__name);
    other reentrant functions so the chances are good this is what the
    POSIX people would choose.  */
 
-# if defined __USE_SVID || defined __USE_MISC
+# ifdef __USE_MISC
 /* This function is not part of POSIX and therefore no official
    cancellation point.  But due to similarity with an POSIX interface
    or due to the implementation it is a cancellation point and
@@ -147,13 +146,13 @@ extern int getpwuid_r (__uid_t __uid,
 		       char *__restrict __buffer, size_t __buflen,
 		       struct passwd **__restrict __result);
 
-extern int getpwnam_r (__const char *__restrict __name,
+extern int getpwnam_r (const char *__restrict __name,
 		       struct passwd *__restrict __resultbuf,
 		       char *__restrict __buffer, size_t __buflen,
 		       struct passwd **__restrict __result);
 
 
-# ifdef	__USE_SVID
+# ifdef	__USE_MISC
 /* Read an entry from STREAM.  This function is not standardized and
    probably never will.
 

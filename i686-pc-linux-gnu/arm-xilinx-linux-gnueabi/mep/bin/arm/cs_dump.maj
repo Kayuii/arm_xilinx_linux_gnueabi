@@ -1,0 +1,32 @@
++Q
+//Dumps target Core Sight Information (APs and ROM table)
+//
+//  Usage:   cs_dmp           
+//
+//
+
+//
+//........................................................................
+:CDUMP
+ 
+ew CORE_SIGHT_DUMP = 1;
+//:DISPLAY_INFO
+//
+//dv "\n"
+//dv "  Component ID Class Types\n"
+//dv "    0x0   = Generic Verification Component\n"
+//dv "    0x1   = ROM Table\n"
+//dv "    0x9   = Debug Component\n"
+//
+//dv "\n"
+//dv "  Devivce ID (DEVID) [3:0] Major Types \n"
+//dv "    0x1  = Trace Sink\n"
+//dv "    0x2  = Trace Link\n"
+//dv "    0x3  = Trace Source\n"
+//dv "    0x4  = Debug Control\n"
+//dv "    0x5  = Debug Logic\n"
+//dv "    0x6  = Performance Monitor\n"
+
+//
+//........................................................................
+:EXIT

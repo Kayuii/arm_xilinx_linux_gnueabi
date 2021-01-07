@@ -1,5 +1,4 @@
-/* Copyright (C) 1991-2001, 2003, 2004, 2006, 2007, 2008
-   Free Software Foundation, Inc.
+/* Copyright (C) 1991-2015 Free Software Foundation, Inc.
    This file is part of the GNU C Library.
 
    The GNU C Library is free software; you can redistribute it and/or
@@ -13,9 +12,8 @@
    Lesser General Public License for more details.
 
    You should have received a copy of the GNU Lesser General Public
-   License along with the GNU C Library; if not, write to the Free
-   Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA
-   02111-1307 USA.  */
+   License along with the GNU C Library; if not, see
+   <http://www.gnu.org/licenses/>.  */
 
 #ifndef	_NETINET_IN_H
 #define	_NETINET_IN_H	1
@@ -28,13 +26,21 @@
 
 __BEGIN_DECLS
 
+/* Internet address.  */
+typedef uint32_t in_addr_t;
+struct in_addr
+  {
+    in_addr_t s_addr;
+  };
+
+/* Get system-specific definitions.  */
+#include <bits/in.h>
+
 /* Standard well-defined IP protocols.  */
 enum
   {
     IPPROTO_IP = 0,	   /* Dummy protocol for TCP.  */
 #define IPPROTO_IP		IPPROTO_IP
-    IPPROTO_HOPOPTS = 0,   /* IPv6 Hop-by-Hop options.  */
-#define IPPROTO_HOPOPTS		IPPROTO_HOPOPTS
     IPPROTO_ICMP = 1,	   /* Internet Control Message Protocol.  */
 #define IPPROTO_ICMP		IPPROTO_ICMP
     IPPROTO_IGMP = 2,	   /* Internet Group Management Protocol. */
@@ -57,10 +63,6 @@ enum
 #define IPPROTO_DCCP		IPPROTO_DCCP
     IPPROTO_IPV6 = 41,     /* IPv6 header.  */
 #define IPPROTO_IPV6		IPPROTO_IPV6
-    IPPROTO_ROUTING = 43,  /* IPv6 routing header.  */
-#define IPPROTO_ROUTING		IPPROTO_ROUTING
-    IPPROTO_FRAGMENT = 44, /* IPv6 fragmentation header.  */
-#define IPPROTO_FRAGMENT	IPPROTO_FRAGMENT
     IPPROTO_RSVP = 46,	   /* Reservation Protocol.  */
 #define IPPROTO_RSVP		IPPROTO_RSVP
     IPPROTO_GRE = 47,	   /* General Routing Encapsulation.  */
@@ -69,14 +71,10 @@ enum
 #define IPPROTO_ESP		IPPROTO_ESP
     IPPROTO_AH = 51,       /* authentication header.  */
 #define IPPROTO_AH		IPPROTO_AH
-    IPPROTO_ICMPV6 = 58,   /* ICMPv6.  */
-#define IPPROTO_ICMPV6		IPPROTO_ICMPV6
-    IPPROTO_NONE = 59,     /* IPv6 no next header.  */
-#define IPPROTO_NONE		IPPROTO_NONE
-    IPPROTO_DSTOPTS = 60,  /* IPv6 destination options.  */
-#define IPPROTO_DSTOPTS		IPPROTO_DSTOPTS
     IPPROTO_MTP = 92,	   /* Multicast Transport Protocol.  */
 #define IPPROTO_MTP		IPPROTO_MTP
+    IPPROTO_BEETPH = 94,   /* IP option pseudo header for BEET.  */
+#define IPPROTO_BEETPH		IPPROTO_BEETPH
     IPPROTO_ENCAP = 98,	   /* Encapsulation Header.  */
 #define IPPROTO_ENCAP		IPPROTO_ENCAP
     IPPROTO_PIM = 103,	   /* Protocol Independent Multicast.  */
@@ -92,6 +90,28 @@ enum
     IPPROTO_MAX
   };
 
+/* If __USE_KERNEL_IPV6_DEFS is defined then the user has included the kernel
+   network headers first and we should use those ABI-identical definitions
+   instead of our own.  */
+#ifndef __USE_KERNEL_IPV6_DEFS
+enum
+  {
+    IPPROTO_HOPOPTS = 0,   /* IPv6 Hop-by-Hop options.  */
+#define IPPROTO_HOPOPTS		IPPROTO_HOPOPTS
+    IPPROTO_ROUTING = 43,  /* IPv6 routing header.  */
+#define IPPROTO_ROUTING		IPPROTO_ROUTING
+    IPPROTO_FRAGMENT = 44, /* IPv6 fragmentation header.  */
+#define IPPROTO_FRAGMENT	IPPROTO_FRAGMENT
+    IPPROTO_ICMPV6 = 58,   /* ICMPv6.  */
+#define IPPROTO_ICMPV6		IPPROTO_ICMPV6
+    IPPROTO_NONE = 59,     /* IPv6 no next header.  */
+#define IPPROTO_NONE		IPPROTO_NONE
+    IPPROTO_DSTOPTS = 60,  /* IPv6 destination options.  */
+#define IPPROTO_DSTOPTS		IPPROTO_DSTOPTS
+    IPPROTO_MH = 135       /* IPv6 mobility header.  */
+#define IPPROTO_MH		IPPROTO_MH
+  };
+#endif /* !__USE_KERNEL_IPV6_DEFS */
 
 /* Type to represent a port.  */
 typedef uint16_t in_port_t;
@@ -135,15 +155,6 @@ enum
     /* Ports greater this value are reserved for (non-privileged) servers.  */
     IPPORT_USERRESERVED = 5000
   };
-
-
-/* Internet address.  */
-typedef uint32_t in_addr_t;
-struct in_addr
-  {
-    in_addr_t s_addr;
-  };
-
 
 /* Definitions of the bits in an Internet address integer.
 
@@ -193,24 +204,25 @@ struct in_addr
 #define INADDR_ALLRTRS_GROUP    ((in_addr_t) 0xe0000002) /* 224.0.0.2 */
 #define INADDR_MAX_LOCAL_GROUP  ((in_addr_t) 0xe00000ff) /* 224.0.0.255 */
 
-
+#ifndef __USE_KERNEL_IPV6_DEFS
 /* IPv6 address */
 struct in6_addr
   {
     union
       {
 	uint8_t	__u6_addr8[16];
-#if defined __USE_MISC || defined __USE_GNU
+#ifdef __USE_MISC
 	uint16_t __u6_addr16[8];
 	uint32_t __u6_addr32[4];
 #endif
       } __in6_u;
 #define s6_addr			__in6_u.__u6_addr8
-#if defined __USE_MISC || defined __USE_GNU
+#ifdef __USE_MISC
 # define s6_addr16		__in6_u.__u6_addr16
 # define s6_addr32		__in6_u.__u6_addr32
 #endif
   };
+#endif /* !__USE_KERNEL_IPV6_DEFS */
 
 extern const struct in6_addr in6addr_any;        /* :: */
 extern const struct in6_addr in6addr_loopback;   /* ::1 */
@@ -235,6 +247,7 @@ struct sockaddr_in
 			   sizeof (struct in_addr)];
   };
 
+#ifndef __USE_KERNEL_IPV6_DEFS
 /* Ditto, for IPv6.  */
 struct sockaddr_in6
   {
@@ -244,9 +257,9 @@ struct sockaddr_in6
     struct in6_addr sin6_addr;	/* IPv6 address */
     uint32_t sin6_scope_id;	/* IPv6 scope-id */
   };
+#endif /* !__USE_KERNEL_IPV6_DEFS */
 
-
-#if defined __USE_MISC || defined __USE_GNU
+#ifdef __USE_MISC
 /* IPv4 multicast request.  */
 struct ip_mreq
   {
@@ -270,7 +283,7 @@ struct ip_mreq_source
   };
 #endif
 
-
+#ifndef __USE_KERNEL_IPV6_DEFS
 /* Likewise, for IPv6.  */
 struct ipv6_mreq
   {
@@ -280,9 +293,9 @@ struct ipv6_mreq
     /* local interface */
     unsigned int ipv6mr_interface;
   };
+#endif /* !__USE_KERNEL_IPV6_DEFS */
 
-
-#if defined __USE_MISC || defined __USE_GNU
+#ifdef __USE_MISC
 /* Multicast group request.  */
 struct group_req
   {
@@ -351,10 +364,6 @@ struct group_filter
 				      * sizeof (struct sockaddr_storage)))
 #endif
 
-
-/* Get system-specific definitions.  */
-#include <bits/in.h>
-
 /* Functions to convert between host and network byte order.
 
    Please note that these functions normally take `unsigned long int' or
@@ -396,46 +405,98 @@ extern uint16_t htons (uint16_t __hostshort)
 # endif
 #endif
 
-#define IN6_IS_ADDR_UNSPECIFIED(a) \
-	(((__const uint32_t *) (a))[0] == 0				      \
-	 && ((__const uint32_t *) (a))[1] == 0				      \
-	 && ((__const uint32_t *) (a))[2] == 0				      \
-	 && ((__const uint32_t *) (a))[3] == 0)
+#ifdef __GNUC__
+# define IN6_IS_ADDR_UNSPECIFIED(a) \
+  (__extension__							      \
+   ({ const struct in6_addr *__a = (const struct in6_addr *) (a);	      \
+      __a->s6_addr32[0] == 0						      \
+      && __a->s6_addr32[1] == 0						      \
+      && __a->s6_addr32[2] == 0						      \
+      && __a->s6_addr32[3] == 0; }))
 
-#define IN6_IS_ADDR_LOOPBACK(a) \
-	(((__const uint32_t *) (a))[0] == 0				      \
-	 && ((__const uint32_t *) (a))[1] == 0				      \
-	 && ((__const uint32_t *) (a))[2] == 0				      \
-	 && ((__const uint32_t *) (a))[3] == htonl (1))
+# define IN6_IS_ADDR_LOOPBACK(a) \
+  (__extension__							      \
+   ({ const struct in6_addr *__a = (const struct in6_addr *) (a);	      \
+      __a->s6_addr32[0] == 0						      \
+      && __a->s6_addr32[1] == 0						      \
+      && __a->s6_addr32[2] == 0						      \
+      && __a->s6_addr32[3] == htonl (1); }))
 
-#define IN6_IS_ADDR_MULTICAST(a) (((__const uint8_t *) (a))[0] == 0xff)
+# define IN6_IS_ADDR_LINKLOCAL(a) \
+  (__extension__							      \
+   ({ const struct in6_addr *__a = (const struct in6_addr *) (a);	      \
+      (__a->s6_addr32[0] & htonl (0xffc00000)) == htonl (0xfe800000); }))
 
-#define IN6_IS_ADDR_LINKLOCAL(a) \
-	((((__const uint32_t *) (a))[0] & htonl (0xffc00000))		      \
+# define IN6_IS_ADDR_SITELOCAL(a) \
+  (__extension__							      \
+   ({ const struct in6_addr *__a = (const struct in6_addr *) (a);	      \
+      (__a->s6_addr32[0] & htonl (0xffc00000)) == htonl (0xfec00000); }))
+
+# define IN6_IS_ADDR_V4MAPPED(a) \
+  (__extension__							      \
+   ({ const struct in6_addr *__a = (const struct in6_addr *) (a);	      \
+      __a->s6_addr32[0] == 0						      \
+      && __a->s6_addr32[1] == 0						      \
+      && __a->s6_addr32[2] == htonl (0xffff); }))
+
+# define IN6_IS_ADDR_V4COMPAT(a) \
+  (__extension__							      \
+   ({ const struct in6_addr *__a = (const struct in6_addr *) (a);	      \
+      __a->s6_addr32[0] == 0						      \
+      && __a->s6_addr32[1] == 0						      \
+      && __a->s6_addr32[2] == 0						      \
+      && ntohl (__a->s6_addr32[3]) > 1; }))
+
+# define IN6_ARE_ADDR_EQUAL(a,b) \
+  (__extension__							      \
+   ({ const struct in6_addr *__a = (const struct in6_addr *) (a);	      \
+      const struct in6_addr *__b = (const struct in6_addr *) (b);	      \
+      __a->s6_addr32[0] == __b->s6_addr32[0]				      \
+      && __a->s6_addr32[1] == __b->s6_addr32[1]				      \
+      && __a->s6_addr32[2] == __b->s6_addr32[2]				      \
+      && __a->s6_addr32[3] == __b->s6_addr32[3]; }))
+#else
+# define IN6_IS_ADDR_UNSPECIFIED(a) \
+	(((const uint32_t *) (a))[0] == 0				      \
+	 && ((const uint32_t *) (a))[1] == 0				      \
+	 && ((const uint32_t *) (a))[2] == 0				      \
+	 && ((const uint32_t *) (a))[3] == 0)
+
+# define IN6_IS_ADDR_LOOPBACK(a) \
+	(((const uint32_t *) (a))[0] == 0				      \
+	 && ((const uint32_t *) (a))[1] == 0				      \
+	 && ((const uint32_t *) (a))[2] == 0				      \
+	 && ((const uint32_t *) (a))[3] == htonl (1))
+
+# define IN6_IS_ADDR_LINKLOCAL(a) \
+	((((const uint32_t *) (a))[0] & htonl (0xffc00000))		      \
 	 == htonl (0xfe800000))
 
-#define IN6_IS_ADDR_SITELOCAL(a) \
-	((((__const uint32_t *) (a))[0] & htonl (0xffc00000))		      \
+# define IN6_IS_ADDR_SITELOCAL(a) \
+	((((const uint32_t *) (a))[0] & htonl (0xffc00000))		      \
 	 == htonl (0xfec00000))
 
-#define IN6_IS_ADDR_V4MAPPED(a) \
-	((((__const uint32_t *) (a))[0] == 0)				      \
-	 && (((__const uint32_t *) (a))[1] == 0)			      \
-	 && (((__const uint32_t *) (a))[2] == htonl (0xffff)))
+# define IN6_IS_ADDR_V4MAPPED(a) \
+	((((const uint32_t *) (a))[0] == 0)				      \
+	 && (((const uint32_t *) (a))[1] == 0)				      \
+	 && (((const uint32_t *) (a))[2] == htonl (0xffff)))
 
-#define IN6_IS_ADDR_V4COMPAT(a) \
-	((((__const uint32_t *) (a))[0] == 0)				      \
-	 && (((__const uint32_t *) (a))[1] == 0)			      \
-	 && (((__const uint32_t *) (a))[2] == 0)			      \
-	 && (ntohl (((__const uint32_t *) (a))[3]) > 1))
+# define IN6_IS_ADDR_V4COMPAT(a) \
+	((((const uint32_t *) (a))[0] == 0)				      \
+	 && (((const uint32_t *) (a))[1] == 0)				      \
+	 && (((const uint32_t *) (a))[2] == 0)				      \
+	 && (ntohl (((const uint32_t *) (a))[3]) > 1))
 
-#define IN6_ARE_ADDR_EQUAL(a,b) \
-	((((__const uint32_t *) (a))[0] == ((__const uint32_t *) (b))[0])     \
-	 && (((__const uint32_t *) (a))[1] == ((__const uint32_t *) (b))[1])  \
-	 && (((__const uint32_t *) (a))[2] == ((__const uint32_t *) (b))[2])  \
-	 && (((__const uint32_t *) (a))[3] == ((__const uint32_t *) (b))[3]))
+# define IN6_ARE_ADDR_EQUAL(a,b) \
+	((((const uint32_t *) (a))[0] == ((const uint32_t *) (b))[0])	      \
+	 && (((const uint32_t *) (a))[1] == ((const uint32_t *) (b))[1])      \
+	 && (((const uint32_t *) (a))[2] == ((const uint32_t *) (b))[2])      \
+	 && (((const uint32_t *) (a))[3] == ((const uint32_t *) (b))[3]))
+#endif
 
-#if defined __USE_MISC || defined __USE_GNU
+#define IN6_IS_ADDR_MULTICAST(a) (((const uint8_t *) (a))[0] == 0xff)
+
+#ifdef __USE_MISC
 /* Bind socket to a privileged IP port.  */
 extern int bindresvport (int __sockfd, struct sockaddr_in *__sock_in) __THROW;
 
@@ -447,26 +508,28 @@ extern int bindresvport6 (int __sockfd, struct sockaddr_in6 *__sock_in)
 
 #define IN6_IS_ADDR_MC_NODELOCAL(a) \
 	(IN6_IS_ADDR_MULTICAST(a)					      \
-	 && ((((__const uint8_t *) (a))[1] & 0xf) == 0x1))
+	 && ((((const uint8_t *) (a))[1] & 0xf) == 0x1))
 
 #define IN6_IS_ADDR_MC_LINKLOCAL(a) \
 	(IN6_IS_ADDR_MULTICAST(a)					      \
-	 && ((((__const uint8_t *) (a))[1] & 0xf) == 0x2))
+	 && ((((const uint8_t *) (a))[1] & 0xf) == 0x2))
 
 #define IN6_IS_ADDR_MC_SITELOCAL(a) \
 	(IN6_IS_ADDR_MULTICAST(a)					      \
-	 && ((((__const uint8_t *) (a))[1] & 0xf) == 0x5))
+	 && ((((const uint8_t *) (a))[1] & 0xf) == 0x5))
 
 #define IN6_IS_ADDR_MC_ORGLOCAL(a) \
 	(IN6_IS_ADDR_MULTICAST(a)					      \
-	 && ((((__const uint8_t *) (a))[1] & 0xf) == 0x8))
+	 && ((((const uint8_t *) (a))[1] & 0xf) == 0x8))
 
 #define IN6_IS_ADDR_MC_GLOBAL(a) \
 	(IN6_IS_ADDR_MULTICAST(a)					      \
-	 && ((((__const uint8_t *) (a))[1] & 0xf) == 0xe))
+	 && ((((const uint8_t *) (a))[1] & 0xf) == 0xe))
 
 
 #ifdef __USE_GNU
+struct cmsghdr;			/* Forward declaration.  */
+
 /* IPv6 packet information.  */
 struct in6_pktinfo
   {
@@ -488,15 +551,15 @@ extern int inet6_option_space (int __nbytes)
 extern int inet6_option_init (void *__bp, struct cmsghdr **__cmsgp,
 			      int __type) __THROW __attribute_deprecated__;
 extern int inet6_option_append (struct cmsghdr *__cmsg,
-				__const uint8_t *__typep, int __multx,
+				const uint8_t *__typep, int __multx,
 				int __plusy) __THROW __attribute_deprecated__;
 extern uint8_t *inet6_option_alloc (struct cmsghdr *__cmsg, int __datalen,
 				    int __multx, int __plusy)
      __THROW __attribute_deprecated__;
-extern int inet6_option_next (__const struct cmsghdr *__cmsg,
+extern int inet6_option_next (const struct cmsghdr *__cmsg,
 			      uint8_t **__tptrp)
      __THROW __attribute_deprecated__;
-extern int inet6_option_find (__const struct cmsghdr *__cmsg,
+extern int inet6_option_find (const struct cmsghdr *__cmsg,
 			      uint8_t **__tptrp, int __type)
      __THROW __attribute_deprecated__;
 
@@ -524,10 +587,10 @@ extern int inet6_opt_get_val (void *__databuf, int __offset, void *__val,
 extern socklen_t inet6_rth_space (int __type, int __segments) __THROW;
 extern void *inet6_rth_init (void *__bp, socklen_t __bp_len, int __type,
 			     int __segments) __THROW;
-extern int inet6_rth_add (void *__bp, __const struct in6_addr *__addr) __THROW;
-extern int inet6_rth_reverse (__const void *__in, void *__out) __THROW;
-extern int inet6_rth_segments (__const void *__bp) __THROW;
-extern struct in6_addr *inet6_rth_getaddr (__const void *__bp, int __index)
+extern int inet6_rth_add (void *__bp, const struct in6_addr *__addr) __THROW;
+extern int inet6_rth_reverse (const void *__in, void *__out) __THROW;
+extern int inet6_rth_segments (const void *__bp) __THROW;
+extern struct in6_addr *inet6_rth_getaddr (const void *__bp, int __index)
      __THROW;
 
 
@@ -543,23 +606,23 @@ extern int getipv4sourcefilter (int __s, struct in_addr __interface_addr,
 extern int setipv4sourcefilter (int __s, struct in_addr __interface_addr,
 				struct in_addr __group, uint32_t __fmode,
 				uint32_t __numsrc,
-				__const struct in_addr *__slist)
+				const struct in_addr *__slist)
      __THROW;
 
 
 /* Get source filter.  */
 extern int getsourcefilter (int __s, uint32_t __interface_addr,
-			    __const struct sockaddr *__group,
+			    const struct sockaddr *__group,
 			    socklen_t __grouplen, uint32_t *__fmode,
 			    uint32_t *__numsrc,
 			    struct sockaddr_storage *__slist) __THROW;
 
 /* Set source filter.  */
 extern int setsourcefilter (int __s, uint32_t __interface_addr,
-			    __const struct sockaddr *__group,
+			    const struct sockaddr *__group,
 			    socklen_t __grouplen, uint32_t __fmode,
 			    uint32_t __numsrc,
-			    __const struct sockaddr_storage *__slist) __THROW;
+			    const struct sockaddr_storage *__slist) __THROW;
 #endif	/* use GNU */
 
 __END_DECLS

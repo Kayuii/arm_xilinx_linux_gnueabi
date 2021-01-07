@@ -1,4 +1,4 @@
-/* Copyright (C) 1991,1992,1994-2002,2006,2010 Free Software Foundation, Inc.
+/* Copyright (C) 1991-2015 Free Software Foundation, Inc.
    This file is part of the GNU C Library.
 
    The GNU C Library is free software; you can redistribute it and/or
@@ -12,9 +12,8 @@
    Lesser General Public License for more details.
 
    You should have received a copy of the GNU Lesser General Public
-   License along with the GNU C Library; if not, write to the Free
-   Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA
-   02111-1307 USA.  */
+   License along with the GNU C Library; if not, see
+   <http://www.gnu.org/licenses/>.  */
 
 /*
  *	POSIX Standard: 2.6 Primitive System Data Types	<sys/types.h>
@@ -29,7 +28,7 @@ __BEGIN_DECLS
 
 #include <bits/types.h>
 
-#ifdef	__USE_BSD
+#ifdef	__USE_MISC
 # ifndef __u_char_defined
 typedef __u_char u_char;
 typedef __u_short u_short;
@@ -100,7 +99,7 @@ typedef __pid_t pid_t;
 # define __pid_t_defined
 #endif
 
-#if (defined __USE_SVID || defined __USE_XOPEN || defined __USE_XOPEN2K8) \
+#if (defined __USE_XOPEN || defined __USE_XOPEN2K8) \
     && !defined __id_t_defined
 typedef __id_t id_t;
 # define __id_t_defined
@@ -111,7 +110,7 @@ typedef __ssize_t ssize_t;
 # define __ssize_t_defined
 #endif
 
-#ifdef	__USE_BSD
+#ifdef	__USE_MISC
 # ifndef __daddr_t_defined
 typedef __daddr_t daddr_t;
 typedef __caddr_t caddr_t;
@@ -119,7 +118,7 @@ typedef __caddr_t caddr_t;
 # endif
 #endif
 
-#if (defined __USE_SVID || defined __USE_XOPEN) && !defined __key_t_defined
+#if (defined __USE_MISC || defined __USE_XOPEN) && !defined __key_t_defined
 typedef __key_t key_t;
 # define __key_t_defined
 #endif
@@ -165,7 +164,7 @@ typedef	short int int16_t;
 typedef	int int32_t;
 #  if __WORDSIZE == 64
 typedef long int int64_t;
-#  elif __GLIBC_HAVE_LONG_LONG
+#  else
 __extension__ typedef long long int int64_t;
 #  endif
 # endif
@@ -176,7 +175,7 @@ typedef	unsigned short int u_int16_t;
 typedef	unsigned int u_int32_t;
 # if __WORDSIZE == 64
 typedef unsigned long int u_int64_t;
-# elif __GLIBC_HAVE_LONG_LONG
+# else
 __extension__ typedef unsigned long long int u_int64_t;
 # endif
 
@@ -212,7 +211,7 @@ typedef int register_t __attribute__ ((__mode__ (__word__)));
 #define __BIT_TYPES_DEFINED__	1
 
 
-#ifdef	__USE_BSD
+#ifdef	__USE_MISC
 /* In BSD <sys/types.h> is expected to define BYTE_ORDER.  */
 # include <endian.h>
 
@@ -221,7 +220,7 @@ typedef int register_t __attribute__ ((__mode__ (__word__)));
 
 /* BSD defines these symbols, so we follow.  */
 # include <sys/sysmacros.h>
-#endif /* Use BSD.  */
+#endif /* Use misc.  */
 
 
 #if (defined __USE_UNIX98 || defined __USE_XOPEN2K8) \

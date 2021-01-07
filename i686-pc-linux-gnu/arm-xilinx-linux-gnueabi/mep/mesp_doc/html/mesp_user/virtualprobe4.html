@@ -1,0 +1,520 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <noscript>
+       <link rel="StyleSheet" href="../MGC/styles/body.css" type="text/css" />
+       <link rel="StyleSheet" href="../MGC/styles/catalog.css" type="text/css" />
+       <link rel="StyleSheet" href="../MGC/styles/document.css" type="text/css" />
+    </noscript>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+    <meta name="GENERATOR" content="Quadralay WebWorks AutoMap 2003 for FrameMaker 8.0.2.1385" />
+    <meta name="TEMPLATEBASE" content="mgc_ww_v3.2.203" />
+    <meta name="LASTUPDATED" content="Fri Jun 20 07:39:47 2014" />
+    <meta name="mgc_html_doctitle" content="Mentor Embedded Sourcery Probe User's Manual" />
+    <title>Starting a Veloce Emulation Run</title>
+<!-- Search Engine keywords -->
+    <meta name="attributes" content=" product.version.2.5.0,doc.type.documentation.user,product.id.P11526 "/>
+<!-- JavaScript Files -->
+<script type="text/javascript" language="JavaScript1.2" src="../MGC/js/page.js"></script>
+<script type="text/javascript" language="JavaScript1.2">
+        if(DetectChromeForBasic()){
+           writeNoScriptStyles();
+        }
+
+     </script>
+   <script type="text/javascript" language="JavaScript1.2">
+     // Set reference to top level help frame
+      //
+      if(!DetectChromeForBasic()){
+        javascriptTopicRedirect();
+      }
+     </script>
+  </head>
+
+<body class="body" id="DocBody">
+<div id="BodyPopup" class="BodyPopup"></div>
+<div class="HideBody" id="HideBody">&nbsp;</div>
+<div id="bodycontent" class="BodyContent">
+
+
+
+
+
+  <script type="text/javascript" language="JavaScript1.2">
+  <!--
+      var BC = new Array("Using the Virtual Sourcery Probe","virtualprobe1","Veloce Debugging","virtualprobe3","MESP/Virtual Invocation Line","virtualprobe4","135");
+  // -->
+  </script>
+
+   <noscript><iframe framespacing="0" marginheight="2px" frameborder="no" scrolling="no" src="../MGC/html/noscript_header.htm" width="100%" height="100px;"></iframe>
+   </noscript>
+
+<script type="text/javascript" language="JavaScript1.2">
+if(DetectChromeForBasic()){
+       if(!(top.inEclipse)){  
+          writeBasicHeader();
+      }
+}
+</script>
+<div id="BodyContent">
+
+<a name="wp40990"></a><h1 class="pHeading3 FontLevel1" id="MGC40990">
+
+<a name="CRefID76983"></a>
+Starting a Veloce Emulation Run
+</h1>
+<a name="wp40991"></a><p class="pzShortDesc">
+
+Use TestBench Xpress to download the hardware design into the emulator and begin the emulation run. This is analogous to powering on the target system when debugging on actual hardware.
+</p>
+
+<a name="wp40994"></a><p class="pHTaskSubhead">
+
+Procedure
+</p>
+
+<a name="wp41166"></a>
+<ol start="1"><li class="LL1Seq">Log on to the comodel host machine of the Veloce emulator and go to the TBX compiled database directory. Set the environment for TBX and Veloce software as explained in the &ldquo;Starting a Debug Session&rdquo; section of the <span class=" cItalic">Veloce Virtual Probe User Guide</span>.</li></ol>
+<table class="notes">
+  <tr class="NotesUpperRuleBlack">
+    <td class="NotesUpperRule" colspan='2'><span class="cNotesBlack">Note</span></td>
+  </tr>
+  <tr class="NotesNote">
+    <td class="NoteNote"></td>
+    <td valign="top">
+            
+<a name="wp41167"></a><p class="pnoteNote">
+
+        	The hardware emulation may be run from a script file, or from the VeloceGUI software. Please see the &ldquo;Starting a Debug Session&rdquo; section of the <span class=" cItalic">Veloce Virtual Probe User Guide</span> for more information on loading and running the emulation model.
+        </p>
+          </td>
+  </tr>
+  <tr class="NotesBottomRuleBlack">
+    <td class="NotesBottomRule" colspan='2'>&nbsp;</td>
+    </tr>
+ </table>
+<a name="wp41168"></a>
+<ol start="2"><li class="LL1Seq">Wait for the following message to appear:</li></ol>
+<a name="wp41169"></a><pre class="pCode">
+&quot;Veloce Virtual JTAG Server started. Listening at Port Number &lt;port&gt;&quot;
+</pre>
+
+<a name="wp43401"></a><pre class="pCode">
+
+</pre>
+
+<a name="wp43261"></a>
+<ol start="3"><li class="LL1Seq">Configure a CodeBench debug launch for Sourcery Probe, as described in the <span class=" cItalic">CodeBench Getting Started Guide</span>, and use that to launch the debugger.</li></ol>
+<a name="wp40997"></a><p class="pHTaskSubhead">
+
+Results
+</p>
+
+<a name="wp40998"></a><p class="pBody">
+
+At this point, the design has been downloaded on to the emulator and the MESP/Virtual JTAG Transactor Server component is waiting for the client to initiate a connection.
+</p>
+<a name="EW78"></a>
+<a name="wp39344"></a><h1 class="pHeading3NoSplit WarninG FontLevel1" id="MGC39344">
+
+<a name="CRefID21808"></a>
+MESP/Virtual Invocation Line
+</h1>
+<table class="notes">
+  <tr class="NotesUpperRuleBlack">
+    <td class="NotesUpperRule" colspan='2'><span class="cNotesBlack">Note</span></td>
+  </tr>
+  <tr class="NotesNote">
+    <td class="NoteNote"></td>
+    <td valign="top">
+            
+<a name="wp39345"></a><p class="pnoteNote">
+
+        	Only use the MESP/Virtual invocation line in special cases when directed to do so by Mentor Graphics technical support. MESP/Virtual is normally started automatically by the Veloce testbench (see the <span class=" cItalic">Veloce Virtual Probe User Guide</span>).
+        </p>
+          </td>
+  </tr>
+  <tr class="NotesBottomRuleBlack">
+    <td class="NotesBottomRule" colspan='2'>&nbsp;</td>
+    </tr>
+ </table>
+<a name="wp42899"></a><p class="pBody">
+
+If multiple users each want to use a vJTAG within their design on the same Veloce comodel host concurrently, then each user requires unique <span class=" cItalic">vmajic</span> and Virtual JTAG Transactor (VJT) instances. Therefore, the transactor port number is not always the same, and a different port number is assigned on each run. Normally the transactor automatically starts <span class=" cItalic">vmajic</span>, but if you launch <span class=" cItalic">vmajic</span> manually then you must provide the transactor port number using the MESP/Virtual program -d command line switch (detailed below). The port number is then displayed in the emulation start-up transcript.
+</p>
+
+<a name="wp43783"></a><p class="pBody">
+
+If a design has multiple instances of vJTAG then only one transactor instance is required, but a separate <span class=" cItalic">vmajic</span> instance is required for each instance of vJTAG. In this case the vJTAG instance name to debug must be provided. This is achieved by assigning each vJTAG instance and <span class=" cNoBold cNoItalic cBlack">associated socket connection with </span>a unique port number and socket instance pathname, using the MESP/Virtual program -d command line switch.
+</p>
+
+<a name="wp43803"></a><p class="pBody">
+
+The MESP/Virtual program provides several command line switches to control its behavior, as shown in <a href="virtualprobe4.html#wp39346"  onclick='oT("CRF","virtualprobe4.html#wp39346");return false;'>Example&#160;7-1</a>.
+</p>
+
+<table class="notes">
+  <tr class="NotesUpperRuleBlack">
+    <td class="NotesUpperRule" colspan='2'><span class="cNotesBlack">Note</span></td>
+  </tr>
+  <tr class="NotesNote">
+    <td class="NoteNote"></td>
+    <td valign="top">
+            
+<a name="wp43087"></a><p class="pnoteNote">
+
+        	To quit MESP/Virtual, just press <span class=" cBold">^C</span>, or use the Sourcery Probe setup menu.
+        </p>
+          </td>
+  </tr>
+  <tr class="NotesBottomRuleBlack">
+    <td class="NotesBottomRule" colspan='2'>&nbsp;</td>
+    </tr>
+ </table>
+<a name="wp39346"></a><p class="pExampleTitle" id="MGC39346">
+
+Example 7-1. <a name="CRefID73982"></a>The MESP/Virtual Program Command-line Switches</p>
+
+
+<a name="wp42820"></a><pre class="pCode" id="MGC39346">
+./vmajic [-d [host][:port][+instpath]] [-h] [-j lib] [-s] [-c] [-z]
+</pre>
+
+<a name="wp43063"></a><pre class="pCodeIndent">
+
+</pre>
+<a name="wp43100"></a><p class="pBody">
+
+Each MESP/Virtual program command line switch is detailed in <a href="virtualprobe4.html#wp39351"  onclick='oT("CRF","virtualprobe4.html#wp39351");return false;'>Table&#160;7-1</a>.
+</p>
+
+<a name="wp39379"></a><p class="pBodyRelative">
+
+
+</p>
+<div id="TableDivQz"></div>
+<div align="center">
+
+
+<a name="wp39351"></a><p class="pTableTitle" id="MGC39351">
+
+Table 7-1. <a name="CRefID92064"></a>
+MESP/Virtual Command Line Switches&#160;
+</p>
+
+
+<table border="1" cellpadding="5" cellspacing="0" id="wp39351table39348">
+  <tr bgcolor="#CCCCCC"  align="center" valign="middle">
+    <th>
+
+<a name="wp39355"></a><p class="pTableHeading" id="MGC39351">
+Command Line Switch
+</p>
+</th>
+
+    <th>
+
+<a name="wp39357"></a><p class="pTableHeading">
+
+Description
+</p>
+</th>
+
+
+</tr>
+
+  <tr align="left" valign="top">
+    <td id='Row2Column1'  style='width:2.0in'>
+
+
+<a name="wp39359"></a><p class="pTableCell">
+-d [host] [:port] [+instpath]</p></td>
+
+    <td id='Row2Column2'  style='width:4.5in'>
+
+
+<a name="wp39361"></a><p class="pTableCell">
+<span class=" cBold">host</span> &#151; the device string specific to the virtual transactor library. For the Veloce JTAG transactor, this is the IP address or hostname of the PC running the TBX software in <a href="virtualprobe1.html#wp43602"  onclick='oT("CRF","virtualprobe1.html#wp43602");return false;'>Figure&#160;7-1</a>. Without the -d switch, MESP/Virtual assumes the JTAG transactor is on the local host. Therefore, the host name can be omitted if MESP/Virtual is running on the Veloce comodel host.</p>
+<a name="wp42697"></a><p class="pTableCell">
+  &#160;</p>
+<a name="wp42598"></a><p class="pTableCell">
+<span class=" cItalic">:port</span><span class=" cBold"> &#151; </span><span class=" cNoBold cNoItalic cBlack">a required parameter providing the Virtual JTAG Transactor (VJT) port number.</span></p>
+<a name="wp42704"></a><p class="pTableCell">
+  &#160;</p>
+<a name="wp42690"></a><p class="pTableCell">
+<span class=" cItalic">+instpath</span><span class=" cNoBold cNoItalic cBlack"> &#151; specifies the instance path within the design that is associated with this socket connection. This field is optional if the design has only one vJTAG instance, but required if the design has multiple vJTAG instances. It is not permitted for multiple probes to connect to the same vJTAG instance.</span></p></td>
+
+
+</tr>
+
+  <tr align="left" valign="top">
+    <td id='Row3Column1' >
+
+
+<a name="wp42552"></a><p class="pTableCell">
+-h</p></td>
+
+    <td id='Row3Column2' >
+
+
+<a name="wp42554"></a><p class="pTableCell">
+Displays the Help text for each MESP/Virtual command-line switch.</p></td>
+
+
+</tr>
+
+  <tr align="left" valign="top">
+    <td id='Row4Column1' >
+
+
+<a name="wp39368"></a><p class="pTableCell">
+-j lib</p></td>
+
+    <td id='Row4Column2' >
+
+
+<a name="wp39370"></a><p class="pTableCell">
+<span class=" cBold">lib</span> &#151; the file name (and optional path) of the virtual JTAG Transactor library. For example,
+<br /><span class=" cItalic">-j $VSDS_HOME/vprobe</span></p></td>
+
+
+</tr>
+
+  <tr align="left" valign="top">
+    <td id='Row5Column1' >
+
+
+<a name="wp39372"></a><p class="pTableCell">
+-s</p></td>
+
+    <td id='Row5Column2' >
+
+
+<a name="wp39374"></a><p class="pTableCell">
+Automatically display the MESP/Virtual setup menu on the console. If omitted, the setup menu can be brought up by pressing the &lt;ESC&gt; key in the MESP/Virtual console.</p></td>
+
+
+</tr>
+
+  <tr align="left" valign="top">
+    <td id='Row6Column1' >
+
+
+<a name="wp43657"></a><p class="pTableCell">
+-c</p></td>
+
+    <td id='Row6Column2' >
+
+
+<a name="wp43681"></a><p class="pTableCell">
+Disables the <span class=" cItalic">vmajic</span> console. This switch is used when the <span class=" cItalic">vmajic</span> debug server is automatically launched.</p></td>
+
+
+</tr>
+
+  <tr align="left" valign="top">
+    <td id='Row7Column1' >
+
+
+<a name="wp40329"></a><p class="pTableCell">
+-t</p></td>
+
+    <td id='Row7Column2' >
+
+
+<a name="wp40331"></a><p class="pTableCell">
+Using this switch causes the Veloce emulation to terminate when MESP/Virtual shuts down. Without the -t switch, MESP/Virtual disconnects from the Veloce and leaves the emulation running when it shuts down.</p>
+<a name="wp43948"></a><p class="pTableCell">
+  &#160;</p>
+<a name="wp43955"></a><p class="pTableCell">
+Note: The terminate/disconnect mode can now be selected in the debugger with the <span class=" cBold">Ice_Shutdown_On_Exit</span> option.
+<br />See <a name="EW76"></a><a href="majicconfig12.html#CRefID95806" onclick='oT("CRF","majicconfig12.html#CRefID95806");'><span class=" cLinkOverride">Table&#160;3-9</span></a> for details.</p></td>
+
+
+</tr>
+
+  <tr align="left" valign="top">
+    <td id='Row8Column1' >
+
+
+<a name="wp39376"></a><p class="pTableCell">
+-z</p></td>
+
+    <td id='Row8Column2' >
+
+
+<a name="wp39378"></a><p class="pTableCell">
+Start MESP/Virtual in stand-alone mode - it does not load any JTAG transactor library, and you can do very little with it but verify uplink communication to the debugger.</p></td>
+
+
+</tr>
+
+
+</table>
+
+</div>
+<div id='EndTable'> </div>
+<p class="pBodyRelative">
+
+<br clear='left' class='Blank4Table' />
+
+
+
+</p>
+
+<a name="wp39380"></a><p class="pExampleTitle" id="MGC39380">
+
+Example 7-2. 
+MESP/Virtual Manual Invocation</p>
+
+
+<a name="wp39381"></a><p class="pBody" id="MGC39380">
+
+Invoke MESP/Virtual from the Veloce Software Debug Suite <span class=" cItalic">bin</span> directory:
+</p>
+
+<a name="wp39382"></a><pre class="pCode">
+cd $VSDS_HOME/vprobe/bin
+</pre>
+
+<a name="wp39383"></a><pre class="pCode">
+
+</pre>
+
+<table class="notes">
+  <tr class="NotesUpperRuleBlack">
+    <td class="NotesUpperRule" colspan='2'><span class="cNotesBlack"></span><span>&nbsp;</span></td>
+  </tr>
+  <tr class="NotesNote">
+    <td class="NoteTip"></td>
+    <td valign="top">
+            
+<a name="wp39390"></a><p class="pnoteInfo">
+
+        <span class=" cBold">	Tip</span>: See <a href="virtualprobe4.html#wp39351"  onclick='oT("CRF","virtualprobe4.html#wp39351");return false;'>Table&#160;7-1</a> for default installation directory locations, then look in the <span class=" cItalic">tsp/_templates</span> subdirectory.
+        </p>
+          </td>
+  </tr>
+  <tr class="NotesBottomRuleBlack">
+    <td class="NotesBottomRule" colspan='2'>&nbsp;</td>
+    </tr>
+ </table>
+<a name="wp39391"></a><p class="pBody">
+
+Use the following command:
+</p>
+
+<a name="wp39392"></a><pre class="pCode">
+./vmajic -j $VSDS_HOME/vprobe/lib/linux/libJTagClient.so \
+</pre>
+
+<a name="wp43965"></a><pre class="pCode">
+-d host:port+inst
+</pre>
+
+<a name="wp39393"></a><pre class="pCodeIndent">
+
+</pre>
+<a name="wp39395"></a><p class="pFigureTitle" id="MGC39395">
+
+Figure 7-3. 
+MESP/Virtual Boot Screen</p>
+
+
+<a name="wp39396"></a><pre class="pCodeIndent" id="MGC39395">
+Mentor Embedded Sourcery Probe
+</pre>
+<a name="wp39397"></a><pre class="pCodeIndent">
+
+</pre>
+<a name="wp39398"></a><pre class="pCodeIndent">
+    ____Configuration Data____
+</pre>
+<a name="wp39399"></a><pre class="pCodeIndent">
+    Probe Model       : MESP-Virtual
+</pre>
+<a name="wp39400"></a><pre class="pCodeIndent">
+    Serial Number     : 8323329
+</pre>
+<a name="wp39401"></a><pre class="pCodeIndent">
+    Unit Name         : VMAJIC
+</pre>
+<a name="wp39402"></a><pre class="pCodeIndent">
+    Software Version  : 2.3.0 build 33, Jun  5 2012
+</pre>
+<a name="wp39403"></a><pre class="pCodeIndent">
+    Ethernet Name     : <span class=" cItalic">hostname
+</span></pre>
+<a name="wp39404"></a><pre class="pCodeIndent">
+    Ethernet IP       : <span class=" cItalic">xxx.xxx.xxx.xxx
+</span></pre>
+<a name="wp39405"></a><pre class="pCodeIndent">
+    Ethernet MAC      : <span class=" cItalic">XX:XX:XX:XX:XX:XX
+</span></pre>
+<a name="wp39406"></a><pre class="pCodeIndent">
+    Ethernet subnet   : 255.255.254.0
+</pre>
+<a name="wp39407"></a><pre class="pCodeIndent">
+    JTAG Transactor   : velcsdcomodel
+</pre>
+<a name="wp39408"></a><pre class="pCodeIndent">
+
+</pre>
+<a name="wp39409"></a><pre class="pCodeIndent">
+Loading Virtual JTAG transactor library: libJTagClient.so
+</pre>
+<a name="wp39410"></a><pre class="pCodeIndent">
+vjt_id.vmajic_id_str:   MESP-Virtual v2.3.0 build 33, Jun  5 2012
+</pre>
+<a name="wp39411"></a><pre class="pCodeIndent">
+vjt_id.vjt_id_str: Veloce VJTAG Transactor
+</pre>
+<a name="wp39412"></a><pre class="pCodeIndent">
+
+</pre>
+<a name="wp39413"></a><p class="pBody">
+
+At this point a connection has been created between the MESP/Virtual and the JTAG Transactor component. Now MESP/Virtual will wait for a debug connection request.
+</p>
+
+<a name="wp39336"></a><p class="pBody">
+
+Normally there is no need to interact with the MESP/Virtual program directly, as the user interface is implemented by the debugger software. You may use the Sourcery Probe Setup menu in the MESP/Virtual terminal window to terminate the MESP/Virtual program. The emulation model may be terminated or left disconnected based on the Sourcery Probe Setup menu option.
+</p>
+
+
+
+
+
+</div>
+<!--BeginFooterContent-->
+<div class="BlankFooter" id="BlankFooter">&nbsp;</div>
+<div class="Footer" id="Footer">&nbsp;</div>
+<script type="text/javascript" language="JavaScript1.2">
+<!--
+   DocHandle = "mesp_user";
+   DocTitle = "Mentor Embedded Sourcery Probe User's Manual";
+   PageTitle = "Starting a Veloce Emulation Run";
+   Copyright = "2011-2014";
+   PDFLinkTitle = "Starting.a.Veloce.Emulation.Run"
+   ThisTopic = "StartingaVeloceEmulationRun";
+   CurrentFile = "virtualprobe4.html";
+   CurrentFileID = "135";
+      topicFooter();
+
+ // -->
+ </script>
+ 
+ <noscript>
+    <p class="MGCFooter">Mentor Embedded Sourcery Probe User's Manual&nbsp;2.5.0
+    
+<br />2011-2014&#169;&nbsp;Mentor Graphics Corporation. All rights reserved.
+    
+<br /><a href='../mgc_html_help/nsmgchelp.htm' target="_blank">Browser Requirements</a></p>
+ </noscript>
+
+    </div>
+  </body>
+</html>
+
+ 

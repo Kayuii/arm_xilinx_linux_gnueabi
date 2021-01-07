@@ -1,0 +1,250 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <noscript>
+       <link rel="StyleSheet" href="../MGC/styles/body.css" type="text/css" />
+       <link rel="StyleSheet" href="../MGC/styles/catalog.css" type="text/css" />
+       <link rel="StyleSheet" href="../MGC/styles/document.css" type="text/css" />
+    </noscript>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+    <meta name="GENERATOR" content="Quadralay WebWorks AutoMap 2003 for FrameMaker 8.0.2.1385" />
+    <meta name="TEMPLATEBASE" content="mgc_ww_v3.2.203" />
+    <meta name="LASTUPDATED" content="Fri Jun 20 07:38:12 2014" />
+    <meta name="mgc_html_doctitle" content="Mentor Embedded Sourcery Probe User's Manual" />
+    <title>MC (Memory Configuration)</title>
+<!-- Search Engine keywords -->
+    <meta name="attributes" content=" product.version.2.5.0,doc.type.documentation.user,product.id.P11526 "/>
+<!-- JavaScript Files -->
+<script type="text/javascript" language="JavaScript1.2" src="../MGC/js/page.js"></script>
+<script type="text/javascript" language="JavaScript1.2">
+        if(DetectChromeForBasic()){
+           writeNoScriptStyles();
+        }
+
+     </script>
+   <script type="text/javascript" language="JavaScript1.2">
+     // Set reference to top level help frame
+      //
+      if(!DetectChromeForBasic()){
+        javascriptTopicRedirect();
+      }
+     </script>
+  </head>
+
+<body class="body" id="DocBody">
+<div id="BodyPopup" class="BodyPopup"></div>
+<div class="HideBody" id="HideBody">&nbsp;</div>
+<div id="bodycontent" class="BodyContent">
+
+
+
+
+
+  <script type="text/javascript" language="JavaScript1.2">
+  <!--
+      var BC = new Array("MON Command Language ","moncommand01","MON Command Details","moncommand04","MC (Memory Configuration)","moncommand37","60");
+  // -->
+  </script>
+
+   <noscript><iframe framespacing="0" marginheight="2px" frameborder="no" scrolling="no" src="../MGC/html/noscript_header.htm" width="100%" height="100px;"></iframe>
+   </noscript>
+
+<script type="text/javascript" language="JavaScript1.2">
+if(DetectChromeForBasic()){
+       if(!(top.inEclipse)){  
+          writeBasicHeader();
+      }
+}
+</script>
+<div id="BodyContent">
+
+<a name="wp42509"></a><h1 class="pzCmdFunc FontLevel1" id="MGC42509">
+
+<a name="CRefID20496"></a>
+MC (Memory Configuration)
+</h1>
+
+
+
+
+
+
+
+
+
+
+
+<a name="wp42510"></a><p class="pzMiscInfo">
+
+Availability: MIPS and ARM
+</p>
+
+<a name="wp42592"></a><p class="pzShortDesc">
+
+The MC (Memory Configuration) command allows display and configuration of the following properties of the target&#8217;s physical address space:
+</p>
+
+
+<a name="wp42593"></a>
+<ul><li class="LL1BulSolid">Invalid address ranges.</li></ul>
+
+<a name="wp42597"></a>
+<ul><li class="LL1BulSolid">Address ranges where the Sourcery Probe can use the DMA access method to read/write values, as opposed to instruction jamming.</li></ul>
+
+<a name="wp42598"></a>
+<ul><li class="LL1BulSolid">Address ranges where partial word access is allowed.</li></ul>
+
+<a name="wp42512"></a><p class="pzHeading">
+
+Usage
+</p>
+
+<a name="wp42513"></a><p class="pzUsage">
+
+MC [<span class="cOptRpl">range</span>[, <span class="cOptRpl">mc_opt</span>] ... ]
+</p>
+
+<a name="wp42514"></a><p class="pzHeading">
+
+Arguments
+</p>
+
+<a name="wp42515"></a>
+<ul class="ulSmSpace"><li class="LLzptArg"><span class=" cItalic">range</span></li></ul>
+
+<a name="wp42644"></a>
+<div class="LLzArgDesc">Specifies a range of physical memory to be displayed or where the specified options apply. <span class=" cItalic">range</span> must specify the physical address space (<span class=" cBold">:p</span>). See <a href="moncommand60.html#wp7027"  onclick='oT("CRF","moncommand60.html#wp7027");return false;'>Table&#160;4-7</a>.</div>
+<a name="wp42654"></a>
+<ul class="ulSmSpace"><li class="LLzptArg"><span class=" cItalic">mc_opt</span> - {<span class=" cBold">JAM|DMA|INV</span>}</li></ul>
+<a name="wp42655"></a><p class="pzptArg2Body">
+
+{<span class=" cBold">PWD|PWE</span>}
+</p>
+
+<a name="wp42656"></a><p class="pzptArg2Body">
+
+<span class=" cBold">{ DW = [ 8 | 16 | 32 ] }</span>
+</p>
+
+<a name="wp42657"></a><p class="pzptArg2Body">
+
+{ <span class=" cBold">RO|RW</span> }
+</p>
+
+<a name="wp42661"></a><p class="pzptArg1">
+
+<span class=" cBold">JAM</span> - The Sourcery Probe uses &ldquo;instruction jamming&rdquo; (executing Load/Store instructions) to access target memory.
+</p>
+
+<a name="wp42662"></a><p class="pzptArg1">
+
+<span class=" cBold">DMA - </span>When supported by the target processor, the Sourcery Probe uses DMA to access target memory.
+</p>
+
+<a name="wp42666"></a><p class="pzptArg1">
+
+<span class=" cBold">INV</span> - The Sourcery Probe never accesses the target memory.
+</p>
+
+<a name="wp42667"></a><p class="pzptArg1">
+
+<span class=" cBold">PWD - </span>Partial word access is disabled, so the Sourcery Probe reads/modifies/writes full words when accessing the target memory.
+</p>
+
+<a name="wp42668"></a><p class="pzptArg1">
+
+<span class=" cBold">PWE - </span>Partial word access is enabled, so the Sourcery Probe accesses bytes and half words in a single operation.
+</p>
+
+<a name="wp42669"></a><p class="pzptArg1">
+
+<span class=" cBold">DW - </span>Bus/Data width.
+</p>
+
+<a name="wp42670"></a><p class="pzptArg1">
+
+<span class=" cBold">RO - </span>Read only memory range.
+</p>
+
+<a name="wp42517"></a><p class="pzptArg1">
+
+<span class=" cBold">RW - </span>Read/write memory range.
+</p>
+
+<a name="wp42519"></a><p class="pzHeading">
+
+Description
+</p>
+
+<a name="wp42614"></a><p class="pzShortDesc">
+
+Entered without any parameters, MC displays all available memory configuration information. If range is given but not <span class=" cItalic">mc_opt</span>, the configuration of the specified address range is displayed. If an <span class=" cItalic">mc_opt</span> is given, the setting is applied to the specified address range.
+</p>
+
+
+<a name="wp42528"></a><p class="pRelatedTopics">
+
+Related Topics
+</p>
+<div id="TableDivQz"></div>
+<div align="left">
+
+
+<table border="0" cellpadding="2" cellspacing="0" width="96%" id="wp42525table42523">
+  <tr align="left" valign="top">
+    <td id='Row1Column1'  style='width:3.25in'>
+
+
+<a name="wp42525"></a><p class="pTableCell">
+<a href="moncommand03.html#wp5598"  onclick='oT("CRF","moncommand03.html#wp5598");return false;'>MC (Memory Configuration) (ARM and MIPS Only)</a></p></td>
+    <td id='Row1Column2'  style='width:3.25in'>
+
+
+<a name="wp42527"></a><p class="pTableCell">
+  &#160;</p></td>
+
+</tr>
+
+</table>
+
+</div>
+<div id='EndTable'> </div>
+<p class="pRelatedTopics">
+<br clear='left' class='Blank4Table' />
+
+</p>
+
+
+
+
+
+</div>
+<!--BeginFooterContent-->
+<div class="BlankFooter" id="BlankFooter">&nbsp;</div>
+<div class="Footer" id="Footer">&nbsp;</div>
+<script type="text/javascript" language="JavaScript1.2">
+<!--
+   DocHandle = "mesp_user";
+   DocTitle = "Mentor Embedded Sourcery Probe User's Manual";
+   PageTitle = "MC (Memory Configuration)";
+   Copyright = "2011-2014";
+   PDFLinkTitle = "MC.Memory.Configuration"
+   ThisTopic = "UserDefinedAccessLists";
+   CurrentFile = "moncommand37.html";
+   CurrentFileID = "60";
+      topicFooter();
+
+ // -->
+ </script>
+ 
+ <noscript>
+    <p class="MGCFooter">Mentor Embedded Sourcery Probe User's Manual&nbsp;2.5.0
+    <br />2011-2014&#169;&nbsp;Mentor Graphics Corporation. All rights reserved.
+    <br /><a href='../mgc_html_help/nsmgchelp.htm' target="_blank">Browser Requirements</a></p>
+ </noscript>
+
+    </div>
+  </body>
+</html>
+
+ 

@@ -1,0 +1,1775 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <noscript>
+       <link rel="StyleSheet" href="../MGC/styles/body.css" type="text/css" />
+       <link rel="StyleSheet" href="../MGC/styles/catalog.css" type="text/css" />
+       <link rel="StyleSheet" href="../MGC/styles/document.css" type="text/css" />
+    </noscript>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+    <meta name="GENERATOR" content="Quadralay WebWorks AutoMap 2003 for FrameMaker 8.0.2.1385" />
+    <meta name="TEMPLATEBASE" content="mgc_ww_v3.2.203" />
+    <meta name="LASTUPDATED" content="Fri Jun 20 07:36:41 2014" />
+    <meta name="mgc_html_doctitle" content="Mentor Embedded Sourcery Probe User's Manual" />
+    <title>Configuration Option Table</title>
+<!-- Search Engine keywords -->
+    <meta name="attributes" content=" product.version.2.5.0,doc.type.documentation.user,product.id.P11526 "/>
+<!-- JavaScript Files -->
+<script type="text/javascript" language="JavaScript1.2" src="../MGC/js/page.js"></script>
+<script type="text/javascript" language="JavaScript1.2">
+        if(DetectChromeForBasic()){
+           writeNoScriptStyles();
+        }
+
+     </script>
+   <script type="text/javascript" language="JavaScript1.2">
+     // Set reference to top level help frame
+      //
+      if(!DetectChromeForBasic()){
+        javascriptTopicRedirect();
+      }
+     </script>
+  </head>
+
+<body class="body" id="DocBody">
+<div id="BodyPopup" class="BodyPopup"></div>
+<div class="HideBody" id="HideBody">&nbsp;</div>
+<div id="bodycontent" class="BodyContent">
+
+
+
+
+
+  <script type="text/javascript" language="JavaScript1.2">
+  <!--
+      var BC = new Array("Sourcery Probe Configuration ","majicconfig01","Configuration Option Table","majicconfig12","naV","naV","20");
+  // -->
+  </script>
+
+   <noscript><iframe framespacing="0" marginheight="2px" frameborder="no" scrolling="no" src="../MGC/html/noscript_header.htm" width="100%" height="100px;"></iframe>
+   </noscript>
+
+<script type="text/javascript" language="JavaScript1.2">
+if(DetectChromeForBasic()){
+       if(!(top.inEclipse)){  
+          writeBasicHeader();
+      }
+}
+</script>
+<div id="BodyContent">
+
+<a name="wp6134"></a><h1 class="pHeading2 FontLevel1" id="MGC6134">
+
+<a name="CRefID45277"></a>
+Configuration Option Table
+</h1>
+<a name="wp8329"></a><p class="pBody">
+
+This section describes the Mentor Embedded Sourcery Probe configuration options. Note that not all options are supported for all Mentor Embedded Sourcery Probe models, target types, or debugger environments. The DO command lists all available options that are currently available. <a href="majicconfig12.html#wp52986"  onclick='oT("CRF","majicconfig12.html#wp52986");return false;'>Table&#160;3-9</a> lists the options for all environments.
+</p>
+
+<a name="wp36836"></a><p class="pBody">
+
+Configuration options can be referred to by their full name, or an abbreviation consisting of the first character from each part of its name. For example, Reset_Address and Ice_Jtag_Clock_Freq can be referred to as RA and IJCF, respectively. Where an abbreviation exists for an option in <a href="majicconfig12.html#wp52986"  onclick='oT("CRF","majicconfig12.html#wp52986");return false;'>Table&#160;3-9</a>, the abbreviation is noted in parenthesis: Ice_Jtag_Clock_Freq (IJCF).
+</p>
+
+<a name="wp38030"></a><p class="pBody">
+
+
+</p>
+<div id="TableDivQz"></div>
+<div align="center">
+
+
+<a name="wp52986"></a><p class="pTableTitle" id="MGC52986">
+
+Table 3-9. 
+Configuration Options&#160;<a name="CRefID95806"></a>
+</p>
+
+
+<table border="1" cellpadding="5" cellspacing="0" id="wp52986table36840">
+  <tr bgcolor="#CCCCCC"  align="center" valign="middle">
+    <th>
+
+<a name="wp52994"></a><p class="pTableHeading" id="MGC52986">
+Option
+</p>
+</th>
+
+    <th>
+
+<a name="wp52996"></a><p class="pTableHeading">
+
+CPU Architecture
+</p>
+</th>
+
+    <th>
+
+<a name="wp52998"></a><p class="pTableHeading">
+
+Valid values
+</p>
+</th>
+
+    <th>
+
+<a name="wp53000"></a><p class="pTableHeading">
+
+Default
+</p>
+</th>
+
+
+</tr>
+
+  <tr align="left" valign="top">
+    <td id='Row2Column1'  style='width:2.33443in'>
+
+
+<a name="wp53003"></a><p class="pTableCell">
+<span class=" cBold"><a name="CRefID20670"></a>Core_Access_Select</span></p></td>
+
+    <td id='Row2Column2'  style='width:1.75in'>
+
+
+<a name="wp53005"></a><p class="pTableCell">
+  &#160;</p></td>
+
+    <td id='Row2Column3'  style='width:1.75in'>
+
+
+<a name="wp53007"></a><p class="pTableCell">
+<span class=" cBold">0-32</span></p></td>
+
+    <td id='Row2Column4'  style='width:1.25in'>
+
+
+<a name="wp53009"></a><p class="pTableCell">
+<span class=" cBold">0</span></p></td>
+
+
+</tr>
+
+  <tr align="left" valign="top">
+    <td colspan="4" rowspan="1">
+
+<a name="wp53011"></a><p class="pTableCell">
+The <span class=" cBold">Core_Access_Select</span> option selects the CPU core to debug with this connection. Cores are numbered 1-N, and a setting of 0 means not connected to any core. When a core is selected, the <a href="majicconfig12.html#wp53164"  onclick='oT("CRF","majicconfig12.html#wp53164");return false;'>Ice_Jtag_Tap_Select</a> (if available) option is automatically set to the TAP position associated with the selected core. </p>
+<a name="wp53018"></a><p class="pTableCell">
+<span class=" cBold">NOTE:</span> This option is not supported by all CPU types. In many cases <a href="majicconfig12.html#wp53164"  onclick='oT("CRF","majicconfig12.html#wp53164");return false;'>Ice_Jtag_Tap_Select</a> is used to select the CPU core to debug.</p></td>
+
+
+</tr>
+
+  <tr align="left" valign="top">
+    <td id='Row4Column1' >
+
+
+<a name="wp53028"></a><p class="pTableCell">
+<span class=" cBold"><a name="CRefID73449"></a>Calling_Convention</span></p></td>
+
+    <td id='Row4Column2' >
+
+
+<a name="wp53030"></a><p class="pTableCell">
+<span class=" cBold">MIPS Only</span></p></td>
+
+    <td id='Row4Column3' >
+
+
+<a name="wp53032"></a><p class="pTableCell">
+<span class=" cBold">n32, o32, o64</span></p></td>
+
+    <td id='Row4Column4' >
+
+
+<a name="wp53034"></a><p class="pTableCell">
+<span class=" cBold">n32 </span></p></td>
+
+
+</tr>
+
+  <tr align="left" valign="top">
+    <td colspan="4" rowspan="1">
+
+<a name="wp53036"></a><p class="pTableCell">
+The <span class=" cBold">Calling_Convention</span> option allows you to tell MON which calling convention was followed by the compiler for the program under test. <span class=" cBold">o32</span> is the original MIPS standard R3000 calling convention. <span class=" cBold">n32</span> is the newer MIPS standard for R4000 (MIPS 3 ISA and later) processors with 32 bit pointers. <span class=" cBold">o64</span> refers to the calling convention used by many GNU compilers for the R4000.</p></td>
+
+
+</tr>
+
+  <tr align="left" valign="top">
+    <td id='Row6Column1' >
+
+
+<a name="wp53045"></a><p class="pTableCell">
+<span class=" cBold">ccs_timeout = 15</span></p></td>
+
+    <td id='Row6Column2' >
+
+
+<a name="wp53047"></a><p class="pTableCell">
+  &#160;</p></td>
+
+    <td id='Row6Column3' >
+
+
+<a name="wp53049"></a><p class="pTableCell">
+<span class=" cBold">1 - 120</span></p></td>
+
+    <td id='Row6Column4' >
+
+
+<a name="wp53051"></a><p class="pTableCell">
+<span class=" cBold">15 </span></p></td>
+
+
+</tr>
+
+  <tr align="left" valign="top">
+    <td colspan="4" rowspan="1">
+
+<a name="wp53053"></a><p class="pTableCell">
+Specifies the CCS timeout period in seconds. If the target does not respond in the provided time-interval, you receive a CCS timeout error.</p></td>
+
+
+</tr>
+
+  <tr align="left" valign="top">
+    <td id='Row8Column1' >
+
+
+<a name="wp53062"></a><p class="pTableCell">
+<span class=" cBold">Ice_Debug_Boot</span></p></td>
+
+    <td id='Row8Column2' >
+
+
+<a name="wp53064"></a><p class="pTableCell">
+  &#160;</p></td>
+
+    <td id='Row8Column3' >
+
+
+<a name="wp53066"></a><p class="pTableCell">
+<span class=" cBold">on, off</span></p></td>
+
+    <td id='Row8Column4' >
+
+
+<a name="wp53068"></a><p class="pTableCell">
+<span class=" cBold">on</span></p></td>
+
+
+</tr>
+
+  <tr align="left" valign="top">
+    <td colspan="4" rowspan="1">
+
+<a name="wp53073"></a><p class="pTableCell">
+If the <span class=" cBold">Ice_Debug_Boot</span> (<span class=" cBold">idb</span>) option is <span class=" cBold">on</span>, the Sourcery Probe will configure the processor to enter debug mode immediately when reset. If the <span class=" cBold">Ice_Debug_Boot</span> (<span class=" cBold">idb</span>) option is <span class=" cBold">off</span>, the processor will execute code from the reset vector until the Sourcery Probe halts it and takes control.</p>
+<a name="wp53077"></a><p class="pTableCell">
+  &#160;</p>
+<a name="wp53078"></a><p class="pTableCell">
+<span class=" cBold">NOTE:</span> This option is not available on all processors, because only certain processors provide both modes. On many processors, the behavior upon reset depends on how the target reset and JTAG reset circuits are implemented on your board, and how the Trgt_Resets_JTAG option is set.</p></td>
+
+
+</tr>
+
+  <tr align="left" valign="top">
+    <td id='Row10Column1' >
+
+
+<a name="wp53088"></a><p class="pTableCell">
+<span class=" cBold"><a name="CRefID15829"></a>Ice_Jtag_Clock_Freq</span></p></td>
+
+    <td id='Row10Column2' >
+
+
+<a name="wp53090"></a><p class="pTableCell">
+  &#160;</p></td>
+
+    <td id='Row10Column3' >
+
+
+<a name="wp53092"></a><p class="pTableCell">
+<span class=" cBold">0.003 - 44 (Sourcery Probe Personal)</span></p>
+<a name="wp53093"></a><p class="pTableCell">
+<span class=" cBold">0.002 - 100 (Sourcery Probe Professional)</span></p></td>
+
+    <td id='Row10Column4' >
+
+
+<a name="wp53095"></a><p class="pTableCell">
+<span class=" cBold">10</span></p></td>
+
+
+</tr>
+
+  <tr align="left" valign="top">
+    <td colspan="4" rowspan="1">
+
+<a name="wp53097"></a><p class="pTableCell">
+This option sets the JTAG clock frequency driven on the JTAG clock (TCK) pin, in MHz. A setting of 12.5 means 12.5MHz, and a setting of 0.250 means one quarter of a MHz, or 250kHz.</p>
+<a name="wp53098"></a><p class="pTableCell">
+  &#160;</p>
+<a name="wp53099"></a><p class="pTableCell">
+<span class=" cBold">NOTES:</span></p>
+<a name="wp53100"></a><p class="pTableCell">
+  &#160;</p>
+<a name="wp53104"></a><p class="pTableCell">
+The Ice_Jtag_Clock_Freq setting has no effect when <a href="majicconfig12.html#wp53191"  onclick='oT("CRF","majicconfig12.html#wp53191");return false;'>Ice_Jtag_Use_Rtclk</a> is on.</p>
+<a name="wp53105"></a><p class="pTableCell">
+  &#160;</p>
+<a name="wp53106"></a><p class="pTableCell">
+The frequency setting is adjusted to the nearest valid frequency supported by the probe.</p></td>
+
+
+</tr>
+
+  <tr align="left" valign="top">
+    <td id='Row12Column1' >
+
+
+<a name="wp53119"></a><p class="pTableCell">
+<span class=" cBold"><a name="CRefID16349"></a>Ice_Jtag_Tap_Count</span></p></td>
+
+    <td id='Row12Column2' >
+
+
+<a name="wp53121"></a><p class="pTableCell">
+  &#160;</p></td>
+
+    <td id='Row12Column3' >
+
+
+<a name="wp53123"></a><p class="pTableCell">
+<span class=" cBold">0 - 1024</span></p></td>
+
+    <td id='Row12Column4' >
+
+
+<a name="wp53125"></a><p class="pTableCell">
+<span class=" cBold">0</span></p></td>
+
+
+</tr>
+
+  <tr align="left" valign="top">
+    <td colspan="4" rowspan="1">
+
+<a name="wp53127"></a><p class="pTableCell">
+This option lists the number of devices (TAP controllers) detected on the JTAG scan chain. If there is more than one device on the chain, then the <a href="majicconfig12.html#wp53164"  onclick='oT("CRF","majicconfig12.html#wp53164");return false;'>Ice_Jtag_Tap_Select</a> (<span class=" cBold">ijts</span>) option must be set to select the CPU to which the Sourcery Probe should connect.</p>
+<a name="wp53137"></a><p class="pTableCell">
+<span class=" cBold">NOTE:</span> This option is only valid after power has been detected. (see <a href="majicconfig12.html#wp53269"  onclick='oT("CRF","majicconfig12.html#wp53269");return false;'><span class=" cLinkOverride">Ice_Power_Sense</span></a><span class=" cBold CBlack">)</span></p></td>
+
+
+</tr>
+
+  <tr align="left" valign="top">
+    <td id='Row14Column1' >
+
+
+<a name="wp53146"></a><p class="pTableCell">
+<span class=" cBold">Ice_Jtag_Scan_Freeze</span></p></td>
+
+    <td id='Row14Column2' >
+
+
+<a name="wp53148"></a><p class="pTableCell">
+  &#160;</p></td>
+
+    <td id='Row14Column3' >
+
+
+<a name="wp53150"></a><p class="pTableCell">
+<span class=" cBold">on, off</span></p></td>
+
+    <td id='Row14Column4' >
+
+
+<a name="wp53152"></a><p class="pTableCell">
+<span class=" cBold">off</span></p></td>
+
+
+</tr>
+
+  <tr align="left" valign="top">
+    <td colspan="4" rowspan="1">
+
+<a name="wp53154"></a><p class="pTableCell">
+The Ice_Jtag_Scan_Freeze option controls how the JTAG state machine suspends a scan operation which does not return to RunTest/Idle. When Ice_Jtag_Scan_Freeze is off (the default), it suspends by moving to an IR/Pause or DR/Pause state. When the Ice_Jtag_Scan_Freeze option is on, the JTAG state machine suspends by remaining in an IR/Scan or DR/Scan state while freezing TCK. <span class=" cBold">Off</span> is the recommended setting for this option, but <span class=" cBold">on</span> is required in certain special cases.</p></td>
+
+
+</tr>
+
+  <tr align="left" valign="top">
+    <td id='Row16Column1' >
+
+
+<a name="wp53164"></a><p class="pTableCell">
+<span class=" cBold"><a name="CRefID21279"></a>Ice_Jtag_Tap_Select</span></p></td>
+
+    <td id='Row16Column2' >
+
+
+<a name="wp53166"></a><p class="pTableCell">
+  &#160;</p></td>
+
+    <td id='Row16Column3' >
+
+
+<a name="wp53168"></a><p class="pTableCell">
+<span class=" cBold">0 - 1024</span></p></td>
+
+    <td id='Row16Column4' >
+
+
+<a name="wp53170"></a><p class="pTableCell">
+<span class=" cBold">1</span></p></td>
+
+
+</tr>
+
+  <tr align="left" valign="top">
+    <td colspan="4" rowspan="1">
+
+<a name="wp53172"></a><p class="pTableCell">
+If there are multiple devices (TAP controllers) on the JTAG interface, the Ice_Jtag_Tap_Select option selects the CPU the Mentor Embedded Sourcery Probe will control in this debug session. Devices are numbered 1 to N, where N is the number of JTAG controllers (see <a href="majicconfig12.html#wp53119"  onclick='oT("CRF","majicconfig12.html#wp53119");return false;'>Ice_Jtag_Tap_Count</a>). Device 1 is connected to the Sourcery Probe&#8217;s TDO signal, and device N is connected to its TDI signal. On the Virtual Sourcery Probe, setting this option also initiates the JTAG initialization sequence which normally happens when Ice_Power_Sense is turned on with physical probes.</p></td>
+
+
+</tr>
+
+  <tr align="left" valign="top">
+    <td id='Row18Column1' >
+
+
+<a name="wp53191"></a><p class="pTableCell">
+<span class=" cBold"><a name="CRefID68535"></a>Ice_Jtag_Use_Rtclk</span></p></td>
+
+    <td id='Row18Column2' >
+
+
+<a name="wp53193"></a><p class="pTableCell">
+  &#160;</p></td>
+
+    <td id='Row18Column3' >
+
+
+<a name="wp53195"></a><p class="pTableCell">
+<span class=" cBold">on, off</span></p></td>
+
+    <td id='Row18Column4' >
+
+
+<a name="wp53197"></a><p class="pTableCell">
+<span class=" cBold">off</span></p></td>
+
+
+</tr>
+
+  <tr align="left" valign="top">
+    <td colspan="4" rowspan="1">
+
+<a name="wp53199"></a><p class="pTableCell">
+The <span class=" cBold">Ice_Jtag_Use_Rtclk</span> option enables or disables adaptive clocking mode on the JTAG interface. This option should be set to <span class=" cBold">on</span> prior to setting the <a href="majicconfig12.html#wp53269"  onclick='oT("CRF","majicconfig12.html#wp53269");return false;'><span class=" cNoBold cNoItalic cBlack">Ice_Power_Sense</span></a><span class=" cBold"> </span><span class=" cNoBold cNoItalic cBlack">option</span><span class=" cBold"> </span>if the RTCLK signal on the JTAG connector is required by your target system. Otherwise, it should be <span class=" cBold">off</span>. With the Virtual Sourcery Probe, the RTCK mode must be set before the <a href="majicconfig12.html#wp53164"  onclick='oT("CRF","majicconfig12.html#wp53164");return false;'>Ice_Jtag_Tap_Select</a> option is set.</p></td>
+
+
+</tr>
+
+  <tr align="left" valign="top">
+    <td id='Row20Column1' >
+
+
+<a name="wp53213"></a><p class="pTableCell">
+<span class=" cBold">Ice_Mem_Block</span> </p></td>
+
+    <td id='Row20Column2' >
+
+
+<a name="wp53215"></a><p class="pTableCell">
+  &#160;</p></td>
+
+    <td id='Row20Column3' >
+
+
+<a name="wp53217"></a><p class="pTableCell">
+<span class=" cBold">0x0 - 0xfffffffc</span></p></td>
+
+    <td id='Row20Column4' >
+
+
+<a name="wp53219"></a><p class="pTableCell">
+<span class=" cBold">0x00000000</span></p></td>
+
+
+</tr>
+
+  <tr align="left" valign="top">
+    <td colspan="4" rowspan="1">
+
+<a name="wp53221"></a><p class="pTableCell">
+The <span class=" cBold">Ice_Mem_Block</span> (<span class=" cBold">imb</span>) option can be used to specify a 1k byte block of RAM on the target that is reserved for Sourcery Probe. When set to a non-zero value, Sourcery Probe can use this memory block to optimize certain debug services. The Sourcery Probe must be able to read, write, and execute code from the specified virtual address at all times, and it must be located in an uncached region of the address space (kseg1 on MIPS processors). When set to 0, the Sourcery Probe does not rely on any target memory for implementing debug services.</p></td>
+
+
+</tr>
+
+  <tr align="left" valign="top">
+    <td id='Row22Column1' >
+
+
+<a name="wp53241"></a><p class="pTableCell">
+<span class=" cBold">Ice_Multi_Session</span></p></td>
+
+    <td id='Row22Column2' >
+
+
+<a name="wp53243"></a><p class="pTableCell">
+  &#160;</p></td>
+
+    <td id='Row22Column3' >
+
+
+<a name="wp53245"></a><p class="pTableCell">
+<span class=" cBold">off, on</span></p></td>
+
+    <td id='Row22Column4' >
+
+
+<a name="wp53247"></a><p class="pTableCell">
+<span class=" cBold">off</span></p></td>
+
+
+</tr>
+
+  <tr align="left" valign="top">
+    <td colspan="4" rowspan="1">
+
+<a name="wp53252"></a><p class="pTableCell">
+Allows the Sourcery Probe to accept multiple simultaneous debugger connections. When debugging multiple processors on the same JTAG chain, the first debugger session must set this option on before additional connections are attempted.</p></td>
+
+
+</tr>
+
+  <tr align="left" valign="top">
+    <td id='Row24Column1' >
+
+
+<a name="wp53269"></a><p class="pTableCell">
+<span class=" cBold"><a name="CRefID90747"></a>Ice_Power_Sense</span></p></td>
+
+    <td id='Row24Column2' >
+
+
+<a name="wp53271"></a><p class="pTableCell">
+  &#160;</p></td>
+
+    <td id='Row24Column3' >
+
+
+<a name="wp53273"></a><p class="pTableCell">
+<span class=" cBold">off, vref</span></p></td>
+
+    <td id='Row24Column4' >
+
+
+<a name="wp53275"></a><p class="pTableCell">
+<span class=" cBold">off</span></p></td>
+
+
+</tr>
+
+  <tr align="left" valign="top">
+    <td colspan="4" rowspan="1">
+
+<a name="wp53277"></a><p class="pTableCell">
+The Ice_Power_Sense option controls the target power monitor. Setting this option <span class=" cBold">off</span> disables the target debug interface. Setting it to <span class=" cBold">vref</span> enables the target power monitor. When target power is detected, the debug interface is initialized. If one TAP is detected, or if the TAP selection was preset in advance, then the debug connection to the CPU is established.</p></td>
+
+
+</tr>
+
+  <tr align="left" valign="top">
+    <td id='Row26Column1' >
+
+
+<a name="wp53288"></a><p class="pTableCell">
+<span class=" cBold">Ice_Reserved_Hwbps</span></p></td>
+
+    <td id='Row26Column2' >
+
+
+<a name="wp53290"></a><p class="pTableCell">
+  &#160;</p></td>
+
+    <td id='Row26Column3' >
+
+
+<a name="wp53292"></a><p class="pTableCell">
+<span class=" cBold">0 - 2</span></p></td>
+
+    <td id='Row26Column4' >
+
+
+<a name="wp53294"></a><p class="pTableCell">
+<span class=" cBold">0</span></p></td>
+
+
+</tr>
+
+  <tr align="left" valign="top">
+    <td colspan="4" rowspan="1">
+
+<a name="wp53296"></a><p class="pTableCell">
+The Ice_Reserved_Hwbps option sets the number of hardware breakpoint resources reserved by the Sourcery Probe for internal use. On some processors the Sourcery Probe needs to use hardware breakpoint resources to perform other debug functions (such as stepping in ROM). In such cases, it normally reserves breakpoint resources for its most commonly needed internal purposes, and reduces the number of hardware breakpoints that you can enable at one time accordingly.</p>
+<a name="wp53303"></a><p class="pTableCell">
+  &#160;</p>
+<a name="wp53304"></a><p class="pTableCell">
+Setting this option to 0 allows you to enable the maximum number of hardware breakpoints supported by the processor. If the Sourcery Probe is not able to allocate a breakpoint resource when needed, then it will not run or step until you free up a breakpoint resource by deleting or disabling one of your hardware breakpoints.</p>
+<a name="wp53308"></a><p class="pTableCell">
+  &#160;</p>
+<a name="wp53309"></a><p class="pTableCell">
+For processors that implement separate resources for code and data hardware breakpoints, this issue (and option) applies only to code breakpoints.</p></td>
+
+
+</tr>
+
+  <tr align="left" valign="top">
+    <td id='Row28Column1' >
+
+
+<a name="wp53317"></a><p class="pTableCell">
+<span class=" cBold">Ice_Reset_Cp15_Cntrl</span></p></td>
+
+    <td id='Row28Column2' >
+
+
+<a name="wp53319"></a><p class="pTableCell">
+<span class=" cBold">ARM</span></p></td>
+
+    <td id='Row28Column3' >
+
+
+<a name="wp53321"></a><p class="pTableCell">
+<span class=" cBold">0x0 - 0xffffffff</span></p></td>
+
+    <td id='Row28Column4' >
+
+
+<a name="wp53323"></a><p class="pTableCell">
+<span class=" cBold">0x0</span></p></td>
+
+
+</tr>
+
+  <tr align="left" valign="top">
+    <td colspan="4" rowspan="1">
+
+<a name="wp53325"></a><p class="pTableCell">
+The <span class=" cBold">Ice_Reset_Cp15_Cntrl</span> (<span class=" cBold">ircc</span>) option specifies the value assigned to the coprocessor 15 control register upon reset. The value specified takes hardware strapping options of your target board into account.</p></td>
+
+
+</tr>
+
+  <tr align="left" valign="top">
+    <td id='Row30Column1' >
+
+
+<a name="wp53335"></a><p class="pTableCell">
+<span class=" cBold"><a name="CRefID88070"></a>Ice_Reset_Delay</span></p></td>
+
+    <td id='Row30Column2' >
+
+
+<a name="wp53337"></a><p class="pTableCell">
+  &#160;</p></td>
+
+    <td id='Row30Column3' >
+
+
+<a name="wp53339"></a><p class="pTableCell">
+<span class=" cBold">0 - 30000</span></p></td>
+
+    <td id='Row30Column4' >
+
+
+<a name="wp53341"></a><p class="pTableCell">
+<span class=" cBold">1000</span></p></td>
+
+
+</tr>
+
+  <tr align="left" valign="top">
+    <td colspan="4" rowspan="1">
+
+<a name="wp53343"></a><p class="pTableCell">
+The Ice_Reset_Delay option controls the minimum time delay after system</p>
+<a name="wp53347"></a><p class="pTableCell">
+reset before the Sourcery Probe continues. The time is specified in milliseconds.</p></td>
+
+
+</tr>
+
+  <tr align="left" valign="top">
+    <td id='Row32Column1' >
+
+
+<a name="wp53357"></a><p class="pTableCell">
+<span class=" cBold"><a name="CRefID19979"></a>Ice_Reset_Output</span></p></td>
+
+    <td id='Row32Column2' >
+
+
+<a name="wp53359"></a><p class="pTableCell">
+  &#160;</p></td>
+
+    <td id='Row32Column3' >
+
+
+<a name="wp53361"></a><p class="pTableCell">
+<span class=" cBold">on, off</span></p></td>
+
+    <td id='Row32Column4' >
+
+
+<a name="wp53363"></a><p class="pTableCell">
+<span class=" cBold">off</span></p></td>
+
+
+</tr>
+
+  <tr align="left" valign="top">
+    <td colspan="4" rowspan="1">
+
+<a name="wp53368"></a><p class="pTableCell">
+The <span class=" cBold">Ice_Reset_Output</span> (<span class=" cBold">iro</span>) option controls whether the Sourcery Probe asserts its reset output signal when a Reset (<span class=" cBold">R</span>) command or Load (<span class=" cBold">L</span>) command is issued by the debugger. This option does not affect the operation of the Reset Processor (<span class=" cBold">RP</span>) or Reset Target (<span class=" cBold">RT</span>) command.</p></td>
+
+
+</tr>
+
+  <tr align="left" valign="top">
+    <td id='Row34Column1' >
+
+
+<a name="wp53377"></a><p class="pTableCell">
+<span class=" cBold">Ice_Reset_Time</span></p></td>
+
+    <td id='Row34Column2' >
+
+
+<a name="wp53379"></a><p class="pTableCell">
+  &#160;</p></td>
+
+    <td id='Row34Column3' >
+
+
+<a name="wp53381"></a><p class="pTableCell">
+0 - 30000</p></td>
+
+    <td id='Row34Column4' >
+
+
+<a name="wp53383"></a><p class="pTableCell">
+250</p></td>
+
+
+</tr>
+
+  <tr align="left" valign="top">
+    <td colspan="4" rowspan="1">
+
+<a name="wp53388"></a><p class="pTableCell">
+The Ice_Reset_Time option controls the minimum time that the Sourcery Probe keeps the system reset pin asserted during a Reset Target operation. The time is specified in milliseconds.</p></td>
+
+
+</tr>
+
+  <tr align="left" valign="top">
+    <td id='Row36Column1' >
+
+
+<a name="wp53396"></a><p class="pTableCell">
+<span class=" cBold">Ice_Step_Masks_Ints</span></p></td>
+
+    <td id='Row36Column2' >
+
+
+<a name="wp53398"></a><p class="pTableCell">
+<span class=" cBold">MIPS</span></p></td>
+
+    <td id='Row36Column3' >
+
+
+<a name="wp53400"></a><p class="pTableCell">
+<span class=" cBold">off, on</span></p></td>
+
+    <td id='Row36Column4' >
+
+
+<a name="wp53402"></a><p class="pTableCell">
+<span class=" cBold">off</span></p></td>
+
+
+</tr>
+
+  <tr align="left" valign="top">
+    <td colspan="4" rowspan="1">
+
+<a name="wp53404"></a><p class="pTableCell">
+If the <span class=" cBold">Ice_Step_Masks_Ints </span>(<span class=" cBold">ismi</span>) option is <span class=" cBold">on</span>, then interrupts are masked while single stepping. Otherwise interrupts are not masked while stepping, and the processor steps into the interrupt handler if an interrupt is pending.</p></td>
+
+
+</tr>
+
+  <tr align="left" valign="top">
+    <td id='Row38Column1' >
+
+
+<a name="wp54974"></a><p class="pTableCell">
+<span class=" cBold">Ice_Shutdown_On_Exit</span></p></td>
+
+    <td id='Row38Column2' >
+
+
+<a name="wp54245"></a><p class="pTableCell">
+  &#160;</p></td>
+
+    <td id='Row38Column3' >
+
+
+<a name="wp54247"></a><p class="pTableCell">
+<span class=" cBold">yes, no</span></p></td>
+
+    <td id='Row38Column4' >
+
+
+<a name="wp54249"></a><p class="pTableCell">
+<span class=" cBold">no</span></p></td>
+
+
+</tr>
+
+  <tr align="left" valign="top">
+    <td colspan="4" rowspan="1">
+
+<a name="wp54282"></a><p class="pTableCell">
+<span class=" cNoBold cNoItalic cBlack">(Restricted to MESP/Virtual) When quitting from MON or CodeBench, VMAJIC and the Veloce emulation job remain running, allowing the debugger to be restarted for a new debug session. However, setting this option to </span><span class=" cBold">yes</span><span class=" cNoBold cNoItalic cBlack"> allows you to shut down VMAJIC and the Veloce emulation job from the debugger side when quitting from MON or CodeBench.</span></p></td>
+
+
+</tr>
+
+  <tr align="left" valign="top">
+    <td id='Row40Column1' >
+
+
+<a name="wp53413"></a><p class="pTableCell">
+<span class=" cBold">Load_Absolute_Syms</span></p></td>
+
+    <td id='Row40Column2' >
+
+
+<a name="wp53415"></a><p class="pTableCell">
+  &#160;</p></td>
+
+    <td id='Row40Column3' >
+
+
+<a name="wp53417"></a><p class="pTableCell">
+<span class=" cBold">on, off</span></p></td>
+
+    <td id='Row40Column4' >
+
+
+<a name="wp53419"></a><p class="pTableCell">
+<span class=" cBold">off</span></p></td>
+
+
+</tr>
+
+  <tr align="left" valign="top">
+    <td colspan="4" rowspan="1">
+
+<a name="wp53421"></a><p class="pTableCell">
+The Load_Absolute_Syms option specifies that absolute-valued symbols are included when MON loads a program.</p></td>
+
+
+</tr>
+
+  <tr align="left" valign="top">
+    <td id='Row42Column1' >
+
+
+<a name="wp53431"></a><p class="pTableCell">
+<span class=" cBold"><a name="CRefID74918"></a>Load_Entry_Pc</span></p></td>
+
+    <td id='Row42Column2' >
+
+
+<a name="wp53433"></a><p class="pTableCell">
+  &#160;</p></td>
+
+    <td id='Row42Column3' >
+
+
+<a name="wp53435"></a><p class="pTableCell">
+<span class=" cBold">on, off</span></p></td>
+
+    <td id='Row42Column4' >
+
+
+<a name="wp53437"></a><p class="pTableCell">
+<span class=" cBold">on</span></p></td>
+
+
+</tr>
+
+  <tr align="left" valign="top">
+    <td colspan="4" rowspan="1">
+
+<a name="wp53439"></a><p class="pTableCell">
+If the <span class=" cNoBold cNoItalic cBlack">Load_Entry_Pc</span> option is set to <span class=" cBold">on</span> when a program is loaded with the MON Load (<span class=" cBold">L</span>) command, then the PC register is set to the program&#8217;s entry point address. If multiple programs are loaded via the same MON Load (<span class=" cBold">L</span>) command, the entry point is taken from the first referenced program.</p></td>
+
+
+</tr>
+
+  <tr align="left" valign="top">
+    <td id='Row44Column1' >
+
+
+<a name="wp53449"></a><p class="pTableCell">
+<span class=" cBold"><a name="CRefID11779"></a>Reset_Address</span></p></td>
+
+    <td id='Row44Column2' >
+
+
+<a name="wp53451"></a><p class="pTableCell">
+<span class=" cBold">ARM</span></p></td>
+
+    <td id='Row44Column3' >
+
+
+<a name="wp53453"></a><p class="pTableCell">
+<span class=" cBold">0x0 - 0xffffffff</span></p></td>
+
+    <td id='Row44Column4' >
+
+
+<a name="wp53455"></a><p class="pTableCell">
+<span class=" cBold">0x00000000</span></p></td>
+
+
+</tr>
+
+  <tr align="left" valign="top">
+    <td colspan="4" rowspan="1">
+
+<a name="wp53459"></a><p class="pTableCell">
+The <span class=" cBold">Reset_Address</span> option controls the initial program pointer (PC) after a reset operation is issued through the debugger. This allows the reset vector to be redirected into RAM. When set to the actual reset vector, no special processing takes place. When set to any other value, the debugger sets the (conceptual) PC as specified by this option after each reset or download command. Note that MON normally performs a reset whenever the program is downloaded with the <span class=" cBold">L</span> command, unless inhibited with the <a href="majicconfig12.html#wp53496"  onclick='oT("CRF","majicconfig12.html#wp53496");return false;'>Reset_At_Load</a> option.</p></td>
+
+
+</tr>
+
+  <tr align="left" valign="top">
+    <td id='Row46Column1' >
+
+
+<a name="wp53472"></a><p class="pTableCell">
+<span class=" cBold"><a name="CRefID33305"></a>Reset_Address</span></p></td>
+
+    <td id='Row46Column2' >
+
+
+<a name="wp53474"></a><p class="pTableCell">
+<span class=" cBold">MIPS</span></p></td>
+
+    <td id='Row46Column3' >
+
+
+<a name="wp53476"></a><p class="pTableCell">
+<span class=" cBold">0xffffffffa0000000 - 0xffffffffbfffffff</span></p></td>
+
+    <td id='Row46Column4' >
+
+
+<a name="wp53478"></a><p class="pTableCell">
+<span class=" cBold">0xffffffffbfc00000</span></p></td>
+
+
+</tr>
+
+  <tr align="left" valign="top">
+    <td colspan="4" rowspan="1">
+
+<a name="wp53481"></a><p class="pTableCell">
+The <span class=" cBold">Reset_Address</span> option controls the initial program pointer (PC) after a reset operation is issued through the debugger. This allows the reset vector to be redirected into RAM. When set to the actual reset vector, no special processing takes place. When set to any other value, the debugger sets the (conceptual) PC as specified by this option after each reset or download command. Note that MON normally performs a reset whenever the program is downloaded with the <span class=" cBold">L</span> command, unless inhibited with the <a href="majicconfig12.html#wp53496"  onclick='oT("CRF","majicconfig12.html#wp53496");return false;'>Reset_At_Load</a> option.</p>
+<a name="wp53485"></a><p class="pTableCell">
+  &#160;</p>
+<a name="wp53486"></a><p class="pTableCell">
+<span class=" cBold">NOTE:</span> The<span class=" cBold"> reset_address</span> must be within kseg1.</p></td>
+
+
+</tr>
+
+  <tr align="left" valign="top">
+    <td id='Row48Column1' >
+
+
+<a name="wp53496"></a><p class="pTableCell">
+<span class=" cBold"><a name="CRefID66982"></a>Reset_At_Load</span></p></td>
+
+    <td id='Row48Column2' >
+
+
+<a name="wp53498"></a><p class="pTableCell">
+  &#160;</p></td>
+
+    <td id='Row48Column3' >
+
+
+<a name="wp53500"></a><p class="pTableCell">
+<span class=" cBold">on, off</span></p></td>
+
+    <td id='Row48Column4' >
+
+
+<a name="wp53502"></a><p class="pTableCell">
+<span class=" cBold">on</span></p></td>
+
+
+</tr>
+
+  <tr align="left" valign="top">
+    <td colspan="4" rowspan="1">
+
+<a name="wp53504"></a><p class="pTableCell">
+If the <span class=" cBold">Reset_At_Load</span> option is set to <span class=" cBold">on</span>, the processor is reset before the program is downloaded with the MON Load (L) command. Otherwise, the program is immediately downloaded to the target. See <a href="majicconfig12.html#wp53335"  onclick='oT("CRF","majicconfig12.html#wp53335");return false;'>Ice_Reset_Delay</a>, <a href="majicconfig12.html#wp53449"  onclick='oT("CRF","majicconfig12.html#wp53449");return false;'>Reset_Address</a>,(ARM Only) and <a href="majicconfig12.html#wp53472"  onclick='oT("CRF","majicconfig12.html#wp53472");return false;'>Reset_Address</a> (MIPS Only) for more information on the reset operation. See also <a href="majicconfig12.html#wp53431"  onclick='oT("CRF","majicconfig12.html#wp53431");return false;'>Load_Entry_Pc</a>.</p></td>
+
+
+</tr>
+
+  <tr align="left" valign="top">
+    <td id='Row50Column1' >
+
+
+<a name="wp53526"></a><p class="pTableCell">
+<span class=" cBold"><a name="CRefID28659"></a>Semi_Hosting_Enabled</span></p></td>
+
+    <td id='Row50Column2' >
+
+
+<a name="wp53528"></a><p class="pTableCell">
+  &#160;</p></td>
+
+    <td id='Row50Column3' >
+
+
+<a name="wp53530"></a><p class="pTableCell">
+<span class=" cBold">on, off</span></p></td>
+
+    <td id='Row50Column4' >
+
+
+<a name="wp53532"></a><p class="pTableCell">
+<span class=" cBold">on</span></p></td>
+
+
+</tr>
+
+  <tr align="left" valign="top">
+    <td colspan="4" rowspan="1">
+
+<a name="wp53534"></a><p class="pTableCell">
+Set the Semi_Hosting_Enabled option to <span class=" cBold">on</span> to enable system calls (open, close, read, write) from your program to be serviced via the debugger. For ARM, see also <a href="majicconfig12.html#wp53583"  onclick='oT("CRF","majicconfig12.html#wp53583");return false;'>Top_Of_Memory</a>. Note: This option should be <span class=" cBold">off</span> when debugging programs using the CodeBench-hosted mode feature.</p></td>
+
+
+</tr>
+
+  <tr align="left" valign="top">
+    <td id='Row52Column1' >
+
+
+<a name="wp53547"></a><p class="pTableCell">
+<span class=" cBold">Semi_Hosting_Vector</span></p></td>
+
+    <td id='Row52Column2' >
+
+
+<a name="wp53549"></a><p class="pTableCell">
+<span class=" cBold">ARM</span></p></td>
+
+    <td id='Row52Column3' >
+
+
+<a name="wp53551"></a><p class="pTableCell">
+<span class=" cBold">0x0 - 0xfffffffc</span></p></td>
+
+    <td id='Row52Column4' >
+
+
+<a name="wp53553"></a><p class="pTableCell">
+<span class=" cBold">0x00000008</span></p></td>
+
+
+</tr>
+
+  <tr align="left" valign="top">
+    <td colspan="4" rowspan="1">
+
+<a name="wp53555"></a><p class="pTableCell">
+The Semi_Hosting_Vector option sets the vector at which semi-hosting calls are intercepted.</p></td>
+
+
+</tr>
+
+  <tr align="left" valign="top">
+    <td id='Row54Column1' >
+
+
+<a name="wp53565"></a><p class="pTableCell">
+<span class=" cBold"><a name="CRefID30382"></a>Sym_Delta</span></p></td>
+
+    <td id='Row54Column2' >
+
+
+<a name="wp53567"></a><p class="pTableCell">
+  &#160;</p></td>
+
+    <td id='Row54Column3' >
+
+
+<a name="wp53569"></a><p class="pTableCell">
+<span class=" cBold">0x0 - 0xffffffff</span></p></td>
+
+    <td id='Row54Column4' >
+
+
+<a name="wp53571"></a><p class="pTableCell">
+<span class=" cBold">0xffff</span></p></td>
+
+
+</tr>
+
+  <tr align="left" valign="top">
+    <td colspan="4" rowspan="1">
+
+<a name="wp53573"></a><p class="pTableCell">
+The Sym_Delta option is the maximum offset for the symbol+offset display.</p></td>
+
+
+</tr>
+
+  <tr align="left" valign="top">
+    <td id='Row56Column1' >
+
+
+<a name="wp53583"></a><p class="pTableCell">
+<span class=" cBold"><a name="CRefID48047"></a>Top_Of_Memory</span></p></td>
+
+    <td id='Row56Column2' >
+
+
+<a name="wp53585"></a><p class="pTableCell">
+<span class=" cBold">ARM</span></p></td>
+
+    <td id='Row56Column3' >
+
+
+<a name="wp53587"></a><p class="pTableCell">
+<span class=" cBold">0x0 - 0xffffffff</span></p></td>
+
+    <td id='Row56Column4' >
+
+
+<a name="wp53589"></a><p class="pTableCell">
+<span class=" cBold">0x0</span></p></td>
+
+
+</tr>
+
+  <tr align="left" valign="top">
+    <td colspan="4" rowspan="1">
+
+<a name="wp53591"></a><p class="pTableCell">
+Set the Top_Of_Memory option to the 32-bit word-aligned address at the top of your RAM space. This option is used by the ARM Semi-Hosting library for stack initialization. (see <a href="majicconfig12.html#wp53526"  onclick='oT("CRF","majicconfig12.html#wp53526");return false;'>Semi_Hosting_Enabled</a>)</p></td>
+
+
+</tr>
+
+  <tr align="left" valign="top">
+    <td id='Row58Column1' >
+
+
+<a name="wp53603"></a><p class="pTableCell">
+<span class=" cBold">Trgt_Cache_Type</span></p></td>
+
+    <td id='Row58Column2' >
+
+
+<a name="wp53605"></a><p class="pTableCell">
+  &#160;</p></td>
+
+    <td id='Row58Column3' >
+
+
+<a name="wp53607"></a><p class="pTableCell">
+<span class=" cBold">unknown, none, unified, <br />instruction, data, separate</span></p></td>
+
+    <td id='Row58Column4' >
+
+
+<a name="wp53609"></a><p class="pTableCell">
+<span class=" cBold">unknown</span></p></td>
+
+
+</tr>
+
+  <tr align="left" valign="top">
+    <td colspan="4" rowspan="1">
+
+<a name="wp53611"></a><p class="pTableCell">
+The <span class=" cBold">Trgt_Cache_Type</span> (<span class=" cBold">tct</span>) option reports the type of primary cache(s) provided by the CPU, if it is known.</p></td>
+
+
+</tr>
+
+  <tr align="left" valign="top">
+    <td id='Row60Column1' >
+
+
+<a name="wp53620"></a><p class="pTableCell">
+<span class=" cBold">Trgt_Cpu_State</span></p></td>
+
+    <td id='Row60Column2' >
+
+
+<a name="wp53622"></a><p class="pTableCell">
+  &#160;</p></td>
+
+    <td id='Row60Column3' >
+
+
+<a name="wp53624"></a><p class="pTableCell">
+<span class=" cBold">run, halt, sleep, doze, off, disco</span></p></td>
+
+    <td id='Row60Column4' >
+
+
+<a name="wp53626"></a><p class="pTableCell">
+<span class=" cBold">halt</span></p></td>
+
+
+</tr>
+
+  <tr align="left" valign="top">
+    <td colspan="4" rowspan="1">
+
+<a name="wp53628"></a><p class="pTableCell">
+The <span class=" cBold">Trgt_Cpu_State</span> (<span class=" cBold">tcs</span>) option reports the state of the CPU.</p></td>
+
+
+</tr>
+
+  <tr align="left" valign="top">
+    <td id='Row62Column1' >
+
+
+<a name="wp53637"></a><p class="pTableCell">
+<span class=" cBold">Trgt_Dcache_Linesize</span></p></td>
+
+    <td id='Row62Column2' >
+
+
+<a name="wp53639"></a><p class="pTableCell">
+  &#160;</p></td>
+
+    <td id='Row62Column3' >
+
+
+<a name="wp53641"></a><p class="pTableCell">
+<span class=" cBold">0 - 1024</span></p></td>
+
+    <td id='Row62Column4' >
+
+
+<a name="wp53643"></a><p class="pTableCell">
+<span class=" cBold">0</span></p></td>
+
+
+</tr>
+
+  <tr align="left" valign="top">
+    <td colspan="4" rowspan="1">
+
+<a name="wp53645"></a><p class="pTableCell">
+The <span class=" cBold">Trgt_Dcache_Linesize</span> (<span class=" cBold">tdl</span>) configuration option reports the size in bytes of each line in the CPU&#8217;s primary data cache, if it is known.</p></td>
+
+
+</tr>
+
+  <tr align="left" valign="top">
+    <td id='Row64Column1' >
+
+
+<a name="wp53654"></a><p class="pTableCell">
+<span class=" cBold">Trgt_Dcache_Memsize</span></p></td>
+
+    <td id='Row64Column2' >
+
+
+<a name="wp53656"></a><p class="pTableCell">
+  &#160;</p></td>
+
+    <td id='Row64Column3' >
+
+
+<a name="wp53658"></a><p class="pTableCell">
+<span class=" cBold">0x0 - 0xffffffff</span></p></td>
+
+    <td id='Row64Column4' >
+
+
+<a name="wp53660"></a><p class="pTableCell">
+<span class=" cBold">0x0</span></p></td>
+
+
+</tr>
+
+  <tr align="left" valign="top">
+    <td colspan="4" rowspan="1">
+
+<a name="wp53662"></a><p class="pTableCell">
+The <span class=" cBold">Trgt_Dcache_Memsize</span> (<span class=" cBold">tdm</span>) option reports the size in bytes of the CPU&#8217;s primary data cache, if it is known.</p></td>
+
+
+</tr>
+
+  <tr align="left" valign="top">
+    <td id='Row66Column1' >
+
+
+<a name="wp53671"></a><p class="pTableCell">
+<span class=" cBold">Trgt_Dcache_Sets</span></p></td>
+
+    <td id='Row66Column2' >
+
+
+<a name="wp53673"></a><p class="pTableCell">
+  &#160;</p></td>
+
+    <td id='Row66Column3' >
+
+
+<a name="wp53675"></a><p class="pTableCell">
+<span class=" cBold">0 - 1024</span></p></td>
+
+    <td id='Row66Column4' >
+
+
+<a name="wp53677"></a><p class="pTableCell">
+<span class=" cBold">0</span></p></td>
+
+
+</tr>
+
+  <tr align="left" valign="top">
+    <td colspan="4" rowspan="1">
+
+<a name="wp53679"></a><p class="pTableCell">
+The <span class=" cBold">Trgt_Dcache_Sets</span> (<span class=" cBold">tds</span>) option reports the number of sets in the CPU&#8217;s primary data cache, if it is known.</p></td>
+
+
+</tr>
+
+  <tr align="left" valign="top">
+    <td id='Row68Column1' >
+
+
+<a name="wp53688"></a><p class="pTableCell">
+<span class=" cBold">Trgt_Icache_Linesize</span></p></td>
+
+    <td id='Row68Column2' >
+
+
+<a name="wp53690"></a><p class="pTableCell">
+  &#160;</p></td>
+
+    <td id='Row68Column3' >
+
+
+<a name="wp53692"></a><p class="pTableCell">
+<span class=" cBold">0 - 1024</span></p></td>
+
+    <td id='Row68Column4' >
+
+
+<a name="wp53694"></a><p class="pTableCell">
+<span class=" cBold">0</span></p></td>
+
+
+</tr>
+
+  <tr align="left" valign="top">
+    <td colspan="4" rowspan="1">
+
+<a name="wp53696"></a><p class="pTableCell">
+The <span class=" cBold">Trgt_Icache_Linesize</span> (<span class=" cBold">til</span>) option reports the size in bytes of each line in the CPU&#8217;s primary instruction or unified cache, if it is known.</p></td>
+
+
+</tr>
+
+  <tr align="left" valign="top">
+    <td id='Row70Column1' >
+
+
+<a name="wp53705"></a><p class="pTableCell">
+<span class=" cBold">Trgt_Icache_Memsize</span></p></td>
+
+    <td id='Row70Column2' >
+
+
+<a name="wp53707"></a><p class="pTableCell">
+  &#160;</p></td>
+
+    <td id='Row70Column3' >
+
+
+<a name="wp53709"></a><p class="pTableCell">
+<span class=" cBold">0x0 - 0xffffffff</span></p></td>
+
+    <td id='Row70Column4' >
+
+
+<a name="wp53711"></a><p class="pTableCell">
+<span class=" cBold">0x0</span></p></td>
+
+
+</tr>
+
+  <tr align="left" valign="top">
+    <td colspan="4" rowspan="1">
+
+<a name="wp53713"></a><p class="pTableCell">
+The <span class=" cBold">Trgt_Icache_Memsize</span> (<span class=" cBold">tim</span>) configuration option reports the size in bytes of the CPU&#8217;s primary instruction or unified cache, if it is known.</p></td>
+
+
+</tr>
+
+  <tr align="left" valign="top">
+    <td id='Row72Column1' >
+
+
+<a name="wp53722"></a><p class="pTableCell">
+<span class=" cBold">Trgt_Icache_Sets</span></p></td>
+
+    <td id='Row72Column2' >
+
+
+<a name="wp53724"></a><p class="pTableCell">
+  &#160;</p></td>
+
+    <td id='Row72Column3' >
+
+
+<a name="wp53726"></a><p class="pTableCell">
+<span class=" cBold"> 0 - 1024</span></p></td>
+
+    <td id='Row72Column4' >
+
+
+<a name="wp53728"></a><p class="pTableCell">
+<span class=" cBold">0</span></p></td>
+
+
+</tr>
+
+  <tr align="left" valign="top">
+    <td colspan="4" rowspan="1">
+
+<a name="wp53730"></a><p class="pTableCell">
+The <span class=" cBold">Trgt_Icache_Sets</span> (<span class=" cBold">tis</span>) option reports the number of sets in the CPU&#8217;s primary instruction or unified cache, if it is known.</p></td>
+
+
+</tr>
+
+  <tr align="left" valign="top">
+    <td id='Row74Column1' >
+
+
+<a name="wp53740"></a><p class="pTableCell">
+<span class=" cBold"><a name="CRefID39093"></a>Trgt_Little_Endian </span></p></td>
+
+    <td id='Row74Column2' >
+
+
+<a name="wp53742"></a><p class="pTableCell">
+  &#160;</p></td>
+
+    <td id='Row74Column3' >
+
+
+<a name="wp53744"></a><p class="pTableCell">
+<span class=" cBold">on, off</span></p></td>
+
+    <td id='Row74Column4' >
+
+
+<a name="wp53746"></a><p class="pTableCell">
+<span class=" cBold">off</span></p></td>
+
+
+</tr>
+
+  <tr align="left" valign="top">
+    <td colspan="4" rowspan="1">
+
+<a name="wp53749"></a><p class="pTableCell">
+Setting <span class=" cBold">Trgt_Little_Endian</span> to <span class=" cBold">on</span> indicates that your target system has a little-endian memory architecture.</p>
+<a name="wp53750"></a><p class="pTableCell">
+  &#160;</p>
+<a name="wp53757"></a><p class="pTableCell">
+The initial value of this option is set with the Sourcery CodeBench / Sourcery Probe Launch configuration, and it is not recommended to change this option manually via MON.</p></td>
+
+
+</tr>
+
+  <tr align="left" valign="top">
+    <td id='Row76Column1' >
+
+
+<a name="wp53767"></a><p class="pTableCell">
+<span class=" cBold"><a name="CRefID85382"></a>Trgt_Resets_Jtag</span></p></td>
+
+    <td id='Row76Column2' >
+
+
+<a name="wp53769"></a><p class="pTableCell">
+  &#160;</p></td>
+
+    <td id='Row76Column3' >
+
+
+<a name="wp53771"></a><p class="pTableCell">
+<span class=" cBold">no, yes</span></p></td>
+
+    <td id='Row76Column4' >
+
+
+<a name="wp53773"></a><p class="pTableCell">
+<span class=" cBold">no</span></p></td>
+
+
+</tr>
+
+  <tr align="left" valign="top">
+    <td colspan="4" rowspan="1">
+
+<a name="wp53775"></a><p class="pTableCell">
+The <span class=" cBold">Trgt_Resets_Jtag</span> (<span class=" cBold">trj</span>) option specifies whether a target system reset also causes a JTAG reset. Although it is not recommended, some target systems reset the JTAG interface when the system reset pin on the debug connector is asserted. The <span class=" cBold">Trgt_Resets_Jtag</span> option must be <span class=" cBold">yes</span> in this case. For target systems where system reset does not cause a JTAG reset, trgt_resets_jtag should be <span class=" cBold">no</span>. See also <a href="majicconfig12.html#wp53335"  onclick='oT("CRF","majicconfig12.html#wp53335");return false;'>Ice_Reset_Delay</a>.</p></td>
+
+
+</tr>
+
+  <tr align="left" valign="top">
+    <td id='Row78Column1' >
+
+
+<a name="wp53788"></a><p class="pTableCell">
+<span class=" cBold"><a name="CRefID67054"></a>Vector_Catch (ARM7, ARM9, ARM11)</span></p></td>
+
+    <td id='Row78Column2' >
+
+
+<a name="wp53790"></a><p class="pTableCell">
+<span class=" cBold">ARM7, ARM9, ARM11</span></p></td>
+
+    <td id='Row78Column3' >
+
+
+<a name="wp53792"></a><p class="pTableCell">
+<span class=" cBold">0xFF</span></p></td>
+
+    <td id='Row78Column4' >
+
+
+<a name="wp53794"></a><p class="pTableCell">
+<span class=" cBold">0x3B</span></p></td>
+
+
+</tr>
+
+  <tr align="left" valign="top">
+    <td colspan="4" rowspan="1">
+
+<a name="wp53796"></a><p class="pTableCell">
+The Vector_Catch option for ARM processors specifies a bit mask selecting exception vectors to be trapped. See also <a href="majicconfig12.html#wp53917"  onclick='oT("CRF","majicconfig12.html#wp53917");return false;'>Vector_Catch (Cortex-A)</a> for behavioral differences with the Cortex-A processor. Some processors provide special hardware for trapping these vectors. For other processors, the selected vectors are trapped by setting breakpoints. Note that software breakpoints can only be set when the vectors are in RAM.</p>
+<a name="wp53800"></a><p class="pTableCell">
+This feature should be disabled (set to 0) when debugging code that begins at address 0.</p>
+<a name="wp53889"></a><p class="pTableCell">
+<a name='Graphic53802'></a>
+<img src="images/majicconfig01a.png"   height='362' width='564' class="Alignleft" id='wp53802' border='0' hspace='0' vspace='0'/>
+
+</p>
+<a name="wp53890"></a><p class="pTableCell">
+  &#160;</p></td>
+
+
+</tr>
+
+  <tr align="left" valign="top">
+    <td id='Row80Column1' >
+
+
+<a name="wp53917"></a><p class="pTableCell">
+<span class=" cBold"><a name="CRefID74915"></a>Vector_Catch (Cortex-A)</span></p></td>
+
+    <td id='Row80Column2' >
+
+
+<a name="wp53919"></a><p class="pTableCell">
+<span class=" cBold">Cortex-A</span></p></td>
+
+    <td id='Row80Column3' >
+
+
+<a name="wp53921"></a><p class="pTableCell">
+<span class=" cBold">0x0 - 0xffffffff</span></p></td>
+
+    <td id='Row80Column4' >
+
+
+<a name="wp53923"></a><p class="pTableCell">
+<span class=" cBold">0x0</span></p></td>
+
+
+</tr>
+
+  <tr align="left" valign="top">
+    <td colspan="4" rowspan="4">
+
+<a name="wp53925"></a><p class="pTableCell">
+The Vector_Catch option for Cortex-A processors specifies that selected exception vectors are to be watchpointed by the probe.   See also <a href="majicconfig12.html#wp53788"  onclick='oT("CRF","majicconfig12.html#wp53788");return false;'>Vector_Catch (ARM7, ARM9, ARM11)</a> for behavioral differences with the ARM processors and <a href="majicconfig12.html#wp54155"  onclick='oT("CRF","majicconfig12.html#wp54155");return false;'>Vector_Catch (Cortex-M)</a> for the Cortex-M processors. When a watchpoint occurs WFAR contains the address of the instruction causing it plus 8 for ARM mode, or plus 4 for THUMB mode. This feature should be disabled (set to 0) when debugging code that begins at 0.</p>
+<a name="wp53932"></a><p class="pTableCell">
+The bit mask is defined as (decimal bit, hex field bit, and cause):</p>
+<a name="wp53933"></a><p class="pTableCell">
+  &#160;</p>
+<a name="wp54102"></a><p class="pTableCell">
+<a name='Graphic53935'></a>
+<img src="images/majicconfig02a.png"   height='294' width='629' class="Aligncenter" id='wp53935' border='0' hspace='0' vspace='0'/>
+
+</p>
+<a name="wp54103"></a><p class="pTableCell">
+  &#160;</p></td>
+
+
+</tr>
+
+  <tr align="left" valign="top">
+
+</tr>
+
+  <tr align="left" valign="top">
+
+</tr>
+
+  <tr align="left" valign="top">
+
+</tr>
+
+  <tr align="left" valign="top">
+    <td id='Row85Column1' >
+
+
+<a name="wp54155"></a><p class="pTableCell">
+<span class=" cBold"><a name="CRefID65617"></a>Vector_Catch (Cortex-M)</span></p></td>
+
+    <td id='Row85Column2' >
+
+
+<a name="wp54157"></a><p class="pTableCell">
+<span class=" cBold">Cortex-M</span></p></td>
+
+    <td id='Row85Column3' >
+
+
+<a name="wp54159"></a><p class="pTableCell">
+<span class=" cBold">0x0 - 0x7ff</span></p></td>
+
+    <td id='Row85Column4' >
+
+
+<a name="wp54161"></a><p class="pTableCell">
+<span class=" cBold">0x0</span></p></td>
+
+
+</tr>
+
+  <tr align="left" valign="top">
+    <td colspan="4" rowspan="1">
+
+<a name="wp54163"></a><p class="pTableCell">
+The Vector_Catch option for Cortex-M processors specifies that selected exception vectors are to be watchpointed by the probe. See also <a href="majicconfig12.html#wp53788"  onclick='oT("CRF","majicconfig12.html#wp53788");return false;'>Vector_Catch (ARM7, ARM9, ARM11)</a> for behavioral differences with the ARM processors and <a href="majicconfig12.html#wp53917"  onclick='oT("CRF","majicconfig12.html#wp53917");return false;'>Vector_Catch (Cortex-A)</a> for the Cortex-A processors. When an instruction causing exception is committed for execution, execution halts due to a debug trap. The program counter points to the first instruction of the exception handler.</p>
+<a name="wp54170"></a><p class="pTableCell">
+  &#160;</p>
+<a name="wp54171"></a><p class="pTableCell">
+The bit mask is defined as follows (decimal bit, hex field bit, and cause):</p>
+<a name="wp54172"></a><p class="pTableCell">
+  &#160;</p>
+<a name="wp54173"></a><p class="pTableCell">
+  &#160;</p>
+<a name="wp54234"></a><p class="pTableCell">
+<a name='Graphic54175'></a>
+<img src="images/majicconfig03a.png"   height='303' width='569' class="Aligncenter" id='wp54175' border='0' hspace='0' vspace='0'/>
+
+</p>
+<a name="wp54235"></a><p class="pTableCell">
+  &#160;</p></td>
+
+
+</tr>
+
+
+</table>
+
+</div>
+<div id='EndTable'> </div>
+<p class="pBody">
+<br clear='left' class='Blank4Table' />
+
+
+</p>
+
+
+
+
+
+</div>
+<!--BeginFooterContent-->
+<div class="BlankFooter" id="BlankFooter">&nbsp;</div>
+<div class="Footer" id="Footer">&nbsp;</div>
+<script type="text/javascript" language="JavaScript1.2">
+<!--
+   DocHandle = "mesp_user";
+   DocTitle = "Mentor Embedded Sourcery Probe User's Manual";
+   PageTitle = "Configuration Option Table";
+   Copyright = "2011-2014";
+   PDFLinkTitle = "Configuration.Option.Table"
+   ThisTopic = "RegisterDefinitionFileFormat";
+   CurrentFile = "majicconfig12.html";
+   CurrentFileID = "20";
+      topicFooter();
+
+ // -->
+ </script>
+ 
+ <noscript>
+    <p class="MGCFooter">Mentor Embedded Sourcery Probe User's Manual&nbsp;2.5.0
+    <br />2011-2014&#169;&nbsp;Mentor Graphics Corporation. All rights reserved.
+    <br /><a href='../mgc_html_help/nsmgchelp.htm' target="_blank">Browser Requirements</a></p>
+ </noscript>
+
+    </div>
+  </body>
+</html>
+
+ 

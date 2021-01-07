@@ -1,0 +1,179 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <noscript>
+       <link rel="StyleSheet" href="../MGC/styles/body.css" type="text/css" />
+       <link rel="StyleSheet" href="../MGC/styles/catalog.css" type="text/css" />
+       <link rel="StyleSheet" href="../MGC/styles/document.css" type="text/css" />
+    </noscript>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+    <meta name="GENERATOR" content="Quadralay WebWorks AutoMap 2003 for FrameMaker 8.0.2.1385" />
+    <meta name="TEMPLATEBASE" content="mgc_ww_v3.2.203" />
+    <meta name="LASTUPDATED" content="Thu Mar 13 05:34:15 2014" />
+    <meta name="mgc_html_doctitle" content="Mentor Embedded Sourcery Probe User's Manual" />
+    <title>Starting a Veloce Emulation Run</title>
+<!-- Search Engine keywords -->
+    <meta name="attributes" content=" product.version.2.5.0,doc.type.documentation.user,product.id.P11526 "/>
+<!-- JavaScript Files -->
+<script type="text/javascript" language="JavaScript1.2" src="../MGC/js/page.js"></script>
+<script type="text/javascript" language="JavaScript1.2">
+        if(DetectChromeForBasic()){
+           writeNoScriptStyles();
+        }
+
+     </script>
+   <script type="text/javascript" language="JavaScript1.2">
+     // Set reference to top level help frame
+      //
+      if(!DetectChromeForBasic()){
+        javascriptTopicRedirect();
+      }
+     </script>
+  </head>
+
+<body class="body" id="DocBody">
+<div id="BodyPopup" class="BodyPopup"></div>
+<div class="HideBody" id="HideBody">&nbsp;</div>
+<div id="bodycontent" class="BodyContent">
+
+
+
+
+
+  <script type="text/javascript" language="JavaScript1.2">
+  <!--
+      var BC = new Array("Using the Virtual Sourcery Probe","virtualprobe01","Veloce Debugging","virtualprobe03","Starting a Veloce Emulation Run","virtualprobe04","135");
+  // -->
+  </script>
+
+   <noscript><iframe framespacing="0" marginheight="2px" frameborder="no" scrolling="no" src="../MGC/html/noscript_header.htm" width="100%" height="100px;"></iframe>
+   </noscript>
+
+<script type="text/javascript" language="JavaScript1.2">
+if(DetectChromeForBasic()){
+       if(!(top.inEclipse)){  
+          writeBasicHeader();
+      }
+}
+</script>
+<div id="BodyContent">
+
+<a name="wp40990"></a><h1 class="pHeading3 FontLevel1" id="MGC40990">
+
+<a name="CRefID76983"></a>
+Starting a Veloce Emulation Run
+</h1>
+<a name="wp40991"></a><p class="pzShortDesc">
+
+Use TestBench Xpress to download the hardware design into the emulator and begin the emulation run. This is analogous to powering on the target system when debugging on actual hardware.
+</p>
+
+<a name="wp40994"></a><p class="pHTaskSubhead">
+
+Procedure
+</p>
+
+<a name="wp41166"></a>
+<ol start="1"><li class="LL1Seq">Log on to the comodel host machine of the Veloce emulator and go to the TBX compiled database directory. Set the environment for TBX and Veloce software as explained in the &ldquo;Starting a Debug Session&rdquo; section of the <span class=" cItalic">Veloce Virtual Probe User Guide</span>.</li></ol>
+<table class="notes">
+  <tr class="NotesUpperRuleBlack">
+    <td class="NotesUpperRule" colspan='2'><span class="cNotesBlack">Note</span></td>
+  </tr>
+  <tr class="NotesNote">
+    <td class="NoteNote"></td>
+    <td valign="top">
+            
+<a name="wp41167"></a><p class="pnoteNote">
+
+        	The hardware emulation may be run from a script file, or from the VeloceGUI software. Please see the &ldquo;Starting a Debug Session&rdquo; section of the <span class=" cItalic">Veloce Virtual Probe User Guide</span> for more information on loading and running the emulation model.
+        </p>
+          </td>
+  </tr>
+  <tr class="NotesBottomRuleBlack">
+    <td class="NotesBottomRule" colspan='2'>&nbsp;</td>
+    </tr>
+ </table>
+<a name="wp41168"></a>
+<ol start="2"><li class="LL1Seq">Wait for the following message to appear:</li></ol>
+<a name="wp41169"></a><pre class="pCodeIndent">
+&quot;TBX JTAG Server Started&quot;
+</pre>
+<a name="wp41170"></a><pre class="pCodeIndent">
+
+</pre>
+<a name="wp40997"></a><p class="pHTaskSubhead">
+
+Results
+</p>
+
+<a name="wp40998"></a><p class="pBody">
+
+At this point, the design has been downloaded on to the emulator and the MESP/Virtual JTAG Transactor Server component is waiting for the client to initiate a connection.
+</p>
+
+<a name="wp41004"></a><p class="pRelatedTopics">
+
+Related Topics
+</p>
+<div id="TableDivQz"></div>
+<div align="left">
+
+
+<table border="0" cellpadding="2" cellspacing="0" width="96%" id="wp41001table40999">
+  <tr align="left" valign="top">
+    <td id='Row1Column1'  style='width:3.25in'>
+
+
+<a name="wp41001"></a><p class="pTableCell">
+<a href="virtualprobe05.html"  onclick='oT("CRF","virtualprobe05.html");return false;'>Debugging with CodeBench</a></p></td>
+    <td id='Row1Column2'  style='width:3.25in'>
+
+
+<a name="wp41003"></a><p class="pTableCell">
+<a href="virtualprobe06.html"  onclick='oT("CRF","virtualprobe06.html");return false;'>Debugging with Other Debuggers</a></p></td>
+
+</tr>
+
+</table>
+
+</div>
+<div id='EndTable'> </div>
+<p class="pRelatedTopics">
+<br clear='left' class='Blank4Table' />
+
+</p>
+
+
+
+
+
+</div>
+<!--BeginFooterContent-->
+<div class="BlankFooter" id="BlankFooter">&nbsp;</div>
+<div class="Footer" id="Footer">&nbsp;</div>
+<script type="text/javascript" language="JavaScript1.2">
+<!--
+   DocHandle = "mesp_user";
+   DocTitle = "Mentor Embedded Sourcery Probe User's Manual";
+   PageTitle = "Starting a Veloce Emulation Run";
+   Copyright = "2011-2014";
+   PDFLinkTitle = "Starting.a.Veloce.Emulation.Run"
+   ThisTopic = "StartingaVeloceEmulationRun";
+   CurrentFile = "virtualprobe04.html";
+   CurrentFileID = "135";
+      topicFooter();
+
+ // -->
+ </script>
+ 
+ <noscript>
+    <p class="MGCFooter">Mentor Embedded Sourcery Probe User's Manual&nbsp;2.5.0
+    <br />2011-2014&#169;&nbsp;Mentor Graphics Corporation. All rights reserved.
+    <br /><a href='../mgc_html_help/nsmgchelp.htm' target="_blank">Browser Requirements</a></p>
+ </noscript>
+
+    </div>
+  </body>
+</html>
+
+ 

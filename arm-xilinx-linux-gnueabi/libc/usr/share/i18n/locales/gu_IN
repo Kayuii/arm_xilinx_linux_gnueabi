@@ -29,7 +29,7 @@ category  "gu_IN:2000";LC_PAPER
 category  "gu_IN:2000";LC_NAME
 category  "gu_IN:2000";LC_ADDRESS
 category  "gu_IN:2000";LC_TELEPHONE
-
+category  "gu_IN:2000";LC_MEASUREMENT
 END LC_IDENTIFICATION
 
 LC_CTYPE
@@ -50,7 +50,7 @@ map to_inpunct; /
   (<U0036>,<U0AEC>); /
   (<U0037>,<U0AED>); /
   (<U0038>,<U0AEE>); /
-  (<U0039>,<U0AEF>); 
+  (<U0039>,<U0AEF>);
 
 translit_start
 include "translit_combining";""
@@ -71,7 +71,7 @@ LC_MONETARY
 % for IBM Class for Unicode/Java
 %
 int_curr_symbol       "<U0049><U004E><U0052><U0020>"
-currency_symbol       "<U0AB0><U0AC1>"
+currency_symbol       "<U20B9>"
 mon_decimal_point     "<U002E>"
 mon_thousands_sep     "<U002C>"
 mon_grouping          3
@@ -215,6 +215,16 @@ postal_fmt  "<U0025><U007A><U0025><U0063><U0025><U0054><U0025><U0073>/
 country_ab2 "<U0049><U004E>"
 country_ab3 "<U0049><U004E><U0044>"
 country_num 356
+% IND
+country_car    "<U0049><U004E><U0044>"
+% ગુજરાતી
+lang_name    "<U0A97><U0AC1><U0A9C><U0AB0><U0ABE><U0AA4><U0AC0>"
+% gu
+lang_ab      "<U0067><U0075>"
+% guj
+lang_term    "<U0067><U0075><U006A>"
+% guj
+lang_lib    "<U0067><U0075><U006A>"
 END LC_ADDRESS
 
 
@@ -224,5 +234,6 @@ END LC_TELEPHONE
 
 
 LC_MEASUREMENT
-copy "hi_IN"
+% metric
+measurement 1
 END LC_MEASUREMENT

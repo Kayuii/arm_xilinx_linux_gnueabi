@@ -1,5 +1,5 @@
 /* Defines for bits in AT_HWCAP.  ARM Linux version.
-   Copyright (C) 2012 Free Software Foundation, Inc.
+   Copyright (C) 2012-2015 Free Software Foundation, Inc.
    This file is part of the GNU C Library.
 
    The GNU C Library is free software; you can redistribute it and/or
@@ -16,7 +16,7 @@
    License along with the GNU C Library; if not, see
    <http://www.gnu.org/licenses/>.  */
 
-#ifndef _SYS_AUXV_H
+#if !defined (_SYS_AUXV_H) && !defined (_LINUX_ARM_SYSDEP_H)
 # error "Never include <bits/hwcap.h> directly; use <sys/auxv.h> instead."
 #endif
 
@@ -40,3 +40,6 @@
 #define HWCAP_ARM_VFPv4		65536
 #define HWCAP_ARM_IDIVA		131072
 #define HWCAP_ARM_IDIVT		262144
+#define HWCAP_ARM_VFPD32	524288
+#define HWCAP_ARM_LPAE		1048576
+#define HWCAP_ARM_EVTSTRM	2097152

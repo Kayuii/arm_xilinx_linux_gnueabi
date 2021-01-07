@@ -1,0 +1,207 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <noscript>
+       <link rel="StyleSheet" href="../MGC/styles/body.css" type="text/css" />
+       <link rel="StyleSheet" href="../MGC/styles/catalog.css" type="text/css" />
+       <link rel="StyleSheet" href="../MGC/styles/document.css" type="text/css" />
+    </noscript>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+    <meta name="GENERATOR" content="Quadralay WebWorks AutoMap 2003 for FrameMaker 8.0.2.1385" />
+    <meta name="TEMPLATEBASE" content="mgc_ww_v3.2.203" />
+    <meta name="LASTUPDATED" content="Fri Jun 20 07:38:12 2014" />
+    <meta name="mgc_html_doctitle" content="Mentor Embedded Sourcery Probe User's Manual" />
+    <title>BSH (Breakpoint Set Hardware)</title>
+<!-- Search Engine keywords -->
+    <meta name="attributes" content=" product.version.2.5.0,doc.type.documentation.user,product.id.P11526 "/>
+<!-- JavaScript Files -->
+<script type="text/javascript" language="JavaScript1.2" src="../MGC/js/page.js"></script>
+<script type="text/javascript" language="JavaScript1.2">
+        if(DetectChromeForBasic()){
+           writeNoScriptStyles();
+        }
+
+     </script>
+   <script type="text/javascript" language="JavaScript1.2">
+     // Set reference to top level help frame
+      //
+      if(!DetectChromeForBasic()){
+        javascriptTopicRedirect();
+      }
+     </script>
+  </head>
+
+<body class="body" id="DocBody">
+<div id="BodyPopup" class="BodyPopup"></div>
+<div class="HideBody" id="HideBody">&nbsp;</div>
+<div id="bodycontent" class="BodyContent">
+
+
+
+
+
+  <script type="text/javascript" language="JavaScript1.2">
+  <!--
+      var BC = new Array("MON Command Language ","moncommand01","MON Command Details","moncommand04","BSH (Breakpoint Set Hardware)","moncommand09","32");
+  // -->
+  </script>
+
+   <noscript><iframe framespacing="0" marginheight="2px" frameborder="no" scrolling="no" src="../MGC/html/noscript_header.htm" width="100%" height="100px;"></iframe>
+   </noscript>
+
+<script type="text/javascript" language="JavaScript1.2">
+if(DetectChromeForBasic()){
+       if(!(top.inEclipse)){  
+          writeBasicHeader();
+      }
+}
+</script>
+<div id="BodyContent">
+
+<a name="wp34888"></a><h1 class="pzCmdFunc FontLevel1" id="MGC34888">
+
+<a name="CRefID81932"></a>
+BSH (Breakpoint Set Hardware)
+</h1>
+
+
+
+
+
+
+
+
+
+
+
+<a name="wp34889"></a><p class="pzMiscInfo">
+
+Availability: ALL, but usage in a MDI environment can be problematic as the higher level debugger is not aware of breakpoints set here.
+</p>
+
+<a name="wp34890"></a><p class="pzShortDesc">
+
+The BSH (Breakpoint Set Hardware) command sets a hardware breakpoint with an optional pass count and an optional command list.
+</p>
+
+
+<a name="wp34979"></a><p class="pzHeading">
+
+Usage
+</p>
+
+<a name="wp34989"></a><p class="pzMiscInfo">
+
+BSH <span class=" cItalic">options</span> [ <span class=" cItalic">size</span> ] [ <span class=" cItalic">asid</span> ] <span class=" cItalic">arange</span> [ <span class=" cItalic"># mask </span>]
+</p>
+
+<a name="wp34980"></a><p class="pzUsage">
+
+[ = <span class=" cItalic">vrange</span> [ <span class=" cItalic"># mask</span> ]] [ , [ - ]<span class=" cItalic">number</span> ] [ &ldquo;{&ldquo; <span class=" cItalic">cmd_list</span> &ldquo;}&rdquo; ]
+</p>
+
+<a name="wp34981"></a><p class="pzHeading">
+
+Arguments
+</p>
+
+<a name="wp34894"></a>
+<ul class="ulSmSpace"><li class="LLzptArg"><span class=" cItalic">options</span> { I | R | W | S | A | T | B }...</li></ul>
+<a name="wp35019"></a><p class="pL1Body">
+
+Flag word consisting of one or more of the following letters:
+</p>
+
+<a name="wp35020"></a><p class="pL2Body">
+I - Break on matching instruction fetch</p>
+<a name="wp35021"></a><p class="pL2Body">
+R - Break on Data Read</p>
+<a name="wp35022"></a><p class="pL2Body">
+W - Break on Data Write</p>
+<a name="wp35023"></a><p class="pL2Body">
+S - Size qualifier present, break only if access matches</p>
+<a name="wp35024"></a><p class="pL2Body">
+A - ASID qualifier present, break only if access matches</p>
+<a name="wp35025"></a><p class="pL2Body">
+T - Generate a Tracepoint signal without stopping.</p>
+<a name="wp35026"></a><p class="pL2Body">
+B - Break on Tracepoint (redundant unless T also given)</p>
+<a name="wp34896"></a>
+<ul class="ulSmSpace"><li class="LLzptArg"><span class=" cItalic">size</span> &#151; { 8 | 16 | 32 | 64 }</li></ul>
+
+<a name="wp34897"></a>
+<div class="LLzArgDesc">This is the access size. It is required if options has the value &#39;S&#39;, otherwise it is invalid.</div>
+<a name="wp35049"></a>
+<ul class="ulSmSpace"><li class="LLzptArg"><span class=" cItalic">asid</span></li></ul>
+
+<a name="wp35050"></a>
+<div class="LLzArgDesc">This is a number giving the ASID value. It is required if options has the value &#39;A&#39;, otherwise it is invalid.</div>
+<a name="wp35138"></a>
+<ul class="ulSmSpace"><li class="LLzptArg"><span class=" cItalic">arange</span> &#151; [ addr [ addr ] | addr L number ]</li></ul>
+
+<a name="wp35130"></a>
+<div class="LLzArgDesc">This is the memory address or address range which triggers the breakpoint. If the &quot;addr L number&quot; syntax is used, number is scaled by size if specified, otherwise it is taken as a byte count. This parameter is required, but a mask of 0 can be applied if the break should not be conditioned on the address (for example, fetching a certain value from any address).</div>
+<a name="wp35199"></a>
+<ul class="ulSmSpace"><li class="LLzptArg"><span class=" cItalic">vrange</span> &#151; [ value [ value ] | value L number ]</li></ul>
+
+<a name="wp35123"></a>
+<div class="LLzArgDesc">This is the value or range of values which will trigger the breakpoint when accessed. See <a href="moncommand54.html"  onclick='oT("CRF","moncommand54.html");return false;'>expr Expression</a> for valid value forms. If the &quot;addr L number&quot; syntax is used, number is taken as a byte count.</div>
+<a name="wp35219"></a>
+<ul class="ulSmSpace"><li class="LLzptArg"><span class=" cItalic">mask</span></li></ul>
+
+<a name="wp35211"></a>
+<div class="LLzArgDesc">Hexadecimal bitmask applied to the address or value range as part of the breakpoint condition. Zero bits in mask are &ldquo;don&#39;t care&rdquo; bits when testing the address or value.</div>
+<a name="wp35302"></a>
+<ul class="ulSmSpace"><li class="LLzptArg"><span class=" cItalic">number</span></li></ul>
+
+<a name="wp35294"></a>
+<div class="LLzArgDesc">This is by default decimal.</div>
+<a name="wp35322"></a>
+<ul class="ulSmSpace"><li class="LLzptArg"><span class=" cItalic">cmd_list</span></li></ul>
+
+<a name="wp35314"></a>
+<div class="LLzArgDesc">This is any valid command list, with G or S being last, if present.</div>
+<a name="wp34898"></a><p class="pzHeading">
+
+Description
+</p>
+
+<a name="wp34899"></a><p class="pzBody">
+
+If no pass count is specified, a value of one is assumed. If a negative pass count is specified, the breakpoint is temporary: it will be removed automatically when it is taken. The program will be interrupted each time the break address is reached number times. At that time, the command list will be executed. The actual number of hardware breakpoints available and the options which can actually be used to condition them, is dependent on the target CPU&#39;s capabilities.
+</p>
+
+
+
+
+
+</div>
+<!--BeginFooterContent-->
+<div class="BlankFooter" id="BlankFooter">&nbsp;</div>
+<div class="Footer" id="Footer">&nbsp;</div>
+<script type="text/javascript" language="JavaScript1.2">
+<!--
+   DocHandle = "mesp_user";
+   DocTitle = "Mentor Embedded Sourcery Probe User's Manual";
+   PageTitle = "BSH (Breakpoint Set Hardware)";
+   Copyright = "2011-2014";
+   PDFLinkTitle = "BSH.Breakpoint.Set.Hardware"
+   ThisTopic = "UserDefinedAccessLists";
+   CurrentFile = "moncommand09.html";
+   CurrentFileID = "32";
+      topicFooter();
+
+ // -->
+ </script>
+ 
+ <noscript>
+    <p class="MGCFooter">Mentor Embedded Sourcery Probe User's Manual&nbsp;2.5.0
+    <br />2011-2014&#169;&nbsp;Mentor Graphics Corporation. All rights reserved.
+    <br /><a href='../mgc_html_help/nsmgchelp.htm' target="_blank">Browser Requirements</a></p>
+ </noscript>
+
+    </div>
+  </body>
+</html>
+
+ 

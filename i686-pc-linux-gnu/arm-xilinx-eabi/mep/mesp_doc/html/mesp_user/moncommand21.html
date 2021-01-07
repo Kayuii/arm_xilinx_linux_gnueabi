@@ -1,0 +1,198 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <noscript>
+       <link rel="StyleSheet" href="../MGC/styles/body.css" type="text/css" />
+       <link rel="StyleSheet" href="../MGC/styles/catalog.css" type="text/css" />
+       <link rel="StyleSheet" href="../MGC/styles/document.css" type="text/css" />
+    </noscript>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+    <meta name="GENERATOR" content="Quadralay WebWorks AutoMap 2003 for FrameMaker 8.0.2.1385" />
+    <meta name="TEMPLATEBASE" content="mgc_ww_v3.2.203" />
+    <meta name="LASTUPDATED" content="Fri Jun 20 07:38:12 2014" />
+    <meta name="mgc_html_doctitle" content="Mentor Embedded Sourcery Probe User's Manual" />
+    <title>EA (Enter Alias)</title>
+<!-- Search Engine keywords -->
+    <meta name="attributes" content=" product.version.2.5.0,doc.type.documentation.user,product.id.P11526 "/>
+<!-- JavaScript Files -->
+<script type="text/javascript" language="JavaScript1.2" src="../MGC/js/page.js"></script>
+<script type="text/javascript" language="JavaScript1.2">
+        if(DetectChromeForBasic()){
+           writeNoScriptStyles();
+        }
+
+     </script>
+   <script type="text/javascript" language="JavaScript1.2">
+     // Set reference to top level help frame
+      //
+      if(!DetectChromeForBasic()){
+        javascriptTopicRedirect();
+      }
+     </script>
+  </head>
+
+<body class="body" id="DocBody">
+<div id="BodyPopup" class="BodyPopup"></div>
+<div class="HideBody" id="HideBody">&nbsp;</div>
+<div id="bodycontent" class="BodyContent">
+
+
+
+
+
+  <script type="text/javascript" language="JavaScript1.2">
+  <!--
+      var BC = new Array("MON Command Language ","moncommand01","MON Command Details","moncommand04","EA (Enter Alias)","moncommand21","44");
+  // -->
+  </script>
+
+   <noscript><iframe framespacing="0" marginheight="2px" frameborder="no" scrolling="no" src="../MGC/html/noscript_header.htm" width="100%" height="100px;"></iframe>
+   </noscript>
+
+<script type="text/javascript" language="JavaScript1.2">
+if(DetectChromeForBasic()){
+       if(!(top.inEclipse)){  
+          writeBasicHeader();
+      }
+}
+</script>
+<div id="BodyContent">
+
+<a name="wp38071"></a><h1 class="pzCmdFunc FontLevel1" id="MGC38071">
+
+<a name="CRefID42268"></a>
+EA (Enter Alias)
+</h1>
+
+
+
+
+
+
+
+
+
+
+
+<a name="wp38072"></a><p class="pzMiscInfo">
+
+Availability: ALL
+</p>
+
+<a name="wp38073"></a><p class="pzShortDesc">
+
+The EA (Enter Alias) command<a name="CRefIDenter alias"></a> creates an alias (synonym) for a list of one or more commands. The alias can then be used as a command name. EA (Enter Alias) is normally used to create a short abbreviation (one or more characters) for a longer command or sequence of commands that are frequently used.
+</p>
+
+
+<a name="wp38074"></a><p class="pzHeading">
+
+Usage
+</p>
+
+<a name="wp38075"></a><p class="pzUsage">
+
+EA <span class=" cItalic">ident cmd_list</span>
+</p>
+
+<a name="wp38076"></a><p class="pzHeading">
+
+Arguments
+</p>
+
+<a name="wp38077"></a>
+<ul class="ulSmSpace"><li class="LLzptArg"><span class=" cItalic">ident</span></li></ul>
+
+<a name="wp38078"></a>
+<div class="LLzArgDesc">The name of the alias that is being created or re-defined. When <span class=" cItalic">ident</span> is used as an alias name, <span class=" cItalic">ident</span> is not case sensitive. (See <a href="moncommand56.html"  onclick='oT("CRF","moncommand56.html");return false;'>ident Identifier</a>.)</div>
+<a name="wp38079"></a>
+<ul class="ulSmSpace"><li class="LLzptArg"><span class=" cItalic">cmd</span><span class=" cNoBold cNoItalic cBlack">_</span><span class=" cItalic">list</span><span class=" cNoBold cNoItalic cBlack"> - </span><span class=" cItalic">command</span><span class=" cBold">[</span><span class=" cNoBold cNoItalic cBlack">;</span><span class=" cItalic">command</span><span class=" cBold">]...</span></li></ul>
+
+<a name="wp38080"></a>
+<div class="LLzArgDesc">One or more MON commands, separated by semicolons. If the last command in <span class=" cItalic">cmd_list</span> is not complete (missing some parameters at the end) the missing parameters must be provided when the alias is used.</div>
+<a name="wp38081"></a><p class="pzHeading">
+
+Description
+</p>
+
+<a name="wp38233"></a><p class="pzShortDesc">
+
+When a MON command is being processed, the MON first checks to see if the command name matches an existing alias name, ignoring alphabetic case. If an alias match is found, the alias name is replaced by the text of <span class=" cItalic">cmd_list</span>, and the command is re-scanned. If an alias match is not found, the MON checks for built-in commands. This means that aliases can be used to re-define existing built-in commands, and the alias replacement text can contain other alias names. Recursive alias references are not supported, however.
+</p>
+
+
+<a name="wp38255"></a><p class="pzShortDesc">
+
+If <span class="cOptRpl">cmd_list</span> includes a &ldquo;<a href="moncommand25.html"  onclick='oT("CRF","moncommand25.html");return false;'>FR (File Read)</a> C file&rdquo; command, the command file will be read in Quiet mode to provide the illusion that the alias name is a built-in command.
+</p>
+
+
+<a name="wp38259"></a><p class="pzBody">
+
+Aliases can be displayed with the <a href="moncommand11.html"  onclick='oT("CRF","moncommand11.html");return false;'>DA (Display Alias)</a> command, and removed with the <a href="moncommand32.html"  onclick='oT("CRF","moncommand32.html");return false;'>KA (Kill Alias)</a> command.
+</p>
+
+
+<a name="wp38083"></a><p class="pzHeading">
+
+Examples
+</p>
+
+<a name="wp38273"></a><pre class="pCode">
+<a name="CRefIDenter alias"></a>EA DIA DW @pc l 10,i         // Disassemble instructions from current pc
+</pre>
+
+<a name="wp38274"></a><pre class="pCode">
+ea ms fr c my_script         // Run the command file named my_script.maj
+</pre>
+
+<a name="wp38275"></a><pre class="pCode">
+ea rc fr c                  // Read command file without echo. Note that since
+</pre>
+
+<a name="wp38276"></a><pre class="pCode">
+                     // the command file name is not specified, it must
+</pre>
+
+<a name="wp38277"></a><pre class="pCode">
+                     // be provided when the rc alias is subsequently
+</pre>
+
+<a name="wp38278"></a><pre class="pCode">
+                     // used.
+</pre>
+
+
+
+
+
+</div>
+<!--BeginFooterContent-->
+<div class="BlankFooter" id="BlankFooter">&nbsp;</div>
+<div class="Footer" id="Footer">&nbsp;</div>
+<script type="text/javascript" language="JavaScript1.2">
+<!--
+   DocHandle = "mesp_user";
+   DocTitle = "Mentor Embedded Sourcery Probe User's Manual";
+   PageTitle = "EA (Enter Alias)";
+   Copyright = "2011-2014";
+   PDFLinkTitle = "EA.Enter.Alias"
+   ThisTopic = "UserDefinedAccessLists";
+   CurrentFile = "moncommand21.html";
+   CurrentFileID = "44";
+      topicFooter();
+
+ // -->
+ </script>
+ 
+ <noscript>
+    <p class="MGCFooter">Mentor Embedded Sourcery Probe User's Manual&nbsp;2.5.0
+    <br />2011-2014&#169;&nbsp;Mentor Graphics Corporation. All rights reserved.
+    <br /><a href='../mgc_html_help/nsmgchelp.htm' target="_blank">Browser Requirements</a></p>
+ </noscript>
+
+    </div>
+  </body>
+</html>
+
+ 
